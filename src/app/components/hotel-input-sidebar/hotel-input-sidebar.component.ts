@@ -14,7 +14,8 @@ import { HotelsService } from 'src/app/Services/hotels_api/hotels.service';
 import { Subject } from "rxjs";
 import { debounceTime } from "rxjs/operators";
 import { DebounceCallsService } from "src/app/Services/DebounceCalls/debounce-calls.service";
-import { environment } from 'src/enviroments/environment';
+import { environment } from 'src/environments/environment';
+
 
 
 @Component({

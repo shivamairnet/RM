@@ -12,7 +12,7 @@ import { NgbDatepickerModule, NgbModule, NgbNavModule } from '@ng-bootstrap/ng-b
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { getApp, initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { environment } from 'src/enviroments/environment';
+
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { browserSessionPersistence, getAuth, initializeAuth, provideAuth } from '@angular/fire/auth';
 import { ToastrModule } from 'ngx-toastr';
@@ -64,6 +64,7 @@ import { EnqDetailsComponent } from './pages/enq-details/enq-details.component'
 
 
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+import { environment } from 'src/environments/environment';
 
 
 

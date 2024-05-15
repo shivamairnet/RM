@@ -16,7 +16,6 @@ import {
   NgbDate,
   NgbDateParserFormatter,
   NgbDateStruct,
-  
 } from "@ng-bootstrap/ng-bootstrap";
 import axios from "axios";
 import { Papa } from "ngx-papaparse";
@@ -27,9 +26,7 @@ import { Airports } from "src/app/classes/airport";
 import { Subject } from "rxjs";
 import { debounceTime } from "rxjs/operators";
 import { DebounceCallsService } from "src/app/Services/DebounceCalls/debounce-calls.service";
-import { environment } from "src/enviroments/environment";
-
-
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-flight-input-sidebar",
@@ -39,10 +36,9 @@ import { environment } from "src/enviroments/environment";
 export class FlightInputSidebarComponent implements OnInit {
   @Input() response: any;
 
-
   dateFromModel: NgbDateStruct;
-  endDateFromModel:NgbDateStruct;
-  placement = 'bottom';
+  endDateFromModel: NgbDateStruct;
+  placement = "bottom";
 
   journeyType: number = 1;
   hoveredDate: NgbDate | null = null;
@@ -68,7 +64,7 @@ export class FlightInputSidebarComponent implements OnInit {
   source: string = "";
   destination: string = "";
   @ViewChild("collapseTwoElement") collapseTwoElement: ElementRef;
-  
+
   fromDate: NgbDate | null;
   toDate: NgbDate | null;
   filteredData: any;
@@ -115,7 +111,7 @@ export class FlightInputSidebarComponent implements OnInit {
       month: currentDate.getMonth() + 1,
       day: currentDate.getDate(),
     };
-  }  
+  }
 
   ngOnInit(): void {
     this.departureSearchSubject
@@ -184,7 +180,7 @@ export class FlightInputSidebarComponent implements OnInit {
     // 'event' contains the selected date
     console.log("Selected Date:", event);
   }
-    
+
   onDateChanges(event: NgbDateStruct) {
     // 'event' contains the selected date
     console.log("Selected Date:", event);
@@ -310,7 +306,9 @@ export class FlightInputSidebarComponent implements OnInit {
 
   onAirportSelect(airport: any): void {
     // this.countryService.setSelectedAirport(airport?.cityName);
-    this.selectedAirport = `${airport?.city ||airport?.city_name}, ${airport?.iata}`;
+    this.selectedAirport = `${airport?.city || airport?.city_name}, ${
+      airport?.iata
+    }`;
     this.source = airport?.iata;
     // this.active = 4;
   }
@@ -385,9 +383,8 @@ export class FlightInputSidebarComponent implements OnInit {
       );
 
       console.log(responseAirports);
-      if(responseAirports){
+      if (responseAirports) {
         this.departureSearchAirports = responseAirports.data.airports;
-
       }
     } catch (err) {
       console.error(err.message);
@@ -518,8 +515,8 @@ export class FlightInputSidebarComponent implements OnInit {
       ? `${this.toDate.year}-${this.toDate.month}-${this.toDate.day}`
       : "";
 
-      console.log(this.selectedStartDate);
-      console.log(this.selectedEndDate);
+    console.log(this.selectedStartDate);
+    console.log(this.selectedEndDate);
   }
   onJourneyTypeNot2() {
     // Close the datepicker
@@ -576,8 +573,8 @@ export class FlightInputSidebarComponent implements OnInit {
     );
   }
 
-  destinationsArr:string[]=[];
-  datesArr:string[]=[];
+  destinationsArr: string[] = [];
+  datesArr: string[] = [];
 
   addCity() {
     this.trips.push({
@@ -588,7 +585,7 @@ export class FlightInputSidebarComponent implements OnInit {
       PreferredArrivalTime: this.tripDate,
     });
     this.destinationsArr.push(this.destination);
-    this.datesArr.push(this.tripDate);         
+    this.datesArr.push(this.tripDate);
     console.log(this.trips);
     this.source = "";
     this.destination = "";
@@ -616,53 +613,102 @@ export class FlightInputSidebarComponent implements OnInit {
     return JSON.parse(decrypted);
   }
 
-  authenticateFlightApi() {
-    // this.flights.authenticate().subscribe(
-    //   (data: { token: string }) => {
-    //     console.log(data.token);
-    //     localStorage.setItem("authenticateToken", data.token);
-    //     this.sendRequest(data.token)
-    //     if(this.journeyType===1){
-    //       this.getCalendarFare(data.token)
-    //     }
-    //   },
-    //   (err) => {
-    //     console.log(err, "error aa gya");
-    //   }
-    // );
-  }
 
-  
+
   async sendRequest() {
     console.log("in send");
-  
+
     try {
       const payload = this.createFlightPayload();
-      this.journeyData.emit(payload)
-      console.log(payload);
-      const res = await axios.post(
+      this.journeyData.emit(payload);
+    this.tripsData.emit(this.trips);
+
+      const searchFlightPromise = axios.post(
         `${environment.BACKEND_BASE_URL}/flight/searchflight`,
         payload
       );
-      if(this.journeyType===1){
-              this.getCalendarFare()
-            }
-      if (res) {
-        console.log(res);
-       
-        this.response = res.data;
 
+      let calendarFarePromise;
+
+      if (this.journeyType === 1) {
+        calendarFarePromise = axios.post(
+          `${environment.BACKEND_BASE_URL}/flight/calendarFare`,
+          payload
+        );
+      }
+
+      const searchFlightResponse = await searchFlightPromise;
+
+      if (searchFlightResponse) {
+        console.log("Got response from flight/searchflight:");
+        console.log(searchFlightResponse.data);
+        this.response = searchFlightResponse.data;
         this.responseData.emit(this.response);
+      }
+
+      if (calendarFarePromise) {
+        calendarFarePromise
+          .then((calendarFareResponse) => {
+            console.log("Got response from flight/calendarFare:");
+            console.log(calendarFareResponse.data, "calendar response");
+            this.calendarFare = calendarFareResponse.data.data;
+            this.calendarData.emit(this.calendarFare);
+          })
+          .catch((error) => {
+            console.log(error.message);
+          });
       }
     } catch (error) {
       console.log(error.message);
     }
   }
 
+  // async sendRequest() {
+  //   console.log("in send");
+
+  //   try {
+  //     const payload = this.createFlightPayload();
+  //     this.journeyData.emit(payload);
+
+  //     const res = await axios.post(
+  //       `${environment.BACKEND_BASE_URL}/flight/searchflight`,
+  //       payload
+  //     );
+
+  //     if(this.journeyType===1){
+  //             this.getCalendarFare()
+  //           }
+
+  //     if (res) {
+  //       console.log(res);
+
+  //       this.response = res.data;
+
+  //       this.responseData.emit(this.response);
+  //     }
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // }
+  // async getCalendarFare() {
+  //   const payload = this.createFlightPayload();
+
+  //   try {
+  //     const {data} = await axios.post(
+  //       `${environment.BACKEND_BASE_URL}/flight/calendarFare`,
+  //       payload
+  //     );
+  //     console.log("Got response from  flight/calendarFare")
+  //     console.log(data, "calendar resposne")
+  //     this.calendarFare = data.data.data;
+  //     this.calendarData.emit(this.calendarFare);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // }
   async sendRequestInitial(payload: any) {
     console.log("in send");
     try {
-  
       const res = await axios.post(
         `${environment.BACKEND_BASE_URL}/flight/searchflight`,
         payload
@@ -670,7 +716,7 @@ export class FlightInputSidebarComponent implements OnInit {
 
       if (res) {
         console.log(res);
-      
+
         this.response = res.data;
 
         this.responseData.emit(this.response);
@@ -680,10 +726,9 @@ export class FlightInputSidebarComponent implements OnInit {
     }
   }
 
-  // HELPER 
+  // HELPER
   createFlightPayload() {
     const commonPayload = {
-      
       AdultCount: this.numberFormControl.value,
       ChildCount: this.numberFormControl1.value,
       InfantCount: this.numberFormControl3.value,
@@ -740,27 +785,6 @@ export class FlightInputSidebarComponent implements OnInit {
     console.log(commonPayload);
   }
 
-
-
-  async getCalendarFare() {
-    const payload = this.createFlightPayload();
-
-    try {
-      const res = await axios.post(
-        `${environment.BACKEND_BASE_URL}/flight/calendarFare`,
-        payload
-      );
-      console.log("Got response from  flight/calendarFare")
-      this.calendarFare = res.data.data;
-      this.calendarData.emit(this.calendarFare);
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
-
-
-
-
   formatDate(date: string): string {
     const dateTimeString = date + "T00:00:00";
 
@@ -773,25 +797,21 @@ export class FlightInputSidebarComponent implements OnInit {
   }
 
   onDateChange() {
-
     const dateString1 = this.ngbDateParserFormatter.format(this.dateFromModel);
-    const dateString2 = this.ngbDateParserFormatter.format(this.endDateFromModel);
-    console.log('Date changed:', this.dateFromModel);
-    console.log(this.journeyType)
-    if(this.journeyType==2 ){
-      this.selectedStartDate=dateString1;
-      this.selectedEndDate=dateString2;
-      console.log("start",this.selectedStartDate);
-      console.log("end",this.selectedEndDate);
-    }
-    else{
-      this.tripDate=dateString1;
-  
-      console.log("selected date",dateString1)
-    }
+    const dateString2 = this.ngbDateParserFormatter.format(
+      this.endDateFromModel
+    );
+    console.log("Date changed:", this.dateFromModel);
+    console.log(this.journeyType);
+    if (this.journeyType == 2) {
+      this.selectedStartDate = dateString1;
+      this.selectedEndDate = dateString2;
+      console.log("start", this.selectedStartDate);
+      console.log("end", this.selectedEndDate);
+    } else {
+      this.tripDate = dateString1;
 
-
+      console.log("selected date", dateString1);
+    }
   }
-
-
 }

@@ -114,22 +114,20 @@ export class FlightSearchComponent implements OnInit {
     console.log("Received response data in parent component:", response);
     this.response = response;
     console.log(this.response.flightsData);
-    // if (this.JourneyType === 2) {
-    //   this.allFlights1 = this.response?.flightsData1;
-    //   this.allFlights2 = this.response?.flightsData2;
-    // } else {
+   
       this.allFlights = this.response?.flightsData;
-    // }
+    
 
     // initialize the filteredFlights
     this.applyFilters();
-    const payload = {
-      response: response,
-      trip: this.tripData,
-      calendar: this.calendarFare,
-    };
-    // to store the flight response in the session storage
-    sessionStorage.setItem("flights", this.encryptObject(payload));
+
+    // const payload = {
+    //   response: response,
+    //   trip: this.tripData,
+    //   calendar: this.calendarFare,
+    // };
+    // // to store the flight response in the session storage
+    // sessionStorage.setItem("flights", this.encryptObject(payload));
   }
 
   // FORM SELECTIONS------------------------------------------------------------------
@@ -199,6 +197,7 @@ export class FlightSearchComponent implements OnInit {
     this.applyFilters();
     this.spinner.hide();
   }
+
   //  to encrypt the data
   encryptObject(obj: any): string {
     const encrypted = CryptoJS.AES.encrypt(
@@ -591,8 +590,10 @@ export class FlightSearchComponent implements OnInit {
 
   // to update the calendarfare  recieved from the flight input sidebar for a one way trip
   handleCalendarData(event: any) {
-    console.log(event.data.Response);
-    this.calendarFare = event.data.Response;
+    console.log("GOT CALENDARRULE GOT CALENDARRULE GOT CALENDARRULEGOT CALENDARRULE GOT CALENDARRULE")
+    console.log(event.Response);
+    this.calendarFare = event.Response;
+    console.log(this.calendarFare, "((((((((((((((((((");
   }
 
   handleTravellerCounts(event: any) {

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import axios from 'axios';
-import { environment } from 'src/enviroments/environment';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'

@@ -17,8 +17,9 @@ import { ActivatedRoute } from "@angular/router";
 import { NgxSpinnerService } from "ngx-spinner";
 import { addCommasIndianNumberSystem } from "src/app/helpers/utility.helper";
 import axios from 'axios';
-import { environment } from 'src/enviroments/environment';
+
 import { AxiosRequestConfig } from 'axios'; // Import AxiosRequestConfig type
+import { environment } from 'src/environments/environment';
 
 declare const google: any; 
 

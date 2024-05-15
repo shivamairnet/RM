@@ -11,11 +11,15 @@ export const environment = {
     storageBucket: "boardthetrip-bc9f0.appspot.com",
     messagingSenderId: "287266333939",
     appId: "1:287266333939:web:46a385dc896a43bed48386",
-    measurementId: "G-L6B971XRV8"
+    measurementId: "G-L6B971XRV8",
   },
   production: false,
-  OPENAI_API_KEY:"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"
 
+  OPENAI_API_KEY: "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",
+
+  FRONTEND_BASE_URL: "https://localhost:4200",
+
+  BACKEND_BASE_URL: "https://api.rhombee.com",
 };
 
 /*

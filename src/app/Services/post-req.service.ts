@@ -3,9 +3,10 @@ import { Injectable } from "@angular/core";
 import { CountriesService } from "./countries.service";
 import { combineLatest, map } from "rxjs";
 import { ToastrService } from "ngx-toastr";
-import { environment } from "src/enviroments/environment";
+
 import { forkJoin } from "rxjs";
 import axios from "axios";
+import { environment } from "src/environments/environment";
 
 interface Connection {
   transportMode: string;

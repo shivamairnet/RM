@@ -54,11 +54,12 @@ import * as utils from "src/utils";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { PackageService } from "src/app/Services/package/package.service";
 import { Papa } from "ngx-papaparse";
-import { environment } from "src/enviroments/environment";
+
 import { ItineraryServiceService } from "src/app/Services/itinerary-service/itinerary-service.service";
 import { Subject } from "rxjs";
 import { debounceTime } from "rxjs/operators";
 import { DebounceCallsService } from "src/app/Services/DebounceCalls/debounce-calls.service";
+import { environment } from "src/environments/environment";
 @Component({
   selector: "app-dashboard",
   templateUrl: "./Previousdashboard.html",

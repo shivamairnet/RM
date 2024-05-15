@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from 'src/app/Services/global/global.service';
@@ -14,7 +15,7 @@ export class AdminSidebarComponent implements OnInit {
   @Input() isToggle:boolean;
   // @Output() handleToggle:EventEmitter<any>=new EventEmitter<any>
   constructor(private router: Router,private global:GlobalService) { }
-
+  
   ngOnInit(): void {
     console.log('admin')
   }

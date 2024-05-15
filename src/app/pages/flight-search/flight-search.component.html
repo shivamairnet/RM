@@ -31,16 +31,17 @@
         <app-flight-header [trips]="trips"></app-flight-header>
       </ng-container>
       <!-- only for one way trip then the calendar fare will be passed to this component -->
-      <ng-container *ngIf="response">
+      <ng-container *ngIf="response && calendarFare">
         <app-flight-header
           [adults]="adults"
           [trips]="trips"
           [child]="child"
           [infants]="infant"
           [fareType]="fareType"
+          [calendarFare]="calendarFare"
+
           (responseData)="handleResponseData($event)"
           (calendarData)="handleCalendarData($event)"
-          [calendarFare]="calendarFare"
         ></app-flight-header>
       </ng-container>
 
