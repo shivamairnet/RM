@@ -1,0 +1,3925 @@
+"{
+    "trip": {
+      "departure_airport": "Bangalore, BLR",
+      "arrival_airport": "Milan",
+      "start_date": "2024-03-01",
+      "end_date": "2024-03-15",
+      "numbers_of_days":   
+      "travellers": "Family",
+      "trip_duration": 15,
+      "nature_of_trip": "Family",
+      "origin_mode_of_transport": "Flying",
+      "cities": [
+        "Milan",
+        "Venice",
+        "Naples",
+        "Rome"
+      ]
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "date": "2024-03-01",
+        "city_name": "Milan",
+        "countryCode": "IT",
+        "suggested_duration": 2,
+        "connections": [
+          {
+            "mode_of_transport": "Flying",
+            "present_city": "Bangalore",
+            "next_city": "Milan",
+            "total_duration": 10
+          }
+        ],
+        "activities": [
+          {
+            "activity_timeperiod": "Afternoon",
+            "activity_name": "Visit Milan Cathedral",
+            "image": "milan_cathedral.jpg",
+            "location": "Piazza del Duomo, Milan"
+          },
+          {
+            "activity_timeperiod": "Evening",
+            "activity_name": "Explore Galleria Vittorio Emanuele II",
+            "image": "galleria_vittorio_emanuele_II.jpg",
+            "location": "Milan"
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "date": "2024-03-02",
+        "city_name": "Milan",
+        "countryCode": "IT",
+        "suggested_duration": 2,
+        "connections": [],
+        "activities": [
+          {
+            "activity_timeperiod": "Morning",
+            "activity_name": "Visit Leonardo da Vinci's Last Supper",
+            "image": "last_supper.jpg",
+            "location": "Milan"
+          },
+          {
+            "activity_timeperiod": "Afternoon",
+            "activity_name": "Explore Sforza Castle",
+            "image": "sforza_castle.jpg",
+            "location": "Piazza Castello, Milan"
+          },
+          {
+            "activity_timeperiod": "Evening",
+            "activity_name": "Enjoy an Italian dinner",
+            "image": "italian_dinner.jpg",
+            "location": "Milan"
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "date": "2024-03-03",
+        "city_name": "Venice",
+        "countryCode": "IT",
+        "suggested_duration": 3,
+        "connections": [
+          {
+            "mode_of_transport": "Train",
+            "present_city": "Milan",
+            "next_city": "Venice",
+            "total_duration": 2
+          }
+        ],
+        "activities": [
+          {
+            "activity_timeperiod": "Morning",
+            "activity_name": "Take a gondola ride along the canals",
+            "image": "gondola_ride.jpg",
+            "location": "Venice"
+          },
+          {
+            "activity_timeperiod": "Afternoon",
+            "activity_name": "Visit St. Mark's Square",
+            "image": "st_marks_square.jpg",
+            "location": "Venice"
+          },
+          {
+            "activity_timeperiod": "Evening",
+            "activity_name": "Experience a romantic candlelight dinner",
+            "image": "candlelight_dinner.jpg",
+            "location": "Venice"
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "date": "2024-03-04",
+        "city_name": "Venice",
+        "countryCode": "IT",
+        "suggested_duration": 3,
+        "connections": [],
+        "activities": [
+          {
+            "activity_timeperiod": "Morning-Afternoon",
+            "activity_name": "Visit Doge's Palace",
+            "image": "doges_palace.jpg",
+            "location": "Piazza San Marco, Venice"
+          },
+          {
+            "activity_timeperiod": "Evening",
+            "activity_name": "Enjoy a sunset gondola ride",
+            "image": "sunset_gondola_ride.jpg",
+            "location": "Venice"
+          }
+        ]
+      },
+      {
+        "day": 5,
+        "date": "2024-03-05",
+        "city_name": "Naples",
+        "countryCode": "IT",
+        "suggested_duration": 3,
+        "connections": [
+          {
+            "mode_of_transport": "Train",
+            "present_city": "Venice",
+            "next_city": "Naples",
+            "total_duration": 4
+          }
+        ],
+        "activities": [
+          {
+            "activity_timeperiod": "Morning",
+            "activity_name": "Explore the historic center of Naples",
+            "image": "historic_center_naples.jpg",
+            "location": "Naples"
+          },
+          {
+            "activity_timeperiod": "Afternoon",
+            "activity_name": "Visit Naples National Archaeological Museum",
+            "image": "naples_archaeological_museum.jpg",
+            "location": "Piazza Museo, Naples"
+          },
+          {
+            "activity_timeperiod": "Evening",
+            "activity_name": "Try traditional Neapolitan pizza",
+            "image": "neapolitan_pizza.jpg",
+            "location": "Naples"
+          }
+        ]
+      },
+      {
+        "day": 6,
+        "date": "2024-03-06",
+        "city_name": "Naples",
+        "countryCode": "IT",
+        "suggested_duration": 3,
+        "connections": [],
+        "activities": [
+          {
+            "activity_timeperiod": "Morning",
+            "activity_name": "Visit Mount Vesuvius",
+            "image": "mount_vesuvius.jpg",
+            "location": "Naples"
+          },
+          {
+            "activity_timeperiod": "Afternoon",
+            "activity_name": "Discover Pompeii archaeological site",
+            "image": "pompeii_archaeological_site.jpg",
+            "location": "Pompeii"
+          },
+          {
+            "activity_timeperiod": "Evening",
+            "activity_name": "Enjoy the view from Castel dell'Ovo",
+            "image": "castel_dell_ov.jpg",
+            "location": "Naples"
+          }
+        ]
+      },
+      {
+        "day": 7,
+        "date": "2024-03-07",
+        "city_name": "Rome",
+        "countryCode": "IT",
+        "suggested_duration": 4,
+        "connections": [
+          {
+            "mode_of_transport": "Train",
+            "present_city": "Naples",
+            "next_city": "Rome",
+            "total_duration": 2
+          }
+        ],
+        "activities": [
+          {
+            "activity_timeperiod": "Morning",
+            "activity_name": "Explore the Colosseum",
+            "image": "colosseum.jpg",
+            "location": "Rome"
+          },
+          {
+            "activity_timeperiod": "Afternoon",
+            "activity_name": "Visit Vatican City and St. Peter's Basilica",
+            "image": "st_peters_basilica.jpg",
+            "location": "Rome"
+          },
+          {
+            "activity_timeperiod": "Evening",
+            "activity_name": "Take a stroll in Trastevere neighborhood",
+            "image": "trastevere_neighborhood.jpg",
+            "location": "Rome"
+          }
+        ]
+      },
+      {
+        "day": 8,
+        "date": "2024-03-08",
+        "city_name": "Rome",
+        "countryCode": "IT",
+        "suggested_duration": 4,
+        "connections": [],
+        "activities": [
+          {
+            "activity_timeperiod": "Morning",
+            "activity_name": "Visit the Pantheon",
+            "image": "pantheon.jpg",
+            "location": "Rome"
+          },
+          {
+            "activity_timeperiod": "Afternoon",
+            "activity_name": "Discover the Roman Forum",
+            "image": "roman_forum.jpg",
+            "location": "Rome"
+          },
+          {
+            "activity_timeperiod": "Evening",
+            "activity_name": "Indulge in gelato tasting",
+            "image": "gelato_tasting.jpg",
+            "location": "Rome"
+          }
+        ]
+      },
+      {
+        "day": 9,
+        "date": "2024-03-09",
+        "city_name": "Rome",
+        "countryCode": "IT",
+        "suggested_duration": 4,
+        "connections": [],
+        "activities": [
+          {
+            "activity_timeperiod": "Morning",
+            "activity_name": "Explore the Trevi Fountain",
+            "image": "trevi_fountain.jpg",
+            "location": "Rome"
+          },
+          {
+            "activity_timeperiod": "Afternoon",
+            "activity_name": "Visit the Spanish Steps",
+            "image": "spanish_steps.jpg",
+            "location": "Rome"
+          },
+          {
+            "activity_timeperiod": "Evening",
+            "activity_name": "Enjoy a traditional Roman dinner",
+            "image": "roman_dinner.jpg",
+            "location": "Rome"
+          }
+        ]
+      }
+    ]
+  }"
+
+
+
+// RESPONSE 3
+
+"{
+    "trip": {
+      "departure_code": "BLR",
+      "arrival_code": "MXP",
+      "start_date": "2024-03-01",
+      "end_date": "2024-03-15",
+      "total_days": 15,
+      "nature": "Family",
+      "next_city_transport": "Flying",
+      "cities": [
+        "Milan",
+        "Venice",
+        "Naples",
+        "Rome"
+      ]
+    },
+    "itinerary": [
+      {
+        "day_number": 1,
+        "date": "2024-03-01",
+        "city_name": "Milan",
+        "country_code": "IT",
+        "suggested_duration": 2,
+        "connections": {
+          "mode_of_transport": "Flying",
+          "current_city": "Bangalore",
+          "next_city": "Milan",
+          "total_duration": 8
+        },
+        "activities": [
+          {
+            "time_period": "Morning",
+            "activity_name": "Visit Milan Cathedral",
+            "image": "https://example.com/milan_cathedral.jpg",
+            "location": "Piazza del Duomo, Milan"
+          },
+          {
+            "time_period": "Afternoon",
+            "activity_name": "Explore Galleria Vittorio Emanuele II",
+            "image": "https://example.com/galleria_vittorio_emanuele.jpg",
+            "location": "Piazza del Duomo, Milan"
+          },
+          {
+            "time_period": "Evening",
+            "activity_name": "Enjoy shopping and dining",
+            "image": "https://example.com/milan_shopping.jpg",
+            "location": "City Center, Milan"
+          }
+        ]
+      },
+      {
+        "day_number": 2,
+        "date": "2024-03-02",
+        "city_name": "Milan",
+        "country_code": "IT",
+        "suggested_duration": 0,
+        "connections": {
+          "mode_of_transport": "Train",
+          "current_city": "Milan",
+          "next_city": "Venice",
+          "total_duration": 3
+        },
+        "activities": [
+          {
+            "time_period": "Morning",
+            "activity_name": "Take a train to Venice",
+            "image": "https://example.com/train_to_venice.jpg",
+            "location": "Milan Central Station"
+          },
+          {
+            "time_period": "Afternoon",
+            "activity_name": "Explore St. Mark's Square",
+            "image": "https://example.com/st_marks_square.jpg",
+            "location": "Venice, Italy"
+          },
+          {
+            "time_period": "Evening",
+            "activity_name": "Enjoy a gondola ride",
+            "image": "https://example.com/gondola_ride.jpg",
+            "location": "Canals of Venice"
+          }
+        ]
+      },
+      {
+        "day_number": 3,
+        "date": "2024-03-03",
+        "city_name": "Venice",
+        "country_code": "IT",
+        "suggested_duration": 2,
+        "connections": {
+          "mode_of_transport": "Train",
+          "current_city": "Venice",
+          "next_city": "Naples",
+          "total_duration": 5
+        },
+        "activities": [
+          {
+            "time_period": "Morning",
+            "activity_name": "Visit Doge's Palace",
+            "image": "https://example.com/doges_palace.jpg",
+            "location": "Piazza San Marco, Venice"
+          },
+          {
+            "time_period": "Afternoon",
+            "activity_name": "Take a water taxi to Murano island",
+            "image": "https://example.com/murano_island.jpg",
+            "location": "Venice, Italy"
+          },
+          {
+            "time_period": "Evening",
+            "activity_name": "Enjoy a romantic dinner",
+            "image": "https://example.com/venice_dinner.jpg",
+            "location": "Canals of Venice"
+          }
+        ]
+      },
+      {
+        "day_number": 4,
+        "date": "2024-03-04",
+        "city_name": "Naples",
+        "country_code": "IT",
+        "suggested_duration": 3,
+        "connections": {
+          "mode_of_transport": "Train",
+          "current_city": "Naples",
+          "next_city": "Rome",
+          "total_duration": 2
+        },
+        "activities": [
+          {
+            "time_period": "Morning",
+            "activity_name": "Explore Pompeii ruins",
+            "image": "https://example.com/pompeii_ruins.jpg",
+            "location": "Pompeii, Italy"
+          },
+          {
+            "time_period": "Afternoon",
+            "activity_name": "Visit the National Archaeological Museum",
+            "image": "https://example.com/naples_museum.jpg",
+            "location": "Naples, Italy"
+          },
+          {
+            "time_period": "Evening",
+            "activity_name": "Taste authentic Neapolitan pizza",
+            "image": "https://example.com/neapolitan_pizza.jpg",
+            "location": "Naples, Italy"
+          }
+        ]
+      },
+      {
+        "day_number": 5,
+        "date": "2024-03-05",
+        "city_name": "Rome",
+        "country_code": "IT",
+        "suggested_duration": 4,
+        "connections": {
+          "mode_of_transport": "Train",
+          "current_city": "Rome",
+          "next_city": "None",
+          "total_duration": 0
+        },
+        "activities": [
+          {
+            "time_period": "Morning",
+            "activity_name": "Explore the Colosseum",
+            "image": "https://example.com/colosseum.jpg",
+            "location": "Rome, Italy"
+          },
+          {
+            "time_period": "Afternoon",
+            "activity_name": "Visit the Vatican Museums",
+            "image": "https://example.com/vatican_museums.jpg",
+            "location": "Vatican City"
+          },
+          {
+            "time_period": "Evening",
+            "activity_name": "Stroll through the historic streets of Rome",
+            "image": "https://example.com/rome_streets.jpg",
+            "location": "Rome, Italy"
+          }
+        ]
+      }
+    ]
+  }"
+
+
+// RESPONSE 4
+
+"{
+    "trip": {
+      "departureAirportCode": "BLR",
+      "arrivalAirportCode": "MXP",
+      "startDate": "2024-03-01",
+      "endDate": "2024-03-15",
+      "numberOfDays": 15,
+      "natureOfTrip": "Family Trip",
+      "modeOfTransport": "Flight"
+    },
+    "itinerary": [
+      {
+        "dayNumber": 1,
+        "date": "2024-03-01",
+        "cityName": "Milan",
+        "countryCode": "IT",
+        "suggestedDuration": 3,
+        "connections": {
+          "modeOfTransport": "Train",
+          "currentCity": "Milan",
+          "nextCity": "Venice",
+          "totalDuration": 2.5
+        },
+        "activities": [
+          {
+            "timePeriod": "Morning",
+            "activityName": "Visit Milan Cathedral",
+            "image": "https://example.com/milan_cathedral.jpg",
+            "location": "Piazza del Duomo, Milan"
+          },
+          {
+            "timePeriod": "Afternoon",
+            "activityName": "Explore Galleria Vittorio Emanuele II",
+            "image": "https://example.com/galleria_vittorio_emanuele.jpg",
+            "location": "Milan City Center"
+          },
+          {
+            "timePeriod": "Evening",
+            "activityName": "Enjoy a walk along Navigli Canals",
+            "image": "https://example.com/navigli_canals.jpg",
+            "location": "Navigli District, Milan"
+          }
+        ]
+      },
+      {
+        "dayNumber": 2,
+        "date": "2024-03-02",
+        "cityName": "Venice",
+        "countryCode": "IT",
+        "suggestedDuration": 2,
+        "connections": {
+          "modeOfTransport": "Train",
+          "currentCity": "Venice",
+          "nextCity": "Naples",
+          "totalDuration": 4
+        },
+        "activities": [
+          {
+            "timePeriod": "Morning",
+            "activityName": "Take a gondola ride in Venice",
+            "image": "https://example.com/gondola_ride.jpg",
+            "location": "Venice Canals"
+          },
+          {
+            "timePeriod": "Afternoon",
+            "activityName": "Visit St. Mark's Square and Basilica",
+            "image": "https://example.com/st_marks_square.jpg",
+            "location": "St. Mark's Square, Venice"
+          },
+          {
+            "timePeriod": "Evening",
+            "activityName": "Explore Rialto Bridge",
+            "image": "https://example.com/rialto_bridge.jpg",
+            "location": "Venice Canals"
+          }
+        ]
+      },
+      {
+        "dayNumber": 3,
+        "date": "2024-03-03",
+        "cityName": "Naples",
+        "countryCode": "IT",
+        "suggestedDuration": 2,
+        "connections": {
+          "modeOfTransport": "Train",
+          "currentCity": "Naples",
+          "nextCity": "Rome",
+          "totalDuration": 1.5
+        },
+        "activities": [
+          {
+            "timePeriod": "Morning",
+            "activityName": "Explore the historic center of Naples",
+            "image": "https://example.com/historic_naples.jpg",
+            "location": "Historic Center, Naples"
+          },
+          {
+            "timePeriod": "Afternoon",
+            "activityName": "Visit the Naples National Archaeological Museum",
+            "image": "https://example.com/naples_archaeological_museum.jpg",
+            "location": "Naples City Center"
+          },
+          {
+            "timePeriod": "Evening",
+            "activityName": "Try authentic Neapolitan pizza",
+            "image": "https://example.com/neapolitan_pizza.jpg",
+            "location": "Local Pizzeria, Naples"
+          }
+        ]
+      },
+      {
+        "dayNumber": 4,
+        "date": "2024-03-04",
+        "cityName": "Rome",
+        "countryCode": "IT",
+        "suggestedDuration": 5,
+        "connections": {
+          "modeOfTransport": "Flight",
+          "currentCity": "Rome",
+          "nextCity": "",
+          "totalDuration": 0
+        },
+        "activities": [
+          {
+            "timePeriod": "Morning",
+            "activityName": "Visit the Colosseum",
+            "image": "https://example.com/colosseum.jpg",
+            "location": "Colosseum, Rome"
+          },
+          {
+            "timePeriod": "Afternoon",
+            "activityName": "Explore Vatican City and St. Peter's Basilica",
+            "image": "https://example.com/vatican_city.jpg",
+            "location": "Vatican City, Rome"
+          },
+          {
+            "timePeriod": "Evening",
+            "activityName": "Enjoy Italian cuisine in Trastevere",
+            "image": "https://example.com/trastevere.jpg",
+            "location": "Trastevere, Rome"
+          }
+        ]
+      },
+      {
+        "dayNumber": 5,
+        "date": "2024-03-05",
+        "cityName": "",
+        "countryCode": "",
+        "suggestedDuration": 0,
+        "connections": {
+          "modeOfTransport": "",
+          "currentCity": "",
+          "nextCity": "",
+          "totalDuration": 0
+        },
+        "activities": []
+      },
+      ...
+      {
+        "dayNumber": 15,
+        "date": "2024-03-15",
+        "cityName": "Bangalore",
+        "countryCode": "IN",
+        "suggestedDuration": 0,
+        "connections": {
+          "modeOfTransport": "",
+          "currentCity": "Rome",
+          "nextCity": "",
+          "totalDuration": 0
+        },
+        "activities": [
+          {
+            "timePeriod": "Morning",
+            "activityName": "Fly back to Bangalore",
+            "image": "https://example.com/bangalore_airport.jpg",
+            "location": "Bangalore Airport"
+          },
+          {
+            "timePeriod": "Afternoon",
+            "activityName": "Arrival in Bangalore",
+            "image": "https://example.com/bangalore_city.jpg",
+            "location": "Bangalore City"
+          },
+          {
+            "timePeriod": "Evening",
+            "activityName": "Rest and relax",
+            "image": "",
+            "location": ""
+          }
+        ]
+      }
+    ]
+  }"
+
+
+//   RESPONSE 5
+{
+    "trip": {
+      "departureAirport": "BLR",
+      "arrivalAirport": "MXP",
+      "startDate": "2024-03-01",
+      "endDate": "2024-03-15",
+      "numberOfDays": 15,
+      "natureOfTrip": "Family",
+      "modeOfTransport": "Flying",
+      "plannedCities": ["Milan", "Venice", "Naples", "Rome"]
+    },
+    "itinerary": [
+      {
+        "dayNumber": 1,
+        "date": "2024-03-01",
+        "cityName": "Milan",
+        "countryCode": "IT",
+        "durationOfStay": 3,
+        "connectionsToNextCity": {
+          "transportMode": "Train",
+          "currentCity": "Milan",
+          "nextCity": "Venice",
+          "totalDuration": 2.5
+        },
+        "activities": [
+          {
+            "timePeriod": "09:00 - 12:00",
+            "activityName": "Explore Duomo di Milano",
+            "image": "duomo_milan.jpg",
+            "location": "Piazza del Duomo, Milan"
+          },
+          {
+            "timePeriod": "13:00 - 18:00",
+            "activityName": "Visit Leonardo da Vinci's Last Supper",
+            "image": "last_supper.jpg",
+            "location": "Santa Maria delle Grazie, Milan"
+          },
+          {
+            "timePeriod": "19:00 - 22:00",
+            "activityName": "Enjoy Italian Cuisine at a local restaurant",
+            "image": "italian_cuisine.jpg",
+            "location": "Milan city center"
+          }
+        ]
+      },
+      {
+        "dayNumber": 2,
+        "date": "2024-03-02",
+        "cityName": "Venice",
+        "countryCode": "IT",
+        "durationOfStay": 2,
+        "connectionsToNextCity": {
+          "transportMode": "Train",
+          "currentCity": "Venice",
+          "nextCity": "Naples",
+          "totalDuration": 4.5
+        },
+        "activities": [
+          {
+            "timePeriod": "09:00 - 12:00",
+            "activityName": "Gondola Ride in Grand Canal",
+            "image": "gondola_ride.jpg",
+            "location": "Venice, Italy"
+          },
+          {
+            "timePeriod": "13:00 - 18:00",
+            "activityName": "Explore Saint Mark's Basilica",
+            "image": "st_marks_basilica.jpg",
+            "location": "Piazza San Marco, Venice"
+          },
+          {
+            "timePeriod": "19:00 - 22:00",
+            "activityName": "Enjoy Sunset at Rialto Bridge",
+            "image": "rialto_bridge.jpg",
+            "location": "Rialto Bridge, Venice"
+          }
+        ]
+      },
+      {
+        "dayNumber": 3,
+        "date": "2024-03-03",
+        "cityName": "Naples",
+        "countryCode": "IT",
+        "durationOfStay": 3,
+        "connectionsToNextCity": {
+          "transportMode": "Train",
+          "currentCity": "Naples",
+          "nextCity": "Rome",
+          "totalDuration": 1.5
+        },
+        "activities": [
+          {
+            "timePeriod": "09:00 - 12:00",
+            "activityName": "Visit Pompeii Archaeological Park",
+            "image": "pompeii_archaeological_park.jpg",
+            "location": "Pompeii, Italy"
+          },
+          {
+            "timePeriod": "13:00 - 18:00",
+            "activityName": "Explore Naples Underground",
+            "image": "naples_underground.jpg",
+            "location": "Naples, Italy"
+          },
+          {
+            "timePeriod": "19:00 - 22:00",
+            "activityName": "Taste Authentic Neapolitan Pizza",
+            "image": "neapolitan_pizza.jpg",
+            "location": "Naples city center"
+          }
+        ]
+      },
+      {
+        "dayNumber": 4,
+        "date": "2024-03-04",
+        "cityName": "Rome",
+        "countryCode": "IT",
+        "durationOfStay": 7,
+        "connectionsToNextCity": null,
+        "activities": [
+          {
+            "timePeriod": "09:00 - 12:00",
+            "activityName": "Visit Colosseum",
+            "image": "colosseum.jpg",
+            "location": "Colosseum, Rome"
+          },
+          {
+            "timePeriod": "13:00 - 18:00",
+            "activityName": "Explore Vatican City and Sistine Chapel",
+            "image": "vatican_sistine_chapel.jpg",
+            "location": "Vatican City, Rome"
+          },
+          {
+            "timePeriod": "19:00 - 22:00",
+            "activityName": "Stroll around Trevi Fountain",
+            "image": "trevi_fountain.jpg",
+            "location": "Trevi Fountain, Rome"
+          }
+        ]
+      },
+      {
+        "dayNumber": 5,
+        "date": "2024-03-05",
+        "cityName": "Rome",
+        "countryCode": "IT",
+        "durationOfStay": 7,
+        "connectionsToNextCity": null,
+        "activities": [
+          {
+            "timePeriod": "09:00 - 12:00",
+            "activityName": "Visit Roman Forum",
+            "image": "roman_forum.jpg",
+            "location": "Roman Forum, Rome"
+          },
+          {
+            "timePeriod": "13:00 - 18:00",
+            "activityName": "Explore Pantheon",
+            "image": "pantheon.jpg",
+            "location": "Pantheon, Rome"
+          },
+          {
+            "timePeriod": "19:00 - 22:00",
+            "activityName": "Enjoy a Traditional Roman Dinner",
+            "image": "traditional_roman_dinner.jpg",
+            "location": "Rome city center"
+          }
+        ]
+      },
+      {
+        "dayNumber": 6,
+        "date": "2024-03-06",
+        "cityName": "Rome",
+        "countryCode": "IT",
+        "durationOfStay": 7,
+        "connectionsToNextCity": null,
+        "activities": [
+          {
+            "timePeriod": "09:00 - 12:00",
+            "activityName": "Visit the Spanish Steps",
+            "image": "spanish_steps.jpg",
+            "location": "Spanish Steps, Rome"
+          },
+          {
+            "timePeriod": "13:00 - 18:00",
+            "activityName": "Explore Villa Borghese Gardens",
+            "image": "villa_borghese_gardens.jpg",
+            "location": "Villa Borghese, Rome"
+          },
+          {
+            "timePeriod": "19:00 - 22:00",
+            "activityName": "Experience Nightlife in Trastevere",
+            "image": "trastevere_nightlife.jpg",
+            "location": "Trastevere, Rome"
+          }
+        ]
+      },
+      {
+        "dayNumber": 7,
+        "date": "2024-03-07",
+        "cityName": "Rome",
+        "countryCode": "IT",
+        "durationOfStay": 7,
+        "connectionsToNextCity": null,
+        "activities": [
+          {
+            "timePeriod": "09:00 - 12:00",
+            "activityName": "Visit Castel Sant'Angelo",
+            "image": "castel_sant_angelo.jpg",
+            "location": "Castel Sant'Angelo, Rome"
+          },
+          {
+            "timePeriod": "13:00 - 18:00",
+            "activityName": "Explore Piazza Navona",
+            "image": "piazza_navona.jpg",
+            "location": "Piazza Navona, Rome"
+          },
+          {
+            "timePeriod": "19:00 - 22:00",
+            "activityName": "Indulge in Gelato Tasting",
+            "image": "gelato.jpg",
+            "location": "Rome city center"
+          }
+        ]
+      },
+      {
+        "dayNumber": 8,
+        "date": "2024-03-08",
+        "cityName": "Rome",
+        "countryCode": "IT",
+        "durationOfStay": 7,
+        "connectionsToNextCity": null,
+        "activities": [
+          {
+            "timePeriod": "09:00 - 12:00",
+            "activityName": "Visit the Capitoline Museums",
+            "image": "capitoline_museums.jpg",
+            "location": "Capitoline Museums, Rome"
+          },
+          {
+            "timePeriod": "13:00 - 18:00",
+            "activityName": "Explore the Catacombs of Rome",
+            "image": "catacombs_of_rome.jpg",
+            "location": "Catacombs of Rome, Rome"
+          },
+          {
+            "timePeriod": "19:00 - 22:00",
+            "activityName": "Enjoy a Romantic Dinner by River Tiber",
+            "image": "romantic_dinner.jpg",
+            "location": "River Tiber, Rome"
+          }
+        ]
+      },
+      {
+        "dayNumber": 9,
+        "date": "2024-03-09",
+        "cityName": "Rome",
+        "countryCode": "IT",
+        "durationOfStay": 7,
+        "connectionsToNextCity": null,
+        "activities": [
+          {
+            "timePeriod": "09:00 - 12:00",
+            "activityName": "Visit the Trevi Fountain",
+            "image": "trevi_fountain.jpg",
+            "location": "Trevi Fountain, Rome"
+          },
+          {
+            "timePeriod": "13:00 - 18:00",
+            "activityName": "Explore the Vittoriano",
+            "image": "vittoriano.jpg",
+            "location": "Vittoriano, Rome"
+          },
+          {
+            "timePeriod": "19:00 - 22:00",
+            "activityName": "Cruise along River Tiber",
+            "image": "river_tiber_cruise.jpg",
+            "location": "River Tiber, Rome"
+          }
+        ]
+      },
+      {
+        "dayNumber": 10,
+        "date": "2024-03-10",
+        "cityName": "Rome",
+        "countryCode": "IT",
+        "durationOfStay": 7,
+        "connectionsToNextCity": null,
+        "activities": [
+          {
+            "timePeriod": "09:00 - 12:00",
+            "activityName": "Visit the Vatican Museums",
+            "image": "vatican_museums.jpg",
+            "location": "Vatican Museums, Rome"
+          },
+          {
+            "timePeriod": "13:00 - 18:00",
+            "activityName": "Explore the Piazza del Popolo",
+            "image": "piazza_del_popolo.jpg",
+            "location": "Piazza del Popolo, Rome"
+          },
+          {
+            "timePeriod": "19:00 - 22:00",
+            "activityName": "Enjoy a Rooftop Dinner with Panoramic View of Rome",
+            "image": "rooftop_dinner.jpg",
+            "location": "Rome city center"
+          }
+        ]
+      },
+      {
+        "dayNumber": 11,
+        "date": "2024-03-11",
+        "cityName": "Rome",
+        "countryCode": "IT",
+        "durationOfStay": 7,
+        "connectionsToNextCity": null,
+        "activities": [
+          {
+            "timePeriod": "09:00 - 12:00",
+            "activityName": "Explore the Borghese Gallery and Gardens",
+            "image": "borghese_gallery_gardens.jpg",
+            "location": "Borghese Gallery and Gardens, Rome"
+          },
+          {
+            "timePeriod": "13:00 - 18:00",
+            "activityName": "Stroll along the Appian Way",
+            "image": "appian_way.jpg",
+            "location": "Appian Way, Rome"
+          },
+          {
+            "timePeriod": "19:00 - 22:00",
+            "activityName": "Enjoy Live Music in Campo de' Fiori",
+            "image": "live_music.jpg",
+            "location": "Campo de' Fiori, Rome"
+          }
+        ]
+      },
+      {
+        "dayNumber": 12,
+        "date": "2024-03-12",
+        "cityName": "Rome",
+        "countryCode": "IT",
+        "durationOfStay": 7,
+        "connectionsToNextCity": null,
+        "activities": [
+          {
+            "timePeriod": "09:00 - 12:00",
+            "activityName": "Visit the Castel Romano Designer Outlet",
+            "image": "castel_romano_outlet.jpg",
+            "location": "Castel Romano, Rome"
+          },
+          {
+            "timePeriod": "13:00 - 18:00",
+            "activityName": "Explore the Baths of Caracalla",
+            "image": "baths_of_caracalla.jpg",
+            "location": "Baths of Caracalla, Rome"
+          },
+          {
+            "timePeriod": "19:00 - 22:00",
+            "activityName": "Enjoy a Traditional Roman Dinner",
+            "image": "traditional_roman_dinner.jpg",
+            "location": "Rome city center"
+          }
+        ]
+      },
+      {
+        "dayNumber": 13,
+        "date": "2024-03-13",
+        "cityName": "Rome",
+        "countryCode": "IT",
+        "durationOfStay": 7,
+        "connectionsToNextCity": null,
+        "activities": [
+          {
+            "timePeriod": "09:00 - 12:00",
+            "activityName": "Visit the Palatine Hill",
+            "image": "palatine_hill.jpg",
+            "location": "Palatine Hill, Rome"
+          },
+          {
+            "timePeriod": "13:00 - 18:00",
+            "activityName": "Explore the National Museum of Rome",
+            "image": "national_museum_of_rome.jpg",
+            "location": "National Museum of Rome, Rome"
+          },
+          {
+            "timePeriod": "19:00 - 22:00",
+            "activityName": "Enjoy a Sunset Rooftop Aperitivo",
+            "image": "sunset_rooftop_aperitivo.jpg",
+            "location": "Rome city center"
+          }
+        ]
+      },
+      {
+        "dayNumber": 14,
+        "date": "2024-03-14",
+        "cityName": "Rome",
+        "countryCode": "IT",
+        "durationOfStay": 7,
+        "connectionsToNextCity": null,
+        "activities": [
+          {
+            "timePeriod": "09:00 - 12:00",
+            "activityName": "Visit the Trevi Fountain",
+            "image": "trevi_fountain.jpg",
+            "location": "Trevi Fountain, Rome"
+          },
+          {
+            "timePeriod": "13:00 - 18:00",
+            "activityName": "Explore the Vatican Gardens",
+            "image": "vatican_gardens.jpg",
+            "location": "Vatican Gardens, Rome"
+          },
+          {
+            "timePeriod": "19:00 - 22:00",
+            "activityName": "Indulge in a Wine Tasting Experience",
+            "image": "wine_tasting.jpg",
+            "location": "Rome city center"
+          }
+        ]
+      },
+      {
+        "dayNumber": 15,
+        "date": "2024-03-15",
+        "cityName": "Rome",
+        "countryCode": "IT",
+        "durationOfStay": 7,
+        "connectionsToNextCity": {
+          "transportMode": "Flying",
+          "currentCity": "Rome",
+          "nextCity": "BLR",
+          "totalDuration": 10
+        },
+        "activities": [
+          {
+            "timePeriod": "09:00 - 12:00",
+            "activityName": "Visit the Villa Doria Pamphilj",
+            "image": "villa_doria_pamphilj.jpg",
+            "location": "Villa Doria Pamphilj, Rome"
+          },
+          {
+            "timePeriod": "13:00 - 18:00",
+            "activityName": "Explore the Mercato Centrale",
+            "image": "mercato_centrale.jpg",
+            "location": "Mercato Centrale, Rome"
+          },
+          {
+            "timePeriod": "19:00 - 22:00",
+            "activityName": "Farewell Dinner at a Traditional Roman Trattoria",
+            "image": "farewell_dinner.jpg",
+            "location": "Rome city center"
+          }
+        ]
+      }
+    ]
+  }
+
+//   RESPONSE 6
+
+"{
+    "trip": {
+      "departureAirportCode": "BLR",
+      "arrivalAirportCode": "MXP",
+      "startDate": "2024-03-01",
+      "endDate": "2024-03-15",
+      "numberOfDays": 15,
+      "natureOfTrip": "family",
+      "modeOfTransport": "fly"
+    },
+    "plannedCities": [
+      "Milan",
+      "Venice",
+      "Naples",
+      "Rome"
+    ],
+    "itinerary": [
+      {
+        "dayNumber": 1,
+        "date": "2024-03-01",
+        "city": "Milan",
+        "countryCode": "IT",
+        "durationOfStay": 2,
+        "connections": {
+          "transportMode": "train",
+          "currentCity": "Milan",
+          "nextCity": "Venice",
+          "totalDurationOfTravel": 3
+        },
+        "activities": [
+          {
+            "timePeriod": "10:00 AM - 1:00 PM",
+            "name": "Visit the Milan Cathedral",
+            "image": "https://example.com/milan_cathedral.jpg",
+            "location": "Milan Cathedral, Piazza del Duomo, 20122 Milan, Italy"
+          },
+          {
+            "timePeriod": "2:00 PM - 6:00 PM",
+            "name": "Explore the Sforza Castle",
+            "image": "https://example.com/sforza_castle.jpg",
+            "location": "Sforza Castle, Piazza Castello, 20121 Milan, Italy"
+          }
+        ]
+      },
+      {
+        "dayNumber": 2,
+        "date": "2024-03-02",
+        "city": "Milan",
+        "countryCode": "IT",
+        "durationOfStay": 2,
+        "connections": {
+          "transportMode": "train",
+          "currentCity": "Milan",
+          "nextCity": "Venice",
+          "totalDurationOfTravel": 3
+        },
+        "activities": [
+          {
+            "timePeriod": "9:00 AM - 12:00 PM",
+            "name": "Visit Da Vinci's Last Supper",
+            "image": "https://example.com/last_supper.jpg",
+            "location": "Convent of Santa Maria delle Grazie, Piazza di Santa Maria delle Grazie, 20123 Milan, Italy"
+          },
+          {
+            "timePeriod": "2:00 PM - 5:00 PM",
+            "name": "Shop at Galleria Vittorio Emanuele II",
+            "image": "https://example.com/galleria_vittorio_emanuele.jpg",
+            "location": "Galleria Vittorio Emanuele II, Piazza del Duomo, 20123 Milan, Italy"
+          }
+        ]
+      },
+      {
+        "dayNumber": 3,
+        "date": "2024-03-03",
+        "city": "Venice",
+        "countryCode": "IT",
+        "durationOfStay": 2,
+        "connections": {
+          "transportMode": "train",
+          "currentCity": "Venice",
+          "nextCity": "Naples",
+          "totalDurationOfTravel": 5
+        },
+        "activities": [
+          {
+            "timePeriod": "10:00 AM - 1:00 PM",
+            "name": "Take a Gondola ride in the Grand Canal",
+            "image": "https://example.com/gondola_ride.jpg",
+            "location": "Grand Canal, Venice, Italy"
+          },
+          {
+            "timePeriod": "2:00 PM - 6:00 PM",
+            "name": "Explore St. Mark's Square and Basilica",
+            "image": "https://example.com/st_marks_square.jpg",
+            "location": "St. Mark's Square, Venice, Italy"
+          }
+        ]
+      },
+      {
+        "dayNumber": 4,
+        "date": "2024-03-04",
+        "city": "Venice",
+        "countryCode": "IT",
+        "durationOfStay": 2,
+        "connections": {
+          "transportMode": "train",
+          "currentCity": "Venice",
+          "nextCity": "Naples",
+          "totalDurationOfTravel": 5
+        },
+        "activities": [
+          {
+            "timePeriod": "9:00 AM - 12:00 PM",
+            "name": "Visit Doge's Palace",
+            "image": "https://example.com/doges_palace.jpg",
+            "location": "Doge's Palace, Piazza San Marco, 1, 30124 Venice, Italy"
+          },
+          {
+            "timePeriod": "2:00 PM - 5:00 PM",
+            "name": "Take a boat tour to Murano Island",
+            "image": "https://example.com/murano_island.jpg",
+            "location": "Murano Island, Venice, Italy"
+          }
+        ]
+      },
+      {
+        "dayNumber": 5,
+        "date": "2024-03-05",
+        "city": "Naples",
+        "countryCode": "IT",
+        "durationOfStay": 3,
+        "connections": {
+          "transportMode": "train",
+          "currentCity": "Naples",
+          "nextCity": "Rome",
+          "totalDurationOfTravel": 2.5
+        },
+        "activities": [
+          {
+            "timePeriod": "10:00 AM - 1:00 PM",
+            "name": "Explore the ruins of Pompeii",
+            "image": "https://example.com/pompeii_ruins.jpg",
+            "location": "Pompeii Archaeological Park, Via Villa dei Misteri, 80045 Pompeii NA, Italy"
+          },
+          {
+            "timePeriod": "2:00 PM - 6:00 PM",
+            "name": "Visit the Naples National Archaeological Museum",
+            "image": "https://example.com/naples_archaeological_museum.jpg",
+            "location": "Naples National Archaeological Museum, Piazza Museo, 19, 80135 Naples NA, Italy"
+          }
+        ]
+      },
+      {
+        "dayNumber": 6,
+        "date": "2024-03-06",
+        "city": "Naples",
+        "countryCode": "IT",
+        "durationOfStay": 3,
+        "connections": {
+          "transportMode": "train",
+          "currentCity": "Naples",
+          "nextCity": "Rome",
+          "totalDurationOfTravel": 2.5
+        },
+        "activities": [
+          {
+            "timePeriod": "9:00 AM - 12:00 PM",
+            "name": "Visit the Capodimonte Museum",
+            "image": "https://example.com/capodimonte_museum.jpg",
+            "location": "Museo di Capodimonte, Via Miano, 2, 80137 Naples NA, Italy"
+          },
+          {
+            "timePeriod": "2:00 PM - 5:00 PM",
+            "name": "Explore the Naples Underground",
+            "image": "https://example.com/naples_underground.jpg",
+            "location": "Naples Underground, Piazza San Gaetano, 68, 80138 Naples NA, Italy"
+          }
+        ]
+      },
+      {
+        "dayNumber": 7,
+        "date": "2024-03-07",
+        "city": "Rome",
+        "countryCode": "IT",
+        "durationOfStay": 4,
+        "connections": {
+          "transportMode": "train",
+          "currentCity": "Rome",
+          "nextCity": "",
+          "totalDurationOfTravel": 0
+        },
+        "activities": [
+          {
+            "timePeriod": "10:00 AM - 1:00 PM",
+            "name": "Visit the Colosseum",
+            "image": "https://example.com/colosseum.jpg",
+            "location": "Colosseum, Piazza del Colosseo, 1, 00184 Rome RM, Italy"
+          },
+          {
+            "timePeriod": "2:00 PM - 6:00 PM",
+            "name": "Explore the Vatican Museums and Sistine Chapel",
+            "image": "https://example.com/vatican_museums.jpg",
+            "location": "Vatican Museums, Viale Vaticano, 00165 Rome RM, Italy"
+          }
+        ]
+      },
+      {
+        "dayNumber": 8,
+        "date": "2024-03-08",
+        "city": "Rome",
+        "countryCode": "IT",
+        "durationOfStay": 4,
+        "connections": {
+          "transportMode": "train",
+          "currentCity": "Rome",
+          "nextCity": "",
+          "totalDurationOfTravel": 0
+        },
+        "activities": [
+          {
+            "timePeriod": "9:00 AM - 12:00 PM",
+            "name": "Visit the Roman Forum",
+            "image": "https://example.com/roman_forum.jpg",
+            "location": "Roman Forum, Via della Salara Vecchia, 5/6, 00186 Rome RM, Italy"
+          },
+          {
+            "timePeriod": "2:00 PM - 5:00 PM",
+            "name": "Toss a coin in the Trevi Fountain",
+            "image": "https://example.com/trevi_fountain.jpg",
+            "location": "Trevi Fountain, Piazza di Trevi, 00187 Rome RM, Italy"
+          }
+        ]
+      }
+    ]
+  }"
+
+
+//   RESPONSE 7
+
+{
+    "trip": {
+      "departureAirport": "BLR",
+      "plannedCities": ["Milan", "Venice", "Naples", "Rome"],
+      "startDate": "2024-03-01",
+      "endDate": "2024-03-15",
+      "numDays": 14,
+      "natureOfTrip": "Family Trip",
+      "modeOfTransport": "Flying"
+    },
+    "itinerary": [
+      {
+        "dayNumber": 1,
+        "date": "2024-03-01",
+        "cityName": "Milan",
+        "countryCode": "IT",
+        "stayDuration": 2,
+        "connections": {
+          "transportMode": "Flying",
+          "fromCity": "Bangalore",
+          "toCity": "Milan",
+          "totalDuration": "12 hours"
+        },
+        "activities": [
+          {
+            "timePeriod": "10:00 AM - 1:00 PM",
+            "activityName": "Explore Milan Cathedral",
+            "image": "https://example.com/milan-cathedral.jpg",
+            "location": "Milan Cathedral, Piazza del Duomo, 20123 Milan, Italy"
+          },
+          {
+            "timePeriod": "2:00 PM - 5:00 PM",
+            "activityName": "Visit Sforza Castle",
+            "image": "https://example.com/sforza-castle.jpg",
+            "location": "Sforza Castle, Piazza Castello, 20121 Milan, Italy"
+          }
+        ]
+      },
+      {
+        "dayNumber": 2,
+        "date": "2024-03-02",
+        "cityName": "Milan",
+        "countryCode": "IT",
+        "stayDuration": 2,
+        "connections": null,
+        "activities": [
+          {
+            "timePeriod": "9:00 AM - 12:00 PM",
+            "activityName": "Visit Leonardo da Vinci's Last Supper",
+            "image": "https://example.com/last-supper.jpg",
+            "location": "Santa Maria delle Grazie, Piazza Santa Maria delle Grazie, 20123 Milan, Italy"
+          },
+          {
+            "timePeriod": "2:00 PM - 6:00 PM",
+            "activityName": "Shopping at Galleria Vittorio Emanuele II",
+            "image": "https://example.com/galleria-vittorio.jpg",
+            "location": "Galleria Vittorio Emanuele II, Piazza del Duomo, 20123 Milan, Italy"
+          }
+        ]
+      },
+      {
+        "dayNumber": 3,
+        "date": "2024-03-03",
+        "cityName": "Venice",
+        "countryCode": "IT",
+        "stayDuration": 3,
+        "connections": {
+          "transportMode": "Train",
+          "fromCity": "Milan",
+          "toCity": "Venice",
+          "totalDuration": "2.5 hours"
+        },
+        "activities": [
+          {
+            "timePeriod": "10:00 AM - 1:00 PM",
+            "activityName": "Gondola Ride in Grand Canal",
+            "image": "https://example.com/gondola-ride.jpg",
+            "location": "Grand Canal, Venice, Italy"
+          },
+          {
+            "timePeriod": "2:00 PM - 5:00 PM",
+            "activityName": "Explore St. Mark's Square",
+            "image": "https://example.com/st-marks-square.jpg",
+            "location": "St. Mark's Square, Venice, Italy"
+          }
+        ]
+      },
+      {
+        "dayNumber": 4,
+        "date": "2024-03-04",
+        "cityName": "Venice",
+        "countryCode": "IT",
+        "stayDuration": 3,
+        "connections": null,
+        "activities": [
+          {
+            "timePeriod": "9:00 AM - 12:00 PM",
+            "activityName": "Visit Doge's Palace",
+            "image": "https://example.com/doges-palace.jpg",
+            "location": "Doge's Palace, Venice, Italy"
+          },
+          {
+            "timePeriod": "2:00 PM - 6:00 PM",
+            "activityName": "Take a Boat Trip to Murano Island",
+            "image": "https://example.com/murano-island.jpg",
+            "location": "Murano Island, Venice, Italy"
+          }
+        ]
+      },
+      {
+        "dayNumber": 5,
+        "date": "2024-03-05",
+        "cityName": "Venice",
+        "countryCode": "IT",
+        "stayDuration": 3,
+        "connections": null,
+        "activities": [
+          {
+            "timePeriod": "10:00 AM - 1:00 PM",
+            "activityName": "Visit Rialto Bridge",
+            "image": "https://example.com/rialto-bridge.jpg",
+            "location": "Rialto Bridge, Venice, Italy"
+          },
+          {
+            "timePeriod": "2:00 PM - 5:00 PM",
+            "activityName": "Discover the Peggy Guggenheim Collection",
+            "image": "https://example.com/peggy-guggenheim.jpg",
+            "location": "Peggy Guggenheim Collection, Venice, Italy"
+          }
+        ]
+      },
+      {
+        "dayNumber": 6,
+        "date": "2024-03-06",
+        "cityName": "Naples",
+        "countryCode": "IT",
+        "stayDuration": 3,
+        "connections": {
+          "transportMode": "Flying",
+          "fromCity": "Venice",
+          "toCity": "Naples",
+          "totalDuration": "2 hours"
+        },
+        "activities": [
+          {
+            "timePeriod": "10:00 AM - 1:00 PM",
+            "activityName": "Explore Pompeii Ruins",
+            "image": "https://example.com/pompeii-ruins.jpg",
+            "location": "Pompeii, Naples, Italy"
+          },
+          {
+            "timePeriod": "2:00 PM - 5:00 PM",
+            "activityName": "Visit Naples National Archaeological Museum",
+            "image": "https://example.com/naples-museum.jpg",
+            "location": "National Archaeological Museum of Naples, Naples, Italy"
+          }
+        ]
+      },
+      {
+        "dayNumber": 7,
+        "date": "2024-03-07",
+        "cityName": "Naples",
+        "countryCode": "IT",
+        "stayDuration": 3,
+        "connections": null,
+        "activities": [
+          {
+            "timePeriod": "9:00 AM - 12:00 PM",
+            "activityName": "Hiking on Mount Vesuvius",
+            "image": "https://example.com/mount-vesuvius.jpg",
+            "location": "Mount Vesuvius, Naples, Italy"
+          },
+          {
+            "timePeriod": "2:00 PM - 6:00 PM",
+            "activityName": "Savoring Authentic Neapolitan Pizza",
+            "image": "https://example.com/neapolitan-pizza.jpg",
+            "location": "Traditional Pizzeria, Naples, Italy"
+          }
+        ]
+      },
+      {
+        "dayNumber": 8,
+        "date": "2024-03-08",
+        "cityName": "Naples",
+        "countryCode": "IT",
+        "stayDuration": 3,
+        "connections": null,
+        "activities": [
+          {
+            "timePeriod": "10:00 AM - 1:00 PM",
+            "activityName": "Explore the Underground Naples",
+            "image": "https://example.com/underground-naples.jpg",
+            "location": "Underground Naples, Naples, Italy"
+          },
+          {
+            "timePeriod": "2:00 PM - 5:00 PM",
+            "activityName": "Visit Naples Cathedral",
+            "image": "https://example.com/naples-cathedral.jpg",
+            "location": "Naples Cathedral, Naples, Italy"
+          }
+        ]
+      },
+      {
+        "dayNumber": 9,
+        "date": "2024-03-09",
+        "cityName": "Rome",
+        "countryCode": "IT",
+        "stayDuration": 4,
+        "connections": {
+          "transportMode": "Train",
+          "fromCity": "Naples",
+          "toCity": "Rome",
+          "totalDuration": "1.5 hours"
+        },
+        "activities": [
+          {
+            "timePeriod": "10:00 AM - 1:00 PM",
+            "activityName": "Visit Colosseum",
+            "image": "https://example.com/colosseum.jpg",
+            "location": "Colosseum, Rome, Italy"
+          },
+          {
+            "timePeriod": "2:00 PM - 5:00 PM",
+            "activityName": "Explore Roman Forum",
+            "image": "https://example.com/roman-forum.jpg",
+            "location": "Roman Forum, Rome, Italy"
+          }
+        ]
+      },
+      {
+        "dayNumber": 10,
+        "date": "2024-03-10",
+        "cityName": "Rome",
+        "countryCode": "IT",
+        "stayDuration": 4,
+        "connections": null,
+        "activities": [
+          {
+            "timePeriod": "9:00 AM - 12:00 PM",
+            "activityName": "Visit Vatican Museums",
+            "image": "https://example.com/vatican-museums.jpg",
+            "location": "Vatican Museums, Vatican City"
+          },
+          {
+            "timePeriod": "2:00 PM - 6:00 PM",
+            "activityName": "Explore Sistine Chapel",
+            "image": "https://example.com/sistine-chapel.jpg",
+            "location": "Sistine Chapel, Vatican City"
+          }
+        ]
+      },
+      {
+        "dayNumber": 11,
+        "date": "2024-03-11",
+        "cityName": "Rome",
+        "countryCode": "IT",
+        "stayDuration": 4,
+        "connections": null,
+        "activities": [
+          {
+            "timePeriod": "10:00 AM - 1:00 PM",
+            "activityName": "Visit Trevi Fountain",
+            "image": "https://example.com/trevi-fountain.jpg",
+            "location": "Trevi Fountain, Rome, Italy"
+          },
+          {
+            "timePeriod": "2:00 PM - 5:00 PM",
+            "activityName": "Explore Pantheon",
+            "image": "https://example.com/pantheon.jpg",
+            "location": "Pantheon, Rome, Italy"
+          }
+        ]
+      },
+      {
+        "dayNumber": 12,
+        "date": "2024-03-12",
+        "cityName": "Rome",
+        "countryCode": "IT",
+        "stayDuration": 4,
+        "connections": null,
+        "activities": [
+          {
+            "timePeriod": "10:00 AM - 1:00 PM",
+            "activityName": "Visit Villa Borghese",
+            "image": "https://example.com/villa-borghese.jpg",
+            "location": "Villa Borghese, Rome, Italy"
+          },
+          {
+            "timePeriod": "2:00 PM - 5:00 PM",
+            "activityName": "Stroll in Piazza Navona",
+            "image": "https://example.com/piazza-navona.jpg",
+            "location": "Piazza Navona, Rome, Italy"
+          }
+        ]
+      },
+      {
+        "dayNumber": 13,
+        "date": "2024-03-13",
+        "cityName": "Rome",
+        "countryCode": "IT",
+        "stayDuration": 4,
+        "connections": null,
+        "activities": [
+          {
+            "timePeriod": "9:00 AM - 12:00 PM",
+            "activityName": "Visit Spanish Steps",
+            "image": "https://example.com/spanish-steps.jpg",
+            "location": "Spanish Steps, Rome, Italy"
+          },
+          {
+            "timePeriod": "2:00 PM - 6:00 PM",
+            "activityName": "Explore Trastevere Neighborhood",
+            "image": "https://example.com/trastevere.jpg",
+            "location": "Trastevere, Rome, Italy"
+          }
+        ]
+      },
+      {
+        "dayNumber": 14,
+        "date": "2024-03-14",
+        "cityName": "Rome",
+        "countryCode": "IT",
+        "stayDuration": 4,
+        "connections": null,
+        "activities": [
+          {
+            "timePeriod": "10:00 AM - 1:00 PM",
+            "activityName": "Visit Castel Sant'Angelo",
+            "image": "https://example.com/castel-sant-angelo.jpg",
+            "location": "Castel Sant'Angelo, Rome, Italy"
+          },
+          {
+            "timePeriod": "2:00 PM - 5:00 PM",
+            "activityName": "Explore Piazza del Popolo",
+            "image": "https://example.com/piazza-del-popolo.jpg",
+            "location": "Piazza del Popolo, Rome, Italy"
+          }
+        ]
+      }
+    ]
+  }
+
+
+
+  //   RESPONSE 8
+
+Request:
+As a travel expert, I am organizing a family trip to Europe scheduled from March 1, 2024, to March 15, 2024. The departure airport is Bangalore, BLR, and the planned cities include Milan, Venice, Naples, and Rome.
+
+Please generate a detailed day-wise itinerary in JSON format following a specific template. The main object should consist of keys such as 'trip' and 'itinerary.' The 'trip' object should contain essential details like departure and arrival airport codes, start and end dates, the number of days, the nature of the trip, and the mode of transport to the next city (flying, train, etc.). Also, include an array of strings listing all planned cities.
+
+The 'itinerary' object should offer information for each day. Ensure the number of objects in the 'itinerary' array matches the dynamically calculated trip duration (end date - start date). For instance, if the difference is 10 days, then the 'itinerary' array should consist of 10 objects. Each object should detail day number, date, city name, country code, suggested duration of stay, connections to the next city (with transport mode, current city, next city, total duration of travel), and activities for each day (with details like activity time period, activity name, image, and location).
+
+Make sure that the sum of the 'suggested duration of stay' for all cities equals the total duration of the trip (end date - start date). Additionally, if a specific city is suggested for a certain number of days, the itinerary should include consecutive days for that city and appropriately distribute the remaining days among other cities. This approach ensures a comprehensive and structured itinerary that aligns precisely with the trip's entire duration, offering an accurate and detailed plan for a seamless travel experience.
+
+
+
+{
+    "trip": {
+      "departureAirport": "BLR",
+      "arrivalAirports": ["MXP", "VCE", "NAP", "FCO"],
+      "startDate": "2024-03-01",
+      "endDate": "2024-03-15",
+      "tripDuration": 15,
+      "natureOfTrip": "Family Trip",
+      "modeOfTransport": ["Flying", "Train", "Train", "Train"]
+    },
+    "itinerary": [
+      {
+        "dayNumber": 1,
+        "date": "2024-03-01",
+        "city": "Milan",
+        "countryCode": "IT",
+        "suggestedDurationOfStay": 3,
+        "connections": [
+          {
+            "transportMode": "Flying",
+            "currentCity": "Bangalore",
+            "nextCity": "Milan",
+            "totalDurationOfTravel": "5 hours"
+          }
+        ],
+        "activities": [
+          {
+            "activityTimePeriod": "Morning",
+            "activityName": "Visit Duomo di Milano",
+            "image": "duomo.jpg",
+            "location": "Piazza del Duomo, Milan"
+          },
+          {
+            "activityTimePeriod": "Afternoon",
+            "activityName": "Explore Galleria Vittorio Emanuele II",
+            "image": "galleria.jpg",
+            "location": "Piazza del Duomo, Milan"
+          },
+          {
+            "activityTimePeriod": "Evening",
+            "activityName": "Take a walk in Navigli District",
+            "image": "navigli.jpg",
+            "location": "Navigli District, Milan"
+          }
+        ]
+      },
+      {
+        "dayNumber": 2,
+        "date": "2024-03-02",
+        "city": "Milan",
+        "countryCode": "IT",
+        "suggestedDurationOfStay": 3,
+        "connections": [],
+        "activities": [
+          {
+            "activityTimePeriod": "Morning",
+            "activityName": "Visit Leonardo da Vinci's Last Supper",
+            "image": "last_supper.jpg",
+            "location": "Santa Maria delle Grazie, Milan"
+          },
+          {
+            "activityTimePeriod": "Afternoon",
+            "activityName": "Explore Castello Sforzesco",
+            "image": "sforza_castle.jpg",
+            "location": "Piazza Castello, Milan"
+          },
+          {
+            "activityTimePeriod": "Evening",
+            "activityName": "Enjoy an opera at Teatro alla Scala",
+            "image": "scala.jpg",
+            "location": "Piazza della Scala, Milan"
+          }
+        ]
+      },
+      {
+        "dayNumber": 3,
+        "date": "2024-03-03",
+        "city": "Milan",
+        "countryCode": "IT",
+        "suggestedDurationOfStay": 3,
+        "connections": [],
+        "activities": [
+          {
+            "activityTimePeriod": "Morning",
+            "activityName": "Visit Pinacoteca di Brera",
+            "image": "brera.jpg",
+            "location": "Via Brera, Milan"
+          },
+          {
+            "activityTimePeriod": "Afternoon",
+            "activityName": "Explore Navigli Grande",
+            "image": "navigli_grande.jpg",
+            "location": "Navigli Grande, Milan"
+          },
+          {
+            "activityTimePeriod": "Evening",
+            "activityName": "Enjoy traditional Italian cuisine at a local restaurant",
+            "image": "restaurant.jpg",
+            "location": "Milan"
+          }
+        ]
+      },
+      {
+        "dayNumber": 4,
+        "date": "2024-03-04",
+        "city": "Venice",
+        "countryCode": "IT",
+        "suggestedDurationOfStay": 3,
+        "connections": [
+          {
+            "transportMode": "Train",
+            "currentCity": "Milan",
+            "nextCity": "Venice",
+            "totalDurationOfTravel": "2 hours"
+          }
+        ],
+        "activities": [
+          {
+            "activityTimePeriod": "Morning",
+            "activityName": "Take a gondola ride along the canals",
+            "image": "gondola.jpg",
+            "location": "Venice"
+          },
+          {
+            "activityTimePeriod": "Afternoon",
+            "activityName": "Visit St. Mark's Square and Basilica",
+            "image": "st_marks.jpg",
+            "location": "St. Mark's Square, Venice"
+          },
+          {
+            "activityTimePeriod": "Evening",
+            "activityName": "Explore the picturesque neighborhoods of Burano and Murano",
+            "image": "burano_murano.jpg",
+            "location": "Venice"
+          }
+        ]
+      },
+      {
+        "dayNumber": 5,
+        "date": "2024-03-05",
+        "city": "Venice",
+        "countryCode": "IT",
+        "suggestedDurationOfStay": 3,
+        "connections": [],
+        "activities": [
+          {
+            "activityTimePeriod": "Morning",
+            "activityName": "Visit Doge's Palace",
+            "image": "doges_palace.jpg",
+            "location": "St. Mark's Square, Venice"
+          },
+          {
+            "activityTimePeriod": "Afternoon",
+            "activityName": "Explore Rialto Market",
+            "image": "rialto_market.jpg",
+            "location": "Rialto Bridge, Venice"
+          },
+          {
+            "activityTimePeriod": "Evening",
+            "activityName": "Enjoy a sunset cruise on the Grand Canal",
+            "image": "grand_canal.jpg",
+            "location": "Venice"
+          }
+        ]
+      },
+      {
+        "dayNumber": 6,
+        "date": "2024-03-06",
+        "city": "Venice",
+        "countryCode": "IT",
+        "suggestedDurationOfStay": 3,
+        "connections": [],
+        "activities": [
+          {
+            "activityTimePeriod": "Morning",
+            "activityName": "Visit Peggy Guggenheim Collection",
+            "image": "guggenheim.jpg",
+            "location": "Dorsoduro, Venice"
+          },
+          {
+            "activityTimePeriod": "Afternoon",
+            "activityName": "Take a boat tour to the islands of San Giorgio Maggiore and Lido",
+            "image": "san_giorgio_lido.jpg",
+            "location": "Venice"
+          },
+          {
+            "activityTimePeriod": "Evening",
+            "activityName": "Indulge in Venetian cuisine at a traditional restaurant",
+            "image": "venetian_cuisine.jpg",
+            "location": "Venice"
+          }
+        ]
+      },
+      {
+        "dayNumber": 7,
+        "date": "2024-03-07",
+        "city": "Naples",
+        "countryCode": "IT",
+        "suggestedDurationOfStay": 4,
+        "connections": [
+          {
+            "transportMode": "Train",
+            "currentCity": "Venice",
+            "nextCity": "Naples",
+            "totalDurationOfTravel": "4.5 hours"
+          }
+        ],
+        "activities": [
+          {
+            "activityTimePeriod": "Morning",
+            "activityName": "Visit Pompeii archaeological site",
+            "image": "pompeii.jpg",
+            "location": "Pompeii"
+          },
+          {
+            "activityTimePeriod": "Afternoon",
+            "activityName": "Explore the historical center of Naples",
+            "image": "naples_center.jpg",
+            "location": "Naples"
+          },
+          {
+            "activityTimePeriod": "Evening",
+            "activityName": "Taste authentic Neapolitan pizza at a local pizzeria",
+            "image": "neapolitan_pizza.jpg",
+            "location": "Naples"
+          }
+        ]
+      },
+      {
+        "dayNumber": 8,
+        "date": "2024-03-08",
+        "city": "Naples",
+        "countryCode": "IT",
+        "suggestedDurationOfStay": 4,
+        "connections": [],
+        "activities": [
+          {
+            "activityTimePeriod": "Morning",
+            "activityName": "Visit the National Archaeological Museum of Naples",
+            "image": "archaeological_museum.jpg",
+            "location": "Naples"
+          },
+          {
+            "activityTimePeriod": "Afternoon",
+            "activityName": "Discover the underground tunnels of Napoli Sotterranea",
+            "image": "napoli_sotterranea.jpg",
+            "location": "Naples"
+          },
+          {
+            "activityTimePeriod": "Evening",
+            "activityName": "Experience the vibrant atmosphere of Spaccanapoli",
+            "image": "spaccanapoli.jpg",
+            "location": "Naples"
+          }
+        ]
+      },
+      {
+        "dayNumber": 9,
+        "date": "2024-03-09",
+        "city": "Naples",
+        "countryCode": "IT",
+        "suggestedDurationOfStay": 4,
+        "connections": [],
+        "activities": [
+          {
+            "activityTimePeriod": "Morning",
+            "activityName": "Take a day trip to the beautiful island of Capri",
+            "image": "capri.jpg",
+            "location": "Capri"
+          },
+          {
+            "activityTimePeriod": "Afternoon",
+            "activityName": "Relax on the beaches of Sorrento",
+            "image": "sorrento.jpg",
+            "location": "Sorrento"
+          },
+          {
+            "activityTimePeriod": "Evening",
+            "activityName": "Try limoncello tasting in Amalfi Coast",
+            "image": "limoncello.jpg",
+            "location": "Amalfi Coast"
+          }
+        ]
+      },
+      {
+        "dayNumber": 10,
+        "date": "2024-03-10",
+        "city": "Rome",
+        "countryCode": "IT",
+        "suggestedDurationOfStay": 5,
+        "connections": [
+          {
+            "transportMode": "Train",
+            "currentCity": "Naples",
+            "nextCity": "Rome",
+            "totalDurationOfTravel": "1.5 hours"
+          }
+        ],
+        "activities": [
+          {
+            "activityTimePeriod": "Morning",
+            "activityName": "Visit the iconic Colosseum",
+            "image": "colosseum.jpg",
+            "location": "Rome"
+          },
+          {
+            "activityTimePeriod": "Afternoon",
+            "activityName": "Explore the Roman Forum",
+            "image": "roman_forum.jpg",
+            "location": "Rome"
+          },
+          {
+            "activityTimePeriod": "Evening",
+            "activityName": "Stroll through the charming streets of Trastevere",
+            "image": "trastevere.jpg",
+            "location": "Rome"
+          }
+        ]
+      },
+      {
+        "dayNumber": 11,
+        "date": "2024-03-11",
+        "city": "Rome",
+        "countryCode": "IT",
+        "suggestedDurationOfStay": 5,
+        "connections": [],
+        "activities": [
+          {
+            "activityTimePeriod": "Morning",
+            "activityName": "Visit the Vatican Museums and Sistine Chapel",
+            "image": "vatican.jpg",
+            "location": "Vatican City, Rome"
+          },
+          {
+            "activityTimePeriod": "Afternoon",
+            "activityName": "Explore the beautiful gardens of Villa Borghese",
+            "image": "villa_borghese.jpg",
+            "location": "Rome"
+          },
+          {
+            "activityTimePeriod": "Evening",
+            "activityName": "Enjoy Italian cuisine and live music at a traditional trattoria",
+            "image": "trattoria.jpg",
+            "location": "Rome"
+          }
+        ]
+      },
+      {
+        "dayNumber": 12,
+        "date": "2024-03-12",
+        "city": "Rome",
+        "countryCode": "IT",
+        "suggestedDurationOfStay": 5,
+        "connections": [],
+        "activities": [
+          {
+            "activityTimePeriod": "Morning",
+            "activityName": "Visit the Pantheon",
+            "image": "pantheon.jpg",
+            "location": "Rome"
+          },
+          {
+            "activityTimePeriod": "Afternoon",
+            "activityName": "Explore the beautiful Trevi Fountain",
+            "image": "trevi_fountain.jpg",
+            "location": "Rome"
+          },
+          {
+            "activityTimePeriod": "Evening",
+            "activityName": "Enjoy a sunset view from Spanish Steps",
+            "image": "spanish_steps.jpg",
+            "location": "Rome"
+          }
+        ]
+      },
+      {
+        "dayNumber": 13,
+        "date": "2024-03-13",
+        "city": "Rome",
+        "countryCode": "IT",
+        "suggestedDurationOfStay": 5,
+        "connections": [],
+        "activities": [
+          {
+            "activityTimePeriod": "Morning",
+            "activityName": "Visit the Capitoline Museums",
+            "image": "capitoline_museums.jpg",
+            "location": "Rome"
+          },
+          {
+            "activityTimePeriod": "Afternoon",
+            "activityName": "Explore the charming neighborhood of Trastevere",
+            "image": "trastevere.jpg",
+            "location": "Rome"
+          },
+          {
+            "activityTimePeriod": "Evening",
+            "activityName": "Enjoy traditional Roman cuisine at a local restaurant",
+            "image": "roman_cuisine.jpg",
+            "location": "Rome"
+          }
+        ]
+      },
+      {
+        "dayNumber": 14,
+        "date": "2024-03-14",
+        "city": "Rome",
+        "countryCode": "IT",
+        "suggestedDurationOfStay": 5,
+        "connections": [],
+        "activities": [
+          {
+            "activityTimePeriod": "Morning",
+            "activityName": "Visit the Basilica of Saint Peter",
+            "image": "st_peters.jpg",
+            "location": "Vatican City, Rome"
+          },
+          {
+            "activityTimePeriod": "Afternoon",
+            "activityName": "Explore the stunning Castel Sant'Angelo",
+            "image": "castel_sant_angelo.jpg",
+            "location": "Rome"
+          },
+          {
+            "activityTimePeriod": "Evening",
+            "activityName": "Enjoy a scenic walk along the Tiber River",
+            "image": "tiber_river.jpg",
+            "location": "Rome"
+          }
+        ]
+      },
+      {
+        "dayNumber": 15,
+        "date": "2024-03-15",
+        "city": "Rome",
+        "countryCode": "IT",
+        "suggestedDurationOfStay": 5,
+        "connections": [],
+        "activities": [
+          {
+            "activityTimePeriod": "Morning",
+            "activityName": "Visit the Vatican Necropolis",
+            "image": "vatican_necropolis.jpg",
+            "location": "Vatican City, Rome"
+          },
+          {
+            "activityTimePeriod": "Afternoon",
+            "activityName": "Explore the charming streets of Trastevere",
+            "image": "trastevere.jpg",
+            "location": "Rome"
+          },
+          {
+            "activityTimePeriod": "Evening",
+            "activityName": "Enjoy a farewell dinner to celebrate the end of the trip",
+            "image": "farewell_dinner.jpg",
+            "location": "Rome"
+          }
+        ]
+      }
+    ]
+  }
+
+
+//   RESPONSE 9
+
+{
+    "trip": {
+      "departure_airport": "BLR",
+      "arrival_airport": "SYD",
+      "start_date": "2024-03-01",
+      "end_date": "2024-03-15",
+      "number_of_days": 15,
+      "nature_of_trip": "family trip",
+      "mode_of_transport": "flying",
+      "planned_cities": ["Sydney", "Brisbane", "Canberra", "Gold Coast"]
+    },
+    "itinerary": [
+      {
+        "day_number": 1,
+        "date": "2024-03-01",
+        "city_name": "Sydney",
+        "country_code": "AU",
+        "suggested_duration_of_stay": 3,
+        "connections": [
+          {
+            "transport_mode": "flying",
+            "from_city": "Sydney",
+            "to_city": "Brisbane",
+            "total_duration": "2 hours"
+          }
+        ],
+        "activities": [
+          {
+            "activity_time_period": "9am - 12pm",
+            "activity_name": "Visit Sydney Opera House",
+            "image": "sydney_opera_house.jpg",
+            "location": "Bennelong Point, Sydney"
+          },
+          {
+            "activity_time_period": "2pm - 5pm",
+            "activity_name": "Explore Darling Harbour",
+            "image": "darling_harbour.jpg",
+            "location": "Sydney"
+          }
+        ]
+      },
+      {
+        "day_number": 2,
+        "date": "2024-03-02",
+        "city_name": "Sydney",
+        "country_code": "AU",
+        "suggested_duration_of_stay": 3,
+        "connections": [],
+        "activities": [
+          {
+            "activity_time_period": "9am - 12pm",
+            "activity_name": "Bondi Beach Visit",
+            "image": "bondi_beach.jpg",
+            "location": "Sydney"
+          },
+          {
+            "activity_time_period": "2pm - 5pm",
+            "activity_name": "Climb Sydney Harbour Bridge",
+            "image": "harbour_bridge.jpg",
+            "location": "Sydney"
+          }
+        ]
+      },
+      {
+        "day_number": 3,
+        "date": "2024-03-03",
+        "city_name": "Sydney",
+        "country_code": "AU",
+        "suggested_duration_of_stay": 3,
+        "connections": [
+          {
+            "transport_mode": "flying",
+            "from_city": "Sydney",
+            "to_city": "Brisbane",
+            "total_duration": "2 hours"
+          }
+        ],
+        "activities": [
+          {
+            "activity_time_period": "9am - 12pm",
+            "activity_name": "Visit Taronga Zoo",
+            "image": "taronga_zoo.jpg",
+            "location": "Mosman, Sydney"
+          },
+          {
+            "activity_time_period": "2pm - 5pm",
+            "activity_name": "Take a Ferry to Manly Beach",
+            "image": "manly_beach.jpg",
+            "location": "Sydney"
+          }
+        ]
+      },
+      {
+        "day_number": 4,
+        "date": "2024-03-04",
+        "city_name": "Brisbane",
+        "country_code": "AU",
+        "suggested_duration_of_stay": 2,
+        "connections": [
+          {
+            "transport_mode": "flying",
+            "from_city": "Brisbane",
+            "to_city": "Canberra",
+            "total_duration": "3 hours"
+          }
+        ],
+        "activities": [
+          {
+            "activity_time_period": "9am - 12pm",
+            "activity_name": "Visit Lone Pine Koala Sanctuary",
+            "image": "lone_pine_koala_sanctuary.jpg",
+            "location": "Brisbane"
+          },
+          {
+            "activity_time_period": "2pm - 5pm",
+            "activity_name": "Explore South Bank Parklands",
+            "image": "south_bank_parklands.jpg",
+            "location": "Brisbane"
+          }
+        ]
+      },
+      {
+        "day_number": 5,
+        "date": "2024-03-05",
+        "city_name": "Brisbane",
+        "country_code": "AU",
+        "suggested_duration_of_stay": 2,
+        "connections": [
+          {
+            "transport_mode": "flying",
+            "from_city": "Brisbane",
+            "to_city": "Canberra",
+            "total_duration": "3 hours"
+          }
+        ],
+        "activities": [
+          {
+            "activity_time_period": "9am - 12pm",
+            "activity_name": "Take a Brisbane River Cruise",
+            "image": "brisbane_river_cruise.jpg",
+            "location": "Brisbane"
+          },
+          {
+            "activity_time_period": "2pm - 5pm",
+            "activity_name": "Visit Queensland Museum",
+            "image": "queensland_museum.jpg",
+            "location": "Brisbane"
+          }
+        ]
+      },
+      {
+        "day_number": 6,
+        "date": "2024-03-06",
+        "city_name": "Canberra",
+        "country_code": "AU",
+        "suggested_duration_of_stay": 2,
+        "connections": [
+          {
+            "transport_mode": "train",
+            "from_city": "Canberra",
+            "to_city": "Gold Coast",
+            "total_duration": "3 hours"
+          }
+        ],
+        "activities": [
+          {
+            "activity_time_period": "9am - 12pm",
+            "activity_name": "Explore Australian War Memorial",
+            "image": "australian_war_memorial.jpg",
+            "location": "Canberra"
+          },
+          {
+            "activity_time_period": "2pm - 5pm",
+            "activity_name": "Visit National Gallery of Australia",
+            "image": "national_gallery_of_australia.jpg",
+            "location": "Canberra"
+          }
+        ]
+      },
+      {
+        "day_number": 7,
+        "date": "2024-03-07",
+        "city_name": "Canberra",
+        "country_code": "AU",
+        "suggested_duration_of_stay": 2,
+        "connections": [
+          {
+            "transport_mode": "train",
+            "from_city": "Canberra",
+            "to_city": "Gold Coast",
+            "total_duration": "3 hours"
+          }
+        ],
+        "activities": [
+          {
+            "activity_time_period": "9am - 12pm",
+            "activity_name": "Explore Parliament House",
+            "image": "parliament_house.jpg",
+            "location": "Canberra"
+          },
+          {
+            "activity_time_period": "2pm - 5pm",
+            "activity_name": "Take a Walk around Lake Burley Griffin",
+            "image": "lake_burley_griffin.jpg",
+            "location": "Canberra"
+          }
+        ]
+      },
+      {
+        "day_number": 8,
+        "date": "2024-03-08",
+        "city_name": "Gold Coast",
+        "country_code": "AU",
+        "suggested_duration_of_stay": 3,
+        "connections": [
+          {
+            "transport_mode": "train",
+            "from_city": "Gold Coast",
+            "to_city": "Sydney",
+            "total_duration": "2 hours"
+          }
+        ],
+        "activities": [
+          {
+            "activity_time_period": "9am - 12pm",
+            "activity_name": "Visit Surfers Paradise",
+            "image": "surfers_paradise.jpg",
+            "location": "Gold Coast"
+          },
+          {
+            "activity_time_period": "2pm - 5pm",
+            "activity_name": "Explore Currumbin Wildlife Sanctuary",
+            "image": "currumbin_wildlife_sanctuary.jpg",
+            "location": "Gold Coast"
+          }
+        ]
+      },
+      {
+        "day_number": 9,
+        "date": "2024-03-09",
+        "city_name": "Gold Coast",
+        "country_code": "AU",
+        "suggested_duration_of_stay": 3,
+        "connections": [
+          {
+            "transport_mode": "train",
+            "from_city": "Gold Coast",
+            "to_city": "Sydney",
+            "total_duration": "2 hours"
+          }
+        ],
+        "activities": [
+          {
+            "activity_time_period": "9am - 12pm",
+            "activity_name": "Take a Beach Walk at Burleigh Heads",
+            "image": "burleigh_heads.jpg",
+            "location": "Gold Coast"
+          },
+          {
+            "activity_time_period": "2pm - 5pm",
+            "activity_name": "Visit Warner Bros. Movie World",
+            "image": "movie_world.jpg",
+            "location": "Gold Coast"
+          }
+        ]
+      },
+      {
+        "day_number": 10,
+        "date": "2024-03-10",
+        "city_name": "Sydney",
+        "country_code": "AU",
+        "suggested_duration_of_stay": 2,
+        "connections": [],
+        "activities": [
+          {
+            "activity_time_period": "9am - 12pm",
+            "activity_name": "Visit Sydney Tower Eye",
+            "image": "sydney_tower_eye.jpg",
+            "location": "Sydney"
+          },
+          {
+            "activity_time_period": "2pm - 5pm",
+            "activity_name": "Explore The Rocks District",
+            "image": "the_rocks.jpg",
+            "location": "Sydney"
+          }
+        ]
+      },
+      {
+        "day_number": 11,
+        "date": "2024-03-11",
+        "city_name": "Sydney",
+        "country_code": "AU",
+        "suggested_duration_of_stay": 2,
+        "connections": [],
+        "activities": [
+          {
+            "activity_time_period": "9am - 12pm",
+            "activity_name": "Visit Sydney Aquarium",
+            "image": "sydney_aquarium.jpg",
+            "location": "Darling Harbour, Sydney"
+          },
+          {
+            "activity_time_period": "2pm - 5pm",
+            "activity_name": "Take a Walk across Sydney Harbour Bridge",
+            "image": "harbour_bridge_walk.jpg",
+            "location": "Sydney"
+          }
+        ]
+      },
+      {
+        "day_number": 12,
+        "date": "2024-03-12",
+        "city_name": "Sydney",
+        "country_code": "AU",
+        "suggested_duration_of_stay": 2,
+        "connections": [],
+        "activities": [
+          {
+            "activity_time_period": "9am - 12pm",
+            "activity_name": "Explore Royal Botanic Garden",
+            "image": "royal_botanic_garden.jpg",
+            "location": "Sydney"
+          },
+          {
+            "activity_time_period": "2pm - 5pm",
+            "activity_name": "Visit Sea Life Sydney Aquarium",
+            "image": "sea_life_sydney_aquarium.jpg",
+            "location": "Darling Harbour, Sydney"
+          }
+        ]
+      },
+      {
+        "day_number": 13,
+        "date": "2024-03-13",
+        "city_name": "Sydney",
+        "country_code": "AU",
+        "suggested_duration_of_stay": 2,
+        "connections": [],
+        "activities": [
+          {
+            "activity_time_period": "9am - 12pm",
+            "activity_name": "Explore The Royal National Park",
+            "image": "royal_national_park.jpg",
+            "location": "Sydney"
+          },
+          {
+            "activity_time_period": "2pm - 5pm",
+            "activity_name": "Visit Art Gallery of New South Wales",
+            "image": "art_gallery_of_nsw.jpg",
+            "location": "Sydney"
+          }
+        ]
+      },
+      {
+        "day_number": 14,
+        "date": "2024-03-14",
+        "city_name": "Sydney",
+        "country_code": "AU",
+        "suggested_duration_of_stay": 2,
+        "connections": [],
+        "activities": [
+          {
+            "activity_time_period": "9am - 12pm",
+            "activity_name": "Take a Ferry to Sydney Olympic Park",
+            "image": "sydney_olympic_park.jpg",
+            "location": "Sydney"
+          },
+          {
+            "activity_time_period": "2pm - 5pm",
+            "activity_name": "Explore Chinese Garden of Friendship",
+            "image": "chinese_garden_of_friendship.jpg",
+            "location": "Darling Harbour, Sydney"
+          }
+        ]
+      },
+      {
+        "day_number": 15,
+        "date": "2024-03-15",
+        "city_name": "Sydney",
+        "country_code": "AU",
+        "suggested_duration_of_stay": 2,
+        "connections": [],
+        "activities": [
+          {
+            "activity_time_period": "9am - 12pm",
+            "activity_name": "Visit Featherdale Wildlife Park",
+            "image": "featherdale_wildlife_park.jpg",
+            "location": "Doonside, Sydney"
+          },
+          {
+            "activity_time_period": "2pm - 5pm",
+            "activity_name": "Explore Hyde Park",
+            "image": "hyde_park.jpg",
+            "location": "Sydney"
+          }
+        ]
+      }
+    ]
+  }
+
+
+  // RESPONSE 10
+
+  {
+    "trip": {
+        "departureAirport": "BLR",
+        "arrivalAirports": ["SYD", "BNE", "CBR", "OOL"],
+        "startDate": "2024-03-01",
+        "endDate": "2024-03-15",
+        "totalDays": 15,
+        "natureOfTrip": "Family Vacation",
+        "modeOfTransport": ["Flight", "Flight", "Train"],
+        "plannedCities": ["Sydney", "Brisbane", "Canberra", "Gold Coast"],
+        "suggestedDurationInCities": [4, 3, 2, 2]
+    },
+    "itinerary": [
+        {
+            "dayNumber": 1,
+            "date": "2024-03-01",
+            "city": "Sydney",
+            "countryCode": "AU",
+            "connections": [
+                {
+                    "transportMode": "Flight",
+                    "currentCity": "BLR",
+                    "nextCity": "SYD",
+                    "totalDurationOfTravel": "8 hours"
+                }
+            ],
+            "activities": [
+                {
+                    "activityTimePeriod": "Morning",
+                    "activityName": "Visit Sydney Opera House",
+                    "location": "Bennelong Point"
+                },
+                {
+                    "activityTimePeriod": "Afternoon",
+                    "activityName": "Explore Circular Quay",
+                    "location": "Circular Quay"
+                },
+                {
+                    "activityTimePeriod": "Evening",
+                    "activityName": "Take a cruise at Sydney Harbour",
+                    "location": "Sydney Harbour"
+                }
+            ]
+        },
+        {
+            "dayNumber": 2,
+            "date": "2024-03-02",
+            "city": "Sydney",
+            "countryCode": "AU",
+            "connections": [],
+            "activities": [
+                {
+                    "activityTimePeriod": "Morning",
+                    "activityName": "Visit Bondi Beach",
+                    "location": "Bondi Beach"
+                },
+                {
+                    "activityTimePeriod": "Afternoon",
+                    "activityName": "Explore The Rocks",
+                    "location": "The Rocks"
+                },
+                {
+                    "activityTimePeriod": "Evening",
+                    "activityName": "Enjoy a show at Sydney Opera House",
+                    "location": "Bennelong Point"
+                }
+            ]
+        },
+        {
+            "dayNumber": 3,
+            "date": "2024-03-03",
+            "city": "Sydney",
+            "countryCode": "AU",
+            "connections": [],
+            "activities": [
+                {
+                    "activityTimePeriod": "Morning",
+                    "activityName": "Climb Sydney Harbour Bridge",
+                    "location": "BridgeClimb Sydney"
+                },
+                {
+                    "activityTimePeriod": "Afternoon",
+                    "activityName": "Visit Taronga Zoo",
+                    "location": "Taronga Zoo"
+                },
+                {
+                    "activityTimePeriod": "Evening",
+                    "activityName": "Dine at a waterfront restaurant",
+                    "location": "Darling Harbour"
+                }
+            ]
+        },
+        {
+            "dayNumber": 4,
+            "date": "2024-03-04",
+            "city": "Sydney",
+            "countryCode": "AU",
+            "connections": [],
+            "activities": [
+                {
+                    "activityTimePeriod": "Morning",
+                    "activityName": "Take a coastal walk at Royal National Park",
+                    "location": "Royal National Park"
+                },
+                {
+                    "activityTimePeriod": "Afternoon",
+                    "activityName": "Explore Sea Life Sydney Aquarium",
+                    "location": "Sea Life Sydney Aquarium"
+                },
+                {
+                    "activityTimePeriod": "Evening",
+                    "activityName": "Experience Darling Harbour fireworks",
+                    "location": "Darling Harbour"
+                }
+            ]
+        },
+        {
+            "dayNumber": 5,
+            "date": "2024-03-05",
+            "city": "Brisbane",
+            "countryCode": "AU",
+            "connections": [
+                {
+                    "transportMode": "Flight",
+                    "currentCity": "SYD",
+                    "nextCity": "BNE",
+                    "totalDurationOfTravel": "1.5 hours"
+                }
+            ],
+            "activities": [
+                {
+                    "activityTimePeriod": "Morning",
+                    "activityName": "Visit Lone Pine Koala Sanctuary",
+                    "location": "Lone Pine Koala Sanctuary"
+                },
+                {
+                    "activityTimePeriod": "Afternoon",
+                    "activityName": "Explore South Bank Parklands",
+                    "location": "South Bank Parklands"
+                },
+                {
+                    "activityTimePeriod": "Evening",
+                    "activityName": "Dine at Eagle Street Pier",
+                    "location": "Eagle Street Pier"
+                }
+            ]
+        },
+        {
+            "dayNumber": 6,
+            "date": "2024-03-06",
+            "city": "Brisbane",
+            "countryCode": "AU",
+            "connections": [],
+            "activities": [
+                {
+                    "activityTimePeriod": "Morning",
+                    "activityName": "Take a CityCat ferry ride on Brisbane River",
+                    "location": "Brisbane River"
+                },
+                {
+                    "activityTimePeriod": "Afternoon",
+                    "activityName": "Visit City Botanic Gardens",
+                    "location": "City Botanic Gardens"
+                },
+                {
+                    "activityTimePeriod": "Evening",
+                    "activityName": "Explore Fortitude Valley",
+                    "location": "Fortitude Valley"
+                }
+            ]
+        },
+        {
+            "dayNumber": 7,
+            "date": "2024-03-07",
+            "city": "Brisbane",
+            "countryCode": "AU",
+            "connections": [],
+            "activities": [
+                {
+                    "activityTimePeriod": "Morning",
+                    "activityName": "Visit Gallery of Modern Art",
+                    "location": "Gallery of Modern Art"
+                },
+                {
+                    "activityTimePeriod": "Afternoon",
+                    "activityName": "Explore Queensland Museum",
+                    "location": "Queensland Museum"
+                },
+                {
+                    "activityTimePeriod": "Evening",
+                    "activityName": "Experience Brisbane Wheel",
+                    "location": "South Bank"
+                }
+            ]
+        },
+        {
+            "dayNumber": 8,
+            "date": "2024-03-08",
+            "city": "Canberra",
+            "countryCode": "AU",
+            "connections": [
+                {
+                    "transportMode": "Train",
+                    "currentCity": "BNE",
+                    "nextCity": "CBR",
+                    "totalDurationOfTravel": "3 hours"
+                }
+            ],
+            "activities": [
+                {
+                    "activityTimePeriod": "Morning",
+                    "activityName": "Visit Australian War Memorial",
+                    "location": "Australian War Memorial"
+                },
+                {
+                    "activityTimePeriod": "Afternoon",
+                    "activityName": "Explore Parliament House",
+                    "location": "Parliament House"
+                },
+                {
+                    "activityTimePeriod": "Evening",
+                    "activityName": "Dine at a local restaurant",
+                    "location": "City Center"
+                }
+            ]
+        },
+        {
+            "dayNumber": 9,
+            "date": "2024-03-09",
+            "city": "Canberra",
+            "countryCode": "AU",
+            "connections": [],
+            "activities": [
+                {
+                    "activityTimePeriod": "Morning",
+                    "activityName": "Visit National Gallery of Australia",
+                    "location": "National Gallery of Australia"
+                },
+                {
+                    "activityTimePeriod": "Afternoon",
+                    "activityName": "Explore Australian National Botanic Gardens",
+                    "location": "Australian National Botanic Gardens"
+                },
+                {
+                    "activityTimePeriod": "Evening",
+                    "activityName": "Enjoy a picnic at Lake Burley Griffin",
+                    "location": "Lake Burley Griffin"
+                }
+            ]
+        },
+        {
+            "dayNumber": 10,
+            "date": "2024-03-10",
+            "city": "Gold Coast",
+            "countryCode": "AU",
+            "connections": [
+                {
+                    "transportMode": "Train",
+                    "currentCity": "CBR",
+                    "nextCity": "OOL",
+                    "totalDurationOfTravel": "4 hours"
+                }
+            ],
+            "activities": [
+                {
+                    "activityTimePeriod": "Morning",
+                    "activityName": "Visit Surfers Paradise",
+                    "location": "Surfers Paradise"
+                },
+                {
+                    "activityTimePeriod": "Afternoon",
+                    "activityName": "Explore Currumbin Wildlife Sanctuary",
+                    "location": "Currumbin Wildlife Sanctuary"
+                },
+                {
+                    "activityTimePeriod": "Evening",
+                    "activityName": "Dine at Broadbeach",
+                    "location": "Broadbeach"
+                }
+            ]
+        },
+        {
+            "dayNumber": 11,
+            "date": "2024-03-11",
+            "city": "Gold Coast",
+            "countryCode": "AU",
+            "connections": [],
+            "activities": [
+                {
+                    "activityTimePeriod": "Morning",
+                    "activityName": "Enjoy a day at Dreamworld",
+                    "location": "Dreamworld"
+                },
+                {
+                    "activityTimePeriod": "Afternoon",
+                    "activityName": "Visit Warner Bros. Movie World",
+                    "location": "Warner Bros. Movie World"
+                },
+                {
+                    "activityTimePeriod": "Evening",
+                    "activityName": "Experience nightlife at Surfers Paradise",
+                    "location": "Surfers Paradise"
+                }
+            ]
+        },
+        {
+            "dayNumber": 12,
+            "date": "2024-03-12",
+            "city": "Gold Coast",
+            "countryCode": "AU",
+            "connections": [],
+            "activities": [
+                {
+                    "activityTimePeriod": "Morning",
+                    "activityName": "Enjoy water activities at Sea World",
+                    "location": "Sea World"
+                },
+                {
+                    "activityTimePeriod": "Afternoon",
+                    "activityName": "Explore Skypoint Observation Deck",
+                    "location": "Skypoint Observation Deck"
+                },
+                {
+                    "activityTimePeriod": "Evening",
+                    "activityName": "Dine at a beachfront restaurant",
+                    "location": "Surfers Paradise"
+                }
+            ]
+        },
+        {
+            "dayNumber": 13,
+            "date": "2024-03-13",
+            "city": "Gold Coast",
+            "countryCode": "AU",
+            "connections": [],
+            "activities": [
+                {
+                    "activityTimePeriod": "Morning",
+                    "activityName": "Visit Springbrook National Park",
+                    "location": "Springbrook National Park"
+                },
+                {
+                    "activityTimePeriod": "Afternoon",
+                    "activityName": "Explore Burleigh Heads National Park",
+                    "location": "Burleigh Heads National Park"
+                },
+                {
+                    "activityTimePeriod": "Evening",
+                    "activityName": "Experience night markets at Surfers Paradise",
+                    "location": "Surfers Paradise"
+                }
+            ]
+        },
+        {
+            "dayNumber": 14,
+            "date": "2024-03-14",
+            "city": "Gold Coast",
+            "countryCode": "AU",
+            "connections": [],
+            "activities": [
+                {
+                    "activityTimePeriod": "Morning",
+                    "activityName": "Enjoy a day at Wet'n'Wild Gold Coast",
+                    "location": "Wet'n'Wild Gold Coast"
+                },
+                {
+                    "activityTimePeriod": "Afternoon",
+                    "activityName": "Visit The Star Gold Coast",
+                    "location": "The Star Gold Coast"
+                },
+                {
+                    "activityTimePeriod": "Evening",
+                    "activityName": "Dine at Broadbeach",
+                    "location": "Broadbeach"
+                }
+            ]
+        },
+        {
+            "dayNumber": 15,
+            "date": "2024-03-15",
+            "city": "Gold Coast",
+            "countryCode": "AU",
+            "connections": [
+                {
+                    "transportMode": "Flight",
+                    "currentCity": "OOL",
+                    "nextCity": "BLR",
+                    "totalDurationOfTravel": "9 hours"
+                }
+            ],
+            "activities": [
+                {
+                    "activityTimePeriod": "Morning",
+                    "activityName": "Visit Burleigh Beach",
+                    "location": "Burleigh Beach"
+                },
+                {
+                    "activityTimePeriod": "Afternoon",
+                    "activityName": "Explore Robina Town Centre",
+                    "location": "Robina Town Centre"
+                },
+                {
+                    "activityTimePeriod": "Evening",
+                    "activityName": "Dine at a local restaurant",
+                    "location": "City Center"
+                }
+            ]
+        }
+    ]
+}
+
+// RESPONSE 11
+
+{
+  "trip": {
+      "departureAirport": "BLR",
+      "arrivalAirport": "SYD",
+      "startDate": "2024-03-01",
+      "endDate": "2024-03-15",
+      "tripDuration": 14,
+      "natureOfTrip": "Family",
+      "suggestedDurationInCities": [3, 3, 3, 5],
+      "connections": [
+          {
+              "transportMode": "Flight",
+              "currentCity": "Bangalore",
+              "nextCity": "Sydney",
+              "totalDurationOfTravel": "10 hours"
+          },
+          {
+              "transportMode": "Train",
+              "currentCity": "Sydney",
+              "nextCity": "Brisbane",
+              "totalDurationOfTravel": "14 hours"
+          },
+          {
+              "transportMode": "Car",
+              "currentCity": "Brisbane",
+              "nextCity": "Canberra",
+              "totalDurationOfTravel": "11 hours"
+          },
+          {
+              "transportMode": "Bus",
+              "currentCity": "Canberra",
+              "nextCity": "Gold Coast",
+              "totalDurationOfTravel": "6 hours"
+          }
+      ]
+  },
+  "itinerary": [
+      {
+          "dayNumber": 1,
+          "date": "2024-03-01",
+          "city": "Sydney",
+          "countryCode": "AU",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Sydney Opera House Tour",
+                  "location": "Bennelong Point, Sydney"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Bondi Beach Visit",
+                  "location": "Bondi Beach, Sydney"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Sydney Harbour Bridge Climb",
+                  "location": "Cumberland St, The Rocks"
+              }
+          ]
+      },
+      {
+          "dayNumber": 2,
+          "date": "2024-03-02",
+          "city": "Sydney",
+          "countryCode": "AU",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Taronga Zoo Visit",
+                  "location": "Bradleys Head Rd, Mosman"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Blue Mountains Day Trip",
+                  "location": "Blue Mountains National Park"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Darling Harbour Fireworks",
+                  "location": "Cockle Bay, Sydney"
+              }
+          ]
+      },
+      {
+          "dayNumber": 3,
+          "date": "2024-03-03",
+          "city": "Sydney",
+          "countryCode": "AU",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Royal Botanic Garden Explore",
+                  "location": "Mrs Macquaries Rd, Sydney"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Sydney Harbour Cruise",
+                  "location": "Circular Quay, Sydney"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "The Rocks Night Market",
+                  "location": "George St, Sydney"
+              }
+          ]
+      },
+      {
+          "dayNumber": 4,
+          "date": "2024-03-04",
+          "city": "Brisbane",
+          "countryCode": "AU",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Lone Pine Koala Sanctuary",
+                  "location": "Jesmond Rd, Fig Tree Pocket"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "South Bank Parklands Visit",
+                  "location": "South Bank, Brisbane"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Brisbane River Cruise",
+                  "location": "Eagle St, Brisbane"
+              }
+          ]
+      },
+      {
+          "dayNumber": 5,
+          "date": "2024-03-05",
+          "city": "Brisbane",
+          "countryCode": "AU",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Story Bridge Climb",
+                  "location": "170 Main St, Kangaroo Point"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Queensland Museum Visit",
+                  "location": "Stanley Pl, South Brisbane"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Eat Street Northshore",
+                  "location": "221D MacArthur Ave, Hamilton"
+              }
+          ]
+      },
+      {
+          "dayNumber": 6,
+          "date": "2024-03-06",
+          "city": "Brisbane",
+          "countryCode": "AU",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Mount Coot-tha Lookout",
+                  "location": "1012 Sir Samuel Griffith Dr"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Queen Street Mall Shopping",
+                  "location": "Queen St, Brisbane"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Roma Street Parkland Stroll",
+                  "location": "1 Parkland Blvd, Brisbane"
+              }
+          ]
+      },
+      {
+          "dayNumber": 7,
+          "date": "2024-03-07",
+          "city": "Canberra",
+          "countryCode": "AU",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Australian War Memorial Visit",
+                  "location": "Treloar Cres, Campbell"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Parliament House Tour",
+                  "location": "Parliament Dr, Canberra"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Lake Burley Griffin Cruise",
+                  "location": "Barrine Dr, Parkes"
+              }
+          ]
+      },
+      {
+          "dayNumber": 8,
+          "date": "2024-03-08",
+          "city": "Canberra",
+          "countryCode": "AU",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "National Gallery of Australia Visit",
+                  "location": "Parkes Pl East, Parkes"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Australian National Botanic Gardens",
+                  "location": "Clunies Ross St, Acton"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Mount Ainslie Lookout",
+                  "location": "Mount Ainslie Dr, Campbell"
+              }
+          ]
+      },
+      {
+          "dayNumber": 9,
+          "date": "2024-03-09",
+          "city": "Canberra",
+          "countryCode": "AU",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "National Museum of Australia",
+                  "location": "Lawson Crescent, Acton"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Questacon Science Museum",
+                  "location": "King Edward Terrace, Parkes"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Cockington Green Gardens",
+                  "location": "Gold Creek Village, Nicholls"
+              }
+          ]
+      },
+      {
+          "dayNumber": 10,
+          "date": "2024-03-10",
+          "city": "Gold Coast",
+          "countryCode": "AU",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Surfers Paradise Beach Visit",
+                  "location": "Gold Coast"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Currumbin Wildlife Sanctuary",
+                  "location": "Currumbin"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Helensvale Night Market",
+                  "location": "Helensvale"
+              }
+          ]
+      },
+      {
+          "dayNumber": 11,
+          "date": "2024-03-11",
+          "city": "Gold Coast",
+          "countryCode": "AU",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Skypoint Observation Deck",
+                  "location": "Surfers Paradise"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Dreamworld Theme Park",
+                  "location": "Coomera"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Broadbeach Night Market",
+                  "location": "Broadbeach"
+              }
+          ]
+      },
+      {
+          "dayNumber": 12,
+          "date": "2024-03-12",
+          "city": "Gold Coast",
+          "countryCode": "AU",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Sea World",
+                  "location": "Main Beach"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Jet Boating Adventure",
+                  "location": "Surfers Paradise"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Nightfire Aboriginal Cultural Experience",
+                  "location": "Wax Rd, North Tamborine"
+              }
+          ]
+      },
+      {
+          "dayNumber": 13,
+          "date": "2024-03-13",
+          "city": "Gold Coast",
+          "countryCode": "AU",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Tamborine Rainforest Discovery Centre",
+                  "location": "Main Western Rd, North Tamborine"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Warner Bros. Movie World",
+                  "location": "Oxenford"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Beachfront Markets",
+                  "location": "The Esplanade, Surfers Paradise"
+              }
+          ]
+      },
+      {
+          "dayNumber": 14,
+          "date": "2024-03-14",
+          "city": "Gold Coast",
+          "countryCode": "AU",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Robina Town Centre Shopping",
+                  "location": "Robina"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Gold Coast Hinterland Tour",
+                  "location": "Gold Coast"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Surfers Paradise Nightlife",
+                  "location": "Surfers Paradise"
+              }
+          ]
+      }
+  ]
+}
+
+// RESPONSE 12
+
+{
+  "trip": {
+      "departureAirport": "BLR",
+      "arrivalAirport": "MXP",
+      "startDate": "2024-03-03",
+      "endDate": "2024-03-15",
+      "tripDuration": 13,
+      "natureOfTrip": "Family Trip",
+      "suggestedDurationInCities": [3, 3, 3, 4],
+      "connections": [
+          {
+              "transportMode": "Flight",
+              "currentCity": "Bangalore",
+              "nextCity": "Milan",
+              "totalDurationOfTravel": "12 hours"
+          },
+          {
+              "transportMode": "Train",
+              "currentCity": "Milan",
+              "nextCity": "Venice",
+              "totalDurationOfTravel": "2 hours"
+          },
+          {
+              "transportMode": "Train",
+              "currentCity": "Venice",
+              "nextCity": "Naples",
+              "totalDurationOfTravel": "4 hours"
+          },
+          {
+              "transportMode": "Train",
+              "currentCity": "Naples",
+              "nextCity": "Rome",
+              "totalDurationOfTravel": "1 hour"
+          }
+      ]
+  },
+  "itinerary": [
+      {
+          "dayNumber": 1,
+          "date": "2024-03-03",
+          "city": "Milan",
+          "countryCode": "Italy",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Visit Milan Cathedral",
+                  "location": "Piazza del Duomo, Milan"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Explore Galleria Vittorio Emanuele II",
+                  "location": "Piazza del Duomo, Milan"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Enjoy an Italian dinner",
+                  "location": "Local restaurant in Milan"
+              }
+          ]
+      },
+      {
+          "dayNumber": 2,
+          "date": "2024-03-04",
+          "city": "Milan",
+          "countryCode": "Italy",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Visit Da Vinci's Last Supper",
+                  "location": "Santa Maria delle Grazie, Milan"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Explore Sforza Castle",
+                  "location": "Piazza Castello, Milan"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Experience Milan's nightlife",
+                  "location": "Local bars and clubs in Milan"
+              }
+          ]
+      },
+      {
+          "dayNumber": 3,
+          "date": "2024-03-05",
+          "city": "Milan",
+          "countryCode": "Italy",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Visit Brera Art Gallery",
+                  "location": "Via Brera, Milan"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Shop at Quadrilatero della Moda",
+                  "location": "Milan Fashion District"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Try traditional Italian gelato",
+                  "location": "Gelateria in Milan"
+              }
+          ]
+      },
+      {
+          "dayNumber": 4,
+          "date": "2024-03-06",
+          "city": "Venice",
+          "countryCode": "Italy",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Take a gondola ride through the canals",
+                  "location": "Venice canals"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Visit St. Mark's Square",
+                  "location": "Piazza San Marco, Venice"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Explore Rialto Bridge",
+                  "location": "Grand Canal, Venice"
+              }
+          ]
+      },
+      {
+          "dayNumber": 5,
+          "date": "2024-03-07",
+          "city": "Venice",
+          "countryCode": "Italy",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Visit Doge's Palace",
+                  "location": "San Marco Square, Venice"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Take a boat to Murano Island",
+                  "location": "Murano, Venice"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Enjoy a romantic dinner",
+                  "location": "Canal-side restaurant in Venice"
+              }
+          ]
+      },
+      {
+          "dayNumber": 6,
+          "date": "2024-03-08",
+          "city": "Venice",
+          "countryCode": "Italy",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Explore Peggy Guggenheim Collection",
+                  "location": "Dorsoduro, Venice"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Visit Basilica di Santa Maria della Salute",
+                  "location": "Dorsoduro, Venice"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Enjoy a gondola serenade",
+                  "location": "Venice canals"
+              }
+          ]
+      },
+      {
+          "dayNumber": 7,
+          "date": "2024-03-09",
+          "city": "Naples",
+          "countryCode": "Italy",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Explore Naples Underground",
+                  "location": "Naples, Italy"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Visit Naples Archaeological Museum",
+                  "location": "Naples, Italy"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Try authentic Neapolitan pizza",
+                  "location": "Pizzeria in Naples"
+              }
+          ]
+      },
+      {
+          "dayNumber": 8,
+          "date": "2024-03-10",
+          "city": "Naples",
+          "countryCode": "Italy",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Take a day trip to Pompeii",
+                  "location": "Pompeii, Italy"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Explore Herculaneum",
+                  "location": "Ercolano, Italy"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Enjoy sunset views from Mount Vesuvius",
+                  "location": "Naples, Italy"
+              }
+          ]
+      },
+      {
+          "dayNumber": 9,
+          "date": "2024-03-11",
+          "city": "Naples",
+          "countryCode": "Italy",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Visit Royal Palace of Naples",
+                  "location": "Naples, Italy"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Explore Castel dell'Ovo",
+                  "location": "Naples, Italy"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Try limoncello tasting",
+                  "location": "Local limoncello shop in Naples"
+              }
+          ]
+      },
+      {
+          "dayNumber": 10,
+          "date": "2024-03-12",
+          "city": "Rome",
+          "countryCode": "Italy",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Visit Colosseum",
+                  "location": "Rome, Italy"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Explore Roman Forum",
+                  "location": "Rome, Italy"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Enjoy a romantic stroll in Trastevere",
+                  "location": "Trastevere, Rome"
+              }
+          ]
+      },
+      {
+          "dayNumber": 11,
+          "date": "2024-03-13",
+          "city": "Rome",
+          "countryCode": "Italy",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Visit Vatican Museums",
+                  "location": "Vatican City, Rome"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Explore St. Peter's Basilica",
+                  "location": "Vatican City, Rome"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Enjoy a classic Italian opera",
+                  "location": "Opera house in Rome"
+              }
+          ]
+      },
+      {
+          "dayNumber": 12,
+          "date": "2024-03-14",
+          "city": "Rome",
+          "countryCode": "Italy",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Visit Trevi Fountain",
+                  "location": "Rome, Italy"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Explore Pantheon",
+                  "location": "Rome, Italy"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Indulge in Roman cuisine",
+                  "location": "Local restaurant in Rome"
+              }
+          ]
+      },
+      {
+          "dayNumber": 13,
+          "date": "2024-03-15",
+          "city": "Rome",
+          "countryCode": "Italy",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Visit Villa Borghese",
+                  "location": "Rome, Italy"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Explore Piazza Navona",
+                  "location": "Rome, Italy"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Farewell dinner",
+                  "location": "Restaurant in Rome"
+              }
+          ]
+      }
+  ]
+}
+
+
+// RESPONSE 14
+
+"{
+  "trip": {
+      "departureAirport": "BLR",
+      "arrivalAirport": "JFK",
+      "startDate": "2024-03-03",
+      "endDate": "2024-04-03",
+      "tripDuration": 31,
+      "natureOfTrip": "Family",
+      "suggestedDurationInCities": [
+          5,
+          5,
+          5,
+          5,
+          5
+      ],
+      "connections": [
+          {
+              "transportMode": "Flight",
+              "currentCity": "Bangalore",
+              "nextCity": "New York",
+              "totalDurationOfTravel": "14 hours"
+          },
+          {
+              "transportMode": "Flight",
+              "currentCity": "New York",
+              "nextCity": "Chicago",
+              "totalDurationOfTravel": "2 hours"
+          },
+          {
+              "transportMode": "Flight",
+              "currentCity": "Chicago",
+              "nextCity": "Boston",
+              "totalDurationOfTravel": "2 hours"
+          },
+          {
+              "transportMode": "Flight",
+              "currentCity": "Boston",
+              "nextCity": "Miami",
+              "totalDurationOfTravel": "3 hours"
+          },
+          {
+              "transportMode": "Flight",
+              "currentCity": "Miami",
+              "nextCity": "Los Angeles",
+              "totalDurationOfTravel": "6 hours"
+          }
+      ]
+  },
+  "itinerary": [
+      {
+          "dayNumber": 1,
+          "date": "2024-03-03",
+          "city": "New York",
+          "countryCode": "US",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Visit Statue of Liberty",
+                  "location": "Liberty Island"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Explore Central Park",
+                  "location": "Central Park"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Watch Broadway Show",
+                  "location": "Times Square"
+              }
+          ]
+      },
+      {
+          "dayNumber": 2,
+          "date": "2024-03-04",
+          "city": "New York",
+          "countryCode": "US",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Visit Empire State Building",
+                  "location": "Empire State Building"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Explore Metropolitan Museum of Art",
+                  "location": "Metropolitan Museum of Art"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Dinner at Times Square",
+                  "location": "Times Square"
+              }
+          ]
+      },
+      {
+          "dayNumber": 3,
+          "date": "2024-03-05",
+          "city": "New York",
+          "countryCode": "US",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Visit The High Line",
+                  "location": "The High Line"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Explore Chelsea Market",
+                  "location": "Chelsea Market"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Walk across Brooklyn Bridge",
+                  "location": "Brooklyn Bridge"
+              }
+          ]
+      },
+      {
+          "dayNumber": 4,
+          "date": "2024-03-06",
+          "city": "New York",
+          "countryCode": "US",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Visit Ground Zero",
+                  "location": "National September 11 Memorial & Museum"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Explore Times Square",
+                  "location": "Times Square"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Dinner at Hell's Kitchen",
+                  "location": "Hell's Kitchen"
+              }
+          ]
+      },
+      {
+          "dayNumber": 5,
+          "date": "2024-03-07",
+          "city": "New York",
+          "countryCode": "US",
+          "activities": [
+              {
+                  "activityTimePeriod": "Morning",
+                  "activityName": "Visit The Metropolitan Opera",
+                  "location": "The Metropolitan Opera"
+              },
+              {
+                  "activityTimePeriod": "Afternoon",
+                  "activityName": "Explore Brooklyn Botanic Garden",
+                  "location": "Brooklyn Botanic Garden"
+              },
+              {
+                  "activityTimePeriod": "Evening",
+                  "activityName": "Dinner at Brooklyn Heights",
+                  "location": "Brooklyn Heights"
+              }
+          ]
+      },
+      // Repeat similar structure for each day in the itinerary
+  ]
+}"
+
+
+
+// USER REQUEST
+
+Generate a detailed day-wise itinerary in JSON format for a  trip to North America scheduled from March 3, 2024, to March 15, 2024. The departure airport is Bangalore, BLR, and the planned cities include New York, Chicago, Boston, Miami and Los Angeles.
+
+Ensure that you are providing the activities and recommendations by keeping nature of the trip in mind. Here it is a "Couple" trip. 
+
+The main object should consist of keys such as 'trip' and 'itinerary.' The 'trip' object should contain essential details like departure and arrival airport codes, start and end dates, the number of days, the nature of the trip, an array of suggestedDurationInCities, and an array of connections detailing the transport mode, current city, next city, and total duration of travel for each leg of the journey. Ensure that the suggestedDurationInCities array contains the number of days the client has to spend in a city, split the total number of days (calculated from the end date minus start date) appropriately among all the cities, resulting in the total sum of the array being the same as the end date minus the start date.
+
+
+'itinerary' Object:
+An array with dynamically calculated elements (one for each day) detailing:
+dayNumber
+date
+cityName
+cityAirportCode
+countryCode
+ "activities": [
+                {
+                    "activityTimePeriod": "<string>",
+                    "activityName": "<string>",
+                    "location": "<string>"
+                },
+                {
+                    "activityTimePeriod": "<string>",
+                    "activityName": "<string>",
+                    "location": "<string>"
+                },
+                {
+                    "activityTimePeriod": "<string>",
+                    "activityName": "<string>",
+                    "location": "<string>"
+                }
+            ]
+Ensure all the activity slots are filled with the most popular or trendy things to do in that city during that time period.
+
+ensure that the total number of objects in the itinerary array referring to the day number should be equal to the total number of days for the whole journey, which is calculated by the end date and the start date.For more reference, refer to the suggestedDuration in the city array and plan my itinerary according to it.

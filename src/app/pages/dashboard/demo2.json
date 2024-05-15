@@ -1,0 +1,57 @@
+{
+    "suggestedDurationInCities": [5, 8, 7, 6, 8],
+    "connections": [
+      {
+        "transportMode": "Flight",
+        "currentCityAirportCode": "BLR",
+        "nextCityAirportCode": "<TorontoAirportCode>",
+        "totalDurationOfTravelInMinutes": <FlightDurationInMinutes>
+      },
+      {
+        "transportMode": "Flight",
+        "currentCityAirportCode": "<TorontoAirportCode>",
+        "nextCityAirportCode": "<VancouverAirportCode>",
+        "totalDurationOfTravelInMinutes": <FlightDurationInMinutes>
+      },
+      {
+        "transportMode": "Flight",
+        "currentCityAirportCode": "<VancouverAirportCode>",
+        "nextCityAirportCode": "<MontrealAirportCode>",
+        "totalDurationOfTravelInMinutes": <FlightDurationInMinutes>
+      },
+      {
+        "transportMode": "Flight",
+        "currentCityAirportCode": "<MontrealAirportCode>",
+        "nextCityAirportCode": "<CalgaryAirportCode>",
+        "totalDurationOfTravelInMinutes": <FlightDurationInMinutes>
+      },
+      {
+        "transportMode": "Flight",
+        "currentCityAirportCode": "<CalgaryAirportCode>",
+        "nextCityAirportCode": "BLR",
+        "totalDurationOfTravelInMinutes": <FlightDurationInMinutes>
+      }
+    ],
+    "city_utc_offsets": [
+      {
+        "city": "Bangalore",
+        "UTC_offset": "+05:30"
+      },
+      {
+        "city": "Toronto",
+        "UTC_offset": "-04:00"
+      },
+      {
+        "city": "Vancouver",
+        "UTC_offset": "-07:00"
+      },
+      {
+        "city": "Montreal",
+        "UTC_offset": "-04:00"
+      },
+      {
+        "city": "Calgary",
+        "UTC_offset": "-06:00"
+      }
+    ]
+  }

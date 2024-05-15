@@ -1,0 +1,407 @@
+"{
+    "trip": {
+      "departure_airport": "IXC",
+      "arrival_airport": "",
+      "start_date": "2024-03-02",
+      "end_date": "2024-03-09",
+      "numbers_of_days": 8,
+      "travellers": "Family",
+      "trip_duration": 8,
+      "nature_of_trip": "Family",
+      "origin_mode_of_transport": "Flying",
+      "cities": ["Yerevan", "Gyumri", "Vanadzor", "Sevan"]
+    },
+    
+    "itinerary": [
+      {
+        "day": 1,
+        "date": "2024-03-02",
+        "city_name": "Yerevan",
+        "cityCode": "",
+        "cityId": "",
+        "countryCode": "",
+        "suggested_duration": 1,
+        "suggested_hotelname": "",
+        "transfer_option": "",
+        "connections": [],
+        "activities": [
+          {
+            "activity_timeperiod": "Morning",
+            "activity_name": "Arrival at Yerevan",
+            "image": "activity_image_path",
+            "location": "Yerevan Airport"
+          },
+          {
+            "activity_timeperiod": "Afternoon",
+            "activity_name": "Explore Yerevan City Center",
+            "image": "activity_image_path",
+            "location": "Yerevan City Center"
+          },
+          {
+            "activity_timeperiod": "Evening",
+            "activity_name": "Dinner at a local restaurant",
+            "image": "activity_image_path",
+            "location": "Yerevan"
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "date": "2024-03-03",
+        "city_name": "Gyumri",
+        "cityCode": "",
+        "cityId": "",
+        "countryCode": "",
+        "suggested_duration": 1,
+        "suggested_hotelname": "",
+        "transfer_option": "",
+        "connections": [
+          {
+            "mode_of_transport": "Driving",
+            "from_city": "Yerevan",
+            "to_city": "Gyumri",
+            "total_duration": 2
+          }
+        ],
+        "activities": [
+          {
+            "activity_timeperiod": "Morning",
+            "activity_name": "Visit Gyumri",
+            "image": "activity_image_path",
+            "location": "Gyumri"
+          },
+          {
+            "activity_timeperiod": "Afternoon",
+            "activity_name": "Explore Gyumri City Center",
+            "image": "activity_image_path",
+            "location": "Gyumri City Center"
+          },
+          {
+            "activity_timeperiod": "Evening",
+            "activity_name": "Dinner at a local restaurant",
+            "image": "activity_image_path",
+            "location": "Gyumri"
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "date": "2024-03-04",
+        "city_name": "Vanadzor",
+        "cityCode": "",
+        "cityId": "",
+        "countryCode": "",
+        "suggested_duration": 1,
+        "suggested_hotelname": "",
+        "transfer_option": "",
+        "connections": [
+          {
+            "mode_of_transport": "Driving",
+            "from_city": "Gyumri",
+            "to_city": "Vanadzor",
+            "total_duration": 3
+          }
+        ],
+        "activities": [
+          {
+            "activity_timeperiod": "Morning",
+            "activity_name": "Visit Vanadzor",
+            "image": "activity_image_path",
+            "location": "Vanadzor"
+          },
+          {
+            "activity_timeperiod": "Afternoon",
+            "activity_name": "Explore Vanadzor City Center",
+            "image": "activity_image_path",
+            "location": "Vanadzor City Center"
+          },
+          {
+            "activity_timeperiod": "Evening",
+            "activity_name": "Dinner at a local restaurant",
+            "image": "activity_image_path",
+            "location": "Vanadzor"
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "date": "2024-03-05",
+        "city_name": "Sevan",
+        "cityCode": "",
+        "cityId": "",
+        "countryCode": "",
+        "suggested_duration": 1,
+        "suggested_hotelname": "",
+        "transfer_option": "",
+        "connections": [
+          {
+            "mode_of_transport": "Driving",
+            "from_city": "Vanadzor",
+            "to_city": "Sevan",
+            "total_duration": 2
+          }
+        ],
+        "activities": [
+          {
+            "activity_timeperiod": "Morning",
+            "activity_name": "Visit Sevan",
+            "image": "activity_image_path",
+            "location": "Sevan"
+          },
+          {
+            "activity_timeperiod": "Afternoon",
+            "activity_name": "Explore Sevan City Center",
+            "image": "activity_image_path",
+            "location": "Sevan City Center"
+          },
+          {
+            "activity_timeperiod": "Evening",
+            "activity_name": "Dinner at a local restaurant",
+            "image": "activity_image_path",
+            "location": "Sevan"
+          }
+        ]
+      },
+      {
+        "day": 5,
+        "date": "2024-03-06",
+        "city_name": "Yerevan",
+        "cityCode": "",
+        "cityId": "",
+        "countryCode": "",
+        "suggested_duration": 1,
+        "suggested_hotelname": "",
+        "transfer_option": "",
+        "connections": [
+          {
+            "mode_of_transport": "Driving",
+            "from_city": "Sevan",
+            "to_city": "Yerevan",
+            "total_duration": 2
+          }
+        ],
+        "activities": [
+          {
+            "activity_timeperiod": "Morning",
+            "activity_name": "Visit Yerevan",
+            "image": "activity_image_path",
+            "location": "Yerevan"
+          },
+          {
+            "activity_timeperiod": "Afternoon",
+            "activity_name": "Explore Yerevan City Center",
+            "image": "activity_image_path",
+            "location": "Yerevan City Center"
+          },
+          {
+            "activity_timeperiod": "Evening",
+            "activity_name": "Dinner at a local restaurant",
+            "image": "activity_image_path",
+            "location": "Yerevan"
+          }
+        ]
+      },
+      {
+        "day": 6,
+        "date": "2024-03-07",
+        "city_name": "Gyumri",
+        "cityCode": "",
+        "cityId": "",
+        "countryCode": "",
+        "suggested_duration": 1,
+        "suggested_hotelname": "",
+        "transfer_option": "",
+        "connections": [
+          {
+            "mode_of_transport": "Driving",
+            "from_city": "Yerevan",
+            "to_city": "Gyumri",
+            "total_duration": 2
+          }
+        ],
+        "activities": [
+          {
+            "activity_timeperiod": "Morning",
+            "activity_name": "Visit Gyumri",
+            "image": "activity_image_path",
+            "location": "Gyumri"
+          },
+          {
+            "activity_timeperiod": "Afternoon",
+            "activity_name": "Explore Gyumri City Center",
+            "image": "activity_image_path",
+            "location": "Gyumri City Center"
+          },
+          {
+            "activity_timeperiod": "Evening",
+            "activity_name": "Dinner at a local restaurant",
+            "image": "activity_image_path",
+            "location": "Gyumri"
+          }
+        ]
+      },
+      {
+        "day": 7,
+        "date": "2024-03-08",
+        "city_name": "Vanadzor",
+        "cityCode": "",
+        "cityId": "",
+        "countryCode": "",
+        "suggested_duration": 1,
+        "suggested_hotelname": "",
+        "transfer_option": "",
+        "connections": [
+          {
+            "mode_of_transport": "Driving",
+            "from_city": "Gyumri",
+            "to_city": "Vanadzor",
+            "total_duration": 3
+          }
+        ],
+        "activities": [
+          {
+            "activity_timeperiod": "Morning",
+            "activity_name": "Visit Vanadzor",
+            "image": "activity_image_path",
+            "location": "Vanadzor"
+          },
+          {
+            "activity_timeperiod": "Afternoon",
+            "activity_name": "Explore Vanadzor City Center",
+            "image": "activity_image_path",
+            "location": "Vanadzor City Center"
+          },
+          {
+            "activity_timeperiod": "Evening",
+            "activity_name": "Dinner at a local restaurant",
+            "image": "activity_image_path",
+            "location": "Vanadzor"
+          }
+        ]
+      },
+      {
+        "day": 8,
+        "date": "2024-03-09",
+        "city_name": "Sevan",
+        "cityCode": "",
+        "cityId": "",
+        "countryCode": "",
+        "suggested_duration": 1,
+        "suggested_hotelname": "",
+        "transfer_option": "",
+        "connections": [
+          {
+            "mode_of_transport": "Driving",
+            "from_city": "Vanadzor",
+            "to_city": "Sevan",
+            "total_duration": 2
+          }
+        ],
+        "activities": [
+          {
+            "activity_timeperiod": "Morning",
+            "activity_name": "Visit Sevan",
+            "image": "activity_image_path",
+            "location": "Sevan"
+          },
+          {
+            "activity_timeperiod": "Afternoon",
+            "activity_name": "Explore Sevan City Center",
+            "image": "activity_image_path",
+            "location": "Sevan City Center"
+          },
+          {
+            "activity_timeperiod": "Evening",
+            "activity_name": "Dinner at a local restaurant",
+            "image": "activity_image_path",
+            "location": "Sevan"
+          }
+        ]
+      }
+    ]
+  }"
+
+
+
+  As a travel expert, I am planning a trip for my clients to Europe starting from the date 2024-3-1 and end date is 2024-3-15. 
+                    My departure airport is Bangalore, BLR  . The nature of my trip is  Family. I plan to visit 
+                    these cities: Milan, Venice, Naples, Rome. 
+                    Can you build me a detailed daywise itinerary with suggested durations,connections, activities as JSON which I can process in my application? 
+                                        
+                    Provide me JSON as given template: Firstly, the main object contains these keys like trip as an object and itinerary as an array of objects. 
+                    
+                    The Trip object should have these fields like departure_airport, arrival_airport, start_date, end_date, numbers_of_days, travellers, trip_duration as equal to numbers_of_days, nature_of_trip, 
+                    origin_mode_of_transport as flying, train or cruise ship or any best mode of transport from origin to the first destination and cities as an array of strings, including all cities where my clients want 
+                    to visit.
+
+                    The structure of the itinerary object is defined as day as a number, date as a string, city_name, countryCode, suggested_duration as the number of days of 
+                    stay recommended in a particular city, such that the total_suggested_duration across the cities that is the sum of suggested_duration of each city,  matches to
+                    the trip_duration (same for all days in the same city), 
+                    connections as an array of objects with the structure as given mode_of_transport as driving, flying, or 
+                    cruise ship from one city to another,present_city,next_city and total_duration of traveling,
+                     and activities as an array of objects with the structure of activity_timeperiod as morning, afternoon, evening, morning-afternoon, afternoon-evening, or morning-evening, activity_name, image, and location of the activity 
+                    that will take place. The activities should also include airport_transfers to a particular hotel.Set default values of every key in the object according to 
+                    the data type and do not add an extra comma in the objects.Connections should only appear once for each city and represent the transfer/connection to the next city.
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    As a travel expert, I am planning a trip for my clients to ${parsedData.selectedCountry} starting from the date ${parsedData.selectedStartDate} and end date is ${parsedData.selectedEndDate}. 
+                    My departure airport is ${parsedData.selectedAirport}. The nature of my trip is ${parsedData.selectedNature}. I plan to visit 
+                    these cities: ${parsedData.selectedCities}. Hotels to stay in each city should be of ${parsedData.selectedStar} category, property type ${parsedData.selectedProperty} 
+                    with Price per night between ${parsedData.selectedPrice} that exists in the city, and is nearest to the city center.
+                    Can you build me a detailed daywise itinerary with suggested durations, hotel names, connections, activities as JSON which I can process in my application? 
+                                        
+                    Provide me JSON as given template: Firstly, the main object contains these keys like trip as an object and itinerary as an array of objects. 
+                    The Trip object should have these fields like departure_airport, arrival_airport, start_date, end_date, numbers_of_days, travellers, trip_duration as equal to numbers_of_days, nature_of_trip, 
+                    origin_mode_of_transport as flying, train or cruise ship or any best mode of transport from origin to the first destination and cities as an array of strings, including all cities where my clients want 
+                    to visit. The structure of the itinerary object is defined as day as a number, date as a string, city_name, cityCode, cityId, countryCode, suggested_duration as the number of days of 
+                    stay recommended in a particular city, such that the total_suggested_duration across the cities that is the sum of suggested_duration of each city,  matches to
+                    the trip_duration (same for all days in the same city), suggested_hotelname as the name of the property type demanded by the client, transfer_option as the best
+                    transfer option from city-airport to suggested_hotelname, connections as an array of objects with the structure as given mode_of_transport as driving, flying, or 
+                    cruise ship from one city to another, from_city, to_city, and total_duration of traveling, and activities as an array of objects with the structure of 
+                    activity_timeperiod as morning, afternoon, evening, morning-afternoon, afternoon-evening, or morning-evening, activity_name, image, and location of the activity 
+                    that will take place. The activities should also include airport_transfers to a particular hotel.Set default values of every key in the object according to 
+                    the data type and do not add an extra comma in the objects.Connections should only appear once for each city and represent the transfer/connection from the previous city.
+                   

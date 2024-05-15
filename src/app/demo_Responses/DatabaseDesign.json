@@ -1,0 +1,176 @@
+{
+  "cities": [
+    {
+      "cityName": "Calgary",
+      "countryCode": "CA",
+      "Properties": [
+        { "checkInDate": "09/03/2024" },
+        { "checkInDate": "15/03/2024" }
+      ],
+      "days": [
+        {
+          "dayNumber": 1,
+          "temperature": "6*c",
+          "weather": "Cloudy",
+          "activities": [
+            { "timePeriod": "morning" },
+            { "timePeriod": "afternoon" },
+            { "timePeriod": "evening" },
+            { "timePeriod": "night" }
+          ]
+        },
+        {
+          "dayNumber": 2,
+          "temperature": "6*c",
+          "weather": "Cloudy",
+          "activities": [
+            { "timePeriod": "morning" },
+            { "timePeriod": "afternoon" },
+            { "timePeriod": "evening" },
+            { "timePeriod": "night" }
+          ]
+        },
+        {
+          "dayNumber": 3,
+          "temperature": "6*c",
+          "weather": "Cloudy",
+          "activities": [
+            { "timePeriod": "morning" },
+            { "timePeriod": "afternoon" },
+            { "timePeriod": "evening" },
+            { "timePeriod": "night" }
+          ]
+        },
+        {
+          "dayNumber": 4,
+          "temperature": "6*c",
+          "weather": "Cloudy",
+          "activities": [
+            { "timePeriod": "morning" },
+            { "timePeriod": "afternoon" },
+            { "timePeriod": "evening" },
+            { "timePeriod": "night" }
+          ]
+        }
+      ]
+    },
+    {
+      "cityName": "Toronto",
+      "countryCode": "CA",
+      "Properties": [
+        { "checkInDate": "09/03/2024" },
+        { "checkInDate": "15/03/2024" }
+      ],
+      "days": [
+        {
+          "dayNumber": 1,
+          "temperature": "6*c",
+          "weather": "Cloudy",
+          "activities": [
+            { "timePeriod": "morning" },
+            { "timePeriod": "afternoon" },
+            { "timePeriod": "evening" },
+            { "timePeriod": "night" }
+          ]
+        },
+        {
+          "dayNumber": 2,
+          "temperature": "6*c",
+          "weather": "Cloudy",
+          "activities": [
+            { "timePeriod": "morning" },
+            { "timePeriod": "afternoon" },
+            { "timePeriod": "evening" },
+            { "timePeriod": "night" }
+          ]
+        },
+        {
+          "dayNumber": 3,
+          "temperature": "6*c",
+          "weather": "Cloudy",
+          "activities": [
+            { "timePeriod": "morning" },
+            { "timePeriod": "afternoon" },
+            { "timePeriod": "evening" },
+            { "timePeriod": "night" }
+          ]
+        },
+        {
+          "dayNumber": 4,
+          "temperature": "6*c",
+          "weather": "Cloudy",
+          "activities": [
+            { "timePeriod": "morning" },
+            { "timePeriod": "afternoon" },
+            { "timePeriod": "evening" },
+            { "timePeriod": "night" }
+          ]
+        }
+      ]
+    }
+  ],
+  "ItineraryName": "something_Something",
+  "createdOn": "14/03/2024",
+  "trip": {
+    "RoomGuests": [{}, {}],
+    "connections": [
+      {
+        "transportMode": "flight",
+        "currentCityAirportCode": "BLR",
+        "nextCityAirportCode": "YYZ",
+        "totalDurationOfTravelInMinutes": 720
+      },
+      {
+        "transportMode": "flight",
+        "currentCityAirportCode": "YYZ",
+        "nextCityAirportCode": "YVR",
+        "totalDurationOfTravelInMinutes": 300
+      },
+      {
+        "transportMode": "flight",
+        "currentCityAirportCode": "YVR",
+        "nextCityAirportCode": "YUL",
+        "totalDurationOfTravelInMinutes": 250
+      },
+      {
+        "transportMode": "flight",
+        "currentCityAirportCode": "YUL",
+        "nextCityAirportCode": "YYC",
+        "totalDurationOfTravelInMinutes": 180
+      },
+      {
+        "transportMode": "flight",
+        "currentCityAirportCode": "YYC",
+        "nextCityAirportCode": "YOW",
+        "totalDurationOfTravelInMinutes": 200
+      },
+      {
+        "transportMode": "flight",
+        "currentCityAirportCode": "YOW",
+        "nextCityAirportCode": "BLR",
+        "totalDurationOfTravelInMinutes": 780
+      }
+    ],
+    "suggestedDurationInCities": [2, 3, 4, 5, 6],
+    "startDate": "2024-3-7",
+    "endDate": "2024-3-30",
+    "numberOfDays": 23,
+    "cities": ["Toronto", "Vancouver", "Montreal", "Calgary", "Ottawa"],
+    "natureOfTrip": "Family",
+    "departureAirport": "Bangalore, BLR",
+    "citiesArrivalDates": [
+      "2024-03-08 00:00",
+      "2024-03-10 17:00",
+      "2024-03-13 16:10",
+      "2024-03-17 15:00",
+      "2024-03-22 15:20",
+      "2024-03-29 01:00"
+    ],
+    "travellers": {
+      "adultCount": 4,
+      "childCount": [{}, {}],
+      "infantCount": 2
+    }
+  }
+}
+ 

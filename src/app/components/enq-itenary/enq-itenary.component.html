@@ -1,0 +1,449 @@
+<style>
+  *{
+    padding: 0;
+    box-sizing: border-box;
+    font-family:  Calibri, 'Trebuchet MS', sans-serif;
+  }
+  body {
+    background-color: rgb(255, 255, 255);
+  }
+  .tag {
+    width: 70px !important;
+    height: 25px !important;
+
+    font-size: 14px;
+    color: red;
+
+    margin-top: 10px;
+  }
+  .dest > div:hover {
+    background: #2f3268;
+    color: white;
+  }
+  .purp3-1{
+    display: none;
+  }
+  .rht:hover{
+    background-color: #ff4040 !important;
+    color: white !important;
+  }
+  .rht:hover{
+    background-color: #ff4040 !important;
+    color: white !important; 
+  }
+  .back:hover{
+    background-color:#ff4040;
+    color: white !important;
+  }
+  .hidden{
+    display: none;
+  }
+  .n-trav:hover{
+    background-color: #2f3268;
+    color: white;
+  }
+</style>
+
+
+<section class="d-flex w-100">
+<div class=" px-1 " style="width: 55%;">
+
+
+        
+  <div class="mt-4 mx-2">
+      <h2 class="fw-bold" style="font-family:  Calibri, 'Trebuchet MS', sans-serif; color:#2f3268;">Generate Your Customized Itinerary</h2>
+    </div>
+
+
+
+  <div class=" d-flex w-100 gap-5 my-2">
+      <div
+      class=" mt-4 shadow  py-1 ps-2"
+      style="
+        width: 50%;
+        height: 47px;
+        background-color: #2f3268;
+        border-radius: 8px 8px 8px 8px;
+      "
+    > <!--pur3-->
+  
+    <div class="d-flex  align-items-center " style="width: 100%; padding-top: 3px;">
+      <div class=" " style="font-size: 18px; color: white; margin-right: 14px;">Continent  </div>
+      <div> <input type="text" id="textInput"  [(ngModel)]="itenary.continent" class=" form-control h-75"  placeholder="Enter Continent" style="width: 158px;  border-radius: 10px 10px 10px 10px;">
+      <div id="hiddenDiv" class="hidden" style="width: 220px; height: 150px; position: absolute; background-color: rgb(255, 255, 255); border: 1px solid black; border-radius: 10px 10px 10px 10px;"></div>
+      </div>
+    
+    </div>
+   
+      
+    </div>
+    <div
+    class=" mt-4 d-flex flex-column justify-content-center align-items-center shadow  py-1 ps-3"
+    style="
+      width: 50%;
+     
+      background-color: #2f3268;
+      border-radius: 8px 8px 8px 8px;
+    "
+  > <!--pur3-->
+  
+  <div class="d-flex justify-content-between  align-items-center " style="width: 100%; padding-top: 3px; padding-right: 11px;">
+    <div class="" style="font-size: 18px; color: white; margin-right: 6px; ">Date  </div>
+    <div> <input
+    ngxDaterangepickerMd
+    [(ngModel)]="this.dateNew"
+    placeholder="Select Date Range"
+    class="form-control "
+    style="width: 158px;height: 31px;  border-radius: 10px 10px 10px 10px;"
+    [style.display]="datechng?'block':'none'"
+    />
+    <input
+    
+    [(ngModel)]="this.datesEnq"
+    placeholder="Select Date Range"
+    class="form-control "
+    style="width: 158px;height: 31px;  border-radius: 10px 10px 10px 10px;"
+    [style.display]="datechng?'none':'block'"
+    />
+    
+    <div id="hiddenDiv" class="hidden" style="width: 220px; height: 150px; position: absolute; background-color: rgb(255, 255, 255); border: 1px solid black; border-radius: 10px 10px 10px 10px;"></div>
+    </div>
+  
+  </div>
+  
+    <button class="btn pt-0 mt-2 text-white" (click)="dateReset()"  [style.display]="datechng?'none':'block'" style="background-color:#ff4040; height: 27px ;">Reset</button>
+ 
+  
+    
+  </div>
+  
+   
+   
+    
+</div>
+
+<div class=" d-flex w-100 gap-5 my-4">
+  <div
+  class=" my-2 shadow  py-1 ps-2"
+  style="
+    width: 50%;
+    height: 47px;
+    background-color: #2f3268;
+    border-radius: 8px 8px 8px 8px;
+  "
+> <!--pur3-->
+
+<div class="d-flex  align-items-center " style="width: 100%; padding-top: 3px;">
+  <div class="" style="font-size: 18px; color: white; margin-right: 6px;"> Nationality </div>
+  <div> <input type="text" id="textInput" [(ngModel)]="itenary.nationality"  class=" form-control h-75"  placeholder="Enter Nationality" style="width: 158px;  border-radius: 10px 10px 10px 10px;">
+  <div id="hiddenDiv" class="hidden" style="width: 220px; height: 150px; position: absolute; background-color: rgb(255, 255, 255); border: 1px solid black; border-radius: 10px 10px 10px 10px;"></div>
+  </div>
+
+</div>
+
+  
+</div>
+
+
+<div class=" my-2" style="width: 50%;">
+<div
+class=" shadow purp3"
+(click)="show()"
+style="
+width:100%;
+height: 49px;
+background-color: #2f3268;
+border-radius: 8px 8px 8px 8px;
+"
+> <!--pur4-->
+<div class="border-bottom p-2 " style="height: 50px">
+<div class="d-flex">
+  <h4 class="text-white mt-1 ms-2 " style="font-size: 18px">
+    No. of Travellers 
+  </h4>
+  <span class="material-symbols-outlined text-white mt-1">
+    chevron_right
+    </span>
+</div>
+</div>
+
+
+
+</div>
+<div  class="py-2 my shadow purp3-1"
+
+[style.display]="dis ? 'block' : 'none'"
+style="
+width: 260px;
+height: 150px;
+background-color: #2f3268;
+border-radius: 0px 0px 8px 8px;
+position: absolute;
+z-index: 2;
+
+">
+<div
+class="border rounded bg-white  mx-3 px-2 pt-2"
+style="height: 125px; width: 90%"
+>
+<div *ngFor="let item of items">
+<h4 class="  mx-4 d-flex justify-content-between"><span class="fw-bold" style="font-size: 20px;">{{item.content}}</span><span class="d-flex gap-1"><button  (click)="ChngTraveller(item,'inc')"   style="width: 30px;  height: 30px; ">+</button><span  class=" pt-1" style="width: 30px;height: 30px;color: grey;font-size: 18px;padding-left: 10px;">{{item.number}}</span><button (click)="ChngTraveller(item,'dec')" class="px-2"   style="width: 30px;   height: 30px;">-</button></span></h4>
+
+
+</div>
+
+</div>
+</div>
+</div>
+
+
+</div>
+  
+
+
+
+
+<div class=" d-flex w-100 gap-5 my-2">
+  <div
+  class="   shadow  py-1 ps-2"
+  style="
+    width: 50%;
+    height: 47px;
+    background-color: #2f3268;
+    border-radius: 8px 8px 8px 8px;
+  "
+> <!--pur3-->
+<!-- id="hiddenDiv" class="hidden" -->
+
+<div class="d-flex justify-content-between  align-items-center " style="width: 100%; padding-top: 3px; padding-right: 7px;">
+  <div class="" style="font-size: 18px; color: white; margin-right: 6px; ">Departure  </div>
+  <div> <input type="text" id="textInput" class=" form-control " [(ngModel)]="itenary.origin" id="exampleFormControlInput1" placeholder="Enter Departure" style="width: 158px;height: 31px;  border-radius: 10px 10px 10px 10px;">
+  <div  style="width: 220px; height: 150px; position: absolute; background-color: rgb(255, 255, 255); border: 1px solid black; border-radius: 10px 10px 10px 10px;"></div>
+  </div>
+
+</div>
+
+  
+</div>
+
+
+<div
+class="  shadow  py-1 ps-1"
+style="
+width: 50%;
+height: 47px;
+background-color: #2f3268;
+border-radius: 8px 8px 8px 8px;
+"
+> <!--pur3-->
+
+<div class="d-flex justify-content-between align-items-center "   style="width: 100%; padding-top: 3px; padding-right: 10px;">
+<div class="" style="font-size: 18px; color: white; margin-left: 7px; ">Destination  </div>
+<div> <input type="text" #textInput  (keyup.enter)="addcity(textInput.value)"  class=" form-control h-75 ms-1" id="exampleFormControlInput1" placeholder="Enter Arrival" style="width: 149px;  border-radius: 10px 10px 10px 10px;">
+<div  style="width: 220px; height: 150px; position: absolute; background-color: rgb(255, 255, 255); border: 1px solid black; border-radius: 10px 10px 10px 10px;"></div>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+</div> 
+
+<div class=" d-flex w-100 gap-5 mt-4">
+  
+  <div class="container text-center">
+    <div class="row row-cols-4 gap-1">
+
+      <div *ngFor="let city of cities, let i = index" class="col me-0" style="width: 24%; "><div class="border d-flex flex-column justify-content-center align-items-center gap-1" style="height: 85px;  background-color: #2f3268; border-radius: 10px 10px 10px 10px;">
+        <span class="text-center text-white mb-1" style="font-size: 12px;">City {{i + 1}}</span>
+        <span class="text-center text-white fw-bold" style="font-size: 18px; ">{{city}}</span>
+      </div></div>
+      
+
+    </div>
+  </div>
+
+
+
+</div>
+<!--werwe-->
+
+<div class="my-4 w-100 d-flex justify-content-center" style="z-index: 1;">
+<div><button type="button " class="btn2 btn rht pt-0" (click)="advance()" style="border: 1px solid #ff4040; color: #ff4040 ; height: 30px;">Advance Options</button>
+</div>
+</div>
+
+<div class="adv" [style.display]="dis2 ? 'block' : 'none'"  style="display: none;">
+<div class=" d-flex w-100 gap-5 mt-4 ">
+<div
+class="shadow  px-2 py-2   my-1 d-flex  flex-column w-bold border rounded border-black"
+style=" width: 50%; background-color: #2f3268; "
+>
+
+
+<div class="d-flex flex-row  justify-content-between">
+  <div style="width: 48%;">
+    <span class="fw-bold" style="color: white; font-size: 15px;">Nature Of Traveller</span>
+  </div>
+  <div>
+<input
+class="border border-black mt-0 form-control form-control-sm"
+type="text"
+placeholder="Nature of Traveller"
+aria-label=".form-control-sm example"
+style="font-size: 13px; height: 30px ; width: 100%;  border-radius: 10px 10px 10px 10px;"
+(click)="ntr()"
+[value]="traveller"
+/>
+<div  style="width: 220px; height: 150px; position: absolute; background-color: rgb(255, 255, 255); border: 1px solid black; border-radius: 10px 10px 10px 10px;"></div>
+</div>
+</div>
+
+<div class="border rounded font-size: 13px mt-0 bg-white"  [style.display]="ntrav? 'block': 'none'"  style="height: 120px; width: 98%; margin-left: 2px; ">
+<div *ngFor="let a of natureofTraveller" (click)="chooseTrav(a)" class=" n-trav fw-bold border-bottom px-3 py-1" (click)="ntr()" style="height: 25%; font-size: 13px">{{a}}</div>
+
+</div>
+
+</div>
+
+<div
+class="shadow  px-2 py-2   my-1 d-flex  flex-column w-bold border rounded border-black"
+style=" width: 50%; background-color: #2f3268;  height: 47px;"
+>
+
+
+<div class="d-flex flex-row justify-content-between">
+  <div>
+    <span class="fw-bold" style="color: white; font-size: 15px;  margin-left: 10px;">Budget</span>
+  </div>
+<input
+class="border border-black mt-0 form-control form-control-sm"
+type="text"
+placeholder="Budget"
+aria-label=".form-control-sm example"
+style="font-size: 13px; height: 30px ; width: 60%; border-radius: 10px 10px 10px 10px;"
+
+
+/>
+</div>
+
+
+
+</div>
+
+
+</div>
+</div>
+
+<div class="adv" [style.display]="dis2 ? 'block' : 'none'"  style="display: none;">
+  <div class=" d-flex w-100 gap-5  ">
+
+  
+  <div
+  class="shadow  px-2  py-2  my-4 d-flex  flex-column w-bold border rounded border-black"
+  style=" width: 46%; background-color: #2f3268"
+  
+  >
+  
+  <div (click)="ntrp()">
+    <div class="d-flex flex-row  ">
+      <span class="fw-bold mt-1" style="color: white; font-size: 15px;">Nature Of Trip</span>
+      <span class="material-symbols-outlined text-white mt-1">
+        chevron_right
+        </span>
+      
+    </div>
+  </div>
+  
+  <div class="border rounded font-size: 13px mt-1 bg-white" [style.display]="ntrip? 'block': 'none'"  style="height: 120px; width: 98%; margin-left: 2px; overflow: auto;">
+  <div *ngFor="let nature of natureofTrip, let i=index" class=" n-trav fw-bold border-bottom px-3 py-1"    for='flexCheckIndeterminate{{i}}' style="height: 30px; font-size: 13px"><input class="form-check-input" type="checkbox"   id="flexCheckIndeterminate{{i}}" class="ms-0 , mt-1, me-2">
+    <label class="form-check-label" for="flexCheckIndeterminate{{i}}" (click)="addTrip(nature,i)">
+      {{nature.name}}
+    </label></div>
+  
+  </div>
+  
+  </div>
+  
+  </div>
+  </div>
+
+</div> <!--left-end-->
+
+<div class="px-5" style="width: 40%; position: relative; right: 0; top: -76px;">
+  <div class=" " >   
+
+    <div class="my-2">
+  <span class="fw-bold " style="font-size: 20px;" >Interest level : </span>
+  <div class="d-flex">
+    <div class=" my-2 d-flex" style="width: 67%; height: 30px; border: 2px solid #ff4040; border-radius: 10px 10px 10px;">
+    
+       <span (click)="interest('Low')" [style.background-color]="intLevel==='Low'?'#ff4040':'white'"  [style.color]="intLevel==='Low'?'white':'#ff4040'" class="px-3 rht h-100" style="  border-right: 1px solid #ff4040; color: #ff4040; border-radius: 10px 0px 0px 10px; cursor: pointer;">
+        Low
+       </span>
+       <span class="px-3 rht" (click)="interest('Medium')" [style.background-color]="intLevel==='Medium'?'#ff4040':'white'"  [style.color]="intLevel==='Medium'?'white':'#ff4040'" style=" border-right: 1px solid #ff4040; color: #ff4040;   cursor: pointer;">
+        Moderate
+       </span>
+       <span class="px-3 rht w-100" (click)="interest('High')" [style.background-color]="intLevel==='High'?'#ff4040':'white'"  [style.color]="intLevel==='High'?'white':'#ff4040'" style=" color: #ff4040; border-radius: 0px 10px 10px 0px;  cursor: pointer;">
+        High
+       </span>
+
+    </div>
+ 
+</div>
+<span class="fw-bold" style="font-size: 20px; ">Enquiry Details :</span>
+<div class="d-flex">
+    <div class=" my-2 d-flex " style="width: 63%; height: 30px; border: 2px solid #ff4040; border-radius: 10px 10px 10px;" >
+    
+        <span class="px-2 rht" (click)="enqDetail('FollowUp')" [style.background-color]="detail==='FollowUp'?'#ff4040':'white'"  [style.color]="detail==='FollowUp'?'white':'#ff4040'" style=" border-right: 1px solid #ff4040; color: #ff4040; border-radius: 10px 0px 0px 10px; cursor: pointer;">
+         FollowUp
+        </span>
+        <span class="px-2 w-100 rht" (click)="enqDetail('Do not FollowUp')" [style.background-color]="detail==='Do not FollowUp'?'#ff4040':'white'"  [style.color]="detail==='Do not FollowUp'?'white':'#ff4040'" style=" color: #ff4040; border-radius: 0px 10px 10px 0px; cursor: pointer; ">
+         Don't FollowUp
+        </span>
+        
+
+     </div>
+</div>
+  <span class="fw-bold " style="font-size: 20px; ">FollowUp Date :</span>
+  <input
+    class="border border-black mt-2 form-control form-control-sm "
+    type="date"
+    placeholder="serch recently"
+    [(ngModel)]="itenary.followUpDate"
+    aria-label=".form-control-sm example"
+    style="font-size: 13px; width: 100%;"
+  />
+  <textarea
+    class="form-control mb-3 mt-3"
+    id="exampleFormControlTextarea1"
+    rows="5"
+    [(ngModel)]="itenary.remarks"
+    placeholder="Type Enquiry Remarks"
+    style="width: 100%"
+  ></textarea>
+  <div class="w-100 " style="text-align: right;">
+    <button
+      type="button"
+      class="btn pb-1  btn-sm text-white mx-2"
+      style="background-color: #2f3268; font-size: 13px; width: 35%"
+    >
+      Not interested</button
+    ><button
+      type="button"
+      class="btn pb-1 btn-sm text-white mx-2"
+      (click)="submit()"
+      style="background-color: #ff4040; font-size: 13px; width: 36%"
+    >
+      {{update?"Update Enquiry":"Log an Enquiry"}}
+    </button> 
+  </div>
+</div>
+</div> 
+</div> 
+</section>
+

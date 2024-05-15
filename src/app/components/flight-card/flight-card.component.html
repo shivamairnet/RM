@@ -1,0 +1,74 @@
+<main style="position: relative;overflow: visible;"  >
+
+  <div class="flightCard" style="overflow: visible;">
+
+    <div class="airline">
+      <div class="airline-section1">
+        <div class="airline-section1-logo">
+          <img
+            src={{flightLogoOnFront()}}
+            alt="aLogo"
+          />
+          <p style="font-size: 10px">{{ getAirlineCode(0) }} {{ getFlightNumber(0) }}</p>
+        </div>
+      </div>
+      <div class="airline-section2">
+        <h3>{{ getAirlineName(0) }}</h3>
+        <h4>{{ getCabinClass(0) }}</h4>
+      </div>
+    </div>
+
+    <div class="timings" style="overflow: visible;">
+      <div class="timings-city-stats">
+        <h3>{{ getDepartureTime(0) }}</h3>
+        <h4> {{ getFirstOriginCity(0) }} </h4>
+        <h3> {{ getDepartDate(0) }} </h3>
+      </div>
+
+
+      <div class="timings-duration" style="position: relative;">
+
+        <h4>{{ getFlightDuration(0) }}</h4>
+  
+        <button type="button" class="btn flight-stops-btn" (mouseenter)="showTooltip = true" (mouseleave)="showTooltip = false">
+          <img src="{{ getStopsImageUrl(0) }}" alt="stops Bar" />
+        </button>
+  
+        <!-- toolTip -->
+        <div class="flight-stop-tooltip" *ngIf="showTooltip && layoverCitites.length>=1" style="position: absolute;top: -50px;border-radius: 10px;" >
+          <div>
+            <h3 style="color: #fff;">Plane change</h3>
+             
+            <div class="flight-stop-tooltip-footer" *ngFor="let city of layoverCitites">
+              <h4 style="color: #fff;">{{city.cityName}} <span>({{ city.airportCode}} )</span></h4>
+              <h4 style="color: #fff;">{{city.duration}} </h4>
+            </div>
+          </div>
+        </div>
+
+        <h4>{{ getFlightStops(0) }}</h4>
+      </div>
+
+      <div class="timings-city-stats">
+        <h3>{{ getArrivalTime(0) }}</h3>
+        <h4>{{ getFinalDestinationCity(0) }}  </h4>
+        <h3> {{ getArrDate(0) }}  </h3>
+      </div>
+    </div>
+
+    <div class="pricing">
+          <button style="border: none;background-color:#fff; text-decoration: none;" (click)="toTriggerAlternateFlightsetDialogBox()"> <img src="../../../assets/img/brand/pencil.png" alt="Edit" height="16px" width="15px">  </button>
+    </div>
+    
+    <div>
+
+    </div>
+  
+  </div>
+
+  <!-- <app-flight-details *ngIf="isflightDetails" (click)="toTriggerAlternateFlightsetDialogBox()"  ></app-flight-details> -->
+
+    
+   
+
+</main>

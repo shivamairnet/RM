@@ -1,0 +1,55 @@
+<div style="width: 100%;">
+  <div class="route" *ngIf="connections && cities && departureCity">
+      <h3 style="border-radius: 20px 20px 0 0; padding-bottom: 20px; padding-top: 20px; width: 100%; display: flex; justify-content: center; align-items: center; background-color: #03254A;">
+          <span style="font-size: 1.2rem; color: white;">Route Overview</span>
+      </h3>
+      <div class="path">
+          <!-- Departure City -->
+          <span style="font-weight: 600; text-decoration: underline;">{{ departureCity }}</span>
+          <div class="big-dot">•</div>
+          <div class="vertical-line"></div>
+
+          <!-- Next City Transport Icon -->
+          <ng-container *ngIf="connections[0]?.efficientTransportMode.toLowerCase() === 'flight'">
+              <i class="fa-solid fa-plane plane-icon"></i>
+          </ng-container>
+          <ng-container *ngIf="connections[0]?.efficientTransportMode.toLowerCase()  === 'train'">
+              <i class="fa-solid fa-train train-icon"></i>
+          </ng-container>
+          <ng-container *ngIf="connections[0]?.efficientTransportMode.toLowerCase()  === 'bus'">
+              <i class="fa-solid fa-bus bus-icon"></i>
+          </ng-container>
+
+          <div class="vertical-line"></div>
+          <div class="big-dot">•</div>
+
+          <!-- Loop through connections -->
+          <ng-container *ngFor="let connection of connections; let i = index">
+              <!-- City Name -->
+              <span style="font-weight: 600; text-decoration: underline;">{{ cities[i]}}</span>
+              <div class="vertical-line" *ngIf="i !== connections.length - 1" ></div>
+              <div class="big-dot" *ngIf="i !== connections.length - 1" >•</div>
+
+              <!-- Transport Icon -->
+              <ng-container *ngIf="connection.efficientTransportMode.toLowerCase()  === 'flight' && i !== connections.length - 1 ">
+                  <i class="fa-solid fa-plane plane-icon"></i>
+              </ng-container>
+              <ng-container *ngIf="connection.efficientTransportMode.toLowerCase()  === 'train' && i !== connections.length - 1 ">
+                  <i class="fa-solid fa-train train-icon"></i>
+              </ng-container>
+              <ng-container *ngIf="connection.efficientTransportMode.toLowerCase()  === 'bus' && i !== connections.length - 1 ">
+                  <i class="fa-solid fa-bus bus-icon"></i>
+              </ng-container>
+
+              <div class="vertical-line" *ngIf="i !== connections.length - 1" ></div>
+              <div class="big-dot" *ngIf="i !== connections.length - 1" >•</div>
+
+               <!-- Last connection -->
+               <ng-container *ngIf="i === connections.length - 1">
+                 <!-- Destination City -->
+                 <span style="font-weight: 600; text-decoration: underline;">{{ departureCity }}</span>
+              </ng-container>
+          </ng-container>
+      </div>
+  </div>
+</div>

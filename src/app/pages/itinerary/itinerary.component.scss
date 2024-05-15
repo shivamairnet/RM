@@ -1,0 +1,40 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+h3 {
+  font-size: 11px;
+}
+
+
+main {
+  box-sizing: border-box;
+  margin-top: 70px;
+  padding-top: 40px;
+  width: 1134px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 43px;
+  // background-color: yellow;
+  // height: 100vh;
+}
+
+.left-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width:62%;
+}
+
+#map {
+  height: 400px; /* The height is 400 pixels */
+  width: 100%; /* The width is the width of the web page */
+}

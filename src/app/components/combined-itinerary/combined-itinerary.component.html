@@ -1,0 +1,65 @@
+<main>
+  
+  <!-- IF NO FLIGHTS ARE YET RECIEVED -->
+  <ng-container *ngIf="!allFlights.length">
+    <!-- schedule loader -->
+    <div *ngIf="allSchedules?.length === 0">Loading city schedule...</div>
+
+    <!-- flight cards loader -->
+    <div *ngIf="!allFlights.length">Loading flights...</div>
+
+    <!-- city schedule section when no flights -->
+    <div style="width: 40rem; display: flex; flex-direction: column; gap: 21px">
+      <ng-container *ngIf="allSchedules?.length > 0">
+        <app-city-schedule
+          *ngFor="let schedule of allSchedules; let i = index"
+          [citySchedule]="schedule"
+          [currentFlightSet]="[]"
+        ></app-city-schedule>
+      </ng-container>
+    </div>
+
+ 
+  </ng-container>
+
+  <!-- GOT ALL FLIGHTS  -->
+
+  <ng-container *ngIf="allFlights.length > 0">
+    
+    <div
+      *ngFor="let flight of currentFlightSetSegmentsArray; let i = index"
+      style="width: 550px; display: flex; flex-direction: column; gap: 21px"
+    >
+      <!-- completeFlight = all flights to reach from a->b  with all layovers   -->
+      <app-flight-card
+        [completeFlight]="flight"
+        (triggerAlternateFlightSetsDialog)="showFlightOptions($event)"
+        [currentFlightSetLogosArray]="currentFlightSetLogosArray[i]"
+      ></app-flight-card>
+
+      <ng-container
+        *ngIf="i < allSchedules?.length"
+        style="width: 40rem; display: flex; flex-direction: column; gap: 21px"
+      >
+        <app-city-schedule
+          [citySchedule]="allSchedules[i]"
+          [allHotels]="allHotels"
+          [currentFlightSet]="currentFlightSet[0].segments[i]"
+          (currHotelsForParticularCity)="gotCurrHotelsForCity($event)"
+        ></app-city-schedule>
+      </ng-container>
+    </div>
+
+  </ng-container>
+
+
+
+  <!-- Alternate flight sets section -->
+  <div *ngIf="isFlightOptionsAvailable">
+    <app-alternate-flight-options
+      [allFlightSets]="allFlights"
+      [currentFlightSetResultIdx]="currentFlightSetIndex"
+      (highlightedFlightSetIdxChange)="onHighlightedFlightSetIdxChange($event)"
+    ></app-alternate-flight-options>
+  </div>
+</main>

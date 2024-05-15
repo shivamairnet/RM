@@ -1,0 +1,341 @@
+<style>
+  *{
+    padding: 0;
+    box-sizing: border-box;
+    font-family:  Calibri, 'Trebuchet MS', sans-serif;
+  }
+  body {
+    background-color: rgb(255, 255, 255);
+  }
+  .tag {
+    width: 70px !important;
+    height: 25px !important;
+
+    font-size: 14px;
+    color: red;
+
+    margin-top: 10px;
+  }
+  .dest > div:hover {
+    background: #2f3268;
+    color: white;
+  }
+  .purp3-1{
+    display: none;
+  }
+  .rht:hover{
+    background-color: #ff4040 !important;
+    color: white !important;
+  }
+  .rht:hover{
+    background-color: #ff4040 !important;
+    color: white !important;
+  }
+  .back:hover{
+    background-color:#ff4040;
+    color: white !important;
+  }
+  .hidden{
+    display: none;
+  }
+</style>
+
+<section class="d-flex flex-row">
+<div style="width: 55%;">
+
+  <div class="d-flex gap-5 my-2" style="width: 100%;">
+  
+  <div class="" style="width: 50%;">
+  
+    <div
+    class=" shadow purp3"
+    (click)="div1()"
+    style="
+      width: 100%;
+      height: 50px;
+      background-color: #2f3268;
+      border-radius: 8px 8px 8px 8px;
+    "
+  > <!--pur2-->
+    <div
+      class="border-bottom p-2 d-flex justify-content-between"
+      style="height: 50px"
+    >
+    <div class="d-flex">
+      <h4 class="text-white mt-1 ms-1" style="font-size: 18px">
+        Fair Type 
+      </h4>
+      <span class="material-symbols-outlined text-white mt-1">
+        chevron_right
+        </span>
+    </div>
+      <span class="text-white mt-1 ms-1">{{Fair}}</span>
+    </div>
+    
+    
+  </div>
+  <div  class=" purp3-1 shadow"
+  [style.display]="dis2 ? 'block' : 'none'"
+  style="
+    width: 100%;
+    height: 50px;
+    background-color: #2f3268;
+    border-radius: 0px 0px 8px 8px;
+    
+    ;
+  ">
+    <div class="d-flex  pt-1  ">
+      <div class="form-check ms-1">
+          <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault6" (change)="fareType('Regular Fair')" [checked]="Fair=='Regular Fair'">
+          <label class="form-check-label text-white" for="flexRadioDefault6" style="font-size: 13px;">
+            Regular Fair
+          </label>
+        </div>
+        <div class="form-check ms-1">
+          <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault5" (change)="fareType('Student Fair')" [checked]="Fair=='Student Fair'">
+          <label class="form-check-label text-white" for="flexRadioDefault5" style="font-size: 13px;">
+            Student Fair
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault7" (change)="fareType('Armed Forces')" [checked]="Fair=='Armed Forces'">
+          <label class="form-check-label text-white" for="flexRadioDefault7" style="font-size: 13px;">
+            Armed Forces
+          </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault4" (change)="fareType('Senior Citizen')" [checked]="Fair=='Senior Citizen'">
+            <label class="form-check-label text-white" for="flexRadioDefault4" style="font-size: 13px;">
+              Senior Citizen
+            </label>
+          </div>
+  
+    </div>
+  </div>
+  </div>
+  
+  <div class="" style="width: 50%;">
+    <div
+    class=" shadow purp3"
+    (click)="show()"
+    style="
+    width:100%;
+    height: 49px;
+    background-color: #2f3268;
+    border-radius: 8px 8px 8px 8px;
+    "
+    > <!--pur4-->
+    <div class="border-bottom p-2 " style="height: 50px">
+    <div class="d-flex">
+      <h4 class="text-white mt-1 ms-2 " style="font-size: 18px">
+        Number of Travellers 
+      </h4>
+      <span class="material-symbols-outlined text-white mt-1">
+        chevron_right
+        </span>
+    </div>
+    </div>
+    
+    
+    
+    </div>
+    <div  class="py-2 my shadow purp3-1"
+    
+    [style.display]="dis ? 'block' : 'none'"
+    style="
+    width: 260px;
+    height: 150px;
+    background-color: #2f3268;
+    border-radius: 0px 0px 8px 8px;
+    position: absolute;
+    z-index: 2;
+    
+    ">
+    <div
+    class="border rounded bg-white  mx-3 px-2 pt-2"
+    style="height: 125px; width: 90%"
+    >
+    <div *ngFor="let item of items">
+      <h4 class="  mx-4 d-flex justify-content-between"><span class="fw-bold" style="font-size: 20px;">{{item.content}}</span><span class="d-flex gap-1"><button  (click)="ChngTraveller(item,'inc')"   style="width: 30px;  height: 30px; ">+</button><span  class=" pt-1" style="width: 30px;height: 30px;color: grey;font-size: 18px;padding-left: 10px;">{{item.number}}</span><button (click)="ChngTraveller(item,'dec')" class="px-2"   style="width: 30px;   height: 30px;">-</button></span></h4>
+      
+      
+      </div>
+    
+    </div>
+    </div>
+    </div>
+  
+  
+  </div> <!--fgfd-->
+       
+  
+        
+  
+  <div class=" d-flex w-100 gap-5 my-2">
+      <div
+      class=" my-2  shadow  py-1 ps-3"
+      style="
+        width: 50%;
+        height: 47px;
+        background-color: #2f3268;
+        border-radius: 8px 8px 8px 8px;
+      "
+    > <!--pur3-->
+  
+    <div class="d-flex justify-content-between  align-items-center " style="width: 100%; padding-top: 3px; padding-right: 17px;">
+      <div class="" style="font-size: 18px;  color: white; margin-right: 6px; ">Date  </div>
+      <div> <input type="date" id="textInput" [(ngModel)]="roundtrip.dates" class=" form-control " id="exampleFormControlInput1" placeholder="Enter Nationality" style="width: 158px;height: 31px;  border-radius: 10px 10px 10px 10px;">
+      <div id="hiddenDiv" class="hidden" style="width: 220px; height: 150px; position: absolute; background-color: rgb(255, 255, 255); border: 1px solid black; border-radius: 10px 10px 10px 10px;"></div>
+      </div>
+    
+    </div>
+   
+      
+    </div>
+      
+    <div
+    class=" my-2 shadow  py-1 ps-2"
+    style="
+      width: 50%;
+      height: 47px;
+      background-color: #2f3268;
+      border-radius: 8px 8px 8px 8px;
+    "
+  > <!--pur3-->
+  
+  <div class="d-flex  align-items-center " style="width: 100%; padding-top: 3px;">
+    <div class="" style="font-size: 18px; color: white; margin-right: 6px;"> Nationality </div>
+    <div> <input type="text" id="textInput" [(ngModel)]="roundtrip.nationality" class=" form-control h-75" id="exampleFormControlInput1" placeholder="Enter Nationality" style="width: 158px;  border-radius: 10px 10px 10px 10px;">
+    <div id="hiddenDiv" class="hidden" style="width: 220px; height: 150px; position: absolute; background-color: rgb(255, 255, 255); border: 1px solid black; border-radius: 10px 10px 10px 10px;"></div>
+    </div>
+  
+  </div>
+  
+    
+  </div>
+      
+      
+      
+      </div>
+  
+      <div class=" d-flex w-100 gap-5 my-2">
+          <div
+          class="  shadow  py-1 ps-2"
+          style="
+            width: 50%;
+            height: 47px;
+            background-color: #2f3268;
+            border-radius: 8px 8px 8px 8px;
+          "
+          > <!--pur3-->
+          
+          <div class="d-flex  align-items-center " style="width: 100%; padding-top: 3px;">
+          <div class="" style="font-size: 18px; color: white; margin-right: 6px;">Departure  </div>
+          <div> <input type="text" id="textInput" [(ngModel)]="roundtrip.origin" class=" form-control h-75" id="exampleFormControlInput1" placeholder="Enter Departure" style="width: 158px;  border-radius: 10px 10px 10px 10px;">
+          <div id="hiddenDiv" class="hidden" style="width: 220px; height: 150px; position: absolute; background-color: rgb(255, 255, 255); border: 1px solid black; border-radius: 10px 10px 10px 10px;"></div>
+          </div>
+          
+          </div>
+          
+          
+          </div>
+          
+          <div
+          class="  shadow  py-1 ps-2"
+          style="
+            width: 50%;
+            height: 47px;
+            background-color: #2f3268;
+            border-radius: 8px 8px 8px 8px;
+          "
+          > <!--pur3-->
+          
+          <div class="d-flex justify-content-between align-items-center just" style="width: 100%; padding-top: 3px; padding-right: 10px;">
+          <div class="" style="font-size: 18px; color: white; margin-left: 10px; ">Arrival  </div>
+          <div> <input type="text" id="textInput" class=" form-control h-75" [(ngModel)]="arrival" id="exampleFormControlInput1" placeholder="Enter Arrival" style="width: 158px;  border-radius: 10px 10px 10px 10px;">
+          <div id="hiddenDiv" class="hidden" style="width: 220px; height: 150px; position: absolute; background-color: rgb(255, 255, 255); border: 1px solid black; border-radius: 10px 10px 10px 10px;"></div>
+          </div>
+          
+          </div>
+          
+          
+          </div>
+          
+          
+          
+          </div>
+  
+  </div>
+  <div class="px-5" style="width: 40%; position: relative; right: 0; top: -313px;">
+    <div class=" " >   
+  
+      <div class="my-2">
+    <span class="fw-bold " style="font-size: 20px;" >Interest level : </span>
+    <div class="d-flex">
+      <div class=" my-2 d-flex" style="width: 68%; height: 30px; border: 2px solid #ff4040; border-radius: 10px 10px 10px;">
+      
+         <span (click)="interest('Low')" [style.background-color]="intLevel==='Low'?'#ff4040':'white'"  [style.color]="intLevel==='Low'?'white':'#ff4040'" class="px-3 rht h-100" style="  border-right: 1px solid #ff4040; color: #ff4040; border-radius: 10px 0px 0px 10px; cursor: pointer;">
+          Low
+         </span>
+         <span class="px-3 rht" (click)="interest('Medium')" [style.background-color]="intLevel==='Medium'?'#ff4040':'white'"  [style.color]="intLevel==='Medium'?'white':'#ff4040'" style=" border-right: 1px solid #ff4040; color: #ff4040;   cursor: pointer;">
+          Moderate
+         </span>
+         <span class="px-3 rht w-100" (click)="interest('High')" [style.background-color]="intLevel==='High'?'#ff4040':'white'"  [style.color]="intLevel==='High'?'white':'#ff4040'" style=" color: #ff4040; border-radius: 0px 10px 10px 0px;  cursor: pointer;">
+          High
+         </span>
+  
+      </div>
+   
+  </div>
+  <span class="fw-bold" style="font-size: 20px; ">Enquiry Details :</span>
+  <div class="d-flex">
+      <div class=" my-2 d-flex " style="width: 63%; height: 30px; border: 2px solid #ff4040; border-radius: 10px 10px 10px;" >
+      
+          <span class="px-2 rht" (click)="enqDetail('FollowUp')" [style.background-color]="detail==='FollowUp'?'#ff4040':'white'"  [style.color]="detail==='FollowUp'?'white':'#ff4040'" style=" border-right: 1px solid #ff4040; color: #ff4040; border-radius: 10px 0px 0px 10px; cursor: pointer;">
+           FollowUp
+          </span>
+          <span class="px-2 w-100 rht" (click)="enqDetail('Do not FollowUp')" [style.background-color]="detail==='Do not FollowUp'?'#ff4040':'white'"  [style.color]="detail==='Do not FollowUp'?'white':'#ff4040'" style=" color: #ff4040; border-radius: 0px 10px 10px 0px; cursor: pointer; ">
+           Don't FollowUp
+          </span>
+          
+  
+       </div>
+  </div>
+    <span class="fw-bold " style="font-size: 20px; ">FollowUp Date :</span>
+    <input
+      class="border border-black mt-2 form-control form-control-sm "
+      type="date"
+      placeholder="serch recently"
+      [(ngModel)]="roundtrip.followUpDate"
+      aria-label=".form-control-sm example"
+      style="font-size: 13px; width: 100%;"
+    />
+    <textarea
+      class="form-control mb-3 mt-3"
+      id="exampleFormControlTextarea1"
+      rows="5"
+      placeholder="Type Enquiry Remarks"
+      [(ngModel)]="roundtrip.remarks"
+      style="width: 100%"
+    ></textarea>
+    <div class="w-100 " style="text-align: right;">
+      <button
+        type="button"
+        class="btn pb-1  btn-sm text-white mx-2"
+        style="background-color: #2f3268; font-size: 13px; width: 35%"
+      >
+        Not interested</button
+      ><button
+        type="button"
+      
+        class="btn pb-1 btn-sm text-white mx-2"
+        (click)="submit()"
+        style="background-color: #ff4040; font-size: 13px; width: 36%"
+      >
+      {{update?"Update Enquiry":"Log an Enquiry"}}
+      </button>
+    </div>
+  </div>
+  </div> 
+  </div> 
+</section>

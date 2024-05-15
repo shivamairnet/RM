@@ -1,0 +1,593 @@
+<main style="background-color: white !important">
+  <!-- flight input sidebar component to take input for the search request -->
+  <app-flight-input-sidebar
+    [response]="response"
+    (travlersChange)="handleTravellerCounts($event)"
+    (journeyData)="handleJourney($event)"
+    (tripsData)="handleTripsData($event)"
+    (responseData)="handleResponseData($event)"
+    (calendarData)="handleCalendarData($event)"
+  ></app-flight-input-sidebar>
+
+  <div class="searchs">
+    <!-- <ngx-spinner
+      bdColor="rgba(0, 0, 0, 0.8)"
+      size="medium"
+      color="#fff"
+      type="ball-beat"
+    >
+      <p style="color: white">Loading...</p>
+    </ngx-spinner> -->
+
+    <div class="col" style="gap: 10px; display: flex; flex-direction: column">
+      <div *ngIf="source && destination && response && response?.flightsData">
+        <span style="color: white; font-weight: 600"
+          >Flights from {{ source }} to {{ destination }}</span
+        >
+      </div>
+
+      <!-- only when there the search is for multicity the , trips data with the origin and destination will be passed to the component -->
+      <ng-container *ngIf="trips">
+        <app-flight-header [trips]="trips"></app-flight-header>
+      </ng-container>
+      <!-- only for one way trip then the calendar fare will be passed to this component -->
+      <ng-container *ngIf="response">
+        <app-flight-header
+          [adults]="adults"
+          [trips]="trips"
+          [child]="child"
+          [infants]="infant"
+          [fareType]="fareType"
+          (responseData)="handleResponseData($event)"
+          (calendarData)="handleCalendarData($event)"
+          [calendarFare]="calendarFare"
+        ></app-flight-header>
+      </ng-container>
+
+      <div class="containers" *ngIf="response">
+        <ng-container *ngIf="response && response?.flightsData">
+          <ng-container *ngFor="let flight of filteredFlights; let i = index">
+            <!-- when the journy type is multicity -->
+            <ng-container *ngIf="JourneyType === 3">
+              <div
+                class="cards"
+                (click)="
+                  handleClick(
+                    flight?.resultIndex,
+                    i,
+                    flight?.isLCC,
+                    flight?.airlineLogos,
+                    flight?.segments,
+                    flight
+                  )
+                "
+                [class.selected]="selectedFlightIndex === i"
+              >
+                <app-flight-set-card [flightSet]="flight"></app-flight-set-card>
+              </div>
+            </ng-container>
+
+            <!-- when the journey type is one way -->
+            <ng-container *ngIf="JourneyType === 1">
+              <ng-container
+                *ngFor="let item of flight?.segments; let j = index"
+              >
+                <!-- handleCard Click is used to store the flight info  -->
+
+                <div
+                  class="cards"
+                  (click)="
+                    handleClick(
+                      flight?.resultIndex,
+                      i + j,
+                      flight?.isLCC,
+                      flight?.airlineLogos,
+                      flight?.segments,
+                      flight
+                    )
+                  "
+                  [class.selected]="selectedFlightIndex === i + j"
+                >
+                  <app-flight-card-package
+                    [isRefundable]="flight?.isRefundable"
+                    [currentFlightSetLogosArray]="flight?.airlineLogos"
+                    [completeFlight]="item"
+                    [fare]="flight?.fare"
+                  ></app-flight-card-package>
+                </div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+        <!-- when the journey type is round trip -->
+        <div class="sub-containers">
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-start;
+              gap: 16px;
+              height: 100%;
+              width: 100%;
+            "
+            *ngIf="response && response?.flightsData && JourneyType === 2"
+          >
+          
+            <div style="display: flex; width: 100%;justify-content: center;align-items: center;gap: 60px;">
+              <div class="box">
+                <span>{{ source }} - {{ destination }}</span>
+              </div>
+              <div class="box">
+                <span>{{ destination }} - {{ source }}</span>
+              </div>
+            </div>
+            <ng-container *ngFor="let flight of filteredFlights; let i = index">
+              <div  (click)="
+              handleClick(
+                flight?.resultIndex,
+                i ,
+                flight?.isLCC,
+                flight?.airlineLogos,
+                flight?.segments,
+                flight
+              )
+            " style="display: flex; width: 100%;justify-content: flex-start;box-shadow: 5px 5px 10px darkgray;height: 115px; "  >
+                <!-- depart flight -->
+                <div
+                  class="cards"
+                 
+                >
+                  <app-flight-card-round-trip
+                    [isRefundable]="flight?.isRefundable"
+                    [currentFlightSetLogosArray]="flight?.airlineLogos"
+                    [completeFlight]="flight?.segments[0]"
+                    [fare]="flight?.fare"
+                  ></app-flight-card-round-trip>
+                </div>
+
+                <!-- return flight -->
+                <div
+                  (click)="
+                    handleRoundTripClick2(
+                      flight?.resultIndex,
+
+                      flight?.isLCC,
+                      flight?.airlineLogos,
+                      flight?.segments,
+                      flight
+                    )
+                  "
+                  class="cards"
+                >
+                  <app-flight-card-round-trip
+                    [isRefundable]="flight?.isRefundable"
+                    [currentFlightSetLogosArray]="flight?.airlineLogos"
+                    [completeFlight]="flight?.segments[1]"
+                    [fare]="flight?.fare"
+                  ></app-flight-card-round-trip>
+                </div>
+                <!-- ₹ -->
+              <!-- fares and CTA's -->
+                <ng-container >
+                  <div class="pricing">
+                    <!-- <div class="hover">
+                      Baggage
+                      <div style="position: relative">
+                        <img
+                          src="../../../assets/img/brand/travel-luggage.png"
+                          alt="Baggage"
+                          height="20px"
+                          width="20px"
+                          (mouseenter)="mouseEntered(0)"
+                          (mouseleave)="mouseLeft(0)"
+                          style="cursor: pointer"
+                        />
+                        <div
+                          *ngIf="tooltipStates[0]"
+                          [ngClass]="{ tooltipContainer: true, baggageTooltip: true }"
+                          (mouseenter)="mouseOnTooltip(0)"
+                        >
+                          <div class="tooltipContent">
+                            <div class="scrollable-container">
+                              <table border="1" style="border-color: #fff">
+                                <tr>
+                                  <th>Flight</th>
+                                  <th>Baggage</th>
+                                  <th>Cabin Baggage</th>
+                                </tr>
+                                <tr *ngFor="let city of flight?.segments[0]">
+                                  <td>
+                                    <span>{{ city?.Origin?.Airport?.CityCode }} </span> ->
+                                    <span>{{ city.Destination?.Airport?.CityCode }} </span>
+                                  </td>
+                                  <td>{{ city.Baggage }}</td>
+                                  <td>{{ city.CabinBaggage }}</td>
+                                </tr>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div> 
+              
+                      Refundable
+              
+                      <div style="position: relative" *ngIf="flight?.isRefundable" >
+                        <img
+                          src="../../../assets/img/brand/refundable.png"
+                          alt="Refundable"
+                          height="20px"
+                          width="20px"
+                          (mouseenter)="mouseEntered(2)"
+                          (mouseleave)="mouseLeft(2)"
+                          style="cursor: grab"
+                        />
+                        <div
+                          *ngIf="tooltipStates[2]"
+                          [ngClass]="{ tooltipContainer: true, refundableTooltip: true }"
+                          (mouseenter)="mouseOnTooltip(0)"
+                        >
+                          <div class="tooltipContent">
+                            <h1 style="margin: 0; color: #fff; font-size: 13px; padding: 2px 4px;">{{flight?.isRefundable ? 'Refundable' : 'Non-Refundable'}}</h1>
+                          </div>
+                        </div>
+                      </div>
+                    </div> -->
+
+                    <div style="display: flex;height: 20%;font-size: 12px;">
+                        hoverable Buttons
+                    </div>
+
+                    <div style="display: flex; flex-direction: column;height: 50%;align-items: center;justify-content: space-evenly;" >
+                      <div style="display: flex; align-items: center; ">
+                        <h4 style="margin: 0;padding: 0;font-size: 13px;"> Fare:</h4>
+                      <span style="font-size: 0.9rem; font-weight: 600;font-size: 13px;"> ₹ {{flight?.fare?.PublishedFare}}</span>
+                      </div>
+  
+                      <div style="display: flex; align-items: center; ">
+                        <h4 style="margin: 0;padding: 0;font-size: 11px;">Incentive:</h4>
+                        <span style="font-size: 0.8rem; display: flex;font-size: 11px;"> ₹ {{flight?.fare?.CommissionEarned.toFixed(2)}}</span>
+                      </div>
+                    </div>
+
+                    <div style="display: flex;height: 30px;align-items: center;justify-content: center;" >
+                      <button style=   " background-color: #262854;
+                      border: none;
+                      text-decoration: none;
+                      font-size: 13px;
+                      color: #fff;
+                      width: 95px;
+                      height: 23px;
+                      border-radius: 5px;">Book Now</button>
+                    </div>
+                    
+                    <!-- <input type="radio" /> -->
+                  </div>
+                 </ng-container>
+                  
+              </div>
+            </ng-container>
+          </div>
+
+          <!-- for 2nd flight -->
+          <!-- <div
+            style="
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-start;
+              gap: 16px;
+              height: 100%;
+            "
+            *ngIf="response && response?.flightsData && JourneyType === 2"
+          >
+            <div class="box">
+              <span>{{ destination }} - {{ source }}</span>
+            </div>
+            <ng-container
+              *ngFor="let flight of filteredFlights; let i = index"
+            >
+              <ng-container
+                *ngFor="let item of flight?.segments; let j = index"
+              >
+                <div
+                  (click)="
+                    handleRoundTripClick2(
+                      flight?.resultIndex,
+                      i + j,
+                      flight?.isLCC,
+                      flight?.airlineLogos,
+                      flight?.segments,
+                      flight
+                    )
+                  "
+                  [class.selected]="selectedFlightIndex2 === i + j"
+                  class="cards"
+                >
+                  <app-flight-card-round-trip
+                    [isRefundable]="flight?.isRefundable"
+                    [currentFlightSetLogosArray]="flight?.airlineLogos"
+                    [completeFlight]="item"
+                    [fare]="flight?.fare"
+                  ></app-flight-card-round-trip>
+                </div>
+              </ng-container>
+            </ng-container>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- global toggle is asscoiated with the sidebar component , when the sidebar is open then the filters should not be visible -->
+    <!-- flight filters -->
+    <div
+      *ngIf="
+        response &&
+        (response?.flightsData ||
+          (response?.flightsData1 && response?.flightsData2)) &&
+        !global.isToggle
+      "
+      class="main"
+    >
+      <div class="containerss" style="margin-right: 30px">
+        <div class="head">
+          <span>Filters</span>
+          <button
+            type="button"
+            class="btn btn-warning"
+            style="padding: 2px 6px"
+            (click)="handleFilterReset()"
+          >
+            Reset
+          </button>
+        </div>
+
+        <div class="contentss">
+          <div class="airline">
+            <span style="font-weight: 600">Refundibility</span>
+            <div class="boxs">
+              <div class="items">
+                <input
+                  type="checkbox"
+                  (change)="toggleRefundable($event.target.checked)"
+                />
+                <span>Refundable</span>
+              </div>
+              <div class="items">
+                <input
+                  type="checkbox"
+                  (change)="toggleNonRefundable($event.target.checked)"
+                />
+                <span>Non Refundable</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="airline">
+            <span style="font-weight: 600">Cost Carriers</span>
+            <div class="boxs">
+              <div class="items">
+                <input
+                  type="checkbox"
+                  (change)="toggleLCC($event.target.checked)"
+                />
+                <span>LCC</span>
+              </div>
+              <div class="items">
+                <input
+                  type="checkbox"
+                  (change)="toggleNonLCC($event.target.checked)"
+                />
+                <span>Non LCC</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="airline">
+            <span style="font-weight: 600">No Of Stops</span>
+            <div class="boxs">
+              <div class="items">
+                <input
+                  type="checkbox"
+                  (change)="toggleStops(0, $event.target.checked)"
+                />
+                <span>0</span>
+              </div>
+              <div class="items">
+                <input
+                  type="checkbox"
+                  (change)="toggleStops(1, $event.target.checked)"
+                />
+                <span>1</span>
+              </div>
+              <div class="items">
+                <input
+                  type="checkbox"
+                  (change)="toggleStops(2, $event.target.checked)"
+                />
+                <span>2</span>
+              </div>
+              <div class="items">
+                <input
+                  type="checkbox"
+                  (change)="toggleStops(3, $event.target.checked)"
+                />
+                <span>3</span>
+              </div>
+              <div class="items">
+                <input
+                  type="checkbox"
+                  (change)="toggleStops(null, $event.target.checked)"
+                />
+                <span>3 or more</span>
+              </div>
+            </div>
+          </div>
+          <div class="airline">
+            <span style="font-weight: 600">Cabin Class</span>
+            <div class="boxs">
+              <div class="items">
+                <input
+                  type="radio"
+                  name="cabinClass"
+                  (change)="toggleCabin(1, $event.target.checked)"
+                />
+                <span>All</span>
+              </div>
+              <div class="items">
+                <input
+                  type="radio"
+                  name="cabinClass"
+                  (change)="toggleCabin(2, $event.target.checked)"
+                />
+                <span>Economy</span>
+              </div>
+              <div class="items">
+                <input
+                  type="radio"
+                  name="cabinClass"
+                  (change)="toggleCabin(3, $event.target.checked)"
+                />
+                <span>Premium Economy</span>
+              </div>
+              <div class="items">
+                <input
+                  type="radio"
+                  name="cabinClass"
+                  (change)="toggleCabin(4, $event.target.checked)"
+                />
+                <span>Business</span>
+              </div>
+              <div class="items">
+                <input
+                  type="radio"
+                  name="cabinClass"
+                  (change)="toggleCabin(5, $event.target.checked)"
+                />
+                <span>Premium Business</span>
+              </div>
+              <div class="items">
+                <input
+                  type="radio"
+                  name="cabinClass"
+                  (change)="toggleCabin(6, $event.target.checked)"
+                />
+                <span>First</span>
+              </div>
+            </div>
+          </div>
+          <div class="airline">
+            <span style="font-weight: 600">Airlines</span>
+            <div class="boxs">
+              <ng-container *ngFor="let item of airlineNames">
+                <div class="items">
+                  <input
+                    type="checkbox"
+                    (change)="updateNamesArray(item, $event.target.checked)"
+                  />
+                  <span>{{ item }}</span>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+          <div class="airline">
+            <span style="font-weight: 600">Layovers</span>
+            <div class="boxs">
+              <ng-container *ngFor="let item of layoffNames">
+                <div class="items">
+                  <input
+                    type="checkbox"
+                    (change)="updateLayoffArray(item, $event.target.checked)"
+                  />
+                  <span>{{ item }}</span>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- when the flights are selected and after clicking the book button the flight data will be saved to the db -->
+    <div
+      class="book"
+      *ngIf="(isSelected || (isSelected1 && isSelected2)) && JourneyType !== 1"
+    >
+      <!-- when the journey type is roundtrip -->
+      <ng-container *ngIf="JourneyType === 2">
+        <!-- first flight -->
+        <ng-container
+        
+        >
+          <div class="cards">
+            <app-book-flight-card
+              [isRefundable]="selectedFlight?.isRefundable"
+              [currentFlightSetLogosArray]="selectedFlight?.airlineLogos"
+              [completeFlight]="selectedFlight?.segments[0]"
+              [fare]="selectedFlight?.fare"
+            ></app-book-flight-card>
+          </div>
+        </ng-container>
+        <!-- second flight -->
+        <ng-container
+         
+        >
+          <div class="cards">
+            <app-book-flight-card
+              [isRefundable]="selectedFlight2?.isRefundable"
+              [currentFlightSetLogosArray]="selectedFlight2?.airlineLogos"
+              [completeFlight]="selectedFlight?.segments[1]"
+              [fare]="selectedFlight2?.fare"
+            ></app-book-flight-card>
+          </div>
+        </ng-container>
+
+      </ng-container>
+
+      <button
+        style="
+          height: 26px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+        class="button"
+        (click)="handleBook()"
+      >
+        <span>Book now</span>
+      </button>
+
+    </div>
+    <!-- when journy type is one way -->
+    <div
+      class="book"
+      style="width: 700px; justify-content: space-around"
+      *ngIf="(isSelected || (isSelected1 && isSelected2)) && JourneyType === 1"
+    >
+      <ng-container *ngIf="JourneyType === 1">
+        <ng-container
+          *ngFor="let item of selectedFlight?.segments; let j = index"
+        >
+          <div class="cards">
+            <app-book-flight-card
+              [isRefundable]="selectedFlight?.isRefundable"
+              [currentFlightSetLogosArray]="selectedFlight?.airlineLogos"
+              [completeFlight]="item"
+              [fare]="selectedFlight?.fare"
+            ></app-book-flight-card>
+          </div>
+        </ng-container>
+      </ng-container>
+      <button
+        style="
+          height: 26px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+        class="button"
+        (click)="handleBook()"
+      >
+        <span>Book now</span>
+      </button>
+    </div>
+  </div>
+</main>

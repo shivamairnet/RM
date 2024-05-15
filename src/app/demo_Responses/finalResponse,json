@@ -1,0 +1,575 @@
+// NEW YORK
+
+"{
+   "itinerary":[
+      {
+         "dayNumber":1,
+         "date":"2022-01-01",
+         "city":"New York City",
+         "countryCode":"US",
+         "activities":[
+            {
+               "activityTimePeriod":"Morning",
+               "activityName":"Visit Statue of Liberty",
+               "location":"Liberty Island"
+            },
+            {
+               "activityTimePeriod":"Afternoon",
+               "activityName":"Explore Central Park",
+               "location":"Central Park"
+            },
+            {
+               "activityTimePeriod":"Evening",
+               "activityName":"Watch a Broadway Show",
+               "location":"Times Square"
+            }
+         ]
+      },
+      {
+         "dayNumber":2,
+         "date":"2022-01-02",
+         "city":"New York City",
+         "countryCode":"US",
+         "activities":[
+            {
+               "activityTimePeriod":"Morning",
+               "activityName":"Visit the Metropolitan Museum of Art",
+               "location":"Metropolitan Museum of Art"
+            },
+            {
+               "activityTimePeriod":"Afternoon",
+               "activityName":"Explore the High Line",
+               "location":"The High Line"
+            },
+            {
+               "activityTimePeriod":"Evening",
+               "activityName":"Dine at a rooftop restaurant",
+               "location":"Top of the Rock"
+            }
+         ]
+      },
+      {
+         "dayNumber":3,
+         "date":"2022-01-03",
+         "city":"New York City",
+         "countryCode":"US",
+         "activities":[
+            {
+               "activityTimePeriod":"Morning",
+               "activityName":"Visit the 9/11 Memorial and Museum",
+               "location":"9/11 Memorial Plaza"
+            },
+            {
+               "activityTimePeriod":"Afternoon",
+               "activityName":"Take a ferry to Ellis Island",
+               "location":"Ellis Island"
+            },
+            {
+               "activityTimePeriod":"Evening",
+               "activityName":"Enjoy a helicopter tour of NYC",
+               "location":"Downtown Manhattan Heliport"
+            }
+         ]
+      },
+      {
+         "dayNumber":4,
+         "date":"2022-01-04",
+         "city":"New York City",
+         "countryCode":"US",
+         "activities":[
+            {
+               "activityTimePeriod":"Morning",
+               "activityName":"Visit the American Museum of Natural History",
+               "location":"American Museum of Natural History"
+            },
+            {
+               "activityTimePeriod":"Afternoon",
+               "activityName":"Explore the Brooklyn Bridge",
+               "location":"Brooklyn Bridge"
+            },
+            {
+               "activityTimePeriod":"Evening",
+               "activityName":"Attend a live show at Radio City Music Hall",
+               "location":"Radio City Music Hall"
+            }
+         ]
+      },
+      {
+         "dayNumber":5,
+         "date":"2022-01-05",
+         "city":"New York City",
+         "countryCode":"US",
+         "activities":[
+            {
+               "activityTimePeriod":"Morning",
+               "activityName":"Visit the Guggenheim Museum",
+               "location":"Solomon R. Guggenheim Museum"
+            },
+            {
+               "activityTimePeriod":"Afternoon",
+               "activityName":"Shop at Fifth Avenue",
+               "location":"Fifth Avenue"
+            },
+            {
+               "activityTimePeriod":"Evening",
+               "activityName":"Experience the nightlife in the Meatpacking District",
+               "location":"Meatpacking District"
+            }
+         ]
+      }
+   ]
+}"
+
+
+// CHICAGO
+"{
+    "itinerary": [
+      {
+        "dayNumber": 1,
+        "date": "2021-08-01",
+        "city": "Chicago",
+        "countryCode": "US",
+        "activities": [
+          {
+            "activityTimePeriod": "Morning",
+            "activityName": "Explore Millennium Park",
+            "location": "201 E Randolph St, Chicago, IL 60602"
+          },
+          {
+            "activityTimePeriod": "Afternoon",
+            "activityName": "Visit the Art Institute of Chicago",
+            "location": "111 S Michigan Ave, Chicago, IL 60603"
+          },
+          {
+            "activityTimePeriod": "Evening",
+            "activityName": "Enjoy Navy Pier",
+            "location": "600 E Grand Ave, Chicago, IL 60611"
+          }
+        ]
+      },
+      {
+        "dayNumber": 2,
+        "date": "2021-08-02",
+        "city": "Chicago",
+        "countryCode": "US",
+        "activities": [
+          {
+            "activityTimePeriod": "Morning",
+            "activityName": "Take a boat tour on the Chicago River",
+            "location": "401 E Illinois St, Chicago, IL 60611"
+          },
+          {
+            "activityTimePeriod": "Afternoon",
+            "activityName": "Explore the Magnificent Mile",
+            "location": "N Michigan Ave, Chicago, IL 60611"
+          },
+          {
+            "activityTimePeriod": "Evening",
+            "activityName": "Watch a show at the Chicago Theatre",
+            "location": "175 N State St, Chicago, IL 60601"
+          }
+        ]
+      },
+      {
+        "dayNumber": 3,
+        "date": "2021-08-03",
+        "city": "Chicago",
+        "countryCode": "US",
+        "activities": [
+          {
+            "activityTimePeriod": "Morning",
+            "activityName": "Visit the Skydeck Chicago",
+            "location": "233 S Wacker Dr, Chicago, IL 60606"
+          },
+          {
+            "activityTimePeriod": "Afternoon",
+            "activityName": "Explore the Lincoln Park Zoo",
+            "location": "2001 N Clark St, Chicago, IL 60614"
+          },
+          {
+            "activityTimePeriod": "Evening",
+            "activityName": "Dine at a rooftop restaurant with a view",
+            "location": "151 E Wacker Dr, Chicago, IL 60601"
+          }
+        ]
+      },
+      {
+        "dayNumber": 4,
+        "date": "2021-08-04",
+        "city": "Chicago",
+        "countryCode": "US",
+        "activities": [
+          {
+            "activityTimePeriod": "Morning",
+            "activityName": "Visit the Shedd Aquarium",
+            "location": "1200 S Lake Shore Dr, Chicago, IL 60605"
+          },
+          {
+            "activityTimePeriod": "Afternoon",
+            "activityName": "Explore the Field Museum",
+            "location": "1400 S Lake Shore Dr, Chicago, IL 60605"
+          },
+          {
+            "activityTimePeriod": "Evening",
+            "activityName": "Stroll along the Chicago Riverwalk",
+            "location": "Chicago, IL"
+          }
+        ]
+      },
+      {
+        "dayNumber": 5,
+        "date": "2021-08-05",
+        "city": "Chicago",
+        "countryCode": "US",
+        "activities": [
+          {
+            "activityTimePeriod": "Morning",
+            "activityName": "Visit the Museum of Science and Industry",
+            "location": "5700 S Lake Shore Dr, Chicago, IL 60637"
+          },
+          {
+            "activityTimePeriod": "Afternoon",
+            "activityName": "Explore the Navy Pier Architecture Tour",
+            "location": "600 E Grand Ave, Chicago, IL 60611"
+          },
+          {
+            "activityTimePeriod": "Evening",
+            "activityName": "Enjoy a comedy show at The Second City",
+            "location": "1616 N Wells St, Chicago, IL 60614"
+          }
+        ]
+      }
+    ]
+  }"
+
+
+// BOSTON 
+"{
+    "itinerary": [
+      {
+        "dayNumber": 1,
+        "date": "2021-09-01",
+        "city": "Boston",
+        "countryCode": "US",
+        "activities": [
+          {
+            "activityTimePeriod": "Morning",
+            "activityName": "Freedom Trail",
+            "location": "Boston Common"
+          },
+          {
+            "activityTimePeriod": "Afternoon",
+            "activityName": "Fenway Park Tour",
+            "location": "4 Yawkey Way"
+          },
+          {
+            "activityTimePeriod": "Evening",
+            "activityName": "Dinner at North End",
+            "location": "Hanover Street"
+          }
+        ]
+      },
+      {
+        "dayNumber": 2,
+        "date": "2021-09-02",
+        "city": "Boston",
+        "countryCode": "US",
+        "activities": [
+          {
+            "activityTimePeriod": "Morning",
+            "activityName": "Harvard University Tour",
+            "location": "Harvard Yard"
+          },
+          {
+            "activityTimePeriod": "Afternoon",
+            "activityName": "New England Aquarium",
+            "location": "1 Central Wharf"
+          },
+          {
+            "activityTimePeriod": "Evening",
+            "activityName": "Dinner at Union Oyster House",
+            "location": "41 Union St"
+          }
+        ]
+      },
+      {
+        "dayNumber": 3,
+        "date": "2021-09-03",
+        "city": "Boston",
+        "countryCode": "US",
+        "activities": [
+          {
+            "activityTimePeriod": "Morning",
+            "activityName": "Boston Public Library",
+            "location": "700 Boylston St"
+          },
+          {
+            "activityTimePeriod": "Afternoon",
+            "activityName": "Museum of Fine Arts",
+            "location": "465 Huntington Ave"
+          },
+          {
+            "activityTimePeriod": "Evening",
+            "activityName": "Dinner at Legal Sea Foods",
+            "location": "26 Park Plaza"
+          }
+        ]
+      },
+      {
+        "dayNumber": 4,
+        "date": "2021-09-04",
+        "city": "Boston",
+        "countryCode": "US",
+        "activities": [
+          {
+            "activityTimePeriod": "Morning",
+            "activityName": "USS Constitution Museum",
+            "location": "Charlestown Navy Yard"
+          },
+          {
+            "activityTimePeriod": "Afternoon",
+            "activityName": "Boston Tea Party Ships & Museum",
+            "location": "306 Congress St"
+          },
+          {
+            "activityTimePeriod": "Evening",
+            "activityName": "Dinner at Legal Harborside",
+            "location": "270 Northern Ave"
+          }
+        ]
+      },
+      {
+        "dayNumber": 5,
+        "date": "2021-09-05",
+        "city": "Boston",
+        "countryCode": "US",
+        "activities": [
+          {
+            "activityTimePeriod": "Morning",
+            "activityName": "Skywalk Observatory",
+            "location": "800 Boylston St"
+          },
+          {
+            "activityTimePeriod": "Afternoon",
+            "activityName": "Isabella Stewart Gardner Museum",
+            "location": "25 Evans Way"
+          },
+          {
+            "activityTimePeriod": "Evening",
+            "activityName": "Dinner at Top of the Hub",
+            "location": "800 Boylston St"
+          }
+        ]
+      }
+    ]
+  }"
+
+
+
+
+
+
+
+
+
+
+  "{
+    "itinerary": [
+        {
+            "dayNumber": 1,
+            "date": "2022-01-01",
+            "city": "New York",
+            "countryCode": "US",
+            "activities": [
+                {
+                    "activityTimePeriod": "Morning",
+                    "activityName": "Visit Statue of Liberty",
+                    "location": "Liberty Island"
+                },
+                {
+                    "activityTimePeriod": "Afternoon",
+                    "activityName": "Explore Central Park",
+                    "location": "Central Park"
+                },
+                {
+                    "activityTimePeriod": "Evening",
+                    "activityName": "Watch a Broadway Show",
+                    "location": "Times Square"
+                },
+                {
+                    "activityTimePeriod": "Night",
+                    "activityName": "Experience Nightlife in Greenwich Village",
+                    "location": "Greenwich Village"
+                }
+            ]
+        },
+        {
+            "dayNumber": 2,
+            "date": "2022-01-02",
+            "city": "New York",
+            "countryCode": "US",
+            "activities": [
+                {
+                    "activityTimePeriod": "Morning",
+                    "activityName": "Visit the Metropolitan Museum of Art",
+                    "location": "Metropolitan Museum of Art"
+                },
+                {
+                    "activityTimePeriod": "Afternoon",
+                    "activityName": "Explore Times Square",
+                    "location": "Times Square"
+                },
+                {
+                    "activityTimePeriod": "Evening",
+                    "activityName": "Take a Night Tour of the City",
+                    "location": "Various Locations"
+                },
+                {
+                    "activityTimePeriod": "Night",
+                    "activityName": "Dine at a Rooftop Restaurant",
+                    "location": "Various Locations"
+                }
+            ]
+        },
+        {
+            "dayNumber": 3,
+            "date": "2022-01-03",
+            "city": "New York",
+            "countryCode": "US",
+            "activities": [
+                {
+                    "activityTimePeriod": "Morning",
+                    "activityName": "Visit the Empire State Building",
+                    "location": "Empire State Building"
+                },
+                {
+                    "activityTimePeriod": "Afternoon",
+                    "activityName": "Explore the High Line Park",
+                    "location": "The High Line"
+                },
+                {
+                    "activityTimePeriod": "Evening",
+                    "activityName": "Watch a Baseball Game at Yankee Stadium",
+                    "location": "Yankee Stadium"
+                },
+                {
+                    "activityTimePeriod": "Night",
+                    "activityName": "Enjoy a Cocktail at a Speakeasy",
+                    "location": "Various Locations"
+                }
+            ]
+        },
+        {
+            "dayNumber": 4,
+            "date": "2022-01-04",
+            "city": "New York",
+            "countryCode": "US",
+            "activities": [
+                {
+                    "activityTimePeriod": "Morning",
+                    "activityName": "Visit the 9/11 Memorial & Museum",
+                    "location": "9/11 Memorial & Museum"
+                },
+                {
+                    "activityTimePeriod": "Afternoon",
+                    "activityName": "Explore the Brooklyn Bridge",
+                    "location": "Brooklyn Bridge"
+                },
+                {
+                    "activityTimePeriod": "Evening",
+                    "activityName": "Take a Cruise on the Hudson River",
+                    "location": "Hudson River"
+                },
+                {
+                    "activityTimePeriod": "Night",
+                    "activityName": "Visit a Jazz Club",
+                    "location": "Various Locations"
+                }
+            ]
+        },
+        {
+            "dayNumber": 5,
+            "date": "2022-01-05",
+            "city": "New York",
+            "countryCode": "US",
+            "activities": [
+                {
+                    "activityTimePeriod": "Morning",
+                    "activityName": "Visit the Museum of Natural History",
+                    "location": "American Museum of Natural History"
+                },
+                {
+                    "activityTimePeriod": "Afternoon",
+                    "activityName": "Shop at Fifth Avenue",
+                    "location": "Fifth Avenue"
+                },
+                {
+                    "activityTimePeriod": "Evening",
+                    "activityName": "Watch a Performance at Lincoln Center",
+                    "location": "Lincoln Center"
+                },
+                {
+                    "activityTimePeriod": "Night",
+                    "activityName": "Visit a Speakeasy Bar",
+                    "location": "Various Locations"
+                }
+            ]
+        },
+        {
+            "dayNumber": 6,
+            "date": "2022-01-06",
+            "city": "New York",
+            "countryCode": "US",
+            "activities": [
+                {
+                    "activityTimePeriod": "Morning",
+                    "activityName": "Visit the Guggenheim Museum",
+                    "location": "Solomon R. Guggenheim Museum"
+                },
+                {
+                    "activityTimePeriod": "Afternoon",
+                    "activityName": "Explore the Chelsea Market",
+                    "location": "Chelsea Market"
+                },
+                {
+                    "activityTimePeriod": "Evening",
+                    "activityName": "Enjoy a Broadway Show",
+                    "location": "Various Theaters"
+                },
+                {
+                    "activityTimePeriod": "Night",
+                    "activityName": "Visit a Rooftop Bar",
+                    "location": "Various Locations"
+                }
+            ]
+        },
+        {
+            "dayNumber": 7,
+            "date": "2022-01-07",
+            "city": "New York",
+            "countryCode": "US",
+            "activities": [
+                {
+                    "activityTimePeriod": "Morning",
+                    "activityName": "Visit the Brooklyn Museum",
+                    "location": "Brooklyn Museum"
+                },
+                {
+                    "activityTimePeriod": "Afternoon",
+                    "activityName": "Explore the Brooklyn Botanic Garden",
+                    "location": "Brooklyn Botanic Garden"
+                },
+                {
+                    "activityTimePeriod": "Evening",
+                    "activityName": "Visit Coney Island",
+                    "location": "Coney Island"
+                },
+                {
+                    "activityTimePeriod": "Night",
+                    "activityName": "Experience Nightlife in Williamsburg",
+                    "location": "Williamsburg"
+                }
+            ]
+        }
+    ]
+}"
