@@ -1,6 +1,7 @@
 <main style="background-color: white !important">
-  <!-- flight input sidebar component to take input for the search request -->
-  <app-flight-input-sidebar
+  
+  <div>
+    <app-flight-input-sidebar
     [response]="response"
     (travlersChange)="handleTravellerCounts($event)"
     (journeyData)="handleJourney($event)"
@@ -591,4 +592,7 @@
       </button>
     </div>
   </div>
+  </div>
+ 
+
 </main>
