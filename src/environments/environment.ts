@@ -14,11 +14,16 @@ export const environment = {
     measurementId: "G-L6B971XRV8",
   },
   production: false,
+<<<<<<< HEAD
   
+=======
+
+
+>>>>>>> cd5d1731f3bdca77327b9665b314361182c46723
   FRONTEND_BASE_URL: "https://localhost:4200",
 
-  // BACKEND_BASE_URL: "https://api.rhombee.com",
-  BACKEND_BASE_URL: "http://localhost:4000",
+  BACKEND_BASE_URL: "https://api.rhombee.com",
+  //BACKEND_BASE_URL: "http://localhost:4000",
 };
 
 /*

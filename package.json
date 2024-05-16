@@ -62,11 +62,11 @@
     "util": "^0.12.5",
     "uuid": "^9.0.1",
     "web-animations-js": "2.3.2",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "@angular-devkit/build-angular": "^14.2.7",
+    "@angular/cli": "~14.2.7"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^14.2.7",
-    "@angular/cli": "~14.2.7",
     "@angular/compiler-cli": "^14.2.0",
     "@angular/language-service": "14.2.0",
     "@types/google.maps": "^3.55.5",
