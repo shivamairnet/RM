@@ -15,7 +15,7 @@ import axios from 'axios'
 import { cashfree } from "../checkout/util";
 import { AuthService } from "src/app/Services/auth.service";
 import { UserModel } from "src/app/model/user-model";
-
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-pricing",
@@ -96,7 +96,7 @@ export class PricingComponent implements OnInit {
   async getSessionId(value: string): Promise<void> {
     this.loading = true;
     try {
-      const res = await axios.post('http://localhost:4000/api/payment', { version: this.version,value:value });
+      const res = await axios.post(`${environment.BACKEND_BASE_URL}/api/payment`, { version: this.version,value:value });
       this.loading = false;
       this.sessionId = res.data;
       if(res.data.success){

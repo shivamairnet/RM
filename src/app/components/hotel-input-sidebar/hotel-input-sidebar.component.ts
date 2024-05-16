@@ -232,7 +232,7 @@ export class HotelInputSidebarComponent implements OnInit {
 // csv to json countrycodes conversion
   async convertCSVToJsonCountry() {
     console.log()
-    // const res = await fetch('http://localhost:4000/hotel/getCsvData');
+    // const res = await fetch(`${environment.BACKEND_BASE_URL}/hotel/getCsvData`);
     const res=await this.flights.getCountryData();
     const csvData = await res.text();
   
@@ -259,7 +259,7 @@ export class HotelInputSidebarComponent implements OnInit {
 
   // csv to json citycode conversion
   async convertCSVToJsonCity() {
-    // const res = await fetch('http://localhost:4000/hotel/getCsvData');
+    // const res = await fetch(`${environment.BACKEND_BASE_URL}/hotel/getCsvData`);
     // const res=await this.pack.getCsvData();
     // const csvData = await res.text();
   

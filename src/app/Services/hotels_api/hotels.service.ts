@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-
+import { environment } from "src/environments/environment";
 import axios from 'axios';
 import {
   Firestore,
@@ -117,7 +117,7 @@ export class HotelsService {
   async getAllDetails(resultCount:number,docUid:string) {
 
     try {
-      const {data} = await axios.post('http://localhost:4000/hotel/getIternary', { resultCount: resultCount ,docUid});
+      const {data} = await axios.post(`${environment.BACKEND_BASE_URL}/hotel/getIternary`, { resultCount: resultCount ,docUid});
       console.log("made call to flights i nthe hotel service")
       console.log(data);
       return data;
@@ -164,7 +164,7 @@ export class HotelsService {
     }
     console.log(payload)
     try{
-      const {data}=await axios.post('http://localhost:4000/hotel/sendChangeRequest',payload);
+      const {data}=await axios.post(`${environment.BACKEND_BASE_URL}/hotel/sendChangeRequest`,payload);
       if(data){
         console.log(data)
       }
@@ -183,7 +183,7 @@ export class HotelsService {
     }
     console.log(payload)
     try{
-      const {data}=await axios.post('http://localhost:4000/hotel/getChangeRequest',payload);
+      const {data}=await axios.post(`${environment.BACKEND_BASE_URL}/hotel/getChangeRequest`,payload);
       if(data){
         console.log(data)
         
@@ -200,7 +200,7 @@ export class HotelsService {
 
   async hotelSearch(payload:any){
     try{
-      const res = await axios.post('http://localhost:4000/hotel/hotelSearch', payload);
+      const res = await axios.post(`${environment.BACKEND_BASE_URL}/hotel/hotelSearch`, payload);
       return res;
 
     }catch(error){
@@ -212,7 +212,7 @@ export class HotelsService {
   async hotelBlockRoom(payload:any){
     console.log(payload)
     try{
-      const res=await axios.post('http://localhost:4000/hotel/singleHotelBlockRoom',payload);
+      const res=await axios.post(`${environment.BACKEND_BASE_URL}/hotel/singleHotelBlockRoom`,payload);
       console.log(res)
       return res.data;
     }catch(error){
@@ -222,7 +222,7 @@ export class HotelsService {
 
   async singleHotelBookRoom(payload:any){
     try{
-      const {data}=await axios.post('http://localhost:4000/hotel/singleHotelBookRoom',payload);
+      const {data}=await axios.post(`${environment.BACKEND_BASE_URL}/hotel/singleHotelBookRoom`,payload);
       return data;
     }catch(error){
       console.log(error.message)
@@ -231,7 +231,7 @@ export class HotelsService {
 
   async hotelBookingDetails(payload:any){
     try{
-      const {data}=await axios.post('http://localhost:4000/hotel/getBookingDetails',payload);
+      const {data}=await axios.post(`${environment.BACKEND_BASE_URL}/hotel/getBookingDetails`,payload);
       return data;
     }catch(error){
       console.log(error.message)

@@ -11,7 +11,7 @@ import { Route, Router } from "@angular/router";
 import { ActivatedRoute } from '@angular/router';
 import { CustomerInfoService } from 'src/app/Services/customer-info.service';
 import { ApiResponse } from '../not-regitered/res';
-
+import { environment } from "src/environments/environment";
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
@@ -51,7 +51,7 @@ userData:{contactNumber:string,merchantId:string}={
 
   async loginUser(data:any){
     try {
-      const res= await this.http.post('http://localhost:4000/crm/login',data).toPromise() as ApiResponse;
+      const res= await this.http.post(`${environment.BACKEND_BASE_URL}/crm/login`,data).toPromise() as ApiResponse;
       console.log(res);
       if(res.success==true){
         this.data.setUserData(res.userDetails);

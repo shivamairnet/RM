@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import axios from 'axios'
-
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root",
@@ -90,7 +90,7 @@ export class FlightsService {
     }
     console.log(payload)
     try{
-      const {data}=await axios.post('http://localhost:4000/flight/sendChangeRequest',payload);
+      const {data}=await axios.post(`${environment.BACKEND_BASE_URL}/flight/sendChangeRequest`,payload);
       if(data){
         console.log(data)
       }
@@ -110,7 +110,7 @@ export class FlightsService {
     }
     console.log(payload)
     try{
-      const {data}=await axios.post('http://localhost:4000/flight/sendChangeRequestPartial',payload);
+      const {data}=await axios.post(`${environment.BACKEND_BASE_URL}/flight/sendChangeRequestPartial`,payload);
       if(data){
         console.log(data)
       }
@@ -123,7 +123,7 @@ export class FlightsService {
 
   async getCsvData(){
     try{
-      const res = await fetch('http://localhost:4000/flight/getCsvData');
+      const res = await fetch(`${environment.BACKEND_BASE_URL}/flight/getCsvData`);
       // const csvData = await res.text();
       if(res){
         return res;
@@ -134,7 +134,7 @@ export class FlightsService {
    }
   async getCountryData(){
     try{
-      const res = await fetch('http://localhost:4000/flight/getCountryData');
+      const res = await fetch(`${environment.BACKEND_BASE_URL}/flight/getCountryData`);
       // const csvData = await res.text();
       if(res){
         return res;
@@ -146,7 +146,7 @@ export class FlightsService {
 
   async flightSearch(payload:any){
     try{
-      const res=await axios.post('http://localhost:4000/flight/searchflight',payload);
+      const res=await axios.post(`${environment.BACKEND_BASE_URL}/flight/searchflight`,payload);
       if(res.data.data){
         console.log(res.data.data)
       }
@@ -157,7 +157,7 @@ export class FlightsService {
   async fareRule(payload:any){
     console.log('farequote',payload)
     try{
-      const res=await axios.post('http://localhost:4000/flight/fareRule',payload);
+      const res=await axios.post(`${environment.BACKEND_BASE_URL}/flight/fareRule`,payload);
       if(res.data){
         console.log(res.data)
         return res.data
@@ -169,7 +169,7 @@ export class FlightsService {
   async fareQuote(payload:any){
     console.log('farequote',payload)
     try{
-      const res=await axios.post('http://localhost:4000/flight/fareQuote',payload);
+      const res=await axios.post(`${environment.BACKEND_BASE_URL}/flight/fareQuote`,payload);
       if(res.data){
         console.log(res.data)
         return res.data
@@ -182,7 +182,7 @@ export class FlightsService {
     console.log('ssr',payload)
 
     try{
-      const res=await axios.post('http://localhost:4000/flight/ssr',payload);
+      const res=await axios.post(`${environment.BACKEND_BASE_URL}/flight/ssr`,payload);
       if(res.data){
         console.log(res.data)
         return res.data
@@ -197,7 +197,7 @@ export class FlightsService {
 
   async flightBooking(payload:any){
     try{
-      const {data}=await axios.post('http://localhost:4000/flight/flightBook',payload);
+      const {data}=await axios.post(`${environment.BACKEND_BASE_URL}/flight/flightBook`,payload);
       if(data){
         return data;
       }
@@ -208,7 +208,7 @@ export class FlightsService {
   
   async ticketLCC(payload:any){
     try{
-      const {data}=await axios.post('http://localhost:4000/flight/ticketLCC',payload);
+      const {data}=await axios.post(`${environment.BACKEND_BASE_URL}/flight/ticketLCC`,payload);
       console.log(data);
       return data
       // await this.getFlightBookingDetails()
@@ -219,7 +219,7 @@ export class FlightsService {
 
   async ticketNonLCC(payload:any){
     try{
-      const {data}=await axios.post('http://localhost:4000/flight/ticketNonLCC',payload);
+      const {data}=await axios.post(`${environment.BACKEND_BASE_URL}/flight/ticketNonLCC`,payload);
       console.log(data);
       return data
       // await this.getFlightBookingDetails()
@@ -229,7 +229,7 @@ export class FlightsService {
   }
   async getFlightBookingDetails(payload:any){
     try{
-      const {data}=await axios.post('http://localhost:4000/flight/getFlightBookingDetails',payload)
+      const {data}=await axios.post(`${environment.BACKEND_BASE_URL}/flight/getFlightBookingDetails`,payload)
       console.log(data)
       return data
     }catch(error){

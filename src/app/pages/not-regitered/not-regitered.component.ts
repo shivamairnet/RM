@@ -3,7 +3,7 @@ import { Route, Router } from "@angular/router";
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ApiResponse } from './res';
-
+import { environment } from "src/environments/environment";
 @Component({
   selector: 'app-not-regitered',
   templateUrl: './not-regitered.component.html',
@@ -42,7 +42,7 @@ export class NotRegiteredComponent implements OnInit {
  
  
   async postData(data: any) {
-    const url = 'http://localhost:4000/crm/register';
+    const url = `${environment.BACKEND_BASE_URL}/crm/register`;
     try {
       
       const response = await this.http.post(url, this.userData).toPromise() as ApiResponse;  

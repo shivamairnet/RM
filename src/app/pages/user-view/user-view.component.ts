@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Cashfree, load } from '@cashfreepayments/cashfree-js';
 import { cashfree } from "./util";
 import { TransactionsService } from 'src/app/Services/transactions.service';
-
+import { environment } from "src/environments/environment";
 @Component({
   selector: 'app-user-view',
   templateUrl: './user-view.component.html',
@@ -70,7 +70,7 @@ export class UserViewComponent implements OnInit {
     this.loading = true;
     console.log(value)
     try {
-      const res = await axios.post('http://localhost:4000/createOrder', { version: this.version,form:this.form,cost:this.totalCost });
+      const res = await axios.post(`${environment.BACKEND_BASE_URL}/createOrder`, { version: this.version,form:this.form,cost:this.totalCost });
       this.loading = false;
       this.sessionId = res.data;
       if(res.data.success){

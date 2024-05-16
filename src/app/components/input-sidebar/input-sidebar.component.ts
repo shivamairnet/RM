@@ -455,7 +455,7 @@ selectFareType(index:number,isChecked: boolean){
 
 async convertCSVToJson() {
   console.log()
-  // const res = await fetch('http://localhost:4000/hotel/getCsvData');
+  // const res = await fetch(`${environment.BACKEND_BASE_URL}/hotel/getCsvData`);
   const res=await this.flights.getCsvData();
   const csvData = await res.text();
 

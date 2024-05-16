@@ -49,7 +49,7 @@ export class AddUserComponent implements OnInit {
 
   async sendMessage(formValues){
     try{
-      const res=await axios.post('http://localhost:4000/sendMsg',{formValues,uid:this.uid});
+      const res=await axios.post(`${environment.BACKEND_BASE_URL}/sendMsg',{formValues,uid:this.uid});
       // console.log(res.data.error)
       if(res.data.success){
         this.showToast('success', 'Message Sent', res.data.message);

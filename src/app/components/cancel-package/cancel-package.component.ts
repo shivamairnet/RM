@@ -10,7 +10,7 @@ import { FlightsService } from 'src/app/Services/flights_api/flights.service';
 import { HotelBookingService } from 'src/app/Services/hotels_booking/hotel-booking.service';
 import { FlightBookingService } from 'src/app/Services/flight_booking/flight-booking.service';
 import { Router } from '@angular/router';
-
+import { environment } from "src/environments/environment";
 @Component({
   selector: 'app-cancel-package',
   templateUrl: './cancel-package.component.html',
@@ -298,7 +298,7 @@ export class CancelPackageComponent implements OnInit {
 
     }
     try{
-      const res=await axios.post('http://localhost:4000/hotel/singleSendChangeRequest',payload);
+      const res=await axios.post(`${environment.BACKEND_BASE_URL}/hotel/singleSendChangeRequest`,payload);
       console.log(res)
       await this.singleHotelChangeRequestId(token)
     }catch(error){
@@ -315,7 +315,7 @@ export class CancelPackageComponent implements OnInit {
 
     }
     try{
-      const res=await axios.post('http://localhost:4000/hotel/singleGetChangeRequest',payload);
+      const res=await axios.post(`${environment.BACKEND_BASE_URL}/hotel/singleGetChangeRequest`,payload);
       console.log(res)
     }catch(error){
       console.log(error.message)
@@ -332,7 +332,7 @@ export class CancelPackageComponent implements OnInit {
 
     }
     try{
-      const res=await axios.post('http://localhost:4000/flight/singleSendChangeRequest',payload);
+      const res=await axios.post(`${environment.BACKEND_BASE_URL}/flight/singleSendChangeRequest`,payload);
       console.log(res)
       await this.singleFlightChangeRequestId(token)
     }catch(error){
@@ -352,7 +352,7 @@ export class CancelPackageComponent implements OnInit {
     }
     console.log(payload)
     try{
-      const res=await axios.post('http://localhost:4000/flight/singleSendChangeRequestPartial',payload);
+      const res=await axios.post(`${environment.BACKEND_BASE_URL}/flight/singleSendChangeRequestPartial`,payload);
       console.log(res)
       await this.singleFlightChangeRequestId(token)
     }catch(error){
@@ -368,7 +368,7 @@ export class CancelPackageComponent implements OnInit {
 
     }
     try{
-      const res=await axios.post('http://localhost:4000/flight/getChangeRequest',payload);
+      const res=await axios.post(`${environment.BACKEND_BASE_URL}/flight/getChangeRequest`,payload);
       console.log(res)
     }catch(error){
       console.log(error.message)
