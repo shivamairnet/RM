@@ -190,11 +190,13 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.responseId = params.responseId;
+
       if (this.responseId) {
         this.fetchResponseDataFromFirestore(this.responseId);
       } else {
         this.generateResponseData();
       }
+
     });
 
     this.departureSearchSubject
@@ -1069,8 +1071,13 @@ generateConnectionHTML(connection, city, arrivalDate,i) {
   citiesArrivalDates: string[] = [];
 
   generateResponseData() {
+
     // here i am getting the itinerary data from service
     this.countryService.getResponseData().subscribe((responseData) => {
+
+      console.log('In generate response data');
+      console.log(responseData);
+
       if (Object.keys(responseData).length !== 0 && responseData !== "") {
         this.responseData = responseData;
         // // Access the cities array within the trip object
@@ -1114,6 +1121,7 @@ generateConnectionHTML(connection, city, arrivalDate,i) {
           createdOn: "",
         } as any);
       }
+     
     });
   }
 
@@ -1966,15 +1974,13 @@ saveResponseDataToFirestore() {
   buildItinerary(): void {
     this.start=false
     this.countryService.setSelectedCities(this.selectedCities);
-    this.createDocument();
 
-    // this.postreq.getDaysAndConnections();
-     //ss
-     this.start=false
+    // storing the data from data in session
+    this.createDocument();
 
     this.postreq.buildMyItinerary();
 
-    // this.loading = true;
+
   }
 
   createDocument() {

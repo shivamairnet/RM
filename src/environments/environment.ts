@@ -15,11 +15,11 @@ export const environment = {
   },
   production: false,
 
-  OPENAI_API_KEY: "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",
 
   FRONTEND_BASE_URL: "https://localhost:4200",
 
-  BACKEND_BASE_URL: "https://api.rhombee.com",
+  // BACKEND_BASE_URL: "https://api.rhombee.com",
+  BACKEND_BASE_URL: "http://localhost:4000",
 };
 
 /*

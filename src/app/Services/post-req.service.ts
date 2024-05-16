@@ -164,7 +164,7 @@ export class PostReqService {
   // ---------------------------------------------------------------------------------------------------
  
 
-  async buildMyItinerary(){
+  async   buildMyItinerary(){
     console.log("call recieved to build itinerary")
     const storedData = window.sessionStorage.getItem("myData");
 
