@@ -8,19 +8,12 @@ import {
 } from "@angular/forms";
 
 import { Route, Router } from "@angular/router";
-<<<<<<< HEAD
 import { ActivatedRoute } from "@angular/router";
 import { CustomerInfoService } from "src/app/Services/customer-info.service";
 import { ApiResponse } from "../not-regitered/res";
 import { environment } from "src/environments/environment";
 import { CrmServiceService } from "src/app/Services/CRM/crm-service.service";
 
-=======
-import { ActivatedRoute } from '@angular/router';
-import { CustomerInfoService } from 'src/app/Services/customer-info.service';
-import { ApiResponse } from '../not-regitered/res';
-import { environment } from "src/environments/environment";
->>>>>>> dd61dc5229df6b8d4a4c7d4bff7c190247496018
 @Component({
   selector: "app-admin-dashboard",
   templateUrl: "./admin-dashboard.component.html",
@@ -60,14 +53,10 @@ export class AdminDashboardComponent implements OnInit {
 
   async loginUser(data: any) {
     try {
-<<<<<<< HEAD
 
       console.log("request made to login")
       const res =await this.crmService.loginCustomer(this.userData)
 
-=======
-      const res= await this.http.post(`${environment.BACKEND_BASE_URL}/crm/login`,data).toPromise() as ApiResponse;
->>>>>>> dd61dc5229df6b8d4a4c7d4bff7c190247496018
       console.log(res);
       if (res.success) {
        console.log("user not found")        
