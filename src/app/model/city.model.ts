@@ -1,22 +1,27 @@
+// src/app/models/city.model.ts
 export class City {
-    
-    name?: string;
-    description?: string;
-    cost?: string;
-    tags?: string[];
-    imageUrl?: string;
-  
-    constructor(
-        public cityName: string,
-        public cityDescription: string,
-        public cityCost: string,
-        public cityTags: string[],
-        public cityImageUrl: string,
-      ) {
-        this.cityName = cityName;
-        this.cityDescription = cityDescription;
-        this.cityCost = cityCost;
-        this.cityTags = cityTags;
-        this.cityImageUrl = cityImageUrl;
-        }
-  }
+	city_id: number;
+	city_name: string;
+	state_name: string;
+	country_name: string;
+	country_code: string;
+
+	constructor(
+		city_id: number,
+		city_name: string,
+		state_name: string,
+		country_name: string,
+		country_code: string
+	) {
+		this.city_id = city_id;
+		this.city_name = city_name;
+		this.state_name = state_name;
+		this.country_name = country_name;
+		this.country_code = country_code;
+	}
+}
+
+export interface SelectedCity {
+	city_id: number;
+	city_name: string;
+}

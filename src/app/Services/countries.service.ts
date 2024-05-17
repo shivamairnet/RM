@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { City } from '../model/city.model';
+import { City, SelectedCity } from '../model/city.model';
 import * as utils from 'src/utils';
 import { Firestore, collection, CollectionReference, DocumentData, onSnapshot, doc, getDoc, Query, orderBy, query, addDoc } from '@angular/fire/firestore';
 import { DOCUMENT } from '@angular/common';
@@ -25,7 +25,7 @@ export class CountriesService {
   private selectedAdultsSubject = new BehaviorSubject<string>('');
   private selectedChildrenSubject = new BehaviorSubject<string>('');
   private selectedVisaTypeSubject = new BehaviorSubject<string>('');
-  private selectedCitiesSubject = new BehaviorSubject<string[]>([]);
+  private selectedCitiesSubject = new BehaviorSubject<SelectedCity[]>([]);
   selectedMonth!: string;
 
   collectionSubject = new BehaviorSubject<any[]>(null)
@@ -160,11 +160,11 @@ export class CountriesService {
     return this.selectedVisaTypeSubject.asObservable();
   }
 
-  setSelectedCities(cities: string[]): void {
+  setSelectedCities(cities: SelectedCity[]): void {
     this.selectedCitiesSubject.next(cities);
   }
 
-  getSelectedCities(): Observable<string[]> {
+  getSelectedCities(): Observable<SelectedCity[]> {
     return this.selectedCitiesSubject.asObservable();
   }
 

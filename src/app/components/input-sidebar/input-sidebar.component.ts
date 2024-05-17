@@ -10,7 +10,7 @@ import { CITY_JSON } from 'src/app/classes/citiesJson';
 import { CITY_DETAIL } from 'src/app/classes/cityDetail';
 import { Papa } from 'ngx-papaparse';
 import { FlightsService } from 'src/app/Services/flights_api/flights.service';
-
+import { City, SelectedCity } from './../../model/city.model';
 
 @Component({
   selector: 'app-input-sidebar',
@@ -45,7 +45,7 @@ export class InputSidebarComponent implements OnInit {
   selectedStar: string = '';
   selectedPrice: string = '';
   selectedProperty: string = '';
-  selectedCities: string[] = [];
+  selectedCities: SelectedCity[] = [];
   ageInputValue: number;
   visaTypeData!: string;
   numberFormControl2: FormArray;
@@ -361,12 +361,13 @@ export class InputSidebarComponent implements OnInit {
   }
 
   
-  onCitySelect(cityName: string): void {
-    const index = this.selectedCities.indexOf(cityName);
+  onCitySelect(city: City): void {
+    const index = this.selectedCities.findIndex(selectedCity => selectedCity.city_id === city.city_id);
     if (index > -1) {
       this.selectedCities.splice(index, 1); // Remove the city if already selected
     } else {
-      this.selectedCities.push(cityName); // Add the city name if not already selected
+      this.selectedCities.push(city); // Add the city if not already selected
+      console.log(this.selectedCities);
     }
   }
   onSearchCity(): void {

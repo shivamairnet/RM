@@ -888,8 +888,8 @@
               >
                 Select Destination
               </a>
-              <ng-container *ngFor="let cityName of selectedCities">
-                <p class="fw-bold py-2 px-2 m-0 text-dark">{{ cityName }}</p>
+              <ng-container *ngFor="let city of selectedCities">
+                <p class="fw-bold py-2 px-2 m-0 text-dark">{{ city.city_name }}</p>
               </ng-container>
             </div>
             <div
@@ -928,7 +928,7 @@
                     <div style="width: 100%;" *ngIf="destinationSearchAirports && destinationSearchAirports.length > 0" >
                       <h3 style="margin: 0;">Airports:</h3>
                       <ul style="color: #000;list-style-type: none;padding: 0;">
-                        <li *ngFor="let airport of destinationSearchAirports" (click)="onCitySelect(airport.city)" >
+                        <li *ngFor="let airport of destinationSearchAirports" (click)="onCitySelect(airport)" >
                           <ng-container *ngIf="airport.iata!==null" >
                           <div style="cursor: pointer; display: flex;width: 100%;   border: 1px solid lightgray;
                           border-radius: 5px;
@@ -959,7 +959,7 @@
                     <div style="width: 100%;" *ngIf="destinationSearchCities && destinationSearchCities.length > 0">
                       <h3>Cities:</h3>
                       <ul style="color: #000;list-style-type: none;padding: 0;">
-                        <li *ngFor="let city of destinationSearchCities" (click)="onCitySelect(city.city_name)"  style="cursor: pointer;    border: 1px solid lightgray;
+                        <li *ngFor="let city of destinationSearchCities" (click)="onCitySelect(city)"  style="cursor: pointer;    border: 1px solid lightgray;
                         border-radius: 5px;
                         font-size: 13px;
                         line-height: 21px;
