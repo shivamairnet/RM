@@ -1056,8 +1056,8 @@
               >
                 Select Destination
               </a>
-              <ng-container *ngFor="let cityName of selectedCities">
-                <p class="fw-bold py-2 px-2 m-0 text-dark">{{ cityName }}</p>
+              <ng-container *ngFor="let city of selectedCities">
+                <p class="fw-bold py-2 px-2 m-0 text-dark">{{ city.city_name }}</p>
               </ng-container>
             </div>
             <div
@@ -1093,6 +1093,7 @@
                       aria-label="Search"
                       list="cityOptions"
                     />
+<<<<<<< HEAD
                     <div
                       style="width: 100%"
                       *ngIf="destinationSearchAirports && destinationSearchAirports.length > 0"
@@ -1147,6 +1148,33 @@
                                   airport.country_name }}
                                 </h4>
                               </div>
+=======
+                    <div style="width: 100%;" *ngIf="destinationSearchAirports && destinationSearchAirports.length > 0" >
+                      <h3 style="margin: 0;">Airports:</h3>
+                      <ul style="color: #000;list-style-type: none;padding: 0;">
+                        <li *ngFor="let airport of destinationSearchAirports" (click)="onCitySelect(airport)" >
+                          <ng-container *ngIf="airport.iata!==null" >
+                          <div style="cursor: pointer; display: flex;width: 100%;   border: 1px solid lightgray;
+                          border-radius: 5px;
+                          font-size: 13px;
+                          line-height: 21px;
+                          font-weight: 600;
+                          margin: 3px 0;" >
+  
+                          
+                            <span style="    width: 10%;
+                            margin: 0;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;"  class="emoji">{{ airport.emoji }}</span>
+                            <div style="    display: flex;
+                            width: 90%;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;">
+                              <h4 style="margin: 0;"> {{ airport.iata }} - {{ airport.name }}</h4>
+                              <h4 style="margin: 0;">{{ airport.city || airport.city_alias }},{{ airport.country_name }}</h4>
+>>>>>>> dd61dc5229df6b8d4a4c7d4bff7c190247496018
                             </div>
                           </ng-container>
                         </li>
@@ -1157,6 +1185,7 @@
                       *ngIf="destinationSearchCities && destinationSearchCities.length > 0"
                     >
                       <h3>Cities:</h3>
+<<<<<<< HEAD
                       <ul
                         style="color: #000; list-style-type: none; padding: 0"
                       >
@@ -1201,6 +1230,30 @@
                                 {{ city.country_name }},
                               </h4>
                             </div>
+=======
+                      <ul style="color: #000;list-style-type: none;padding: 0;">
+                        <li *ngFor="let city of destinationSearchCities" (click)="onCitySelect(city)"  style="cursor: pointer;    border: 1px solid lightgray;
+                        border-radius: 5px;
+                        font-size: 13px;
+                        line-height: 21px;
+                        font-weight: 600;
+                        margin: 3px 0;">
+                        <div style="display: flex;">
+                          <span style="    width: 10%;
+                          margin: 0;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;"  class="emoji">{{ city.emoji }}</span>
+                          <div style="    display: flex;
+                          width: 90%;
+                          flex-direction: column;
+                          align-items: center;
+                          justify-content: center;">
+  
+                          <h4 style="margin: 0;">  {{ city.city_name  }}, 
+                            {{ city.state_name }} </h4>
+                            <h4 style="margin: 0;"> {{ city.country_name }}, </h4>
+>>>>>>> dd61dc5229df6b8d4a4c7d4bff7c190247496018
                           </div>
                         </li>
                       </ul>

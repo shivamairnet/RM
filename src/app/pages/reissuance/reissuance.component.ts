@@ -5,7 +5,7 @@ import axios from 'axios';
 import { FlightBookingService } from 'src/app/Services/flight_booking/flight-booking.service';
 import { FlightsService } from 'src/app/Services/flights_api/flights.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-
+import { environment } from "src/environments/environment";
 @Component({
   selector: 'app-reissuance',
   templateUrl: './reissuance.component.html',
@@ -199,7 +199,7 @@ export class ReissuanceComponent implements OnInit {
       
     
   
-      const res = await axios.post('http://localhost:4000/flight/searchFlightReissuance', payload);
+      const res = await axios.post(`${environment.BACKEND_BASE_URL}/flight/searchFlightReissuance`, payload);
   
       if (res) {
         console.log(res)
@@ -483,7 +483,7 @@ export class ReissuanceComponent implements OnInit {
   
       
     try{
-      const res=await axios.post('http://localhost:4000/flight/calendarFare',payload)
+      const res=await axios.post(`${environment.BACKEND_BASE_URL}/flight/calendarFare`,payload)
       console.log(res.data)
       this.calendarFare=res.data.data.data
       console.log(this.calendarFare)

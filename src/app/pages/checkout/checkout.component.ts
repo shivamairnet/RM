@@ -5,7 +5,7 @@ import { cashfree } from "./util";
 import { Cashfree, load } from '@cashfreepayments/cashfree-js';
 import { AuthService } from "src/app/Services/auth.service";
 import { UserModel } from "src/app/model/user-model";
-
+import { environment } from "src/environments/environment";
 @Component({
   selector: "app-checkout",
   templateUrl: "./checkout.component.html",
@@ -134,7 +134,7 @@ export class CheckoutComponent implements OnInit {
   async getSessionId(value: string): Promise<void> {
     this.loading = true;
     try {
-      const res = await axios.post('http://localhost:4000/createOrder', { version: this.version,value:value });
+      const res = await axios.post(`${environment.BACKEND_BASE_URL}/createOrder`, { version: this.version,value:value });
       this.loading = false;
       this.sessionId = res.data;
       if(res.data.success){

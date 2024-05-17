@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import axios from 'axios';
-
+import { environment } from "src/environments/environment";
 @Component({
   selector: 'app-flight-header',
   templateUrl: './flight-header.component.html',
@@ -66,7 +66,7 @@ export class FlightHeaderComponent implements OnInit {
     }
 
     try{
-      const res=await axios.post('http://localhost:4000/flight/searchflight',payload);
+      const res=await axios.post(`${environment.BACKEND_BASE_URL}/flight/searchflight`,payload);
       console.log(res);
       this.response=res.data;
       

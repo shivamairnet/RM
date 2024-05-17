@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { environment } from "src/environments/environment";
 @Injectable({
   providedIn: 'root'
 })
@@ -16,6 +16,6 @@ export class ShareService {
       htmlContent
     };
       console.log(htmlContent)
-    return this.http.post<any>('http://localhost:4000/sendMail', emailData);
+    return this.http.post<any>(`${environment.BACKEND_BASE_URL}/sendMail`, emailData);
   }
 }

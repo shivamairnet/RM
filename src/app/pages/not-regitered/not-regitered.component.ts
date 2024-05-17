@@ -1,6 +1,7 @@
 import { CrmServiceService } from 'src/app/Services/CRM/crm-service.service';
 import { AfterViewInit, Component, OnInit } from "@angular/core";
 import { Route, Router } from "@angular/router";
+<<<<<<< HEAD
 import { ActivatedRoute } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { ApiResponse } from "./res";
@@ -15,6 +16,12 @@ interface UserData{
 
 
 
+=======
+import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { ApiResponse } from './res';
+import { environment } from "src/environments/environment";
+>>>>>>> dd61dc5229df6b8d4a4c7d4bff7c190247496018
 @Component({
   selector: "app-not-regitered",
   templateUrl: "./not-regitered.component.html",
@@ -48,11 +55,18 @@ export class NotRegiteredComponent implements OnInit  {
   onRegister() {
     this.userData.contactNumber =this.unRegisteredContactNumber; 
  
+<<<<<<< HEAD
     this.registerUser(this.userData);
   }
 
   async registerUser(userData: UserData) {
 
+=======
+ 
+ 
+  async postData(data: any) {
+    const url = `${environment.BACKEND_BASE_URL}/crm/register`;
+>>>>>>> dd61dc5229df6b8d4a4c7d4bff7c190247496018
     try {
       const res=await this.crmService.registerCustomer(userData);
 

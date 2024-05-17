@@ -13,6 +13,7 @@ import { FlightBookingService } from 'src/app/Services/flight_booking/flight-boo
 import { HotelBookingService } from 'src/app/Services/hotels_booking/hotel-booking.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { environment } from "src/environments/environment";
 @Component({
   selector: 'app-package-checkout-hotels',
   templateUrl: './package-checkout-hotels.component.html',
@@ -523,7 +524,7 @@ async getSessionId(order_id:string,form:any): Promise<void> {
   this.loading = true;
 
   try {
-    const res = await axios.post('http://localhost:4000/createOrder', { version: this.version,form:form,order_id:order_id });
+    const res = await axios.post(`${environment.BACKEND_BASE_URL}/createOrder`, { version: this.version,form:form,order_id:order_id });
     this.loading = false;
     this.sessionId = res.data;
     if(res.data.success){
@@ -579,7 +580,7 @@ async saveUserData(formValues:any){
 
 async generateLink(form:any,link_id:string){
   try{
-    const res=await axios.post('http://localhost:4000/getPaymentLink',{form:form,version:this.version,link_id:link_id});
+    const res=await axios.post(`${environment.BACKEND_BASE_URL}/getPaymentLink`,{form:form,version:this.version,link_id:link_id});
     const linkUrl = res.data.link_url;
     console.log(linkUrl)
     console.log(res.data)
