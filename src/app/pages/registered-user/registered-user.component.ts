@@ -39,7 +39,8 @@ export class RegisteredUserComponent implements OnInit {
     merchantId:""
   }
   
-  constructor(private router:Router,
+  constructor(
+    private router:Router,
     private route: ActivatedRoute,
     private userDataService:CustomerInfoService,
     private http:HttpClient
@@ -57,7 +58,11 @@ export class RegisteredUserComponent implements OnInit {
       this.loading();
     }, 4000);
 
-    
+    const navigation = this.router.getCurrentNavigation();
+    if (navigation?.extras.state) {
+      const data = navigation.extras.state.data;
+      console.log(data); // This will log the `data` object passed from the previous route
+    }
     
     this.userData=JSON.parse(localStorage.getItem("user-data"))
     console.log(this.userData,"tr");

@@ -614,7 +614,7 @@ export class FlightInputSidebarComponent implements OnInit {
   }
 
 
-
+// combined search and calendar fare call.
   async sendRequest() {
     console.log("in send");
 
@@ -624,7 +624,7 @@ export class FlightInputSidebarComponent implements OnInit {
     this.tripsData.emit(this.trips);
 
       const searchFlightPromise = axios.post(
-        `${environment.BACKEND_BASE_URL}/flight/searchflight`,
+        `http://localhost:4000/flight/searchflight`,
         payload
       );
 

@@ -324,6 +324,7 @@ export class FlightSearchComponent implements OnInit {
     this.isSelected2 = true;
     this.selectedFlight2 = flight;
   }
+  
   // function to  store the flights data in the db for one way and multicity
   async createPackage(
     airlineLogos: any,

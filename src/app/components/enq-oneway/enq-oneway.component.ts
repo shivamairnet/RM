@@ -3,6 +3,8 @@ import {  Input, OnChanges, SimpleChanges, EventEmitter, Output  } from '@angula
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Route, Router, } from "@angular/router";
+import { DebounceCallsService } from 'src/app/Services/DebounceCalls/debounce-calls.service';
+import { Subject, debounceTime } from 'rxjs';
 
 @Component({
   selector: 'app-enq-oneway',
@@ -42,7 +44,9 @@ export class EnqOnewayComponent implements OnInit {
 		remarks:""
   }
 
-  
+  private departureSearchSubject = new Subject<string>();
+  private nationalitySearchSubject = new Subject<string>();
+  private destinationSearchSubject = new Subject<string>();
 
   dis:boolean=false
   dis2:boolean=false
@@ -51,7 +55,8 @@ export class EnqOnewayComponent implements OnInit {
 
   constructor(
    private http: HttpClient,
-   private router:Router
+   private router:Router,
+   private debounce: DebounceCallsService,
   ) { }
 
 
@@ -81,6 +86,32 @@ export class EnqOnewayComponent implements OnInit {
   ngOnInit(): void {
     this.userData=JSON.parse(localStorage.getItem("user-data"))
     console.log(this.enqCust);
+
+    this.departureSearchSubject
+    .pipe(
+      debounceTime(500) // Adjust debounce time as needed (300 milliseconds in this example)
+    )
+    .subscribe(() => {
+      this.onDepartureSearch();
+    });
+    this.destinationSearchSubject
+      .pipe(
+        debounceTime(500) // Adjust debounce time as needed (300 milliseconds in this example)
+      )
+      .subscribe(() => {
+        this.onDestinationSearch();
+      });
+
+      this.nationalitySearchSubject
+      .pipe(
+        debounceTime(500) // Adjust debounce time as needed (300 milliseconds in this example)
+      )
+      .subscribe(() => {
+        this.onNationalitySearch();
+      });
+
+
+
     if(this.enqCust){
       if(this.enqCust.numberOfTravellers!==undefined){
         this.items=this.enqCust.numberOfTravellers
@@ -155,6 +186,139 @@ export class EnqOnewayComponent implements OnInit {
     }
   }
   
+
+  selectedCity;
+  destination;
+
+  selectedAirport
+  guestNationality
+
+  onCitySelect(airport: any): void {
+    this.selectedCity = `${airport?.city_name}, ${airport?.iata}`;
+
+    this.destination = airport?.iata;
+
+    console.log(this.selectedCity);
+    console.log(this.destination);
+  }
+
+  onAirportSelect(airport: any): void {
+    // this.countryService.setSelectedAirport(airport?.cityName);
+    this.selectedAirport = `${airport?.city || airport?.city_name}, ${
+      airport?.iata
+    }`;
+    console.log(this.selectedAirport);
+    // this.source = airport?.iata;
+    // this.active = 4;
+  }
+
+  // to get the guest nationality
+  onCountrySelect(event:any){
+    this.guestNationality=event.country_code;
+    console.log(this.guestNationality)
+    console.log(event)
+  }
+  // DEPARTURE-----------------------------------
+
+  departureSearchText: string;
+  departureSearchAirports = [];
+
+  async onDepartureSearch() {
+    try {
+      // Check if search text is null, empty, or whitespace
+      if (!this.departureSearchText || this.departureSearchText.trim() === "") {
+        // Clear search results
+        this.departureSearchAirports = [];
+        return; // Stop execution
+      }
+      console.log("Departure Search:", this.departureSearchText);
+
+      const responseAirports = await this.debounce.getAirports(
+        this.departureSearchText
+      );
+
+      console.log(responseAirports);
+      if (responseAirports) {
+        this.departureSearchAirports = responseAirports.data.airports;
+      }
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+  onDepartureInputChange(): void {
+    this.departureSearchSubject.next(this.departureSearchText);
+  }
+  // DESTINATIONS---------------------------------------------
+
+  destinationSearchText: string;
+  destinationSearchAirports = [];
+
+  async onDestinationSearch() {
+    try {
+      // Check if search text is null, empty, or whitespace
+      if (
+        !this.destinationSearchText ||
+        this.destinationSearchText.trim() === ""
+      ) {
+        // Clear search results
+        this.destinationSearchAirports = [];
+
+        return; // Stop execution
+      }
+      console.log("Search in destination:", this.destinationSearchText);
+
+      const responseAirports = await this.debounce.getAirports(
+        this.destinationSearchText
+      );
+
+      console.log(responseAirports);
+
+      this.destinationSearchAirports = responseAirports.data.airports;
+
+      console.log(this.destinationSearchAirports);
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+  onDestinationInputChange(): void {
+    this.destinationSearchSubject.next(this.destinationSearchText);
+  }
+
+  // ==================================================
+
+  
+  nationalitySearchText: string;
+  nationalitySearchArr = [];
+
+  async onNationalitySearch() {
+    try {
+      // Check if search text is null, empty, or whitespace
+      if (!this.nationalitySearchText || this.nationalitySearchText.trim() === "") {
+        // Clear search results
+        this.nationalitySearchArr = [];
+        return; // Stop execution
+      }
+      console.log("Departure Search:", this.nationalitySearchText);
+
+      const responseAirports = await this.debounce.getCountries(
+        this.nationalitySearchText
+      );
+
+      console.log(responseAirports);
+      if(responseAirports){
+        this.nationalitySearchArr = responseAirports.data.countries;
+
+      }
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+  onNationalityInputChange(): void {
+    this.nationalitySearchSubject.next(this.nationalitySearchText);
+  }
+
+
+
 
 //flightsEnquiry
   

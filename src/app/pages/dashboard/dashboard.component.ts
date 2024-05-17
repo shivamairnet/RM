@@ -1252,6 +1252,12 @@ generateConnectionHTML(connection, city, arrivalDate,i) {
     this.numberFormControl1.setValue(0);
 }
 
+resetRoomGuests(){
+  sessionStorage.removeItem('roomGuests');
+  this.numberFormControl.setValue(0);
+  this.numberFormControl1.setValue(0);
+}
+
 saveResponseDataToFirestore() {
   let formValues = { ...this.responseFormGroup.value };
   let docRef;

@@ -1,0 +1,41 @@
+*{
+    padding: 0;
+    box-sizing: border-box;
+    font-family:  Calibri, 'Trebuchet MS', sans-serif;
+  }
+  main {
+    background-color: rgb(255, 255, 255);
+  }
+  .tag {
+    width: 70px !important;
+    height: 25px !important;
+
+    font-size: 14px;
+    color: red;
+
+    margin-top: 10px;
+  }
+  .dest > div:hover {
+    background: #2f3268;
+    color: white;
+  }
+  .purp3-1{
+    display: none;
+  }
+  .rht:hover{
+    background-color: #ff4040 !important;
+    color: white !important;
+  }
+  .rht:hover{
+    background-color: #ff4040 !important;
+    color: white !important;
+  }
+  .back:hover{
+    background-color:#ff4040;
+    color: white !important;
+  }
+  .hidden{
+    display: none;
+  }
+  
+ 

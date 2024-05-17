@@ -11,12 +11,13 @@
       (calendarData)="handleCalendarData($event)"
     ></app-flight-input-sidebar>
 
-    <div class="searchs">
+    <div class="searchs" >
    
 
       <div class="col" style="gap: 10px; display: flex; flex-direction: column">
+        
         <div *ngIf="source && destination && response && response?.flightsData">
-          <span style="color: white; font-weight: 600"
+          <span style="color: #000;font-size: 34px; font-weight: 600"
             >Flights from {{ source }} to {{ destination }}</span
           >
         </div>
@@ -25,6 +26,7 @@
         <ng-container *ngIf="trips">
           <app-flight-header [trips]="trips"></app-flight-header>
         </ng-container>
+
         <!-- only for one way trip then the calendar fare will be passed to this component -->
         <ng-container *ngIf="response && calendarFare">
           <app-flight-header
@@ -372,6 +374,7 @@
       </div>
 
       <!-- global toggle is asscoiated with the sidebar component , when the sidebar is open then the filters should not be visible -->
+     
       <!-- flight filters -->
       <div
         *ngIf="
@@ -607,6 +610,8 @@
           <span>Book now</span>
         </button>
       </div>
+
+      
       <!-- when journy type is one way -->
       <div
         class="book"
@@ -642,6 +647,7 @@
           <span>Book now</span>
         </button>
       </div>
+
     </div>
   </div>
 </main>

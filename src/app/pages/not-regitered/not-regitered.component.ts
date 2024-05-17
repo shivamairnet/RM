@@ -1,81 +1,80 @@
-import { Component, OnInit } from '@angular/core';
+import { CrmServiceService } from 'src/app/Services/CRM/crm-service.service';
+import { AfterViewInit, Component, OnInit } from "@angular/core";
 import { Route, Router } from "@angular/router";
-import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { ApiResponse } from './res';
+import { ActivatedRoute } from "@angular/router";
+import { HttpClient } from "@angular/common/http";
+import { ApiResponse } from "./res";
+
+interface UserData{
+  name: string;
+  email: string;
+  contactNumber: string;
+  address: string;
+  merchantId: string;
+}
+
+
 
 @Component({
-  selector: 'app-not-regitered',
-  templateUrl: './not-regitered.component.html',
-  styleUrls: ['./not-regitered.component.scss']
+  selector: "app-not-regitered",
+  templateUrl: "./not-regitered.component.html",
+  styleUrls: ["./not-regitered.component.scss"],
 })
-export class NotRegiteredComponent implements OnInit {
-
- 
-  ngOnInit(): void { 
-
-    this.route.queryParams.subscribe(params => {
-      this.inputData = params['user'];
-    });
-  }
+export class NotRegiteredComponent implements OnInit  {
   
-  inputData:string = ""
+  inputData: string = "";
+  userDetails;
 
-  userData:{name:string, email:string, contactNumber:string, address:string, merchantId:string}={
-    name:"",
-    email:"",
-    contactNumber:"",
-    address:"",
-    merchantId:"merchant123"
-  }
-
+  userData: UserData = {
+    name: "",
+    email: "",
+    contactNumber: "",
+    address: "",
+    merchantId: "merchant123",
+  };
+  unRegisteredContactNumber:string
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute, 
-    private http: HttpClient
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private crmService:CrmServiceService
+  ) {}
 
-  ) { 
-   
+  ngOnInit(): void {
+    this.unRegisteredContactNumber=localStorage.getItem("contact");
   }
+
+  onRegister() {
+    this.userData.contactNumber =this.unRegisteredContactNumber; 
  
- 
- 
-  async postData(data: any) {
-    const url = 'http://localhost:4000/crm/register';
+    this.registerUser(this.userData);
+  }
+
+  async registerUser(userData: UserData) {
+
     try {
-      
-      const response = await this.http.post(url, this.userData).toPromise() as ApiResponse;  
-      console.log('Response:', response.userDetails);
-      
-      if(response.success==true){
-        localStorage.setItem("user-data",JSON.stringify([this.userData]))
-        localStorage.setItem("merchant",JSON.stringify(this.userData.merchantId))
-        this.router.navigate(['/customer'], { queryParams: { user: this.inputData } })
-       
+      const res=await this.crmService.registerCustomer(userData);
+
+      if (res.success == true) {
+        console.log(res);
+        localStorage.setItem("customer-info",res.jwtToken);
+
+        // localStorage.setItem("user-data", JSON.stringify(res.userDetails));
+        // localStorage.setItem("merchant",JSON.stringify(res.userDetails[0].merchantId) );
+
+        this.router.navigate(["/customer"], {
+          state: {userDetails: res.userDetails },
+        });
       }
-      
     } catch (error) {
-      console.error('Error:', error);
-      
+      console.error("Error:", error);
     }
   }
 
-  back(){
-    this.router.navigate(["/dashboard"])
+  back() {
+    this.router.navigate(["/dashboard"]);
   }
-  onAdd(){
-    
-    this.userData.contactNumber=this.inputData
-   
-
-    console.log(this.userData);
-    this.postData(this.userData)
-    
-  }
-
-
- 
 
 
 }
