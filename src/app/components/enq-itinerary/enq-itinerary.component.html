@@ -55,51 +55,9 @@
       </h2>
     </div>
 
+    <!-- date and empty space of continent -->
     <div class="d-flex w-100 gap-5 my-2">
-      <!-- continent -->
-      <div
-        class="mt-4 shadow py-1 ps-2"
-        style="
-          width: 50%;
-          height: 47px;
-          background-color: #2f3268;
-          border-radius: 8px 8px 8px 8px;
-        "
-      >
-        <div
-          class="d-flex align-items-center"
-          style="width: 100%; padding-top: 3px"
-        >
-          <div
-            class=" "
-            style="font-size: 18px; color: white; margin-right: 14px"
-          >
-            Continent
-          </div>
-          <div>
-            <input
-              type="text"
-              id="textInput"
-              [(ngModel)]="itenary.continent"
-              class="form-control h-75"
-              placeholder="Enter Continent"
-              style="width: 158px; border-radius: 10px 10px 10px 10px"
-            />
-            <div
-              id="hiddenDiv"
-              class="hidden"
-              style="
-                width: 220px;
-                height: 150px;
-                position: absolute;
-                background-color: rgb(255, 255, 255);
-                border: 1px solid black;
-                border-radius: 10px 10px 10px 10px;
-              "
-            ></div>
-          </div>
-        </div>
-      </div>
+      <div class="w-30"></div>
 
       <!--Date  -->
       <div
@@ -124,7 +82,7 @@
           <div>
             <input
               ngxDaterangepickerMd
-              [(ngModel)]="this.dateNew"
+              [(ngModel)]="dateRange"
               placeholder="Select Date Range"
               class="form-control"
               style="
@@ -135,7 +93,7 @@
               [style.display]="datechng ? 'block' : 'none'"
             />
             <input
-              [(ngModel)]="this.datesEnq"
+              [(ngModel)]="dateRange"
               placeholder="Select Date Range"
               class="form-control"
               style="
@@ -173,7 +131,7 @@
     </div>
 
     <div class="d-flex w-100 gap-5 my-4">
-      <!-- Nationality -->
+      <!--OLD Nationality -->
       <!-- <div
         class="my-2 shadow py-1 ps-2"
         style="
@@ -197,7 +155,7 @@
             <input
               type="text"
               id="textInput"
-              [(ngModel)]="itenary.nationality"
+              [(ngModel)]="itinerary.nationality"
               class="form-control h-75"
               placeholder="Enter Nationality"
               style="width: 158px; border-radius: 10px 10px 10px 10px"
@@ -218,6 +176,7 @@
         </div>
       </div> -->
 
+      <!-- NEW Nationality -->
       <div
         class="card"
         data-toggle="collapse"
@@ -291,10 +250,7 @@
               />
               <div
                 style="width: 100%"
-                *ngIf="
-                nationalitySearchArr &&
-                nationalitySearchArr.length > 0
-                "
+                *ngIf="nationalitySearchArr && nationalitySearchArr.length > 0"
               >
                 <h3 style="margin: 0">Nationalities:</h3>
                 <ul style="color: #000; list-style-type: none; padding: 0">
@@ -316,7 +272,6 @@
                           margin: 3px 0;
                         "
                       >
-                        
                         <div
                           style="
                             display: flex;
@@ -327,7 +282,7 @@
                           "
                         >
                           <h4 style="margin: 0">
-                            {{ country.nationality.join(", ")}}
+                            {{ country.nationality.join(", ") }}
                           </h4>
                           <h4 style="margin: 0">
                             {{ country.country_name }}
@@ -338,9 +293,7 @@
                   </li>
                 </ul>
               </div>
-             
             </div>
-            
           </div>
         </div>
       </div>
@@ -384,18 +337,17 @@
             class="border rounded bg-white mx-3 px-2 pt-2"
             style="height: 125px; width: 90%"
           >
-            <div *ngFor="let item of items">
+            <div *ngFor="let traveller of travellerCount">
               <h4 class="mx-4 d-flex justify-content-between">
-                <span class="fw-bold" style="font-size: 20px">{{
-                  item.content
-                }}</span
-                ><span class="d-flex gap-1"
-                  ><button
-                    (click)="ChngTraveller(item, 'inc')"
-                    style="width: 30px; height: 30px"
-                  >
-                    +</button
-                  ><span
+                <span class="fw-bold" style="font-size: 20px">{{traveller.type}}</span>
+                <span class="d-flex gap-1">
+                  <button
+                  (click)="ChngTraveller(traveller, 'dec')"
+                  class="px-2"
+                  style="width: 30px; height: 30px">
+                  -
+                </button>
+                  <span
                     class="pt-1"
                     style="
                       width: 30px;
@@ -403,15 +355,16 @@
                       color: grey;
                       font-size: 18px;
                       padding-left: 10px;
-                    "
-                    >{{ item.number }}</span
-                  ><button
-                    (click)="ChngTraveller(item, 'dec')"
-                    class="px-2"
-                    style="width: 30px; height: 30px"
-                  >
-                    -
-                  </button></span
+                    ">
+                    {{ traveller.number }}
+                    </span>
+                    <button
+                    (click)="ChngTraveller(traveller, 'inc')"
+                    style="width: 30px; height: 30px">
+                    +
+                  </button>
+                  
+                  </span
                 >
               </h4>
             </div>
@@ -420,6 +373,7 @@
       </div>
     </div>
 
+    <!-- depart and destination -->
     <div class="d-flex w-100 gap-5 my-2">
       <!-- departure -->
       <!-- <div
@@ -448,7 +402,7 @@
               type="text"
               id="textInput"
               class="form-control"
-              [(ngModel)]="itenary.origin"
+              [(ngModel)]="itinerary.origin"
               id="exampleFormControlInput1"
               placeholder="Enter Departure"
               style="
@@ -473,7 +427,6 @@
         </div>
       </div> -->
 
-      <!-- Departure -->
       <!-- Departure -->
       <div
         class="card"
@@ -509,12 +462,12 @@
             Departure
           </a>
 
-          <ng-container *ngIf="selectedAirport">
+          <ng-container *ngIf="selectedDeparture">
             <p
               style="font-size: 14px; font-weight: 600"
               class="fw-bold py-2 px-2 m-0 text-dark"
             >
-              {{ selectedAirport }}
+              {{ selectedDeparture.city_name }}
             </p>
           </ng-container>
         </div>
@@ -549,6 +502,7 @@
                 (input)="onDepartureInputChange()"
                 aria-label="Search"
               />
+              <!-- Airports -->
               <div
                 style="width: 100%"
                 *ngIf="
@@ -559,7 +513,7 @@
                 <ul style="color: #000; list-style-type: none; padding: 0">
                   <li
                     *ngFor="let airport of departureSearchAirports"
-                    (click)="onAirportSelect(airport)"
+                    (click)="onDepartureSelect(airport, 1)"
                   >
                     <ng-container *ngIf="airport.iata !== null">
                       <div
@@ -609,6 +563,58 @@
                   </li>
                 </ul>
               </div>
+              <!-- cities -->
+              <div
+                style="width: 100%"
+                *ngIf="
+                  departureSearchCities && departureSearchCities.length > 0
+                "
+              >
+                <h3>Cities:</h3>
+                <ul style="color: #000; list-style-type: none; padding: 0">
+                  <li
+                    *ngFor="let city of departureSearchCities"
+                    (click)="onDepartureSelect(city, 2)"
+                    style="
+                      cursor: pointer;
+                      border: 1px solid lightgray;
+                      border-radius: 5px;
+                      font-size: 13px;
+                      line-height: 21px;
+                      font-weight: 600;
+                      margin: 3px 0;
+                    "
+                  >
+                    <div style="display: flex">
+                      <span
+                        style="
+                          width: 10%;
+                          margin: 0;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                        "
+                        class="emoji"
+                        >{{ city.emoji }}</span
+                      >
+                      <div
+                        style="
+                          display: flex;
+                          width: 90%;
+                          flex-direction: column;
+                          align-items: center;
+                          justify-content: center;
+                        "
+                      >
+                        <h4 style="margin: 0">
+                          {{ city.city_name }}, {{ city.state_name }}
+                        </h4>
+                        <h4 style="margin: 0">{{ city.country_name }},</h4>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -649,14 +655,15 @@
             >
               Destination
             </a>
-            <ng-container *ngIf="selectedCity">
+            <!-- <ng-container *ngIf="selectedDestinations">
               <p
                 style="font-size: 14px; font-weight: 600"
                 class="fw-bold py-2 px-2 m-0 text-dark"
+                *ngFor="destination of selectedDestinations"
               >
-                {{ selectedCity }}
+                {{ destination.city_name }}
               </p>
-            </ng-container>
+            </ng-container> -->
           </div>
 
           <div
@@ -688,6 +695,7 @@
                   (input)="onDestinationInputChange()"
                   aria-label="Search"
                 />
+                <!-- airports -->
                 <div
                   style="width: 100%"
                   *ngIf="
@@ -699,7 +707,7 @@
                   <ul style="color: #000; list-style-type: none; padding: 0">
                     <li
                       *ngFor="let airport of destinationSearchAirports"
-                      (click)="onCitySelect(airport)"
+                      (click)="onDestinationSelect(airport, 1)"
                     >
                       <ng-container *ngIf="airport.iata !== null">
                         <div
@@ -749,6 +757,59 @@
                     </li>
                   </ul>
                 </div>
+                <!-- cities -->
+                <div
+                  style="width: 100%"
+                  *ngIf="
+                    destinationSearchCities &&
+                    destinationSearchCities.length > 0
+                  "
+                >
+                  <h3>Cities:</h3>
+                  <ul style="color: #000; list-style-type: none; padding: 0">
+                    <li
+                      *ngFor="let city of destinationSearchCities"
+                      (click)="onDestinationSelect(city, 2)"
+                      style="
+                        cursor: pointer;
+                        border: 1px solid lightgray;
+                        border-radius: 5px;
+                        font-size: 13px;
+                        line-height: 21px;
+                        font-weight: 600;
+                        margin: 3px 0;
+                      "
+                    >
+                      <div style="display: flex">
+                        <span
+                          style="
+                            width: 10%;
+                            margin: 0;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          "
+                          class="emoji"
+                          >{{ city.emoji }}</span
+                        >
+                        <div
+                          style="
+                            display: flex;
+                            width: 90%;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                          "
+                        >
+                          <h4 style="margin: 0">
+                            {{ city.city_name }}, {{ city.state_name }}
+                          </h4>
+                          <h4 style="margin: 0">{{ city.country_name }},</h4>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -756,7 +817,7 @@
       </div>
     </div>
 
-    <!-- added cities -->
+    <!--NEED CHANGES added cities by shivam-->
     <div class="d-flex w-100 gap-5 mt-4">
       <div class="container text-center">
         <div class="row row-cols-4 gap-1">
@@ -787,7 +848,74 @@
       </div>
     </div>
 
-    <!--   Advance Options -->
+    <!--ACTIVE added cities by hemant -->
+    <div *ngIf="selectedDestinations">
+      <div
+        style="
+          height: 60px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 15px;
+        "
+      >
+        <div
+          *ngFor="let destination of selectedDestinations"
+          style="
+            height: 50px;
+            width: 140px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+          "
+        >
+          <button
+            style="
+              height: 100%;
+              width: 100%;
+              padding: 3px;
+              border: none;
+              background-color: rgb(139, 214, 214);
+              font-size: 19px;
+              font-weight: 600;
+              border-radius: 9px;
+            "
+          >
+            {{ destination?.city_name }}
+          </button>
+          <button
+            (click)="removeCity(destination.city_name)"
+            style="
+              font-size: 18px;
+              font-weight: 700;
+              text-decoration: none;
+              background-color: #ffffff00;
+              border: 1px solid black;
+              border-radius: 50%;
+              position: absolute;
+              top: 0px;
+              height: 18px;
+              width: 18px;
+              right: 0px;
+              padding: 0px;
+              margin: 0px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              padding-bottom: 3px;
+            "
+          >
+            x
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-----------------Advance Options------------------------>
+
+    <!-- CTA Advance options -->
     <div class="my-4 w-100 d-flex justify-content-center" style="z-index: 1">
       <div>
         <button
@@ -803,10 +931,11 @@
 
     <div
       class="adv"
-      [style.display]="dis2 ? 'block' : 'none'"
+      [style.display]="showAdvanceOptions ? 'block' : 'none'"
       style="display: none"
     >
       <div class="d-flex w-100 gap-5 mt-4">
+        <!-- nature of traveller -->
         <div
           class="shadow px-2 py-2 my-1 d-flex flex-column w-bold border rounded border-black"
           style="width: 50%; background-color: #2f3268"
@@ -830,7 +959,7 @@
                   border-radius: 10px 10px 10px 10px;
                 "
                 (click)="ntr()"
-                [value]="traveller"
+                [value]="selectedNatureOfTraveller"
               />
               <div
                 id="hiddenDiv"
@@ -853,17 +982,18 @@
             style="height: 120px; width: 98%; margin-left: 2px"
           >
             <div
-              *ngFor="let a of natureofTraveller"
-              (click)="chooseTrav(a)"
+              *ngFor="let type of natureofTraveller"
+              (click)="selectNatureOfTraveller(type)"
               class="n-trav fw-bold border-bottom px-3 py-1"
               (click)="ntr()"
               style="height: 25%; font-size: 13px"
             >
-              {{ a }}
+              {{ type }}
             </div>
           </div>
         </div>
 
+        <!-- budget -->
         <div
           class="shadow px-2 py-2 my-1 d-flex flex-column w-bold border rounded border-black"
           style="width: 50%; background-color: #2f3268; height: 47px"
@@ -890,15 +1020,18 @@
             />
           </div>
         </div>
+
       </div>
     </div>
 
+    <!-- nature of trip -->
     <div
       class="adv"
-      [style.display]="dis2 ? 'block' : 'none'"
+      [style.display]="showAdvanceOptions ? 'block' : 'none'"
       style="display: none"
     >
       <div class="d-flex w-100 gap-5">
+        <!-- nature of trip -->
         <div
           class="shadow px-2 py-2 my-4 d-flex flex-column w-bold border rounded border-black"
           style="width: 46%; background-color: #2f3268"
@@ -922,19 +1055,20 @@
             <div
               *ngFor="let nature of natureofTrip; let i = index"
               class="n-trav fw-bold border-bottom px-3 py-1"
-              for="flexCheckIndeterminate{{ i }}"
+              [attr.for]="'flexCheckIndeterminate' + i"
               style="height: 30px; font-size: 13px"
             >
               <input
                 class="form-check-input"
                 type="checkbox"
-                id="flexCheckIndeterminate{{ i }}"
-                class="ms-0 , mt-1, me-2"
+                [id]="'flexCheckIndeterminate' + i"
+                class="ms-0 mt-1 me-2"
+                [checked]="nature.check"
+                (change)="selectNatureofTrip(nature, i)"
               />
               <label
                 class="form-check-label"
-                for="flexCheckIndeterminate{{ i }}"
-                (click)="addTrip(nature, i)"
+                [attr.for]="'flexCheckIndeterminate' + i"
               >
                 {{ nature.name }}
               </label>
@@ -946,13 +1080,16 @@
   </div>
   <!--left-end-->
 
+  <!-- right side -->
   <div
     class="px-5"
     style="width: 40%; position: relative; right: 0; top: -76px"
   >
     <div class=" ">
       <div class="my-2">
+
         <span class="fw-bold" style="font-size: 20px">Interest level : </span>
+        <!-- interest Level -->
         <div class="d-flex">
           <div
             class="my-2 d-flex"
@@ -964,11 +1101,11 @@
             "
           >
             <span
-              (click)="interest('Low')"
+              (click)="selectInterestLevel(1)"
               [style.background-color]="
-                intLevel === 'Low' ? '#ff4040' : 'white'
+               interestLevel === 'low' ? '#ff4040' : 'white'
               "
-              [style.color]="intLevel === 'Low' ? 'white' : '#ff4040'"
+              [style.color]="interestLevel === 'low' ? 'white' : '#ff4040'"
               class="px-3 rht h-100"
               style="
                 border-right: 1px solid #ff4040;
@@ -981,11 +1118,11 @@
             </span>
             <span
               class="px-3 rht"
-              (click)="interest('Medium')"
+              (click)="selectInterestLevel(2)"
               [style.background-color]="
-                intLevel === 'Medium' ? '#ff4040' : 'white'
+               interestLevel === 'moderate' ? '#ff4040' : 'white'
               "
-              [style.color]="intLevel === 'Medium' ? 'white' : '#ff4040'"
+              [style.color]="interestLevel === 'moderate' ? 'white' : '#ff4040'"
               style="
                 border-right: 1px solid #ff4040;
                 color: #ff4040;
@@ -996,11 +1133,11 @@
             </span>
             <span
               class="px-3 rht w-100"
-              (click)="interest('High')"
+              (click)="selectInterestLevel(3)"
               [style.background-color]="
-                intLevel === 'High' ? '#ff4040' : 'white'
+               interestLevel === 'high' ? '#ff4040' : 'white'
               "
-              [style.color]="intLevel === 'High' ? 'white' : '#ff4040'"
+              [style.color]="interestLevel === 'high' ? 'white' : '#ff4040'"
               style="
                 color: #ff4040;
                 border-radius: 0px 10px 10px 0px;
@@ -1011,7 +1148,9 @@
             </span>
           </div>
         </div>
+
         <span class="fw-bold" style="font-size: 20px">Enquiry Details :</span>
+        <!-- enquiry details -->
         <div class="d-flex">
           <div
             class="my-2 d-flex"
@@ -1024,11 +1163,11 @@
           >
             <span
               class="px-2 rht"
-              (click)="enqDetail('FollowUp')"
+              (click)="selectEnquiryDetail('FollowUp')"
               [style.background-color]="
-                detail === 'FollowUp' ? '#ff4040' : 'white'
+                selectedEnquiryDetails === 'FollowUp' ? '#ff4040' : 'white'
               "
-              [style.color]="detail === 'FollowUp' ? 'white' : '#ff4040'"
+              [style.color]="selectedEnquiryDetails === 'FollowUp' ? 'white' : '#ff4040'"
               style="
                 border-right: 1px solid #ff4040;
                 color: #ff4040;
@@ -1040,11 +1179,11 @@
             </span>
             <span
               class="px-2 w-100 rht"
-              (click)="enqDetail('Do not FollowUp')"
+              (click)="selectEnquiryDetail('Do not FollowUp')"
               [style.background-color]="
-                detail === 'Do not FollowUp' ? '#ff4040' : 'white'
+                selectedEnquiryDetails === 'Do not FollowUp' ? '#ff4040' : 'white'
               "
-              [style.color]="detail === 'Do not FollowUp' ? 'white' : '#ff4040'"
+              [style.color]="selectedEnquiryDetails === 'Do not FollowUp' ? 'white' : '#ff4040'"
               style="
                 color: #ff4040;
                 border-radius: 0px 10px 10px 0px;
@@ -1055,23 +1194,30 @@
             </span>
           </div>
         </div>
+
         <span class="fw-bold" style="font-size: 20px">FollowUp Date :</span>
+        <!-- follow up date (value directly to itineraryObject)-->
         <input
           class="border border-black mt-2 form-control form-control-sm"
           type="date"
-          placeholder="serch recently"
-          [(ngModel)]="itenary.followUpDate"
+         
+          [(ngModel)]="itinerary.followUpDate"
           aria-label=".form-control-sm example"
           style="font-size: 13px; width: 100%"
         />
+
+        <!-- remarks (value directly to itineraryObject)-->
         <textarea
           class="form-control mb-3 mt-3"
           id="exampleFormControlTextarea1"
           rows="5"
-          [(ngModel)]="itenary.remarks"
+          [(ngModel)]="itinerary.remarks"
           placeholder="Type Enquiry Remarks"
           style="width: 100%"
         ></textarea>
+
+
+        <!-- buttons -->
         <div class="w-100" style="text-align: right">
           <button
             type="button"
@@ -1082,12 +1228,13 @@
           ><button
             type="button"
             class="btn pb-1 btn-sm text-white mx-2"
-            (click)="submit()"
+            (click)="submitEnquiry()"
             style="background-color: #ff4040; font-size: 13px; width: 36%"
           >
             {{ update ? "Update Enquiry" : "Log an Enquiry" }}
           </button>
         </div>
+
       </div>
     </div>
   </div>

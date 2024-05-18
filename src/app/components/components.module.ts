@@ -55,7 +55,7 @@ import { BookFlightCardComponent } from './book-flight-card/book-flight-card.com
 import { GoogleMapsComponent } from './google-maps/google-maps.component';
 import { EnqPackageComponent } from './enq-package/enq-package.component';
 import { EnqHotelComponent } from './enq-hotel/enq-hotel.component';
-import { EnqItenaryComponent } from './enq-itenary/enq-itenary.component';
+import { EnqItineraryComponent } from './enq-itinerary/enq-itinerary.component';
 import { EnqFlightComponent } from './enq-flight/enq-flight.component';
 import { EnqRoundComponent } from './enq-round/enq-round.component';
 import { EnqOnewayComponent } from './enq-oneway/enq-oneway.component';
@@ -129,7 +129,7 @@ import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
     GoogleMapsComponent,
           EnqPackageComponent,
           EnqHotelComponent,
-          EnqItenaryComponent,
+          EnqItineraryComponent,
           EnqFlightComponent,
           EnqRoundComponent,
           EnqOnewayComponent,
@@ -193,7 +193,7 @@ import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
     GoogleMapsComponent,
     EnqPackageComponent,
     EnqHotelComponent,
-    EnqItenaryComponent,
+    EnqItineraryComponent,
     EnqFlightComponent,
     EnqRoundComponent,
     EnqOnewayComponent,

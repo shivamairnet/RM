@@ -35,11 +35,7 @@ export class EnquiryComponent implements OnInit {
   up: boolean = false;
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((params) => {
-      this.mobile = params["user"];
-    });
-
-    this.userData = JSON.parse(localStorage.getItem("user-data"));
+    this.userData = JSON.parse(localStorage.getItem("customer-details"));
 
     this.custEnq = history.state.info;
     this.up = history.state.upd;

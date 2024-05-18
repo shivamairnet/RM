@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EnqItenaryComponent } from './enq-itenary.component';
+import { EnqItenaryComponent } from './enq-itinerary.component';
 
 describe('EnqItenaryComponent', () => {
   let component: EnqItenaryComponent;

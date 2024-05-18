@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { nature_of_traveller, nature_of_trip } from '../enq-itenary/nature';
+import { nature_of_traveller, nature_of_trip } from '../enq-itinerary/nature';
 import { HttpClient } from '@angular/common/http';
 import { CustomerInfoService } from 'src/app/Services/customer-info.service';
 import { Route, Router } from "@angular/router";

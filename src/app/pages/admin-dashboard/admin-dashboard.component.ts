@@ -43,6 +43,7 @@ export class AdminDashboardComponent implements OnInit {
     //   // Use the parameters as needed
     // });
   }
+  
   onSearch() {
     // const dataToSend = { key: this.userData };
     this.userData.contactNumber = this.contact;
@@ -50,26 +51,26 @@ export class AdminDashboardComponent implements OnInit {
    this.loginUser(this.userData);
    
   }
-
+ 
   async loginUser(data: any) {
     try {
 
-      console.log("request made to login")
+        console.log("request made to login")
       const res =await this.crmService.loginCustomer(this.userData)
 
       console.log(res);
-      if (res.success) {
-       console.log("user not found")        
-        this.data.setUserData(res.userDetails);
 
-        localStorage.setItem("customer-info",res.jwtToken);
+      if (res.success) {
+
+
+       console.log("user  found")  
+        localStorage.setItem("customer-jwt",res.jwtToken);
+        localStorage.setItem("customer-details", JSON.stringify(res.userDetails));
 
         // localStorage.setItem("user-data", JSON.stringify(res.userDetails));
         // localStorage.setItem("merchant",JSON.stringify(res.userDetails[0].merchantId) );
 
-        this.router.navigate(["/customer"], {
-          state: {userDetails: res.userDetails },
-        });
+        this.router.navigate(["/customer"]);
         
       } 
       else if(!res.success) {

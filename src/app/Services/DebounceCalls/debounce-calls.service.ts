@@ -22,6 +22,7 @@ export class DebounceCallsService {
 
 	async getCities(city: string) {
 		try {
+			console.log("searched for city:",city)
 			const data = await axios.get(`${environment.BACKEND_BASE_URL}/search/city`, { params: { query: city } })
 			console.log(data);
 			return data;

@@ -16,7 +16,7 @@ import {
   DocumentData,
   QuerySnapshot
 } from "@angular/fire/firestore";
-import { environment } from "src/environments/environment";
+
 
 
 @Injectable({
@@ -201,11 +201,7 @@ export class HotelsService {
 
   async hotelSearch(payload:any){
     try{
-<<<<<<< HEAD
       const res = await axios.post(`http://localhost:4000/hotel/hotelSearch`, payload);
-=======
-      const res = await axios.post(`${environment.BACKEND_BASE_URL}/hotel/hotelSearch`, payload);
->>>>>>> dd61dc5229df6b8d4a4c7d4bff7c190247496018
       return res;
 
     }catch(error){
