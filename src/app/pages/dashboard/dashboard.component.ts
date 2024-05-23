@@ -149,6 +149,8 @@ export class DashboardComponent implements OnInit {
 
 	responseIdForWhatsapp: string;
 
+	serviceType:string
+
 	private departureSearchSubject = new Subject<string>();
 	private destinationSearchSubject = new Subject<string>();
 
@@ -189,32 +191,29 @@ export class DashboardComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		if(localStorage.getItem("enqDetails")){
-
-			const  enqDetails=JSON.parse(localStorage.getItem("enqDetails"));
-
-			console.log(enqDetails);
-
-			this.selectedStartDate= enqDetails.startDate;
-			this.selectedEndDate= enqDetails.endDate;
-
-
-			this.selectedAirport= enqDetails.origin.city_name;
-
-			this.selectedNature= enqDetails.natureOfTraveller;
-
-			// pax
-
-
-			this.selectedCities= enqDetails.destinations;
-
-
-			
-
-		}
+		console.log("in init")
+		this.route.queryParams.subscribe((params) => {
+			console.log('QueryParams:', params);
+			this.serviceType = params['service'];
+	  
+			console.log(this.serviceType);
+			if (this.serviceType && this.serviceType === "itinerary") {
+			  console.log("in if");
+			  const enqDetails = JSON.parse(localStorage.getItem("enqDetails"));
+			  
+			  if (enqDetails) {
+				const destinations = enqDetails.destinations;
+				console.log(destinations);
+				destinations.forEach(destination => {
+				  console.log(destination);
+				  this.onCitySelect(destination);
+				});
+			  }
+			}
+		  });
 		this.route.params.subscribe((params) => {
 			this.responseId = params.responseId;
-
+			
 			if (this.responseId) {
 				this.fetchResponseDataFromFirestore(this.responseId);
 			} else {
@@ -223,9 +222,24 @@ export class DashboardComponent implements OnInit {
 
 		});
 
-		
-		console.log(this.selectedNature)
-		console.log(this.selectedCities)
+		this.route.params.subscribe((params) => {
+			this.serviceType = params.service;
+			
+			if (this.serviceType &&  this.serviceType==="itinerary" ) {
+				
+				const enqDetails=JSON.parse(localStorage.getItem("enqDetails"));
+
+				const destinations=enqDetails.destinations
+				console.log(destinations);
+				destinations.forEach(destination => {
+					this.onCitySelect(destination)
+				});
+				
+
+			}
+
+		});
+
 		this.departureSearchSubject
 			.pipe(
 				debounceTime(500) // Adjust debounce time as needed (300 milliseconds in this example)
@@ -1819,11 +1833,7 @@ export class DashboardComponent implements OnInit {
 		const visaType = countryData?.["Visa Types"] || "";
 		return { recommendedMonths, visaType };
 	}
-	resetRoomGuests(){
-		sessionStorage.removeItem('roomGuests');
-		this.numberFormControl.setValue(0);
-		this.numberFormControl1.setValue(0);
-	  }
+
 	onCitySelect(city: City): void {
 		const index = this.selectedCities.findIndex(selectedCity => selectedCity.city_id === city.city_id);
 		if (index > -1) {
@@ -1926,6 +1936,8 @@ export class DashboardComponent implements OnInit {
 
 	buildItinerary(): void {
 		this.start = false
+
+		console.log(this.selectedCities)
 		this.countryService.setSelectedCities(this.selectedCities);
 
 		// storing the data from data in session

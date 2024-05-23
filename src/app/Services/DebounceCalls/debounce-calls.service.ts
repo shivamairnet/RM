@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class DebounceCallsService {
 	constructor() { }
+	
 	async getAirports(airport: string) {
 		try {
 			const data = await axios.get(`${environment.BACKEND_BASE_URL}/search/airport`, { params: { query: airport } })

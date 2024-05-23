@@ -17,6 +17,10 @@ export const environment = {
   FRONTEND_BASE_URL: "https://localhost:4200",
   //BACKEND_BASE_URL: "https://api.rhombee.com",
   BACKEND_BASE_URL: "http://localhost:4000",
+  ENCRYPT_KEY:"fhgsghskljghsagsgsg",
+
+  HOTEL_Is_Voucher_Booking:true,
+  HOTEL_GUEST_NATIONALITY:"IN"
 };
 
 /*

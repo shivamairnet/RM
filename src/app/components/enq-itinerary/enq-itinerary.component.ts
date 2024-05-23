@@ -315,6 +315,7 @@ export class EnqItineraryComponent implements OnInit {
     this.datechng = !this.datechng;
   }
 
+  
   // ---------------------------------------------------------------------------------
   selectedDestinations = [];
   onDestinationSelect(destination: any, destiantionType: number): void {
@@ -350,11 +351,11 @@ export class EnqItineraryComponent implements OnInit {
   onDepartureSelect(departure: any, departureType: number): void {
     // if departureType == 1  --> airport is selected
     // if departureType == 2  --> city is selected
-    if (departureType == 1)
-      this.selectedDeparture = { ...departure, departureType: "airport" };
-    if (departureType == 2)
+    if (departureType == 1){
+      this.selectedDeparture = { ...departure, departureType: "airport" };}
+    else if (departureType == 2){
       this.selectedDeparture = { ...departure, departureType: "city" };
-
+    }
     console.log(this.selectedDeparture);
   }
 

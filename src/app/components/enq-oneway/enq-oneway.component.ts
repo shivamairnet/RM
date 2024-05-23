@@ -5,6 +5,33 @@ import { FormsModule } from '@angular/forms';
 import { Route, Router, } from "@angular/router";
 import { DebounceCallsService } from 'src/app/Services/DebounceCalls/debounce-calls.service';
 import { Subject, debounceTime } from 'rxjs';
+import { CrmServiceService } from 'src/app/Services/CRM/crm-service.service';
+
+
+interface Departure{
+  alternatenames:string[],
+  city_id:number,
+  city_name:string,
+  country_code:string,
+  country_id:number,
+  nationality:string[],
+  state_code:string[],
+  state_name:string,
+  departureType:string,
+}
+interface Destination{
+  alternatenames:string[],
+  city_id:number,
+  city_name:string,
+  country_code:string,
+  country_id:number,
+  nationality:string[],
+  state_code:string[],
+  state_name:string,
+  destinationType:string,
+}
+
+interface Payload{merchantId:string,contactNumber:string, journeyType:string,fairType:string,numberOfTravellers:string[],departureDate:string,nationality:string,origin:Departure,destinations:Destination[],interestLevel:string,enquiryDetails:string,followUpDate:string,remarks:string}
 
 @Component({
   selector: 'app-enq-oneway',
@@ -13,9 +40,13 @@ import { Subject, debounceTime } from 'rxjs';
 })
 export class EnqOnewayComponent implements OnInit {
 
+  // one-way round or multi
   @Input() data: any;
+
   @Input() click:boolean;
+
   @Input() enqCust:any;
+
   @Input() update:any
 
 
@@ -28,15 +59,15 @@ export class EnqOnewayComponent implements OnInit {
   ]; 
   
 
-  oneway:{merchantId:string,contactNumber:string, journeyType:string,fairType:string,numberOfTravellers:string[],dates:string,nationality:string,origin:string,destinations:string[],interestLevel:string,enquiryDetails:string,followUpDate:string,remarks:string}={
+  oneway:Payload={
     merchantId:"nvv",
 		contactNumber:"",
 		journeyType:"",
 		fairType:"",
 		numberOfTravellers:[],
-		dates:"",
+		departureDate:"",
 		nationality:"",
-		origin:"",
+		origin:null,
 		destinations:[],
 		interestLevel:"",
 		enquiryDetails:"",
@@ -48,43 +79,22 @@ export class EnqOnewayComponent implements OnInit {
   private nationalitySearchSubject = new Subject<string>();
   private destinationSearchSubject = new Subject<string>();
 
-  dis:boolean=false
-  dis2:boolean=false
-  Fair:string ="Regular Fair"
-
+  showNumberOfTravellers:boolean=false
+  showFareType:boolean=false
+  fair:string ="Regular Fair"
+  userData:any
 
   constructor(
    private http: HttpClient,
    private router:Router,
    private debounce: DebounceCallsService,
+   private crmService:CrmServiceService
   ) { }
 
 
-
- 
-
-  ChngTraveller(item:any,x:string){
-    if(x==="inc"){
-      item.number+=1
-    console.log(item.number);
-    }
-    if(x==="dec"){
-      if(item.number>=1){
-      item.number-=1
-    console.log(item.number);
-      }
-      else{
-        item.number=0
-      }
-    }
-    
-    
-  }
-  
-  userData:any
-
   ngOnInit(): void {
-    this.userData=JSON.parse(localStorage.getItem("user-data"))
+    this.userData=JSON.parse(localStorage.getItem("customer-details"));
+
     console.log(this.enqCust);
 
     this.departureSearchSubject
@@ -111,115 +121,103 @@ export class EnqOnewayComponent implements OnInit {
       });
 
 
-
+      // to get back to enquiry
     if(this.enqCust){
       if(this.enqCust.numberOfTravellers!==undefined){
         this.items=this.enqCust.numberOfTravellers
-      this.Fair=this.enqCust.fairType
+      this.fair=this.enqCust.fairType
       console.log(this.enqCust.destinations[0]);
-      this.arrival=this.enqCust.destinations
+      this.selectedDestination=this.enqCust.destinations
       this.oneway=this.enqCust
-      
       }
-      
     }
     
    
   }
  
-  show(){
-    this.dis=!this.dis
-    console.log(this.dis);
-    
-  }
-  div1(){
-    this.dis2=!this.dis2
-    console.log(this.dis2);
+  triggerShowFareType(){
+    this.showFareType=!this.showFareType
+    console.log(this.showFareType);
     
   }
 
   fareType(fare:string){
-    this.Fair=fare
+    this.fair=fare
   }
 
-  arrival:string[]=[]
+  triggerShowNumberOfTravellers(){
+    this.showNumberOfTravellers=!this.showNumberOfTravellers
+    console.log(this.showNumberOfTravellers);
+    
+  }
 
+  ChngTraveller(item:any,x:string){
+    if(x==="inc"){
+      item.number+=1
+    console.log(item.number);
+    }
+    if(x==="dec"){
+      if(item.number>=1){
+      item.number-=1
+    console.log(item.number);
+      }
+      else{
+        item.number=0
+      }
+    }
+    
+    
+  }
+
+
+
+  // follow up or dont follow up
   detail:string=""
-
   enqDetail(x:string){
       this.detail=x
-   
   }
-
+  // high moderate low
   intLevel:string=""
-
   interest(v:string){
    this.intLevel=v
   }
 
-  submit(){
-    this.oneway.destinations=this.arrival
-    this.oneway.fairType=this.Fair
-    this.oneway.numberOfTravellers=this.items
-    this.oneway.journeyType=this.data
-    this.oneway.contactNumber=this.userData[0].contactNumber
-    this.oneway.enquiryDetails=this.detail
-    this.oneway.interestLevel=this.intLevel
-    this.oneway.merchantId=this.userData[0].merchantId
 
-    console.log(this.oneway);
-    
-    this.postData(this.oneway)
-  }
 
-  
-
-  async postData(data:any){
-    try {
-      const res= await this.http.post("http://localhost:4000/crm/flightsEnquiry", data).toPromise()
-
-      console.log(res);
-      this.router.navigate(['/customer'])
-      
-    } catch (error) {
-      
+  selectedDeparture:Departure;
+  onDepartureSelect(departure: Departure, departureType: number): void {
+    // if departureType == 1  --> airport is selected
+    // if departureType == 2  --> city is selected
+    if (departureType == 1){
+      this.selectedDeparture = { ...departure, departureType: "airport" };}
+    else if (departureType == 2){
+      this.selectedDeparture = { ...departure, departureType: "city" };
     }
+    console.log(this.selectedDeparture);
   }
-  
 
-  selectedCity;
-  destination;
+  selectedDestination:Destination[];
+  onDestinationSelect(destination: Destination, destinationType: number): void {
+     // if departureType == 1  --> airport is selected
+    // if departureType == 2  --> city is selected
 
-  selectedAirport
+    if (destinationType == 1){
+       this.selectedDestination = [{ ...destination, destinationType:"airport" }];}
+    else if (destinationType == 2){
+      this.selectedDestination = [{ ...destination,  destinationType:"airport" }];
+    }
+    console.log(this.selectedDestination);
+
+  }
+
   guestNationality
-
-  onCitySelect(airport: any): void {
-    this.selectedCity = `${airport?.city_name}, ${airport?.iata}`;
-
-    this.destination = airport?.iata;
-
-    console.log(this.selectedCity);
-    console.log(this.destination);
+  onCountrySelect(country:any){
+    this.guestNationality=country;
+  
   }
 
-  onAirportSelect(airport: any): void {
-    // this.countryService.setSelectedAirport(airport?.cityName);
-    this.selectedAirport = `${airport?.city || airport?.city_name}, ${
-      airport?.iata
-    }`;
-    console.log(this.selectedAirport);
-    // this.source = airport?.iata;
-    // this.active = 4;
-  }
 
-  // to get the guest nationality
-  onCountrySelect(event:any){
-    this.guestNationality=event.country_code;
-    console.log(this.guestNationality)
-    console.log(event)
-  }
-  // DEPARTURE-----------------------------------
-
+  // ================DEPARTURE-----------------------------------
   departureSearchText: string;
   departureSearchAirports = [];
 
@@ -248,8 +246,9 @@ export class EnqOnewayComponent implements OnInit {
   onDepartureInputChange(): void {
     this.departureSearchSubject.next(this.departureSearchText);
   }
-  // DESTINATIONS---------------------------------------------
 
+
+  //================= DESTINATIONS---------------------------------------------
   destinationSearchText: string;
   destinationSearchAirports = [];
 
@@ -284,9 +283,8 @@ export class EnqOnewayComponent implements OnInit {
     this.destinationSearchSubject.next(this.destinationSearchText);
   }
 
-  // ==================================================
 
-  
+  // ==================NATIONALITY==========================================
   nationalitySearchText: string;
   nationalitySearchArr = [];
 
@@ -300,14 +298,13 @@ export class EnqOnewayComponent implements OnInit {
       }
       console.log("Departure Search:", this.nationalitySearchText);
 
-      const responseAirports = await this.debounce.getCountries(
+      const responseCountries = await this.debounce.getCountries(
         this.nationalitySearchText
       );
 
-      console.log(responseAirports);
-      if(responseAirports){
-        this.nationalitySearchArr = responseAirports.data.countries;
-
+      console.log(responseCountries);
+      if(responseCountries){
+        this.nationalitySearchArr = responseCountries.data.countries;
       }
     } catch (err) {
       console.error(err.message);
@@ -319,7 +316,44 @@ export class EnqOnewayComponent implements OnInit {
 
 
 
+  loginAndUpdateEnquiry(){
 
-//flightsEnquiry
+    this.oneway.contactNumber=this.userData.contactNumber
+    this.oneway.merchantId=this.userData.merchantId
+    
+    this.oneway.journeyType=this.data
+    this.oneway.fairType=this.fair
+    this.oneway.numberOfTravellers=this.items
+
+    this.oneway.origin=this.selectedDeparture
+    this.oneway.destinations=this.selectedDestination;
+
+    this.oneway.enquiryDetails=this.detail
+    this.oneway.interestLevel=this.intLevel
+
+    console.log(this.oneway);
+    
+    this.postData(this.oneway)
+  }
+
+  async postData(data:Payload){
+    try {
+
+      const res=await this.crmService.registerFlightsEnquiry(data);
+
+      if(res.success){
+       this.router.navigate(['/customer'])
+
+      }else{
+        console.error("Error occured")
+      }
+      
+    } catch (error) {
+        console.log(error.message)
+    }
+  }
+  
+
+
   
 }

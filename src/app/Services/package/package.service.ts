@@ -1,4 +1,3 @@
-
 import { Injectable } from "@angular/core";
 
 import axios from "axios";
@@ -20,37 +19,30 @@ import {
 } from "@angular/fire/firestore";
 import { environment } from "src/environments/environment";
 
-
 @Injectable({
   providedIn: "root",
 })
 export class PackageService {
   constructor(private firestore: Firestore) {}
 
+  async getWholePackgeDetails(itineraryDocName: string) {
+    try {
+      const { data } = await axios.post(
+        `${environment.BACKEND_BASE_URL}/package/getFullPackage`,
+        { itineraryDocName }
+      );
 
-  async getWholePackgeDetails(itineraryDocName:string){
-
-    try{
-      const {data}=await axios.post(`${environment.BACKEND_BASE_URL}/package/getFullPackage`,{itineraryDocName})
-      
-      if(data.packageDetails){
-        return data.packageDetails
+      if (data.packageDetails) {
+        return data.packageDetails;
+      } else {
+        return "not able to find packageDetails in full package details in package service";
       }
-      else{
-      return "not able to find packageDetails in full package details in package service"
-      }
+    } catch (error) {
+      console.error(
+        "Not able to fetch fuill package details in package service"
+      );
     }
-    catch(error){
-      console.error("Not able to fetch fuill package details in package service")
-    }
-
   }
-
-
-
-
-
-
 
   async updateFlightDetails(form: any[][]) {
     try {
@@ -316,8 +308,6 @@ export class PackageService {
     }
   }
 
-  
-
   async getAllPackageBookings() {
     const packageDocRef = collection(this.firestore, "response-itinerary");
     try {
@@ -373,6 +363,239 @@ export class PackageService {
       }
     } catch (error) {
       console.log(error.message);
+    }
+  }
+
+  async getCsvData() {
+    try {
+      const res = await fetch("http://localhost:4000/hotel/getCsvData");
+      // const csvData = await res.text();
+      if (res) {
+        return res;
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  async updateCityId(jsonData: any, responseId: string) {
+    try {
+      const { data } = await axios.post(
+        "http://localhost:4000/hotel/updateCityId",
+        { jsonData: jsonData, responseId: responseId }
+      );
+      if (data) {
+        return data;
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  async updateAcknowledgmentStatus(uid: string, status: string) {
+    const packageDocRef = doc(this.firestore, "response-itinerary", uid);
+
+    try {
+      const packageDocSnapshot = await getDoc(packageDocRef);
+
+      if (packageDocSnapshot.exists()) {
+        const packageDocData = packageDocSnapshot.data();
+
+        // If 'status' field doesn't exist or is null, create it
+        const newData = {
+          ...packageDocData,
+          status: {
+            ...packageDocData.status,
+            acknowledged: status,
+          },
+        };
+
+        await setDoc(packageDocRef, newData);
+        console.log("Document updated successfully");
+      } else {
+        console.log("Document does not exist");
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  async updateItineraryLinkStatus(uid: string) {
+    const packageDocRef = doc(this.firestore, "response-itinerary", uid);
+
+    try {
+      const packageDocSnapshot = await getDoc(packageDocRef);
+
+      if (packageDocSnapshot.exists()) {
+        const packageDocData = packageDocSnapshot.data();
+
+        if (!packageDocData.status) {
+          // If 'status' field doesn't exist, create it
+          const newData = {
+            ...packageDocData,
+            status: { itineraryLinkStatus: "opened" },
+          };
+          await setDoc(packageDocRef, newData);
+        } else {
+          // If 'status' field already exists, update its value
+          const newData = {
+            ...packageDocData,
+            status: {
+              ...packageDocData.status,
+              itineraryLinkStatus: "opened", // Update linkStatus
+            },
+          };
+          await setDoc(packageDocRef, newData);
+        }
+        console.log("Document updated successfully");
+      } else {
+        console.log("Document does not exist");
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+  async updatePackageLinkStatus(uid: string) {
+    const packageDocRef = doc(this.firestore, "response-itinerary", uid);
+
+    try {
+      const packageDocSnapshot = await getDoc(packageDocRef);
+
+      if (packageDocSnapshot.exists()) {
+        const packageDocData = packageDocSnapshot.data();
+
+        if (!packageDocData.status) {
+          // If 'status' field doesn't exist, create it
+          const newData = {
+            ...packageDocData,
+            status: { packageLinkStatus: "opened" },
+          };
+          await setDoc(packageDocRef, newData);
+        } else {
+          // If 'status' field already exists, update its value
+          const newData = {
+            ...packageDocData,
+            status: {
+              ...packageDocData.status,
+              packageLinkStatus: "opened", // Update linkStatus
+            },
+          };
+          await setDoc(packageDocRef, newData);
+        }
+        console.log("Document updated successfully");
+      } else {
+        console.log("Document does not exist");
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  async createPackage(flight: any, hotel: any, uid: string) {
+    console.log("flight", flight);
+    console.log("hotel", hotel);
+    const packageDocRef = doc(this.firestore, "response-itinerary", uid);
+
+    try {
+      const existingData = await getDoc(packageDocRef);
+      let newData = {};
+
+      if (existingData.exists()) {
+        newData = existingData.data();
+      }
+
+      const transformedForm = flight.segments.map((trip) => {
+        const tripObject = {};
+        trip.forEach((obj, index) => {
+          tripObject[`trip${index + 1}`] = obj;
+        });
+        return tripObject;
+      });
+
+      const transformedLogos = flight.airlineLogos.map((trip) => {
+        const Logo = {};
+        trip.forEach((obj, index) => {
+          Logo[`trip${index + 1}`] = obj;
+        });
+        return Logo;
+      });
+
+      const flight_details = {
+        airlineLogos: transformedLogos,
+        segments: transformedForm,
+        isLCC: flight.isLCC,
+        resultIndex: flight.resultIndex,
+      };
+
+      let hotel_details = hotel.map((item) => {
+        return {
+          cityName: item?.cityName,
+          hotels: item.hotels.map((city) => {
+            return {
+              checkInDate: city.checkInDate,
+              hotelInfo: city.hotelInfo,
+              rooms: city.roomDetails,
+            };
+          }),
+        };
+      });
+
+      console.log(flight_details);
+      console.log(hotel_details);
+
+      // Merge new data with existing data
+      const updatedData = {
+        ...newData,
+        flight: flight_details,
+        hotel: hotel_details,
+      };
+
+      // Update document data in Firestore
+      await updateDoc(packageDocRef, updatedData);
+
+      console.log("Document successfully updated!");
+    } catch (error) {
+      console.error("Error updating document: ", error);
+      throw error; // Handle the error appropriately
+    }
+  }
+
+  // to update the rooms details of the hotel according to the cityName and checkInDate in the DB ---> pending
+  async updateRoomDetails(
+    rooms: any,
+    uid: string,
+    checkInDate: string,
+    cityName: string
+  ) {
+    const packageDocRef = doc(this.firestore, "response-itinerary", uid);
+
+    try {
+      const packageDocSnapshot = await getDoc(packageDocRef);
+
+      if (packageDocSnapshot.exists()) {
+        // Check if the hotel_details field exists in the document
+        if (packageDocSnapshot.data().hotel) {
+          const hotelDetails = packageDocSnapshot.data().hotel;
+
+          // Update the rooms details
+          hotelDetails.rooms.forEach((item: any, index: number) => {
+            if (rooms[index] && rooms[index].updatedRoom) {
+              item.room = rooms[index].updatedRoom;
+            }
+          });
+
+          // Update the document with the modified hotel details
+          await updateDoc(packageDocRef, { hotel_details: hotelDetails });
+
+          console.log("Document updated successfully!");
+        } else {
+          console.log("hotel_details field does not exist in the document.");
+        }
+      } else {
+        console.log("Document does not exist.");
+      }
+    } catch (error) {
+      console.error("Error updating document:", error);
     }
   }
 }

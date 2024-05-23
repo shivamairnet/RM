@@ -42,11 +42,14 @@
 
 <section class="d-flex flex-row">
   <div style="width: 55%">
+
     <div class="d-flex gap-5 my-2" style="width: 100%">
+
+      <!-- FARE TYPE -->
       <div class="" style="width: 50%">
         <div
           class="shadow purp3"
-          (click)="div1()"
+          (click)="triggerShowFareType()"
           style="
             width: 100%;
             height: 50px;
@@ -66,12 +69,12 @@
                 chevron_right
               </span>
             </div>
-            <span class="text-white mt-1 ms-1">{{ Fair }}</span>
+            <span class="text-white mt-1 ms-1">{{ fair }}</span>
           </div>
         </div>
         <div
           class="purp3-1 shadow"
-          [style.display]="dis2 ? 'block' : 'none'"
+          [style.display]="showFareType ? 'block' : 'none'"
           style="
             width: 100%;
             height: 50px;
@@ -87,7 +90,7 @@
                 name="flexRadioDefault2"
                 id="flexRadioDefault6"
                 (change)="fareType('Regular Fair')"
-                [checked]="Fair == 'Regular Fair'"
+                [checked]="fair == 'Regular Fair'"
               />
               <label
                 class="form-check-label text-white"
@@ -104,7 +107,7 @@
                 name="flexRadioDefault2"
                 id="flexRadioDefault5"
                 (change)="fareType('Student Fair')"
-                [checked]="Fair == 'Student Fair'"
+                [checked]="fair == 'Student Fair'"
               />
               <label
                 class="form-check-label text-white"
@@ -121,7 +124,7 @@
                 name="flexRadioDefault2"
                 id="flexRadioDefault7"
                 (change)="fareType('Armed Forces')"
-                [checked]="Fair == 'Armed Forces'"
+                [checked]="fair == 'Armed Forces'"
               />
               <label
                 class="form-check-label text-white"
@@ -138,7 +141,7 @@
                 name="flexRadioDefault2"
                 id="flexRadioDefault4"
                 (change)="fareType('Senior Citizen')"
-                [checked]="Fair == 'Senior Citizen'"
+                [checked]="fair == 'Senior Citizen'"
               />
               <label
                 class="form-check-label text-white"
@@ -152,10 +155,11 @@
         </div>
       </div>
 
+      <!-- NUMBER OF TRAVELLERS -->
       <div class="" style="width: 50%">
         <div
           class="shadow purp3"
-          (click)="show()"
+          (click)="triggerShowNumberOfTravellers()"
           style="
             width: 100%;
             height: 49px;
@@ -163,7 +167,7 @@
             border-radius: 8px 8px 8px 8px;
           "
         >
-          <!--pur4-->
+         
           <div class="border-bottom p-2" style="height: 50px">
             <div class="d-flex">
               <h4 class="text-white mt-1 ms-2" style="font-size: 18px">
@@ -177,7 +181,7 @@
         </div>
         <div
           class="py-2 my shadow purp3-1"
-          [style.display]="dis ? 'block' : 'none'"
+          [style.display]="showNumberOfTravellers ? 'block' : 'none'"
           style="
             width: 260px;
             height: 150px;
@@ -198,11 +202,12 @@
                 }}</span
                 ><span class="d-flex gap-1"
                   ><button
-                    (click)="ChngTraveller(item, 'inc')"
-                    style="width: 30px; height: 30px"
-                  >
-                    +</button
-                  ><span
+                  (click)="ChngTraveller(item, 'dec')"
+                  class="px-2"
+                  style="width: 30px; height: 30px"
+                >
+                  -
+                </button><span
                     class="pt-1"
                     style="
                       width: 30px;
@@ -213,12 +218,11 @@
                     "
                     >{{ item.number }}</span
                   ><button
-                    (click)="ChngTraveller(item, 'dec')"
-                    class="px-2"
-                    style="width: 30px; height: 30px"
-                  >
-                    -
-                  </button></span
+                  (click)="ChngTraveller(item, 'inc')"
+                  style="width: 30px; height: 30px"
+                >
+                  +</button
+                ></span
                 >
               </h4>
             </div>
@@ -228,6 +232,8 @@
     </div>
 
     <div class="d-flex w-100 gap-5 my-2">
+
+      <!-- DATE -->
       <div
         class="my-2 shadow py-1 ps-3"
         style="
@@ -251,7 +257,7 @@
             <input
               type="date"
               id="textInput"
-              [(ngModel)]="oneway.dates"
+              [(ngModel)]="oneway.departureDate"
               class="form-control"
               id="exampleFormControlInput1"
               placeholder="Enter Nationality"
@@ -316,7 +322,7 @@
               style="font-size: 14px; font-weight: 600"
               class="fw-bold py-2 px-2 m-0 text-dark"
             >
-              {{ guestNationality }}
+              {{ guestNationality.country_code }}
             </p>
           </ng-container>
         </div>
@@ -400,6 +406,7 @@
       </div>
     </div>
 
+
     <div class="d-flex w-100 gap-5 my-2">
       
       <!-- DEPARTURE -->
@@ -437,12 +444,12 @@
             Departure
           </a>
 
-          <ng-container *ngIf="selectedAirport">
+          <ng-container *ngIf="selectedDeparture">
             <p
               style="font-size: 14px; font-weight: 600"
               class="fw-bold py-2 px-2 m-0 text-dark"
             >
-              {{ selectedAirport }}
+              {{ selectedDeparture.city_name }}
             </p>
           </ng-container>
         </div>
@@ -487,7 +494,7 @@
                 <ul style="color: #000; list-style-type: none; padding: 0">
                   <li
                     *ngFor="let airport of departureSearchAirports"
-                    (click)="onAirportSelect(airport)"
+                    (click)="onDepartureSelect(airport,1)"
                   >
                     <ng-container *ngIf="airport.iata !== null">
                       <div
@@ -577,12 +584,12 @@
             >
               Destination
             </a>
-            <ng-container *ngIf="selectedCity">
+            <ng-container *ngIf="selectedDestination && selectedDestination.length>0">
               <p
                 style="font-size: 14px; font-weight: 600"
                 class="fw-bold py-2 px-2 m-0 text-dark"
               >
-                {{ selectedCity }}
+                {{ selectedDestination[0].city_name }}
               </p>
             </ng-container>
           </div>
@@ -627,7 +634,7 @@
                   <ul style="color: #000; list-style-type: none; padding: 0">
                     <li
                       *ngFor="let airport of destinationSearchAirports"
-                      (click)="onCitySelect(airport)"
+                      (click)="onDestinationSelect(airport,1)"
                     >
                       <ng-container *ngIf="airport.iata !== null">
                         <div
@@ -684,7 +691,11 @@
       </div>
 
     </div>
+
+
   </div>
+
+  <!-- RIGHT SIDE -->
   <div
     class="px-5"
     style="width: 40%; position: relative; right: 0; top: -313px"
@@ -821,7 +832,7 @@
           ><button
             type="button"
             class="btn pb-1 btn-sm text-white mx-2"
-            (click)="submit()"
+            (click)="loginAndUpdateEnquiry()"
             style="background-color: #ff4040; font-size: 13px; width: 36%"
           >
             {{ update ? "Update Enquiry" : "Log an Enquiry" }}
@@ -830,4 +841,6 @@
       </div>
     </div>
   </div>
+
+
 </section>

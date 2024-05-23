@@ -13,6 +13,7 @@ import { CustomerInfoService } from "src/app/Services/customer-info.service";
 import { ApiResponse } from "../not-regitered/res";
 import { environment } from "src/environments/environment";
 import { CrmServiceService } from "src/app/Services/CRM/crm-service.service";
+import { Subject, debounceTime } from "rxjs";
 
 @Component({
   selector: "app-admin-dashboard",
@@ -22,10 +23,12 @@ import { CrmServiceService } from "src/app/Services/CRM/crm-service.service";
 export class AdminDashboardComponent implements OnInit {
   
   contact: string = "";
-  userData: { contactNumber: string; merchantId: string } = {
-    contactNumber: "",
+  userData: { phone_number: string; merchantId: string } = {
+    phone_number: "",
     merchantId: "merchant123",
   };
+
+  private customerSearchSubject = new Subject<string>();
 
   constructor(
     private router: Router,
@@ -36,22 +39,84 @@ export class AdminDashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.route.queryParams.subscribe((params) => {
-    //   console.log(params); // Print the query parameters
-    //   const param1 = params["param1"];
-    //   const param2 = params["param2"];
-    //   // Use the parameters as needed
-    // });
+    this.customerSearchSubject
+    .pipe(
+      debounceTime(500) // Adjust debounce time as needed (300 milliseconds in this example)
+    )
+    .subscribe(() => {
+      this.onCustomerSearch();
+    });
   }
   
   onSearch() {
     // const dataToSend = { key: this.userData };
-    this.userData.contactNumber = this.contact;
+    this.userData.phone_number = this.contact;
 
    this.loginUser(this.userData);
    
   }
- 
+
+  customerSearchText:string;
+
+  customerSearchData = [];
+
+    gotCustomerSearchData:boolean=false;
+
+  async onCustomerSearch() {
+    try {
+      // Check if search text is null, empty, or whitespace
+      if (
+        !this.customerSearchText ||
+        this.customerSearchText.trim() === ""
+      ) {
+        // Clear search results
+        this.customerSearchData = [];
+
+        return; // Stop execution
+      }
+      console.log("Search in destination:", this.customerSearchText);
+
+      const responseCustomers = await this.crmService.loginCustomer(
+        this.customerSearchText
+      );
+      this.gotCustomerSearchData=true;
+      console.log(responseCustomers);
+
+      this.customerSearchData = responseCustomers.users;
+
+      console.log(this.customerSearchData);
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+  onCustomerSearchInputChange(): void {
+    this.customerSearchSubject.next(this.customerSearchText);
+  }
+
+  onCustomerSelect(customer){
+    console.log("Selected Customer")
+    console.log(customer);
+
+    if(customer.user_id){
+
+      localStorage.setItem("customer-details", JSON.stringify(customer));
+
+
+      this.router.navigate(["/customer"]);
+    }
+    
+  }
+
+
+  addNewCustomer(){
+
+  this.router.navigate(["/register-user"],{
+    queryParams:{customerSearchText:this.customerSearchText}
+  });
+
+  }
+
+
   async loginUser(data: any) {
     try {
 
@@ -75,9 +140,9 @@ export class AdminDashboardComponent implements OnInit {
       } 
       else if(!res.success) {
         console.log("user not found -- > redirecting to register")
-        console.log(res.contactNumber);
+        console.log(res.phone_number);
 
-        localStorage.setItem("contact",res.contactNumber);
+        localStorage.setItem("contact",res.phone_number);
 
         this.router.navigate(["/register-user"]);
 

@@ -8,11 +8,15 @@ import { environment } from "src/environments/environment";
 export class CrmServiceService {
   constructor() {}
 
-  async loginCustomer(userData: { contactNumber: string; merchantId: string }) {
+  async loginCustomer(customerSearchText) {
     try {
-      const { data } = await axios.post(
-        `${environment.BACKEND_BASE_URL}/crm/login`,
-        userData
+      const { data } = await axios.get(
+        `${environment.BACKEND_BASE_URL}/users/search`,
+        {
+          params: {
+            query: customerSearchText 
+          }
+        }
       );
 
       return data;
@@ -21,21 +25,21 @@ export class CrmServiceService {
       return err.message;
     }
   }
-
+ 
   async registerCustomer(userData: {
     name: string;
     email: string;
-    contactNumber: string;
+    phone_number: string;
     address: string;
     merchantId: string;
   }) {
     try {
-      const { data } = await axios.post(
-        `${environment.BACKEND_BASE_URL}/crm/register`,
+      const response  = await axios.post(
+        `${environment.BACKEND_BASE_URL}/users`,
         userData
       );
 
-      return data;
+      return response;
     } catch (err) {
       console.error(err);
       return err.message;
@@ -43,7 +47,7 @@ export class CrmServiceService {
   }
 
   async getAllEnquiriesOfCustomer(userData: {
-    contactNumber: string;
+    phone_number: string;
     merchantId: string;
   }) {
     try {
@@ -72,4 +76,19 @@ export class CrmServiceService {
       return err.message;
     }
   }
+
+  async registerFlightsEnquiry(payload){
+    try {
+      const { data } = await axios.post(
+        `${environment.BACKEND_BASE_URL}/crm/flightsEnquiry`,
+        payload
+      );
+
+      return data;
+    } catch (err) {
+      console.error(err);
+      return err.message;
+    }
+  }
+
 }

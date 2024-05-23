@@ -219,7 +219,8 @@ export class RegisteredUserComponent implements OnInit {
     localStorage.setItem("enqDetails",JSON.stringify(enqDetails));
     localStorage.setItem("enqDocId",enqDetails.docId);
 
-    this.router.navigate(["/generate-aI-itinerary"]);
+    this.router.navigate(['/generate-aI-itinerary'], { queryParams: { service: 'itinerary' } });
+
   } 
 
 

@@ -178,6 +178,7 @@ export class FlightsService {
       console.log(error.message)
     }
   }
+  
   async ssrCall(payload:any){
     console.log('ssr',payload)
 

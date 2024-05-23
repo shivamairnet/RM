@@ -98,12 +98,12 @@ netPayableFixed:number=0
     // this.getFlightDetails()
     // this.getRoomData()
    
-    // this.localStorageData=localStorage.getItem('key')
+    // this.localStorageData=sessionStorage.getItem('key')
     // console.log(this.localStorageData)
     // this.traceId=JSON.parse(this.localStorageData).traceId
     this.token=localStorage.getItem('authenticateToken')
     // this.journeyType=JSON.parse(this.localStorageData).journeyType
-    // this.uid=localStorage.getItem('uid')
+    // this.uid=sessionStorage.getItem('uid')
     // this.adults=JSON.parse(this.localStorageData).adults
     // this.childs=JSON.parse(this.localStorageData).child
     // this.infants=JSON.parse(this.localStorageData).infant
@@ -188,7 +188,7 @@ this.totalCost = +this.totalCost.toFixed(2);
 
   async getFlightDetails(){
     try{
-      const res=await this.pack.getFlightDetails(localStorage.getItem('uid'));
+      const res=await this.pack.getFlightDetails(sessionStorage.getItem('uid'));
       console.log(res)
       this.flightData=res
       console.log(this.flightData?.segments[0])
@@ -286,7 +286,7 @@ this.totalCost = +this.totalCost.toFixed(2);
         this.otherCharge=0
         console.log('Fare Quote Response:', fareQuoteResponse);
         this.fareQuote=fareQuoteResponse?.fareQuote?.Response?.Results
-        await this.pack.saveFareQuote(this.fareQuote.FareBreakdown,localStorage.getItem('uid'),this.fareQuote.Source)
+        await this.pack.saveFareQuote(this.fareQuote.FareBreakdown,sessionStorage.getItem('uid'),this.fareQuote.Source)
         this.flightCost=this.fareQuote?.Fare?.PublishedFare
         this.incentiveEarned=this.fareQuote?.Fare?.CommissionEarned+this.fareQuote?.Fare?.IncentiveEarned +
         this.fareQuote?.Fare?.PLBEarned +this.fareQuote?.Fare?.AdditionalTxnFeePub;
@@ -333,7 +333,7 @@ async fareQuoteCall1(resultIndex: string, token: string, traceId: string) {
       this.otherCharge1 = 0;
       console.log('Fare Quote Response:', fareQuoteResponse);
       this.fareQuote1 = fareQuoteResponse?.fareQuote?.Response?.Results;
-      await this.pack.saveFareQuote1(this.fareQuote1?.FareBreakdown,localStorage.getItem('uid'),this.fareQuote1.Source)
+      await this.pack.saveFareQuote1(this.fareQuote1?.FareBreakdown,sessionStorage.getItem('uid'),this.fareQuote1.Source)
       // Ensure proper initialization
       this.flightCost1 = this.fareQuote1?.Fare?.PublishedFare || 0;
       this.incentiveEarned1 = this.fareQuote1?.Fare?.CommissionEarned + this.fareQuote1?.Fare?.IncentiveEarned +
@@ -379,7 +379,7 @@ async fareQuoteCall2(resultIndex: string, token: string, traceId: string) {
       this.otherCharge2 = 0;
       console.log('Fare Quote Response:', fareQuoteResponse);
       this.fareQuote2 = fareQuoteResponse?.fareQuote?.Response?.Results;
-      await this.pack.saveFareQuote2(this.fareQuote2?.FareBreakdown,localStorage.getItem('uid'),this.fareQuote2.Source)
+      await this.pack.saveFareQuote2(this.fareQuote2?.FareBreakdown,sessionStorage.getItem('uid'),this.fareQuote2.Source)
 
       // Ensure proper initialization
       this.flightCost2 = this.fareQuote2?.Fare?.PublishedFare || 0;
@@ -505,7 +505,7 @@ async fareQuoteCall2(resultIndex: string, token: string, traceId: string) {
 
   async getRoomData(){
     try{
-      const res=await this.hotelBook.getRoomData(localStorage.getItem('hotel_uid'))
+      const res=await this.hotelBook.getRoomData(sessionStorage.getItem('hotel_uid'))
       console.log(res)
       this.hotelData=res
     }catch(error){
@@ -522,7 +522,7 @@ async fareQuoteCall2(resultIndex: string, token: string, traceId: string) {
       IsVoucherBooking:true,
       GuestNationality:this.hotelData?.trip?.nationality,
       HotelRoomsDetails:this.hotelData?.hotel_details?.rooms.map((item)=>{ return item.room}),
-      TraceId:localStorage.getItem('traceId'),
+      TraceId:sessionStorage.getItem('traceId'),
       TokenId:localStorage.getItem('authenticateToken'),
 
     }
@@ -555,34 +555,7 @@ async fareQuoteCall2(resultIndex: string, token: string, traceId: string) {
     this.termsDialogBox.emit()
   }
 
-  async getData() {
-    console.log('fetching');
-    
-    try {
-      const res = await this.hotels.getSearchInfo();
-      console.log(res);
-  
-      if (res) {
-        this.travelData = res;
-        
-        this.totalCost = this.travelData.cost.flightCost+this.travelData.cost.hotelCost+this.travelData.cost.taxes
-        this.initialCost=this.totalCost;
-        this.transactionFee=this.totalCost*0.0175;
-        this.transactionFee = +this.transactionFee.toFixed(2);
-        this.totalCost += this.transactionFee;
-        this.totalCost = +this.totalCost.toFixed(2);
 
-        
-        console.log(this.travelData);
-        
-        
-      } else {
-        console.log("No data received from getSearchInfo");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   onMerchantShareChange() {
     console.log('Merchant Share changed:', this.merchantShare);

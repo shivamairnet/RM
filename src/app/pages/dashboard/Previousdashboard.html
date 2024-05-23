@@ -59,6 +59,7 @@
       </h1>
 
       <div class="container p-0">
+
         <div
           id="accordion"
           style="
@@ -68,6 +69,8 @@
             align-items: center;
           "
         >
+       
+
           <!-- DateRange -->
           <div
             class="card"
@@ -211,7 +214,7 @@
             </div>
           </div>
 
-          <!-- Departure-->
+           <!-- Departure-->
           <div
             class="card"
             data-toggle="collapse"
@@ -236,7 +239,7 @@
                 aria-expanded="true"
                 aria-controls="collapse3"
               >
-                Departure
+                Departure 
               </a>
               <ng-container *ngIf="selectedAirport">
                 <p
@@ -276,111 +279,66 @@
                     aria-label="Search"
                   />
 
-                  <!-- airports -->
-                  <div
-                    style="width: 100%"
-                    *ngIf="departureSearchAirports && departureSearchAirports.length > 0"
-                  >
-                    <h3 style="margin: 0">Airports:</h3>
-                    <ul style="color: #000; list-style-type: none; padding: 0">
-                      <li
-                        *ngFor="let airport of departureSearchAirports"
-                        (click)="onAirportSelect(airport.name)"
-                      >
-                        <ng-container *ngIf="airport.iata!==null">
-                          <div
-                            style="
-                              cursor: pointer;
-                              display: flex;
-                              width: 100%;
-                              border: 1px solid lightgray;
-                              border-radius: 5px;
-                              font-size: 13px;
-                              line-height: 21px;
-                              font-weight: 600;
-                              margin: 3px 0;
-                            "
-                          >
-                            <span
-                              style="
-                                width: 10%;
-                                margin: 0;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                              "
-                              class="emoji"
-                              >{{ airport.emoji }}</span
-                            >
-                            <div
-                              style="
-                                display: flex;
-                                width: 90%;
-                                flex-direction: column;
-                                align-items: center;
-                                justify-content: center;
-                              "
-                            >
-                              <h4 style="margin: 0">
-                                {{ airport.iata }} - {{ airport.name }}
-                              </h4>
-                              <h4 style="margin: 0">
-                                {{ airport.city_name || airport.city_alias }},{{
-                                airport.country_name }}
-                              </h4>
-                            </div>
+                  <div style="width: 100%;" *ngIf="departureSearchAirports && departureSearchAirports.length > 0" >
+                    <h3 style="margin: 0;">Airports:</h3>
+                    <ul style="color: #000;list-style-type: none;padding: 0;">
+                      <li *ngFor="let airport of departureSearchAirports" (click)="onAirportSelect(airport.name)" >
+                        <ng-container *ngIf="airport.iata!==null" >
+                        <div style="cursor: pointer; display: flex;width: 100%;   border: 1px solid lightgray;
+                        border-radius: 5px;
+                        font-size: 13px;
+                        line-height: 21px;
+                        font-weight: 600;
+                        margin: 3px 0;" >
+
+                        
+                          <span style="    width: 10%;
+                          margin: 0;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;"  class="emoji">{{ airport.emoji }}</span>
+                          <div style="    display: flex;
+                          width: 90%;
+                          flex-direction: column;
+                          align-items: center;
+                          justify-content: center;">
+                            <h4 style="margin: 0;"> {{ airport.iata }} - {{ airport.name }}</h4>
+                            <h4 style="margin: 0;">{{ airport.city_name || airport.city_alias }},{{ airport.country_name }}</h4>
                           </div>
+                        </div>
                         </ng-container>
                       </li>
                     </ul>
                   </div>
-                  <!-- cities -->
-                  <div
-                    style="width: 100%"
-                    *ngIf="departureSearchCities && departureSearchCities.length > 0"
-                  >
+                  <div style="width: 100%;" *ngIf="departureSearchCities && departureSearchCities.length > 0">
                     <h3>Cities:</h3>
-                    <ul style="color: #000; list-style-type: none; padding: 0">
-                      <li
-                        *ngFor="let city of departureSearchCities"
-                        (click)="onAirportSelect(city.city_name)"
-                        style="
-                          cursor: pointer;
-                          border: 1px solid lightgray;
-                          border-radius: 5px;
-                          font-size: 13px;
-                          line-height: 21px;
-                          font-weight: 600;
-                          margin: 3px 0;
-                        "
-                      >
-                        <div style="display: flex">
-                          <span
-                            style="
-                              width: 10%;
-                              margin: 0;
-                              display: flex;
-                              align-items: center;
-                              justify-content: center;
-                            "
-                            class="emoji"
-                            >{{ city.emoji }}</span
-                          >
-                          <div
-                            style="
-                              display: flex;
-                              width: 90%;
-                              flex-direction: column;
-                              align-items: center;
-                              justify-content: center;
-                            "
-                          >
-                            <h4 style="margin: 0">
-                              {{ city.city_name }}, {{ city.state_name }}
-                            </h4>
-                            <h4 style="margin: 0">{{ city.country_name }},</h4>
-                          </div>
+                    <ul style="color: #000;list-style-type: none;padding: 0;">
+                      <li *ngFor="let city of departureSearchCities" (click)="onAirportSelect(city.city_name)"  style="cursor: pointer; border: 1px solid lightgray;
+                      border-radius: 5px;
+                      font-size: 13px;
+                      line-height: 21px;
+                      font-weight: 600;
+                      margin: 3px 0;">
+                      <div style="display: flex;">
+                        <span style="    width: 10%;
+                        margin: 0;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;"  class="emoji">{{ city.emoji }}</span>
+                        <div style="    display: flex;
+                        width: 90%;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;">
+
+                        <h4 style="margin: 0;">  {{ city.city_name  }}, 
+                          {{ city.state_name }} </h4>
+                          <h4 style="margin: 0;"> {{ city.country_name }}, </h4>
                         </div>
+                       
+                        
+                      </div>
+                      
                       </li>
                     </ul>
                   </div>
@@ -432,7 +390,7 @@
             </div>
           </div>
 
-          <!-- NATURE OF TRAVELLERS -->
+            <!-- NATURE OF TRAVELLERS -->
           <div
             class="card"
             data-toggle="collapse"
@@ -529,214 +487,87 @@
             </div>
           </div>
 
-          <!-- NUMBER OF TRAVELLERS ACC TO ROOMS -->
-          <div
-            class="card"
-            data-toggle="collapse"
-            data-target="#collapse9"
-            aria-expanded="true"
-            aria-controls="collapse9"
-          >
+          <!-- NUMBER OF TRAVELLERS -->
+          <div class="card" data-toggle="collapse" data-target="#collapse9" aria-expanded="true" aria-controls="collapse9">
             <div class="card-header p-2" id="heading9">
-              <a
-                class="btn btn-link p-2 mb-0 dropdown-toggle"
-                style="
-                  color: #339199;
-                  font-family: 'Lato', sans-serif;
-                  font-size: medium;
-                "
-                data-toggle="collapse"
-                data-target="#collapse9"
-                aria-expanded="true"
-                aria-controls="collapse9"
-              >
-                Select No of Rooms
-              </a>
+                  <a class="btn btn-link p-2 mb-0 dropdown-toggle" style="color: #339199; font-family: 'Lato', sans-serif; font-size: medium;" data-toggle="collapse" data-target="#collapse9" aria-expanded="true" aria-controls="collapse9">
+                    Select No of Rooms
+                  </a>
             </div>
-
-            <div
-              id="collapse9"
-              class="collapse"
-              aria-labelledby="heading9"
-              data-parent="#accordion"
-            >
+            
+            <div id="collapse9" class="collapse " aria-labelledby="heading9" data-parent="#accordion">
               <div class="card-body p-0">
-                <div
-                  class="container-fluid my-3"
-                  (click)="$event.stopPropagation()"
-                >
+                <div class="container-fluid my-3"  (click)="$event.stopPropagation()" >
                   <div class="row px-3 mb-3">
-                    <label
-                      style="font-family: 'Lato', sans-serif"
-                      class="text-dark"
-                      >Set No of travelers in Single Room</label
-                    >
+                    <label style="font-family: 'Lato', sans-serif" class="text-dark">Set No of travelers in Single Room</label>
                   </div>
                   <div class="row">
-                    <div class="col-md-12 col-lg-4">
-                      <label
-                        style="font-family: 'Lato', sans-serif"
-                        class="text-dark"
-                        >Adults</label
-                      >
-                    </div>
-                    <div class="col-md-12 col-lg-6">
-                      <div class="input-group">
-                        <span class="input-group-btn">
-                          <button
-                            class="btn btn-sm btn-outline-dark fs-3 fw-bold px-2 py-1"
-                            style="border-radius: 5px"
-                            type="button"
-                            (click)="decAdultCount()"
-                          >
-                            -
-                          </button>
-                        </span>
-                        <input
-                          id="typeNumber"
-                          class="form-control py-0 px-4"
-                          style="border: none"
-                          [formControl]="numberFormControl"
-                          #typeNumber
-                        />
-                        <span class="input-group-btn ms-2">
-                          <button
-                            class="btn btn-sm btn-outline-dark fs-3 fw-bold px-2 py-1"
-                            style="border-radius: 5px"
-                            type="button"
-                            (click)="incAdultCount()"
-                          >
-                            +
-                          </button>
-                        </span>
-                      </div>
-                    </div>
+                  <div class="col-md-12 col-lg-4">
+                    <label style="font-family: 'Lato', sans-serif" class="text-dark">Adults</label>
+                  </div>
+                  <div class="col-md-12 col-lg-6">
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <button class="btn btn-sm btn-outline-dark fs-3 fw-bold px-2 py-1" style="border-radius: 5px;" type="button" (click)="decAdultCount()" > - </button>
+                    </span>
+                    <input id="typeNumber" class="form-control py-0 px-4" style="border: none;" [formControl]="numberFormControl" #typeNumber/>
+                    <span class="input-group-btn ms-2">
+                      <button class="btn btn-sm btn-outline-dark fs-3 fw-bold px-2 py-1" style="border-radius: 5px;" type="button" (click)="incAdultCount()" > + </button>
+                    </span>
                   </div>
                 </div>
-
-                <div
-                  class="container-fluid my-3"
-                  (click)="$event.stopPropagation()"
-                >
+                </div>
+                </div>
+                <div class="container-fluid my-3"  (click)="$event.stopPropagation()" >
                   <div class="row">
-                    <div class="col-4">
-                      <label
-                        style="font-family: 'Lato', sans-serif"
-                        class="text-dark"
-                        >Infant</label
-                      >
-                    </div>
-                    <div class="col-6">
-                      <div class="input-group">
-                        <span class="input-group-btn">
-                          <button
-                            class="btn btn-sm btn-outline-dark fs-3 fw-bold px-2 py-1"
-                            style="border-radius: 5px"
-                            type="button"
-                            (click)="decInfantCount()"
-                          >
-                            -
-                          </button>
-                        </span>
-                        <input
-                          id="typeNumber"
-                          class="form-control py-0 px-4"
-                          style="border: none"
-                          [formControl]="numberFormControl1"
-                          #typeNumber
-                        />
-                        <span class="input-group-btn ms-2">
-                          <button
-                            class="btn btn-sm btn-outline-dark fs-3 fw-bold px-2 py-1"
-                            style="border-radius: 5px"
-                            type="button"
-                            (click)="incInfantCount()"
-                          >
-                            +
-                          </button>
-                        </span>
-                      </div>
-                    </div>
+                  <div class="col-4">
+                    <label style="font-family: 'Lato', sans-serif" class="text-dark">Infant</label>
+                  </div>
+                  <div class="col-6">
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <button class="btn btn-sm btn-outline-dark fs-3 fw-bold px-2 py-1" style="border-radius: 5px;" type="button" (click)="decInfantCount()" > - </button>
+                    </span>
+                    <input id="typeNumber" class="form-control py-0 px-4" style="border: none;" [formControl]="numberFormControl1" #typeNumber/>
+                    <span class="input-group-btn ms-2">
+                      <button class="btn btn-sm btn-outline-dark fs-3 fw-bold px-2 py-1" style="border-radius: 5px;" type="button" (click)="incInfantCount()" > + </button>
+                    </span>
                   </div>
                 </div>
-
-                <div
-                  class="container-fluid my-1"
-                  (click)="$event.stopPropagation()"
-                >
+                </div>
+                </div>
+                <div class="container-fluid my-1"  (click)="$event.stopPropagation()" >
                   <div class="row">
                     <div class="col-4">
-                      <label
-                        style="font-family: 'Lato', sans-serif"
-                        class="text-dark mt-1"
-                        >Children</label
-                      >
+                      <label style="font-family: 'Lato', sans-serif" class="text-dark mt-1">Children</label>
                     </div>
                     <div class="col-6">
                       <div class="row">
                         <div class="col-9">
                           <div class="input-group">
-                            <input
-                              id="ageInput"
-                              class="form-control px-2 py-1"
-                              [(ngModel)]="ageInputValue"
-                              placeholder="Enter age"
-                            />
+                            <input id="ageInput" class="form-control px-2 py-1" [(ngModel)]="ageInputValue" placeholder="Enter age" />
                           </div>
                         </div>
                         <div class="col-3 p-0">
-                          <button
-                            class="btn btn-sm btn-outline-dark fs-3 fw-bold px-2 py-1"
-                            style="border-radius: 5px"
-                            type="button"
-                            (click)="incChildCount()"
-                            [disabled]="!ageInputValue"
-                          >
-                            +
-                          </button>
+                          <button class="btn btn-sm btn-outline-dark fs-3 fw-bold px-2 py-1" style="border-radius: 5px;" type="button" (click)="incChildCount()" [disabled]="!ageInputValue"> + </button>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <br />
-                <div
-                  class="m-2"
-                  style="
-                    display: flex;
-                    justify-content: space-evenly;
-                    align-items: center;
-                  "
-                >
+                <br>
+                <div class="m-2" style="text-align: end;">
                   <!-- <button type="button" class="btn text-white fw-bold p-2 " style="background-color: #339199" data-bs-dismiss="modal" (click)="noOfTraveler(typeNumber.value)" > Save </button> -->
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    (click)="resetRoomGuests()"
-                  >
-                    Reset Rooms
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    (click)="addRoomGuest()"
-                  >
-                    Add Room
-                  </button>
+                  <button type="button" class="btn btn-primary" (click)="addRoomGuest()">Add Room</button>
                 </div>
-
-                <h4 class="text-muted mx-3 lowercase">
-                  * No of Children: {{ noOfChildren }}
-                </h4>
-                <h4 class="text-muted mx-3 lowercase">
-                  * Note : Please provide the ages of children as they will be
-                  at the time of travel
-                </h4>
+                <h4 class="text-muted mx-3 lowercase">* No of Children: {{ noOfChildren }}</h4>
+                <h4 class="text-muted mx-3 lowercase">* Note : Please provide the ages of children as they will be at the time of travel </h4>
               </div>
             </div>
           </div>
 
-          <!-- CITIES -->
+        
+        <!-- CITIES -->
           <div
             class="card"
             data-toggle="collapse"
@@ -769,9 +600,7 @@
                 Select Destination
               </a>
               <ng-container *ngFor="let city of selectedCities">
-                <p class="fw-bold py-2 px-2 m-0 text-dark">
-                  {{ city.city_name }}
-                </p>
+                <p class="fw-bold py-2 px-2 m-0 text-dark">{{ city.city_name }}</p>
               </ng-container>
             </div>
             <div
@@ -807,115 +636,66 @@
                       aria-label="Search"
                       list="cityOptions"
                     />
-                    <div
-                      style="width: 100%"
-                      *ngIf="destinationSearchAirports && destinationSearchAirports.length > 0"
-                    >
-                      <h3 style="margin: 0">Airports:</h3>
-                      <ul
-                        style="color: #000; list-style-type: none; padding: 0"
-                      >
-                        <li
-                          *ngFor="let airport of destinationSearchAirports"
-                          (click)="onCitySelect(airport.city)"
-                        >
-                          <ng-container *ngIf="airport.iata!==null">
-                            <div
-                              style="
-                                cursor: pointer;
-                                display: flex;
-                                width: 100%;
-                                border: 1px solid lightgray;
-                                border-radius: 5px;
-                                font-size: 13px;
-                                line-height: 21px;
-                                font-weight: 600;
-                                margin: 3px 0;
-                              "
-                            >
-                              <span
-                                style="
-                                  width: 10%;
-                                  margin: 0;
-                                  display: flex;
-                                  align-items: center;
-                                  justify-content: center;
-                                "
-                                class="emoji"
-                                >{{ airport.emoji }}</span
-                              >
-                              <div
-                                style="
-                                  display: flex;
-                                  width: 90%;
-                                  flex-direction: column;
-                                  align-items: center;
-                                  justify-content: center;
-                                "
-                              >
-                                <h4 style="margin: 0">
-                                  {{ airport.iata }} - {{ airport.name }}
-                                </h4>
-                                <h4 style="margin: 0">
-                                  {{ airport.city || airport.city_alias }},{{
-                                  airport.country_name }}
-                                </h4>
-                              </div>
+                    <div style="width: 100%;" *ngIf="destinationSearchAirports && destinationSearchAirports.length > 0" >
+                      <h3 style="margin: 0;">Airports:</h3>
+                      <ul style="color: #000;list-style-type: none;padding: 0;">
+                        <li *ngFor="let airport of destinationSearchAirports" (click)="onCitySelect(airport)" >
+                          <ng-container *ngIf="airport.iata!==null" >
+                          <div style="cursor: pointer; display: flex;width: 100%;   border: 1px solid lightgray;
+                          border-radius: 5px;
+                          font-size: 13px;
+                          line-height: 21px;
+                          font-weight: 600;
+                          margin: 3px 0;" >
+  
+                          
+                            <span style="    width: 10%;
+                            margin: 0;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;"  class="emoji">{{ airport.emoji }}</span>
+                            <div style="    display: flex;
+                            width: 90%;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;">
+                              <h4 style="margin: 0;"> {{ airport.iata }} - {{ airport.name }}</h4>
+                              <h4 style="margin: 0;">{{ airport.city || airport.city_alias }},{{ airport.country_name }}</h4>
                             </div>
+                          </div>
                           </ng-container>
                         </li>
                       </ul>
                     </div>
-                    <div
-                      style="width: 100%"
-                      *ngIf="destinationSearchCities && destinationSearchCities.length > 0"
-                    >
+                    <div style="width: 100%;" *ngIf="destinationSearchCities && destinationSearchCities.length > 0">
                       <h3>Cities:</h3>
-                      <ul
-                        style="color: #000; list-style-type: none; padding: 0"
-                      >
-                        <li
-                          *ngFor="let city of destinationSearchCities"
-                          (click)="onCitySelect(city.city_name)"
-                          style="
-                            cursor: pointer;
-                            border: 1px solid lightgray;
-                            border-radius: 5px;
-                            font-size: 13px;
-                            line-height: 21px;
-                            font-weight: 600;
-                            margin: 3px 0;
-                          "
-                        >
-                          <div style="display: flex">
-                            <span
-                              style="
-                                width: 10%;
-                                margin: 0;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                              "
-                              class="emoji"
-                              >{{ city.emoji }}</span
-                            >
-                            <div
-                              style="
-                                display: flex;
-                                width: 90%;
-                                flex-direction: column;
-                                align-items: center;
-                                justify-content: center;
-                              "
-                            >
-                              <h4 style="margin: 0">
-                                {{ city.city_name }}, {{ city.state_name }}
-                              </h4>
-                              <h4 style="margin: 0">
-                                {{ city.country_name }},
-                              </h4>
-                            </div>
+                      <ul style="color: #000;list-style-type: none;padding: 0;">
+                        <li *ngFor="let city of destinationSearchCities" (click)="onCitySelect(city)"  style="cursor: pointer;    border: 1px solid lightgray;
+                        border-radius: 5px;
+                        font-size: 13px;
+                        line-height: 21px;
+                        font-weight: 600;
+                        margin: 3px 0;">
+                        <div style="display: flex;">
+                          <span style="    width: 10%;
+                          margin: 0;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;"  class="emoji">{{ city.emoji }}</span>
+                          <div style="    display: flex;
+                          width: 90%;
+                          flex-direction: column;
+                          align-items: center;
+                          justify-content: center;">
+  
+                          <h4 style="margin: 0;">  {{ city.city_name  }}, 
+                            {{ city.state_name }} </h4>
+                            <h4 style="margin: 0;"> {{ city.country_name }}, </h4>
                           </div>
+                         
+                          
+                        </div>
+                        
                         </li>
                       </ul>
                     </div>
@@ -1020,7 +800,9 @@
               Build itinerary
             </button>
           </div>
+
         </div>
+        
       </div>
     </nav>
 
@@ -1722,6 +1504,7 @@
             <!-- In Initial Mode -->
             <div class="col-12" *ngIf="isInitialMode">
               <div *ngFor="let cityKey of sortedCities;let i=index ">
+                
                 <!-- <div
                   class="py-4"
                 >
@@ -1782,14 +1565,15 @@
                                 style="color: #323268"
                               ></i
                             ></span>
-                            {{ connections[i].efficientTransportMode }} from {{
-                            connections[i].currentCityName }}
+                            {{ connections[i].efficientTransportMode }} from
+                       {{ connections[i].currentCityName }}
                             <span
                               ><i
                                 class="fa-solid fa-plane-departure fa-xl mx-3"
                               ></i
                             ></span>
-                            to {{ connections[i].nextCityName }}
+                            to
+                            {{ connections[i].nextCityName }}
                           </p>
                         </div>
 
@@ -1881,31 +1665,43 @@
                             </table>
                           </div>
                         </div>
+
+
                       </div>
                     </div>
                   </div>
                 </div>
+
               </div>
 
-              <div class="d-flex justify-content-center align-items-center">
-                <p
-                  class="my-4"
-                  style="font-family: 'Nunito', sans-serif; font-size: 18px"
-                >
-                  <span
-                    ><i
-                      class="fa-solid fa-location-dot fa-xl me-3"
-                      style="color: #323268"
-                    ></i
-                  ></span>
-                  {{ connections[connections.length-1].efficientTransportMode }}
-                  from {{ connections[connections.length-1].currentCityName }}
-                  <span
-                    ><i class="fa-solid fa-plane-departure fa-xl mx-3"></i
-                  ></span>
-                  to {{ connections[connections.length-1].nextCityName }}
-                </p>
-              </div>
+              <div
+              class="d-flex justify-content-center align-items-center"
+            >
+              <p
+                class="my-4"
+                style="
+                  font-family: 'Nunito', sans-serif;
+                  font-size: 18px;
+                "
+              >
+                <span
+                  ><i
+                    class="fa-solid fa-location-dot fa-xl me-3"
+                    style="color: #323268"
+                  ></i
+                ></span>
+                {{ connections[connections.length-1].efficientTransportMode }} from
+           {{ connections[connections.length-1].currentCityName }}
+                <span
+                  ><i
+                    class="fa-solid fa-plane-departure fa-xl mx-3"
+                  ></i
+                ></span>
+                to
+                {{ connections[connections.length-1].nextCityName }}
+              </p>
+            </div>
+
             </div>
 
             <!-- In preview mode -->
@@ -2222,8 +2018,8 @@
   </div>
 </main>
 
-<!-- CONTINENTS -->
-<!-- <div
+ <!-- CONTINENTS -->
+ <!-- <div
  class="card"
  data-toggle="collapse"
  data-target="#collapseOne"

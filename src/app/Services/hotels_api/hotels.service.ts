@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { environment } from "src/environments/environment";
+
 import axios from 'axios';
 import {
   Firestore,
@@ -16,7 +16,7 @@ import {
   DocumentData,
   QuerySnapshot
 } from "@angular/fire/firestore";
-
+import { environment } from "src/environments/environment";
 
 
 @Injectable({
@@ -27,7 +27,7 @@ export class HotelsService {
   constructor(private http: HttpClient, private firestore:Firestore) {}
 
   authenticate(){
-    return this.http.get("http://localhost:4000/flight/authenticate");
+    return this.http.get(`${environment.BACKEND_BASE_URL}/flight/authenticate`);
   }
 
   async updatePrimaryContact(form: any) {
@@ -116,9 +116,9 @@ export class HotelsService {
   
 
   async getAllDetails(resultCount:number,docUid:string) {
-
+    const token=localStorage.getItem("authenticateToken")
     try {
-      const {data} = await axios.post(`${environment.BACKEND_BASE_URL}/hotel/getIternary`, { resultCount: resultCount ,docUid});
+      const {data} = await axios.post(`${environment.BACKEND_BASE_URL}/hotel/getIternary`, { resultCount: resultCount,token:token ,docUid});
       console.log("made call to flights i nthe hotel service")
       console.log(data);
       return data;
@@ -127,9 +127,9 @@ export class HotelsService {
     }
   }
 
-  async getSearchInfo() {
+  async getSearchInfo(collection:string,uid:string) {
     console.log("fetching");
-    const searchDocRef = doc(this.firestore, "Demo_Itinerary", "updated_Itinerary");
+    const searchDocRef = doc(this.firestore, collection, uid);
     return new Promise((resolve, reject) => {
       const unsubscribe = onSnapshot(
         searchDocRef,
@@ -201,7 +201,7 @@ export class HotelsService {
 
   async hotelSearch(payload:any){
     try{
-      const res = await axios.post(`http://localhost:4000/hotel/hotelSearch`, payload);
+      const res = await axios.post(`${environment.BACKEND_BASE_URL}/hotel/hotelSearch`, payload);
       return res;
 
     }catch(error){

@@ -8,7 +8,7 @@ import { ApiResponse } from "./res";
 interface UserData{
   name: string;
   email: string;
-  contactNumber: string;
+  phone_number: string;
   address: string;
   merchantId: string;
 }
@@ -28,11 +28,12 @@ export class NotRegiteredComponent implements OnInit  {
   userData: UserData = {
     name: "",
     email: "",
-    contactNumber: "",
+    phone_number: "",
     address: "",
     merchantId: "merchant123",
   };
   unRegisteredContactNumber:string
+
 
   constructor(
     private router: Router,
@@ -43,11 +44,34 @@ export class NotRegiteredComponent implements OnInit  {
 
   ngOnInit(): void {
     this.unRegisteredContactNumber=localStorage.getItem("contact");
+
+    this.route.queryParams.subscribe(params => {
+      const customerSearchText = params['customerSearchText'] || '';
+
+      // Check if the customerSearchText is alphabetic
+      const isAlphabetic = /^[A-Za-z]+$/.test(customerSearchText);
+      
+      // Check if the customerSearchText is numeric
+      const isNumeric = /^[0-9]+$/.test(customerSearchText);
+
+      console.log('customerSearchText:', customerSearchText);
+      console.log('Is Alphabetic:', isAlphabetic);
+      console.log('Is Numeric:', isNumeric);
+      if(isAlphabetic) {
+        this.userData.name=customerSearchText;
+      }
+      else if(isNumeric){
+        this.userData.phone_number=customerSearchText
+      }
+    });
+
+  
+
+
   }
 
   onRegister() {
-    this.userData.contactNumber =this.unRegisteredContactNumber; 
- 
+    console.log(this.userData);
     this.registerUser(this.userData);
   }
 
@@ -56,16 +80,12 @@ export class NotRegiteredComponent implements OnInit  {
     try {
       const res=await this.crmService.registerCustomer(userData);
 
-      if (res.success == true) {
-        console.log(res);
-        localStorage.setItem("customer-info",res.jwtToken);
+      console.log(res);
 
-        // localStorage.setItem("user-data", JSON.stringify(res.userDetails));
-        // localStorage.setItem("merchant",JSON.stringify(res.userDetails[0].merchantId) );
-
-        this.router.navigate(["/customer"], {
-          state: {userDetails: res.userDetails },
-        });
+      if (res.status == 201) {
+        console.log(res.data);
+       
+        this.router.navigate(["/customer"]);
       }
     } catch (error) {
       console.error("Error:", error);

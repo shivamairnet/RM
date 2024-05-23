@@ -13,11 +13,17 @@ export class PaymentBreakdownPackageComponent implements OnInit {
   @Input() hotelsIncentive:string;
 
 
+   toCheckout:boolean=false;
 
+  @Output() goToCheckout = new EventEmitter<boolean>();
 
   constructor() { }
   ngOnInit(): void {
    
   }
- 
+  checkoutPackage(){
+    this.toCheckout=true
+    this.goToCheckout.emit(this.toCheckout)
+  }
+  
 }

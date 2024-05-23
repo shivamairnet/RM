@@ -1,16 +1,154 @@
+<style>
+  .custom-hover:hover {
+    background-color: #e2472b;
+  }
+  .new-customer-hover{
+    background-color: #ccca5b;
+  }
+</style>
+
 <div class="main-content">
-    <div class="content">
-
-        <div class="head">
-            <span>Search User</span>
-        </div>
-
-        <div class="inputs">
-            <input class="input-group "type="text" [(ngModel)]="contact" placeholder="Enter phone or username">
-            <div class="input-group-append">
-                <button type="button" class="btn btn-secondary" (click)="onSearch()" style="color: white;">Search</button>
-            </div>
-        </div> 
-
+  <div class="content">
+    <div class="head">
+      <span>Search User</span>
     </div>
+
+    <div class="inputs">
+      <input
+        class="input-group"
+        type="text"
+        [(ngModel)]="customerSearchText"
+        (click)="$event.stopPropagation()"
+        (input)="onCustomerSearchInputChange()"
+        placeholder="Enter phone or username"
+      />
+      <div class="input-group-append">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="onSearch()"
+          style="color: white"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+    <div
+      style="
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: flex-start;
+      "
+      *ngIf="gotCustomerSearchData && customerSearchData && customerSearchData.length > 0"
+    >
+      <div
+        style="
+          width: 350px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          gap: 5px;
+          align-items: center;
+        "
+      >
+        <h3 style="margin: 0">Customers:</h3>
+        <ul
+          style="
+            color: #000;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+          "
+        >
+          <li
+            *ngFor="let customer of customerSearchData"
+            (click)="onCustomerSelect(customer)"
+          >
+            <ng-container *ngIf="customer.user_id !== null">
+              <div
+                style="
+                  cursor: pointer;
+                  display: flex;
+                  width: 100%;
+                  border: 1px solid lightgray;
+                  border-radius: 5px;
+                  font-size: 13px;
+                  line-height: 21px;
+                  font-weight: 600;
+                  margin: 3px 0;
+                  height: 42px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                "
+                class="custom-hover"
+              >
+                <div
+                  style="
+                    display: flex;
+                    width: 90%;
+
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                  "
+                >
+                  <h4 style="margin: 0">
+                    {{ customer.name }}
+                  </h4>
+                  <h4 style="margin: 0; padding: 0">
+                    {{ customer.phone_number }}
+                  </h4>
+                </div>
+              </div>
+            </ng-container>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+    <ng-container *ngIf="gotCustomerSearchData">
+        <div style="width: 100%; display:flex; justify-content:  center;align-items: center;" >
+            <div
+            style="
+              cursor: pointer;
+              display: flex;
+              width: 350px;
+              border: 1px solid lightgray;
+              border-radius: 5px;
+              font-size: 13px;
+              line-height: 21px;
+              font-weight: 600;
+              margin: 3px 0;
+              height: 42px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            "
+            class="new-customer-hover"
+            (click)="addNewCustomer()"
+          >
+            <div
+              style="
+                display: flex;
+                width: 90%;
+    
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+              "
+            >
+              <h4 style="margin: 0">
+               Add New Customer
+              </h4>
+             
+            </div>
+          </div>
+        </div>
+        
+    </ng-container>
+    
+  </div>
 </div>
