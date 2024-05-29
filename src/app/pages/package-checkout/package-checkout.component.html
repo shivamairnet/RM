@@ -1,8 +1,15 @@
+
+<ng-container *ngIf="!isFareQuoteSuccess" >
+   Loading CheckOut (calling farequote and refetching flights price )
+</ng-container>
+
+<ng-container *ngIf="isFareQuoteSuccess">
+
 <app-traveller-card
   *ngIf="dialog"
   (closeDialog)="dialogbox($event)"
-  [isLCC]="recievedFlights.flightDetails[0].isLCC"
-  [ssr]="recievedSrrOptions"
+  [isLCC]="fareQuote.Results.IsLCC"
+  [ssr]="flightSSR"
   [travelers]="travelers"
   [currentTravelerUid]="currentTravelerUid"
   (updatedTravelerArr)="handleupdationInTravelerArr($event)"
@@ -86,7 +93,7 @@
               {{ NoOfAdults + NoOfChild }} Traveller -
             </h2>
             <span style="color: black; padding-left: 10px">
-              {{ formatRoomGuests(NoOfRooms, NoOfAdults, NoOfChild) }}
+              {{ formatRoomGuests(NoOfRooms, NoOfAdults, NoOfChild,NoOfInfants) }}
             </span>
           </div>
 
@@ -505,8 +512,9 @@
 
       <app-route-overview
         [travelData]="travelData"
-        [recievedFlights]="flightDetailsFromFareQuote"
+        [recievedFlights]="fareQuote"
       ></app-route-overview>
     </div>
   </div>
 </body>
+</ng-container>

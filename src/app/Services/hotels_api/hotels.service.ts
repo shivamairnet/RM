@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
-import axios from 'axios';
+import axios from "axios";
 import {
   Firestore,
   collection,
@@ -14,27 +14,29 @@ import {
   setDoc,
   onSnapshot,
   DocumentData,
-  QuerySnapshot
+  QuerySnapshot,
 } from "@angular/fire/firestore";
 import { environment } from "src/environments/environment";
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class HotelsService {
+  constructor(private http: HttpClient, private firestore: Firestore) {}
 
-  constructor(private http: HttpClient, private firestore:Firestore) {}
-
-  authenticate(){
+  authenticate() {
     return this.http.get(`${environment.BACKEND_BASE_URL}/flight/authenticate`);
   }
 
   async updatePrimaryContact(form: any) {
     console.log("fetching");
-  
-    const searchDocRef = doc(this.firestore, "Demo_Itinerary", "updated_Itinerary");
-  
+
+    const searchDocRef = doc(
+      this.firestore,
+      "Demo_Itinerary",
+      "updated_Itinerary"
+    );
+
     try {
       await setDoc(searchDocRef, { primary_details: form }, { merge: true });
       console.log("Document updated successfully!");
@@ -45,28 +47,36 @@ export class HotelsService {
 
   async savePassengers(form: any) {
     console.log("fetching");
-  
-    const searchDocRef = doc(this.firestore, "Demo_Itinerary", "updated_Itinerary");
-  
+
+    const searchDocRef = doc(
+      this.firestore,
+      "Demo_Itinerary",
+      "updated_Itinerary"
+    );
+
     try {
       const docSnapshot = await getDoc(searchDocRef);
-  
+
       if (docSnapshot.exists()) {
         // If the document exists, update the passenger_details array
         const existingData = docSnapshot.data();
         let passengerDetailsArray = existingData.passenger_details || [];
-  
+
         // Add the form object to the passenger_details array
         passengerDetailsArray.push(form);
-  
+
         // Update the document with the modified passenger_details array
-        await setDoc(searchDocRef, { passenger_details: passengerDetailsArray }, { merge: true });
-  
+        await setDoc(
+          searchDocRef,
+          { passenger_details: passengerDetailsArray },
+          { merge: true }
+        );
+
         console.log("Document updated successfully!");
       } else {
         // If the document doesn't exist, create a new document with the passenger_details array
         await setDoc(searchDocRef, { passenger_details: [form] });
-  
+
         console.log("Document created successfully!");
       }
     } catch (error) {
@@ -74,28 +84,35 @@ export class HotelsService {
     }
   }
 
-
   async updatePassengers(form: any, index: number) {
     console.log("fetching");
-  
-    const searchDocRef = doc(this.firestore, "Demo_Itinerary", "updated_Itinerary");
-  
+
+    const searchDocRef = doc(
+      this.firestore,
+      "Demo_Itinerary",
+      "updated_Itinerary"
+    );
+
     try {
       const docSnapshot = await getDoc(searchDocRef);
-  
+
       if (docSnapshot.exists()) {
         // If the document exists, update the passenger_details array
         const existingData = docSnapshot.data();
         let passengerDetailsArray = existingData.passenger_details || [];
-  
+
         // Check if the index is within bounds
         if (index >= 0 && index < passengerDetailsArray.length) {
           // Update the specific index with the form values
           passengerDetailsArray[index] = form;
-  
+
           // Update the document with the modified passenger_details array
-          await setDoc(searchDocRef, { passenger_details: passengerDetailsArray }, { merge: true });
-  
+          await setDoc(
+            searchDocRef,
+            { passenger_details: passengerDetailsArray },
+            { merge: true }
+          );
+
           console.log("Document updated successfully!");
           return passengerDetailsArray;
         } else {
@@ -104,22 +121,22 @@ export class HotelsService {
       } else {
         // If the document doesn't exist, create a new document with the passenger_details array
         await setDoc(searchDocRef, { passenger_details: [form] });
-  
+
         console.log("Document created successfully!");
       }
     } catch (error) {
       console.error("Error updating/creating document:", error);
     }
   }
-  
-  
-  
 
-  async getAllDetails(resultCount:number,docUid:string) {
-    const token=localStorage.getItem("authenticateToken")
+  async getAllDetails(resultCount: number, docUid: string) {
+    const token = localStorage.getItem("authenticateToken");
     try {
-      const {data} = await axios.post(`${environment.BACKEND_BASE_URL}/hotel/getIternary`, { resultCount: resultCount,token:token ,docUid});
-      console.log("made call to flights i nthe hotel service")
+      const { data } = await axios.post(
+        `${environment.BACKEND_BASE_URL}/hotel/getIternary`,
+        { resultCount: resultCount, token: token, docUid }
+      );
+      console.log("made call to flights i nthe hotel service");
       console.log(data);
       return data;
     } catch (error) {
@@ -127,7 +144,7 @@ export class HotelsService {
     }
   }
 
-  async getSearchInfo(collection:string,uid:string) {
+  async getSearchInfo(collection: string, uid: string) {
     console.log("fetching");
     const searchDocRef = doc(this.firestore, collection, uid);
     return new Promise((resolve, reject) => {
@@ -153,89 +170,110 @@ export class HotelsService {
     });
   }
 
-
-
   // hotel cancellation
-
-  async hotelCancellation(remarks:string){
-    const payload={
-      token:localStorage.getItem('authenticateToken'),
-      requestType:1,
-      remarks:remarks
-    }
-    console.log(payload)
-    try{
-      const {data}=await axios.post(`${environment.BACKEND_BASE_URL}/hotel/sendChangeRequest`,payload);
-      if(data){
-        console.log(data)
+  async hotelCancellation(remarks: string) {
+    const payload = {
+      token: localStorage.getItem("authenticateToken"),
+      requestType: 1,
+      remarks: remarks,
+    };
+    console.log(payload);
+    try {
+      const { data } = await axios.post(
+        `${environment.BACKEND_BASE_URL}/hotel/sendChangeRequest`,
+        payload
+      );
+      if (data) {
+        console.log(data);
       }
-      return data
-    }catch(error){
-      console.log('something went wrong ',error.message)
+      return data;
+    } catch (error) {
+      console.log("something went wrong ", error.message);
     }
   }
 
-  async partialHotelCancellation(remarks:string,hotelSet:any ){
-    const payload={
-      token:localStorage.getItem('authenticateToken'),
-      requestType:1,
-      remarks:remarks,
-      cities:hotelSet
-    }
-    console.log(payload)
-    try{
-      const {data}=await axios.post(`${environment.BACKEND_BASE_URL}/hotel/getChangeRequest`,payload);
-      if(data){
-        console.log(data)
-        
+  async partialHotelCancellation(remarks: string, hotelSet: any) {
+    const payload = {
+      token: localStorage.getItem("authenticateToken"),
+      requestType: 1,
+      remarks: remarks,
+      cities: hotelSet,
+    };
+    console.log(payload);
+    try {
+      const { data } = await axios.post(
+        `${environment.BACKEND_BASE_URL}/hotel/getChangeRequest`,
+        payload
+      );
+      if (data) {
+        console.log(data);
       }
-      return data
-    }catch(error){
-      console.log('something went wrong ',error.message)
+      return data;
+    } catch (error) {
+      console.log("something went wrong ", error.message);
     }
-
   }
 
-
-
-
-  async hotelSearch(payload:any){
-    try{
-      const res = await axios.post(`${environment.BACKEND_BASE_URL}/hotel/hotelSearch`, payload);
+  async hotelSearch(payload: any) {
+    try {
+      const res = await axios.post(
+        `${environment.BACKEND_BASE_URL}/hotel/hotelSearch`,
+        payload
+      );
       return res;
-
-    }catch(error){
-      console.log(error.message)
+    } catch (error) {
+      console.log(error.message);
     }
   }
 
   // hotel Block room
-  async hotelBlockRoom(payload:any){
-    console.log(payload)
-    try{
-      const res=await axios.post(`${environment.BACKEND_BASE_URL}/hotel/hotelBlockRoom`,payload);
-      console.log(res)
+  async hotelBlockRoom(payload: any) {
+    console.log(payload);
+    try {
+      const res = await axios.post(
+        `${environment.BACKEND_BASE_URL}/hotel/hotelBlockRoom`,
+        payload
+      );
+      console.log(res);
       return res.data;
-    }catch(error){
-      console.log(error.message)
+    } catch (error) {
+      console.log(error.message);
     }
   }
 
-  async singleHotelBookRoom(payload:any){
-    try{
-      const {data}=await axios.post(`${environment.BACKEND_BASE_URL}/hotel/singleHotelBookRoom`,payload);
+  async singleHotelBookRoom(payload: any) {
+    try {
+      const { data } = await axios.post(
+        `${environment.BACKEND_BASE_URL}/hotel/singleHotelBookRoom`,
+        payload
+      );
       return data;
-    }catch(error){
-      console.log(error.message)
+    } catch (error) {
+      console.log(error.message);
     }
   }
 
-  async hotelBookingDetails(payload:any){
-    try{
-      const {data}=await axios.post(`${environment.BACKEND_BASE_URL}/hotel/getBookingDetails`,payload);
+  async hotelBookingDetails(payload: any) {
+    try {
+      const { data } = await axios.post(
+        `${environment.BACKEND_BASE_URL}/hotel/getBookingDetails`,
+        payload
+      );
       return data;
-    }catch(error){
-      console.log(error.message)
+    } catch (error) {
+      console.log(error.message);
     }
+  }
+
+  makeUpdatedHotelsArrForSession(selectedHotels) {
+    return selectedHotels.flatMap((city) =>
+      city.hotels.map(({ hotel, roomDetails }) => ({
+        hotelName: hotel.search.HotelName,
+        hotelCode: hotel.search.HotelCode,
+        room: roomDetails,
+        resultIndex: hotel.resultIndex,
+        traceId: hotel.info.HotelInfoResult.TraceId,
+      }))
+    );
   }
 }

@@ -55,7 +55,7 @@ export const AdminLayoutRoutes: Routes = [
   {path:"success/:id/:isFlight" , component:SuccessComponent},
   {path:"reissue/:date" , component:ReissuanceComponent},
   {path:"reissue-checkout" , component:ReissueCheckoutComponent},
-  {path:"package-checkout" , component:PackageCheckoutComponent},
+  {path:"package-checkout/:uid" , component:PackageCheckoutComponent},
   {path:"package-checkout-flight" , component:PackageCheckoutFlightsComponent},
   {path:"package-checkout-hotels" , component:PackageCheckoutHotelsComponent},
 

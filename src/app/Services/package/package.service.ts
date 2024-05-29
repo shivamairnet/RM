@@ -614,7 +614,21 @@ export class PackageService {
 
   }
 
-
+  async getTripData(docUid:string){
+    try{
+      const payload={
+        uid:docUid,
+        desiredFieldsArr:["trip"]
+      }
+      const {data}=await axios.post(`${environment.BACKEND_BASE_URL}/package/getPackageData`,payload);
+      console.log(data)
+      return data;
+    }
+    catch(err){
+      console.error("Not able to fetch trip data");
+      return err.response.data
+    }
+  }
 
 
 

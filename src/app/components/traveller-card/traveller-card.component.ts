@@ -141,10 +141,8 @@ export class TravellerCardComponent implements OnInit {
       });
     // this.getData();s
     this.initializeForm();
-    
+
     // this.loadTravelerDetails();
-
-
 
     // if(this.ssr){
     //   this.handleSSR('ssr',)
@@ -332,6 +330,8 @@ export class TravellerCardComponent implements OnInit {
         City: city.city_name,
       },
     });
+    console.log("value patched for city");
+
   }
   onNationalitySelected(country) {
     this.travelerForm.patchValue({
@@ -339,6 +339,8 @@ export class TravellerCardComponent implements OnInit {
         Nationality: country.country_code,
       },
     });
+    console.log(this.travelerForm)
+    console.log("value patched for nationality");
   }
   onCountrySelected(country) {
     this.travelerForm.patchValue({
@@ -347,6 +349,8 @@ export class TravellerCardComponent implements OnInit {
         CountryCode: country.country_code,
       },
     });
+    console.log("value patched for country");
+
   }
 
   getFormValues(): any {
@@ -366,7 +370,7 @@ export class TravellerCardComponent implements OnInit {
   }
 
   async addOrUpdateTraveler(currentTravelerUid) {
-    console.log(currentTravelerUid)
+    console.log(currentTravelerUid);
     // Find the traveler from the travelers array based on the UID
     const traveler = this.findTraveler(currentTravelerUid);
 
@@ -475,22 +479,20 @@ export class TravellerCardComponent implements OnInit {
     }
   }
 
-
   loadTravelerDetails() {
-    const encryptedTravelers = sessionStorage.getItem('travelers');
+    const encryptedTravelers = sessionStorage.getItem("travelers");
     if (encryptedTravelers) {
       this.travelers = this.decryptObject(encryptedTravelers);
       if (this.travelers.length > 0) {
-        
-       const traveler=this.findTraveler(this.currentTravelerUid);
-      console.log(traveler );
-      console.log(this.travelers)
+        const traveler = this.findTraveler(this.currentTravelerUid);
+        console.log(traveler);
+        console.log(this.travelers);
         this.fillTravelerForm(traveler);
       }
     }
   }
 
-  fillTravelerForm(traveler:Traveler) {
+  fillTravelerForm(traveler: Traveler) {
     this.travelerForm.patchValue({
       ...traveler,
       personalInfo: {
@@ -527,9 +529,9 @@ export class TravellerCardComponent implements OnInit {
         extraBaggage: traveler.ssr.extraBaggage,
         meal: traveler.ssr.meal,
         seat: traveler.ssr.seat,
-      }
+      },
     });
-    console.log(traveler,"In fill travel forms")
+    console.log(traveler, "In fill travel forms");
   }
 
   encryptObject(obj: any): string {
@@ -547,19 +549,6 @@ export class TravellerCardComponent implements OnInit {
     ).toString(CryptoJS.enc.Utf8);
     return JSON.parse(decrypted);
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   // handleSSR(formGroupName: string, controlName: string, item: any): void {
   //   console.log(item);

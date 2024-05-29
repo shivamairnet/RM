@@ -1,0 +1,653 @@
+{
+    "message": "Booking failed",
+    "error": {
+        "Response": {
+            "Error": {
+                "ErrorCode": 0,
+                "ErrorMessage": ""
+            },
+            "TraceId": "3584fc92-cc15-4ef1-9c6a-feb54366e67a",
+            "ResponseStatus": 1,
+            "Response": {
+                "PNR": "VBU8GA",
+                "BookingId": 1897649,
+                "SSRDenied": false,
+                "SSRMessage": null,
+                "Status": 1,
+                "IsPriceChanged": false,
+                "IsTimeChanged": false,
+                "FlightItinerary": {
+                    "CommentDetails": null,
+                    "JourneyType": 3,
+                    "SearchCombinationType": 2,
+                    "TripIndicator": 1,
+                    "BookingAllowedForRoamer": true,
+                    "BookingId": 1897649,
+                    "IsCouponAppilcable": true,
+                    "IsManual": false,
+                    "PNR": "VBU8GA",
+                    "IsDomestic": true,
+                    "ResultFareType": "RegularFare",
+                    "Source": 4,
+                    "Origin": "DEL",
+                    "Destination": "JAI",
+                    "AirlineCode": "UK",
+                    "LastTicketDate": "2024-05-29T00:00:00",
+                    "ValidatingAirlineCode": "UK",
+                    "AirlineRemark": "test uk remarks",
+                    "IsLCC": false,
+                    "NonRefundable": true,
+                    "FareType": "RP",
+                    "CreditNoteNo": null,
+                    "Fare": {
+                        "Currency": "INR",
+                        "BaseFare": 44476,
+                        "Tax": 8248,
+                        "TaxBreakup": [
+                            {
+                                "key": "K3",
+                                "value": 2290
+                            },
+                            {
+                                "key": "YR",
+                                "value": 1300
+                            },
+                            {
+                                "key": "INTax",
+                                "value": 2352
+                            },
+                            {
+                                "key": "OtherTaxes",
+                                "value": 2306
+                            },
+                            {
+                                "key": "TotalTax",
+                                "value": 8248
+                            }
+                        ],
+                        "YQTax": 0,
+                        "AdditionalTxnFeeOfrd": 0,
+                        "AdditionalTxnFeePub": 0,
+                        "PGCharge": 0,
+                        "OtherCharges": 0,
+                        "ChargeBU": [
+                            {
+                                "key": "TBOMARKUP",
+                                "value": 0
+                            },
+                            {
+                                "key": "GLOBALPROCUREMENTCHARGE",
+                                "value": 0
+                            },
+                            {
+                                "key": "OTHERCHARGE",
+                                "value": 0
+                            },
+                            {
+                                "key": "CONVENIENCECHARGE",
+                                "value": 0
+                            }
+                        ],
+                        "Discount": 0,
+                        "PublishedFare": 52724,
+                        "CommissionEarned": 364.7,
+                        "PLBEarned": 0,
+                        "IncentiveEarned": 0,
+                        "OfferedFare": 52359.3,
+                        "TdsOnCommission": 145.88,
+                        "TdsOnPLB": 0,
+                        "TdsOnIncentive": 0,
+                        "ServiceFee": 0,
+                        "TotalBaggageCharges": 0,
+                        "TotalMealCharges": 0,
+                        "TotalSeatCharges": 0,
+                        "TotalSpecialServiceCharges": 0
+                    },
+                    "CreditNoteCreatedOn": null,
+                    "Passenger": [
+                        {
+                            "BarcodeDetails": null,
+                            "DocumentDetails": null,
+                            "GuardianDetails": null,
+                            "PaxId": 3125065,
+                            "Title": "Mr",
+                            "FirstName": "hello",
+                            "LastName": "bye",
+                            "PaxType": 1,
+                            "DateOfBirth": "1994-06-23T00:00:00",
+                            "Gender": 1,
+                            "IsPANRequired": false,
+                            "IsPassportRequired": false,
+                            "PAN": "",
+                            "PassportNo": "P4366918",
+                            "PassportExpiry": "2025-01-01T05:30:00",
+                            "AddressLine1": "Zfcsc  fsafsaf  fsf saf",
+                            "AddressLine2": "azfsf",
+                            "Fare": {
+                                "Currency": "INR",
+                                "BaseFare": 22238,
+                                "Tax": 4124,
+                                "TaxBreakup": [
+                                    {
+                                        "key": "K3",
+                                        "value": 1145
+                                    },
+                                    {
+                                        "key": "YR",
+                                        "value": 650
+                                    },
+                                    {
+                                        "key": "INTax",
+                                        "value": 1176
+                                    },
+                                    {
+                                        "key": "OtherTaxes",
+                                        "value": 1153
+                                    },
+                                    {
+                                        "key": "TotalTax",
+                                        "value": 4124
+                                    }
+                                ],
+                                "YQTax": 0,
+                                "AdditionalTxnFeeOfrd": 0,
+                                "AdditionalTxnFeePub": 0,
+                                "PGCharge": 0,
+                                "OtherCharges": 0,
+                                "ChargeBU": [
+                                    {
+                                        "key": "TBOMARKUP",
+                                        "value": 0
+                                    },
+                                    {
+                                        "key": "GLOBALPROCUREMENTCHARGE",
+                                        "value": 0
+                                    },
+                                    {
+                                        "key": "OTHERCHARGE",
+                                        "value": 0
+                                    },
+                                    {
+                                        "key": "CONVENIENCECHARGE",
+                                        "value": 0
+                                    }
+                                ],
+                                "Discount": 0,
+                                "PublishedFare": 26362,
+                                "CommissionEarned": 182.35,
+                                "PLBEarned": 0,
+                                "IncentiveEarned": 0,
+                                "OfferedFare": 26179.65,
+                                "TdsOnCommission": 72.94,
+                                "TdsOnPLB": 0,
+                                "TdsOnIncentive": 0,
+                                "ServiceFee": 0,
+                                "TotalBaggageCharges": 0,
+                                "TotalMealCharges": 0,
+                                "TotalSeatCharges": 0,
+                                "TotalSpecialServiceCharges": 0
+                            },
+                            "CountryCode": "IN",
+                            "Nationality": "IN",
+                            "ContactNo": "9988776655",
+                            "IsLeadPax": true,
+                            "FFAirlineCode": null,
+                            "FFNumber": null,
+                            "Ssr": [],
+                            "GSTCompanyAddress": "Ludhiana",
+                            "GSTCompanyContactNumber": "9855336721",
+                            "GSTCompanyEmail": "airent1@gmail.com",
+                            "GSTCompanyName": "Airent",
+                            "GSTNumber": "22AAAAA0000A1Z5"
+                        },
+                        {
+                            "BarcodeDetails": null,
+                            "DocumentDetails": null,
+                            "GuardianDetails": null,
+                            "PaxId": 3125066,
+                            "Title": "Mrs",
+                            "FirstName": "Helli",
+                            "LastName": "byi",
+                            "PaxType": 1,
+                            "DateOfBirth": "1991-06-20T00:00:00",
+                            "Gender": 2,
+                            "IsPANRequired": false,
+                            "IsPassportRequired": false,
+                            "PAN": "",
+                            "PassportNo": "M1234567",
+                            "PassportExpiry": "2025-03-19T05:30:00",
+                            "AddressLine1": "asfasf fsafsaf fsaf",
+                            "AddressLine2": "sfsaf fsaff  sf sa",
+                            "Fare": {
+                                "Currency": "INR",
+                                "BaseFare": 22238,
+                                "Tax": 4124,
+                                "TaxBreakup": [
+                                    {
+                                        "key": "K3",
+                                        "value": 1145
+                                    },
+                                    {
+                                        "key": "YR",
+                                        "value": 650
+                                    },
+                                    {
+                                        "key": "INTax",
+                                        "value": 1176
+                                    },
+                                    {
+                                        "key": "OtherTaxes",
+                                        "value": 1153
+                                    },
+                                    {
+                                        "key": "TotalTax",
+                                        "value": 4124
+                                    }
+                                ],
+                                "YQTax": 0,
+                                "AdditionalTxnFeeOfrd": 0,
+                                "AdditionalTxnFeePub": 0,
+                                "PGCharge": 0,
+                                "OtherCharges": 0,
+                                "ChargeBU": [
+                                    {
+                                        "key": "TBOMARKUP",
+                                        "value": 0
+                                    },
+                                    {
+                                        "key": "GLOBALPROCUREMENTCHARGE",
+                                        "value": 0
+                                    },
+                                    {
+                                        "key": "OTHERCHARGE",
+                                        "value": 0
+                                    },
+                                    {
+                                        "key": "CONVENIENCECHARGE",
+                                        "value": 0
+                                    }
+                                ],
+                                "Discount": 0,
+                                "PublishedFare": 26362,
+                                "CommissionEarned": 182.35,
+                                "PLBEarned": 0,
+                                "IncentiveEarned": 0,
+                                "OfferedFare": 26179.65,
+                                "TdsOnCommission": 72.94,
+                                "TdsOnPLB": 0,
+                                "TdsOnIncentive": 0,
+                                "ServiceFee": 0,
+                                "TotalBaggageCharges": 0,
+                                "TotalMealCharges": 0,
+                                "TotalSeatCharges": 0,
+                                "TotalSpecialServiceCharges": 0
+                            },
+                            "CountryCode": "IN",
+                            "Nationality": "IN",
+                            "ContactNo": "9988776655",
+                            "IsLeadPax": false,
+                            "FFAirlineCode": null,
+                            "FFNumber": null,
+                            "Ssr": [],
+                            "GSTCompanyAddress": "Ludhiana",
+                            "GSTCompanyContactNumber": "9855336721",
+                            "GSTCompanyEmail": "airent1@gmail.com",
+                            "GSTCompanyName": "Airent",
+                            "GSTNumber": "22AAAAA0000A1Z5"
+                        }
+                    ],
+                    "CancellationCharges": null,
+                    "Segments": [
+                        {
+                            "Baggage": "1 PC(s)",
+                            "CabinBaggage": null,
+                            "CabinClass": 2,
+                            "SupplierFareClass": null,
+                            "TripIndicator": 1,
+                            "SegmentIndicator": 1,
+                            "Airline": {
+                                "AirlineCode": "UK",
+                                "AirlineName": "Air Vistara",
+                                "FlightNumber": "941",
+                                "FareClass": "O",
+                                "OperatingCarrier": "UK"
+                            },
+                            "AirlinePNR": "VBU8GA",
+                            "Origin": {
+                                "Airport": {
+                                    "AirportCode": "DEL",
+                                    "AirportName": "Indira Gandhi Airport",
+                                    "Terminal": "3",
+                                    "CityCode": "DEL",
+                                    "CityName": "Delhi",
+                                    "CountryCode": "IN",
+                                    "CountryName": "India"
+                                },
+                                "DepTime": "2024-08-07T16:50:00"
+                            },
+                            "Destination": {
+                                "Airport": {
+                                    "AirportCode": "BOM",
+                                    "AirportName": "Chhatrapati Shivaji International Airport",
+                                    "Terminal": "2",
+                                    "CityCode": "BOM",
+                                    "CityName": "Mumbai",
+                                    "CountryCode": "IN",
+                                    "CountryName": "India"
+                                },
+                                "ArrTime": "2024-08-07T19:05:00"
+                            },
+                            "Duration": 0,
+                            "GroundTime": 0,
+                            "Mile": 0,
+                            "StopOver": false,
+                            "FlightInfoIndex": "",
+                            "StopPoint": "",
+                            "StopPointArrivalTime": "0001-01-01T00:00:00",
+                            "StopPointDepartureTime": "0001-01-01T00:00:00",
+                            "Craft": "320",
+                            "Remark": null,
+                            "IsETicketEligible": true,
+                            "FlightStatus": "Confirmed",
+                            "Status": "HK",
+                            "FareClassification": null
+                        },
+                        {
+                            "Baggage": "1 PC(s)",
+                            "CabinBaggage": null,
+                            "CabinClass": 2,
+                            "SupplierFareClass": null,
+                            "TripIndicator": 1,
+                            "SegmentIndicator": 2,
+                            "Airline": {
+                                "AirlineCode": "UK",
+                                "AirlineName": "Air Vistara",
+                                "FlightNumber": "565",
+                                "FareClass": "O",
+                                "OperatingCarrier": "UK"
+                            },
+                            "AirlinePNR": "VBU8GA",
+                            "Origin": {
+                                "Airport": {
+                                    "AirportCode": "BOM",
+                                    "AirportName": "Chhatrapati Shivaji International Airport",
+                                    "Terminal": "2",
+                                    "CityCode": "BOM",
+                                    "CityName": "Mumbai",
+                                    "CountryCode": "IN",
+                                    "CountryName": "India"
+                                },
+                                "DepTime": "2024-08-07T21:05:00"
+                            },
+                            "Destination": {
+                                "Airport": {
+                                    "AirportCode": "JAI",
+                                    "AirportName": "Sanganeer",
+                                    "Terminal": "2",
+                                    "CityCode": "JAI",
+                                    "CityName": "Jaipur",
+                                    "CountryCode": "IN",
+                                    "CountryName": "India"
+                                },
+                                "ArrTime": "2024-08-07T23:05:00"
+                            },
+                            "AccumulatedDuration": 375,
+                            "Duration": 375,
+                            "GroundTime": 0,
+                            "Mile": 0,
+                            "StopOver": false,
+                            "FlightInfoIndex": "",
+                            "StopPoint": "",
+                            "StopPointArrivalTime": "0001-01-01T00:00:00",
+                            "StopPointDepartureTime": "0001-01-01T00:00:00",
+                            "Craft": "320",
+                            "Remark": null,
+                            "IsETicketEligible": true,
+                            "FlightStatus": "Confirmed",
+                            "Status": "HK",
+                            "FareClassification": null
+                        },
+                        {
+                            "Baggage": "1 PC(s)",
+                            "CabinBaggage": null,
+                            "CabinClass": 2,
+                            "SupplierFareClass": null,
+                            "TripIndicator": 2,
+                            "SegmentIndicator": 1,
+                            "Airline": {
+                                "AirlineCode": "UK",
+                                "AirlineName": "Air Vistara",
+                                "FlightNumber": "566",
+                                "FareClass": "O",
+                                "OperatingCarrier": "UK"
+                            },
+                            "AirlinePNR": "VBU8GA",
+                            "Origin": {
+                                "Airport": {
+                                    "AirportCode": "JAI",
+                                    "AirportName": "Sanganeer",
+                                    "Terminal": "2",
+                                    "CityCode": "JAI",
+                                    "CityName": "Jaipur",
+                                    "CountryCode": "IN",
+                                    "CountryName": "India"
+                                },
+                                "DepTime": "2024-08-09T06:30:00"
+                            },
+                            "Destination": {
+                                "Airport": {
+                                    "AirportCode": "BOM",
+                                    "AirportName": "Chhatrapati Shivaji International Airport",
+                                    "Terminal": "2",
+                                    "CityCode": "BOM",
+                                    "CityName": "Mumbai",
+                                    "CountryCode": "IN",
+                                    "CountryName": "India"
+                                },
+                                "ArrTime": "2024-08-09T08:35:00"
+                            },
+                            "AccumulatedDuration": 125,
+                            "Duration": 125,
+                            "GroundTime": 0,
+                            "Mile": 0,
+                            "StopOver": false,
+                            "FlightInfoIndex": "",
+                            "StopPoint": "",
+                            "StopPointArrivalTime": "0001-01-01T00:00:00",
+                            "StopPointDepartureTime": "0001-01-01T00:00:00",
+                            "Craft": "320",
+                            "Remark": null,
+                            "IsETicketEligible": true,
+                            "FlightStatus": "Confirmed",
+                            "Status": "HK",
+                            "FareClassification": null
+                        },
+                        {
+                            "Baggage": "1 PC(s)",
+                            "CabinBaggage": null,
+                            "CabinClass": 2,
+                            "SupplierFareClass": null,
+                            "TripIndicator": 3,
+                            "SegmentIndicator": 2,
+                            "Airline": {
+                                "AirlineCode": "UK",
+                                "AirlineName": "Air Vistara",
+                                "FlightNumber": "845",
+                                "FareClass": "O",
+                                "OperatingCarrier": "UK"
+                            },
+                            "AirlinePNR": "VBU8GA",
+                            "Origin": {
+                                "Airport": {
+                                    "AirportCode": "BOM",
+                                    "AirportName": "Chhatrapati Shivaji International Airport",
+                                    "Terminal": "2",
+                                    "CityCode": "BOM",
+                                    "CityName": "Mumbai",
+                                    "CountryCode": "IN",
+                                    "CountryName": "India"
+                                },
+                                "DepTime": "2024-08-14T06:00:00"
+                            },
+                            "Destination": {
+                                "Airport": {
+                                    "AirportCode": "BLR",
+                                    "AirportName": "Kempegowda International Airport",
+                                    "Terminal": "2",
+                                    "CityCode": "BLR",
+                                    "CityName": "Bangalore",
+                                    "CountryCode": "IN",
+                                    "CountryName": "India"
+                                },
+                                "ArrTime": "2024-08-14T07:45:00"
+                            },
+                            "AccumulatedDuration": 105,
+                            "Duration": 105,
+                            "GroundTime": 0,
+                            "Mile": 0,
+                            "StopOver": false,
+                            "FlightInfoIndex": "",
+                            "StopPoint": "",
+                            "StopPointArrivalTime": "0001-01-01T00:00:00",
+                            "StopPointDepartureTime": "0001-01-01T00:00:00",
+                            "Craft": "320",
+                            "Remark": null,
+                            "IsETicketEligible": true,
+                            "FlightStatus": "Confirmed",
+                            "Status": "HK",
+                            "FareClassification": null
+                        },
+                        {
+                            "Baggage": "1 PC(s)",
+                            "CabinBaggage": null,
+                            "CabinClass": 2,
+                            "SupplierFareClass": null,
+                            "TripIndicator": 4,
+                            "SegmentIndicator": 3,
+                            "Airline": {
+                                "AirlineCode": "UK",
+                                "AirlineName": "Air Vistara",
+                                "FlightNumber": "814",
+                                "FareClass": "O",
+                                "OperatingCarrier": "UK"
+                            },
+                            "AirlinePNR": "VBU8GA",
+                            "Origin": {
+                                "Airport": {
+                                    "AirportCode": "BLR",
+                                    "AirportName": "Kempegowda International Airport",
+                                    "Terminal": "2",
+                                    "CityCode": "BLR",
+                                    "CityName": "Bangalore",
+                                    "CountryCode": "IN",
+                                    "CountryName": "India"
+                                },
+                                "DepTime": "2024-08-16T21:10:00"
+                            },
+                            "Destination": {
+                                "Airport": {
+                                    "AirportCode": "DEL",
+                                    "AirportName": "Indira Gandhi Airport",
+                                    "Terminal": "3",
+                                    "CityCode": "DEL",
+                                    "CityName": "Delhi",
+                                    "CountryCode": "IN",
+                                    "CountryName": "India"
+                                },
+                                "ArrTime": "2024-08-16T23:50:00"
+                            },
+                            "AccumulatedDuration": 160,
+                            "Duration": 160,
+                            "GroundTime": 0,
+                            "Mile": 0,
+                            "StopOver": false,
+                            "FlightInfoIndex": "",
+                            "StopPoint": "",
+                            "StopPointArrivalTime": "0001-01-01T00:00:00",
+                            "StopPointDepartureTime": "0001-01-01T00:00:00",
+                            "Craft": "320",
+                            "Remark": null,
+                            "IsETicketEligible": true,
+                            "FlightStatus": "Confirmed",
+                            "Status": "HK",
+                            "FareClassification": null
+                        }
+                    ],
+                    "FareRules": [
+                        {
+                            "Origin": "DEL",
+                            "Destination": "BOM",
+                            "Airline": "UK",
+                            "FareBasisCode": "OL1PYL",
+                            "FareRuleDetail": "<b>These Are Non Refundable Fares.</b></br><table border='1'><tr><th>Sector Details</th><th>Pax Type</th><th>Duration</th><th>Amount</th></tr><tr><th rowspan='2'>DEL-BOM</th><th rowspan='2'>Adult</th><td>UPTO 1 DAYS</td><td>INR 17500</td></tr><tr><td>Rest of time period</td><td>Not Allowed</td></tr><tr><th rowspan='2'>BOM-JAI</th><th rowspan='2'>Adult</th><td>UPTO 1 DAYS</td><td>INR 17500</td></tr><tr><td>Rest of time period</td><td>Not Allowed</td></tr><tr><th rowspan='1'>JAI-BOM</th><th rowspan='1'>Adult</th><td>REST OF TIME</td><td>INR 17500</td></tr><tr><th rowspan='1'>BOM-BLR</th><th rowspan='1'>Adult</th><td>REST OF TIME</td><td>INR 17500</td></tr><tr><th rowspan='1'>BLR-DEL</th><th rowspan='1'>Adult</th><td>REST OF TIME</td><td>INR 17500</td></tr></table><br /><br /><ul><li><b>There is no Minimum Stay requirement</b><br><li><b>There is no Maximum Stay requirement</b><br><fieldset><legend><b><b>Adult</b><br></b></legend><ul><li><b>Revalidation/Reissue</b><br>Fare Component <b>OL1PYL</b>&emsp; Sector <b>DEL-BOM</b> &nbsp;Fare Component <b>O0RPRYL</b>&emsp; Sector <b>BOM-JAI</b> &nbsp;<ul><li>Revalidation before/after departure, including failure to show at first/subsequent flight(s) : <b>Not Allowed</b></li><li>Reissue, including failure to show at subsequent flight(s) : <b>Not Allowed</b></li><li><b>Prior to Departure of journey</b><ul><u>Reissue</u> : <b>Allowed with Restrictions</b><li>Penalty fee : <b>3000 INR(at today exchange rates 3000 INR) </b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>15000 INR</b></li><li>Revalidation/Reissue request must be made prior to : <b>29MAY25  0000</b></li></ul></li><li><b>Failure to show at first flight</b><ul><li>Reissue : <b>Not Allowed</b></li><li>Revalidation/Reissue request must be made prior to : <b>No restriction</b></li></ul></li><li><b>After departure of journey</b><ul><li>Revalidation/Reissue request must be made prior to : <b>07AUG25  0000</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><li>Revalidation/Reissue request must be made prior to : <b>No restriction</b></li></ul></li></ul></li><li><b>Revalidation/Reissue</b><br>Fare Component <b>O0GRPRYL</b>&emsp; Sector <b>JAI-BOM</b> &nbsp;Fare Component <b>OL1PYL</b>&emsp; Sector <b>BOM-BLR</b> &nbsp;Fare Component <b>OL1PYL</b>&emsp; Sector <b>BLR-DEL</b> &nbsp;<ul><li>Revalidation before/after departure, including failure to show at first/subsequent flight(s) : <b>Not Allowed</b></li><li><b>Prior to Departure of journey</b><ul><u>Reissue</u> : <b>Allowed with Restrictions</b><li>Penalty fee : <b>3000 INR(at today exchange rates 3000 INR) </b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>15000 INR</b></li><li>Revalidation/Reissue request must be made prior to : <b>29MAY25  0000</b></li></ul></li><li><b>Failure to show at first flight</b><ul><li>Reissue : <b>Not Allowed</b></li><li>Revalidation/Reissue request must be made prior to : <b>No restriction</b></li></ul></li><li><b>After departure of journey</b><ul><u>Reissue</u> : <b>Allowed with Restrictions</b><li>Penalty fee : <b>3000 INR(at today exchange rates 3000 INR) </b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>9000 INR</b></li><li>Revalidation/Reissue request must be made prior to : <b>07AUG25  0000</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><li>Reissue : <b>Not Allowed</b></li><li>Revalidation/Reissue request must be made prior to : <b>No restriction</b></li></ul></li></ul></li><li><b>Refund</b><br>Fare Component <b>OL1PYL</b>&emsp; Sector <b>DEL-BOM</b> &nbsp;<ul><li>Refund, including failure to show at first flight : <b>Allowed with Restrictions</b></li><li><b>Prior to Departure of journey</b><ul><li>Penalty fee between : <b>17388 INR/22350 INR</b></td></tr><li>Maximum Refund penalty fee for entire ticket : <b>22350 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at first flight</b><ul><li>Penalty fee between : <b>19388 INR/22350 INR</b></li><li>Maximum Refund penalty fee for entire ticket : <b>22350 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>After departure of journey</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li></ul></li><li><b>Refund</b><br>Fare Component <b>O0RPRYL</b>&emsp; Sector <b>BOM-JAI</b> &nbsp;<ul><li>Refund before/after departure, including failure to show at first/subsequent flight(s) : <b>Allowed with Restrictions</b></li><li><b>Prior to Departure of journey</b><ul><li>Penalty fee between : <b>17388 INR/22350 INR</b></td></tr><li>Maximum Refund penalty fee for entire ticket : <b>22350 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at first flight</b><ul><li>Penalty fee between : <b>19388 INR/22350 INR</b></li><li>Maximum Refund penalty fee for entire ticket : <b>22350 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>After departure of journey</b><ul><li>Penalty fee between : <b>11136 INR/22350 INR</b></li><li>Maximum Refund penalty fee for entire ticket : <b>22350 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><li>Penalty fee between : <b>11136 INR/22350 INR</b></li><li>Maximum Refund penalty fee for entire ticket : <b>22350 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li></ul></li><li><b>Refund</b><br>Fare Component <b>O0GRPRYL</b>&emsp; Sector <b>JAI-BOM</b> &nbsp;<ul><li>Refund before/after departure, including failure to show at first/subsequent flight(s) : <b>Allowed with Restrictions</b></li><li><b>Prior to Departure of journey</b><ul><li>Penalty fee between : <b>17388 INR/22350 INR</b></td></tr><li>Maximum Refund penalty fee for entire ticket : <b>22350 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at first flight</b><ul><li>Penalty fee between : <b>19388 INR/22238 INR</b></li><li>Maximum Refund penalty fee for entire ticket : <b>22350 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>After departure of journey</b><ul><li>Penalty fee between : <b>6888 INR/22238 INR</b></li><li>Maximum Refund penalty fee for entire ticket : <b>22350 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><li>Penalty fee between : <b>6888 INR/22238 INR</b></li><li>Maximum Refund penalty fee for entire ticket : <b>22350 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li></ul></li><li><b>Refund</b><br>Fare Component <b>OL1PYL</b>&emsp; Sector <b>BOM-BLR</b> &nbsp;<ul><li>Refund before/after departure, including failure to show at first/subsequent flight(s) : <b>Allowed with Restrictions</b></li><li><b>Prior to Departure of journey</b><ul><li>Penalty fee between : <b>17388 INR/22350 INR</b></td></tr><li>Maximum Refund penalty fee for entire ticket : <b>22350 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at first flight</b><ul><li>Penalty fee between : <b>19538 INR/22238 INR</b></li><li>Maximum Refund penalty fee for entire ticket : <b>22350 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>After departure of journey</b><ul><li>Penalty fee between : <b>3500 INR/21602 INR</b></li><li>Maximum Refund penalty fee for entire ticket : <b>22350 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><li>Penalty fee between : <b>7150 INR/21602 INR</b></li><li>Maximum Refund penalty fee for entire ticket : <b>22350 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li></ul></li><li><b>Refund</b><br>Fare Component <b>OL1PYL</b>&emsp; Sector <b>BLR-DEL</b> &nbsp;<ul><li><b>Prior to Departure of journey</b><ul><li>Refund : <b>Allowed with Restrictions</b></li><li>Penalty fee between : <b>17388 INR/22350 INR</b></td></tr><li>Maximum Refund penalty fee for entire ticket : <b>22350 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at first flight</b><ul><li>Refund : <b>Not Allowed</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>After departure of journey</b><ul><li>Refund : <b>Allowed with Restrictions</b></li><li>Penalty fee between : <b>3500 INR/21602 INR</b></li><li>Maximum Refund penalty fee for entire ticket : <b>22350 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><li>Refund : <b>Not Allowed</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li></ul></li><br><b>* Revalidation is a modification of the original ticket without any reissue of a new ticket.</b><br><b>* For Reissue, Penalty fees are in addition to any difference in fare.</b><br><b>* For Refund, certain Taxes are non-refundable.</b></ul></fieldset></ul><br/> <br/><b>These Are Non Refundable Fares.</b><br /><ul><li>APART FROM AIRLINE CHARGES,GST+RAF+ APPLICABLE CHARGES IF ANY, WILL BE CHARGED.</li><li>MENTIONED FEE ARE INDICATIVE PER PAX AND PER SECTOR.</li><li>FOR DOMESTIC BOOKINGS, PASSENGERS ARE REQUIRED TO SUBMIT THE CANCELLATION OR REISSUE REQUEST AT LEAST 2 HOURS BEFORE THE AIRLINES CANCELLATION AND REISSUE POLICY.</li><li>FOR INTERNATIONAL BOOKINGS, PASSENGERS ARE REQUIRED TO SUBMIT THE CANCELLATION OR REISSUE REQUEST AT LEAST 4 HOURS BEFORE THE AIRLINES CANCELLATION AND REISSUE POLICY.</li></ul>",
+                            "FareRestriction": "Y",
+                            "FareFamilyCode": "ECOYL",
+                            "FareRuleIndex": ""
+                        },
+                        {
+                            "Origin": "BOM",
+                            "Destination": "JAI",
+                            "Airline": "UK",
+                            "FareBasisCode": "O0RPRYL",
+                            "FareRuleDetail": "Please refer above.<br/> <br/>Please refer above.",
+                            "FareRestriction": "Y",
+                            "FareFamilyCode": "ECOYL",
+                            "FareRuleIndex": ""
+                        },
+                        {
+                            "Origin": "JAI",
+                            "Destination": "BOM",
+                            "Airline": "UK",
+                            "FareBasisCode": "O0GRPRYL",
+                            "FareRuleDetail": "Please refer above.<br/> <br/>Please refer above.",
+                            "FareRestriction": "Y",
+                            "FareFamilyCode": "ECOYL",
+                            "FareRuleIndex": ""
+                        },
+                        {
+                            "Origin": "BOM",
+                            "Destination": "BLR",
+                            "Airline": "UK",
+                            "FareBasisCode": "OL1PYL",
+                            "FareRuleDetail": "Please refer above.<br/> <br/>Please refer above.",
+                            "FareRestriction": "Y",
+                            "FareFamilyCode": "ECOYL",
+                            "FareRuleIndex": ""
+                        },
+                        {
+                            "Origin": "BLR",
+                            "Destination": "DEL",
+                            "Airline": "UK",
+                            "FareBasisCode": "OL1PYL",
+                            "FareRuleDetail": "Please refer above.<br/> <br/>Please refer above.",
+                            "FareRestriction": "Y",
+                            "FareFamilyCode": "ECOYL",
+                            "FareRuleIndex": ""
+                        }
+                    ],
+                    "MiniFareRules": [
+                        {
+                            "JourneyPoints": "DEL-BOM-JAI-BOM-BLR-DEL",
+                            "Type": "Reissue",
+                            "From": "",
+                            "To": "",
+                            "Unit": "",
+                            "Details": "INR 3000"
+                        },
+                        {
+                            "JourneyPoints": "DEL-BOM-JAI-BOM-BLR-DEL",
+                            "Type": "Cancellation",
+                            "From": "",
+                            "To": "",
+                            "Unit": "",
+                            "Details": "INR 17388"
+                        }
+                    ],
+                    "PenaltyCharges": {},
+                    "Status": 1,
+                    "IsWebCheckInAllowed": false
+                }
+            }
+        }
+    }
+}

@@ -22,9 +22,8 @@ import { AxiosRequestConfig } from "axios"; // Import AxiosRequestConfig type
 import { environment } from "src/environments/environment";
 import { Route, Router } from "@angular/router";
 import * as CryptoJS from "crypto-js";
-import { initializeApp } from '@angular/fire/app';
+import { initializeApp } from "@angular/fire/app";
 import { PackageService } from "src/app/Services/package/package.service";
-
 
 declare const google: any;
 
@@ -140,7 +139,7 @@ export class ItineraryComponent implements OnInit, OnChanges {
     private route: ActivatedRoute,
     private spinner: NgxSpinnerService,
     private documentService: ScheduleService,
-    private packageSerivce:PackageService,
+    private packageSerivce: PackageService,
     private router: Router
   ) {}
 
@@ -167,9 +166,8 @@ export class ItineraryComponent implements OnInit, OnChanges {
 
   async goToCheckout(event) {
     if (event) {
-
       // 1. to intitalize traveler array in backend in trip.travelers
-      // 2. Flights -> result idx , trace Id 
+      // 2. Flights -> result idx , trace Id
       // 3. Hotels -> Hotel anme , hotel Code , rooms array , result idx , trace id
 
       console.log("CHECKING OUT TO PACKAGE BROOOOOOOOOOOOOOOOOOOOOOOOO");
@@ -177,35 +175,31 @@ export class ItineraryComponent implements OnInit, OnChanges {
       console.log(this.allSelectedHotels);
       console.log(this.currentFlightSet);
 
-      const initializeTravelerArr=await this.packageSerivce.initializeTravelerArr(this.docUid);
+      const initializeTravelerArr =
+        await this.packageSerivce.initializeTravelerArr(this.docUid);
 
-      if(initializeTravelerArr){
-        console.log(initializeTravelerArr.message)
+      if (initializeTravelerArr) {
+        console.log(initializeTravelerArr.message);
 
-        const flightDetails = [...this.currentFlightSet ];
+        const modifiedHotelArr = this.hotels.makeUpdatedHotelsArrForSession(
+          this.allSelectedHotels
+        );
+        console.log(modifiedHotelArr, "HELLLLLLLLLLLLLLLLLLLOOOOOOOOOOOO");
+        const flightTraceId = this.flightTraceId;
+        const flightResultIndex=this.currentFlightSet[0].resultIndex;
 
+        
+        const encryptedHotels = this.encryptObject(modifiedHotelArr);
+        const encryptedFlights = this.encryptObject({
+          flightResultIndex: flightResultIndex,
+          flightTraceId,
+        });
+    
+        sessionStorage.setItem("hotels", encryptedHotels);
+        sessionStorage.setItem("flights", encryptedFlights);
 
-
-
-
-
-
-      
-
-      // const encryptedDocument = this.encryptObject(this.document);
-      const encryptedHotels = this.encryptObject(this.allSelectedHotels);
-      // Encrypt the object
-     
-      const flightTraceId = this.flightTraceId;
-      const encryptedFlights = this.encryptObject({ flightDetails, flightTraceId });
-
-      // sessionStorage.setItem("document", encryptedDocument);
-      sessionStorage.setItem("hotels", encryptedHotels);
-      sessionStorage.setItem("flights", encryptedFlights);
-
-      this.router.navigate(["/package-checkout"]);
-    }
-
+        this.router.navigate([`/package-checkout/${this.docUid}`]);
+      }
     }
   }
   // to encrypt the data
@@ -228,6 +222,7 @@ export class ItineraryComponent implements OnInit, OnChanges {
 
   //-----------------------------GLOBAL CALLS--------------------------------------------------
 
+  // will not be using this later . will get this in query instead
   async getDocument(docId: string) {
     try {
       const payload = {
@@ -251,28 +246,6 @@ export class ItineraryComponent implements OnInit, OnChanges {
     return this.document.itineraryName;
   }
 
-  // not in use
-  // async authenticateFlightApi() {
-  //   try{
-  //      const {data} = await this.flightApiService.authenticate();
-
-  //     localStorage.setItem("authenticateToken", data.token);
-  //   }
-  //   catch(err){
-  //     console.error("Error occurred during authentication:", err);
-  //   }
-
-  //   // this.flightApiService.authenticate().subscribe(
-  //   //   (data: { token: string }) => {
-  //   //     console.log("Authentication successful. Token:", data.token);
-  //   //     localStorage.setItem("authenticateToken", data.token);
-  //   //   },
-  //   //   (err) => {
-  //   //     console.error("Error occurred during authentication:", err);
-  //   //     console.log("Error occurred during authentication:", err); // Duplicate log for clarity
-  //   //   }
-  //   // );
-  // }
 
   getFlightsHotels(docUid: string) {
     console.log("calls to flight and hotels have been made");
@@ -286,17 +259,17 @@ export class ItineraryComponent implements OnInit, OnChanges {
       const startTime = performance.now(); // Start measuring time
 
       const data = await this.flightApiService.multiStopSearchFlights(docUid);
-      console.log(data)
-      if(data.errorCode!==-1){
-         console.error(data.errorMessage);
-        return 
+      console.log(data);
+      if (data.errorCode !== -1) {
+        console.error(data.errorMessage);
+        return;
       }
       const endTime = performance.now(); // End measuring time
       const responseTime = endTime - startTime; // Calculate response time
 
       console.log("Response Time:", responseTime, "milliseconds");
 
-      if (data.errorCode==-1) {
+      if (data.errorCode == -1) {
         this.flightTraceId = data.TraceId;
         this.allFlights = data.flightsData;
         console.log(this.allFlights, "ALL FLIGHTS");
