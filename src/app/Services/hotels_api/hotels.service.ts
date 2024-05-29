@@ -213,7 +213,7 @@ export class HotelsService {
   async hotelBlockRoom(payload:any){
     console.log(payload)
     try{
-      const res=await axios.post(`${environment.BACKEND_BASE_URL}/hotel/singleHotelBlockRoom`,payload);
+      const res=await axios.post(`${environment.BACKEND_BASE_URL}/hotel/hotelBlockRoom`,payload);
       console.log(res)
       return res.data;
     }catch(error){

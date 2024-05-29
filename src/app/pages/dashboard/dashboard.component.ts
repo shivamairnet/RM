@@ -708,6 +708,7 @@ export class DashboardComponent implements OnInit {
 	}
 
 	initialiseFormGroup(responseModel: TripCity | null = null) {
+		
 		if (responseModel === null) {
 			this.updateMode = false;
 			this.responseFormGroup = this.fb.group({

@@ -1,0 +1,30 @@
+<div
+  style="
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 6px solid red;
+    border-radius: 50%;
+    background-color: rgb(238, 143, 109);
+  "
+  *ngIf="timeLeft >= 0"
+>
+  <h1>{{ displayTime }}</h1>
+</div>
+<div
+  style="
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 6px solid red;
+    border-radius: 15px;
+    background-color: rgb(238, 143, 109);
+  "
+  *ngIf="timeLeft < 0"
+>
+  <h1>Time's up!</h1>
+</div>

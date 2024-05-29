@@ -9,17 +9,24 @@
 
 <body>
   <div class="sub-container" (click)="dialogbox()"></div>
-  <main>
 
-    <div class="header">
-      <h2 style="padding-left: 30px">Add Traveeller Details</h2>
-      <h2 style="padding-right: 15px; cursor: pointer" (click)="dialogbox()">
+  <main>
+    <header class="header">
+      <h2 style="padding-left: 30px">Add Traveller Details</h2>
+      <h2
+        style="
+          padding-right: 18px;
+          cursor: pointer;
+          position: absolute;
+          right: 10px;
+        "
+        (click)="dialogbox()"
+      >
         X
       </h2>
-    </div>
+    </header>
 
     <div class="travellers">
-
       <!-- traveller number -->
       <div
         style="
@@ -36,85 +43,16 @@
         <span> /{{ NoOfTravellers }}</span>
       </div>
 
-      <ng-container *ngIf="RoomGuests && RoomGuests.length > 0">
-        <div class="container">
-          <!-- Loop through RoomGuests array -->
-          <div class="boxes">
-            <ng-container *ngFor="let item of RoomGuests; let i = index">
-              <!-- Calculate the total count of adults from previous rooms -->
-              <ng-container *ngIf="i > 0"> </ng-container>
-
-              <ng-container *ngIf="item?.NoOfAdults && item?.NoOfAdults > 0">
-                <!-- Loop to generate cards for adults -->
-                <ng-container
-                  *ngFor="
-                    let star of getArray(item?.NoOfAdults + item?.NoOfChild);
-                    let j = index
-                  "
-                >
-                  <div
-                    class="card"
-                    (click)="
-                      i === 0
-                        ? handleCardClick(j)
-                        : handleCardClick(calculateTotalAdultsCount(i) + j)
-                    "
-                    [ngClass]="{
-                      selected:
-                        selectedCard ===
-                        (i === 0 ? j : calculateTotalAdultsCount(i) + j)
-                    }"
-                  >
-                    <!-- Your card content goes here -->
-                    <span
-                      style="
-                        width: 100%;
-                        background-color: black;
-                        color: white;
-                        display: flex;
-                        justify-content: center;
-                      "
-                      >Room -{{ i + 1 }}</span
-                    >
-                    <div
-                      style="
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                      "
-                    >
-                      <ng-container *ngIf="j < item?.NoOfAdults">
-                        <i
-                          (click)="adult()"
-                          class="fa-solid fa-user adult-icon"
-                        ></i>
-                        <p>Traveller</p>
-                      </ng-container>
-                      <ng-container *ngIf="j >= item?.NoOfAdults">
-                        <i
-                          (click)="child()"
-                          class="fa-solid fa-baby child-icon"
-                        ></i>
-                        <p>Traveller</p>
-                      </ng-container>
-                    </div>
-                  </div>
-                </ng-container>
-              </ng-container>
-            </ng-container>
-          </div>
-        </div>
-      </ng-container>
-
       <form [formGroup]="travelerForm">
+
+        <!-- personal details -->
         <div class="info">
           <div class="head">
             <h2>Mandatory Information</h2>
           </div>
           <hr />
 
-          <div class="traveller-info">
+          <div class="traveller-info" style="position: relative;">
             <div
               style="
                 padding-top: 20px;
@@ -130,9 +68,11 @@
                 <i class="fa-solid fa-pen-to-square"></i
               ></ng-container>
             </div>
-
+            <button (click)="resetTravelerDetails(currentTravelerUid)" style="position: absolute;top: 5px;right: 5px;" >Reset</button>
             <fieldset class="inputs" formGroupName="personalInfo">
               <legend>Personal Info</legend>
+
+              <!-- title -->
               <div>
                 <label><span>Title</span></label>
                 <select
@@ -146,6 +86,8 @@
                   <option>Miss</option>
                 </select>
               </div>
+
+              <!-- first name -->
               <div>
                 <label><span>First Name</span></label>
                 <input
@@ -157,6 +99,8 @@
                   "
                 />
               </div>
+
+              <!-- last name -->
               <div>
                 <label><span>Last Name</span></label>
                 <input
@@ -168,6 +112,8 @@
                   "
                 />
               </div>
+
+              <!-- dob -->
               <div>
                 <label><span>Date of Birth</span></label>
                 <input
@@ -180,66 +126,213 @@
                 />
               </div>
 
+              <!-- gender -->
               <div>
                 <label><span>Gender</span></label>
                 <select
+                  name="gender"
                   formControlName="Gender"
                   required
                   [value]="travelers[currentIndex]?.personalInfo?.Gender || ''"
                 >
-                  <option></option>
-                  <option>Male</option>
-                  <option>Female</option>
+                  <option disabled selected value="">Please select</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
+
+              <!-- nationality  -->
               <div>
                 <label><span>Nationality</span></label>
-                <select
-                  id="form1"
-                  class="form-control"
-                  placeholder="Search Airports"
-                  [(ngModel)]="selectedNationality"
+
+                <input
+                  type="text"
+                  formControlName="Nationality"
+                  required
+                  placeholder="Search Nationality"
+                  [(ngModel)]="nationalitySearchText"
                   (click)="$event.stopPropagation()"
-                  (change)="onNationalitySelect($event.target.value)"
+                  (input)="onNationalityInputChange()"
+                  aria-label="Search"
+                />
+                <div
+                  style="width: 100%"
+                  *ngIf="
+                    nationalitySearchArr && nationalitySearchArr.length > 0
+                  "
                 >
-                  <option value="" disabled selected>Select a Country</option>
-                  <ng-container *ngFor="let data of countryCodes">
-                    <option [value]="data?.alpha2" class="text-dark">
-                      {{ data.name }} ({{ data.alpha2 }})
-                    </option>
-                  </ng-container>
-                </select>
+                 
+                  <ul style="color: #000; list-style-type: none; padding: 0">
+                    <li
+                      *ngFor="let country of nationalitySearchArr"
+                      (click)="onNationalitySelected(country)"
+                    >
+                      <ng-container *ngIf="country.country_code !== null">
+                        <div
+                          style="
+                            cursor: pointer;
+                            display: flex;
+                            width: 100%;
+                            border: 1px solid lightgray;
+                            border-radius: 5px;
+                            font-size: 13px;
+                            line-height: 21px;
+                            font-weight: 600;
+                            margin: 3px 0;
+                          "
+                        >
+                          <div
+                            style="
+                              display: flex;
+                              width: 90%;
+                              flex-direction: column;
+                              align-items: center;
+                              justify-content: center;
+                            "
+                          >
+                            <h4 style="margin: 0">
+                              {{ country.nationality.join(", ") }}
+                            </h4>
+                            <h4 style="margin: 0">
+                              {{ country.country_name }}
+                            </h4>
+                          </div>
+                        </div>
+                      </ng-container>
+                    </li>
+                  </ul>
+                </div>
               </div>
+
+              <!-- city -->
               <div>
                 <label><span>City</span></label>
                 <input
                   type="text"
                   formControlName="City"
                   required
-                  [value]="travelers[currentIndex]?.personalInfo?.City || ''"
+                  placeholder="Search Cities"
+                  [(ngModel)]="citySearchText"
+                  (click)="$event.stopPropagation()"
+                  (input)="onCityInputChange()"
                 />
+                <!-- cities -->
+                <div
+                  style="width: 100%"
+                  *ngIf="citySearchResponse && citySearchResponse.length > 0"
+                >
+                
+                  <ul style="color: #000; list-style-type: none; padding: 0">
+                    <li
+                      *ngFor="let city of citySearchResponse"
+                      (click)="onCitySelected(city)"
+                      style="
+                        cursor: pointer;
+                        border: 1px solid lightgray;
+                        border-radius: 5px;
+                        font-size: 13px;
+                        line-height: 21px;
+                        font-weight: 600;
+                        margin: 3px 0;
+                      "
+                    >
+                      <div style="display: flex">
+                        <span
+                          style="
+                            width: 10%;
+                            margin: 0;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          "
+                          class="emoji"
+                          >{{ city.emoji }}</span
+                        >
+                        <div
+                          style="
+                            display: flex;
+                            width: 90%;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                          "
+                        >
+                          <h4 style="margin: 0">
+                            {{ city.city_name }}, {{ city.state_name }}
+                          </h4>
+                          <h4 style="margin: 0">{{ city.country_name }},</h4>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
               </div>
+
+              <!-- country name -->
               <div>
                 <label><span>Country Name</span></label>
-                <select
-                  id="form1"
-                  class="form-control"
-                  placeholder="Search Airports"
-                  [(ngModel)]="selectedCountry"
+                <input
+                type="text"
+                formControlName="CountryName"
+                required
+                  placeholder="Search Country"
+                  [(ngModel)]="countrySearchText"
                   (click)="$event.stopPropagation()"
-                  (change)="onCountrySelect($event.target.value)"
+                  (input)="onCountryInputChange()"
+                  aria-label="Search"
+                />
+                <div
+                  style="width: 100%"
+                  *ngIf="
+                  countrySearchArr && countrySearchArr.length > 0
+                  "
                 >
-                  <option value="" disabled selected>Select a Country</option>
-                  <ng-container *ngFor="let data of countryCodes">
-                    <option
-                      [value]="data.name + ',' + data.alpha2"
-                      class="text-dark"
+                 
+                  <ul style="color: #000; list-style-type: none; padding: 0">
+                    <li
+                      *ngFor="let country of countrySearchArr"
+                      (click)="onCountrySelected(country)"
                     >
-                      {{ data.name }} ({{ data.alpha2 }})
-                    </option>
-                  </ng-container>
-                </select>
+                      <ng-container *ngIf="country.country_code !== null">
+                        <div
+                          style="
+                            cursor: pointer;
+                            display: flex;
+                            width: 100%;
+                            border: 1px solid lightgray;
+                            border-radius: 5px;
+                            font-size: 13px;
+                            line-height: 21px;
+                            font-weight: 600;
+                            margin: 3px 0;
+                          "
+                        >
+                          <div
+                            style="
+                              display: flex;
+                              width: 90%;
+                             gap: 5px;
+                              align-items: center;
+                              justify-content: center;
+                            "
+                          >
+                            
+                            <h4 style="margin: 0">
+                              {{ country.country_name }}
+                            </h4>
+                            <h4 style="margin: 0;font-size: 12px;">
+                              {{ country.country_code}}
+                            </h4>
+                          </div>
+                        </div>
+                      </ng-container>
+                    </li>
+                  </ul>
+                </div>
               </div>
+
+              <!-- address line 1 -->
               <div>
                 <label><span>Address Line 1</span></label>
                 <input
@@ -251,6 +344,8 @@
                   "
                 />
               </div>
+
+              <!-- address line 2 -->
               <div>
                 <label><span>Address Line 2</span></label>
                 <input
@@ -262,6 +357,8 @@
                   "
                 />
               </div>
+
+              <!-- pan -->
               <div>
                 <label><span>PAN</span></label>
                 <input
@@ -271,6 +368,8 @@
                   [value]="travelers[currentIndex]?.personalInfo?.PAN || ''"
                 />
               </div>
+
+              <!-- passport number -->
               <div>
                 <label><span>Passport No.</span></label>
                 <input
@@ -282,6 +381,8 @@
                   "
                 />
               </div>
+
+              <!-- passport issue date -->
               <div>
                 <label><span>Passport Issue date</span></label>
                 <input
@@ -294,6 +395,8 @@
                   "
                 />
               </div>
+
+              <!-- passport expiry -->
               <div>
                 <label><span>Passport Expiry date</span></label>
                 <input
@@ -306,6 +409,7 @@
                 />
               </div>
 
+              <!-- contact number -->
               <div>
                 <label><span>Contact No</span></label>
                 <input
@@ -317,6 +421,8 @@
                   "
                 />
               </div>
+
+              <!-- email -->
               <div>
                 <label><span>Email</span></label>
                 <input
@@ -328,6 +434,9 @@
               </div>
             </fieldset>
 
+            <button (click)="seeSavedUser()">SaveDetails</button>
+
+            <!-- guardian details for child and infant type  -->
             <fieldset
               class="inputs"
               formGroupName="guardianDetails"
@@ -337,6 +446,7 @@
               "
             >
               <legend>Guardian Details</legend>
+              <!-- title -->
               <div>
                 <label><span>Title</span></label>
                 <select
@@ -352,6 +462,8 @@
                   <option>Miss</option>
                 </select>
               </div>
+
+              <!-- first name -->
               <div>
                 <label><span>First Name</span></label>
                 <input
@@ -363,6 +475,8 @@
                   "
                 />
               </div>
+
+              <!-- last name -->
               <div>
                 <label><span>Last Name</span></label>
                 <input
@@ -374,6 +488,8 @@
                   "
                 />
               </div>
+
+              <!-- pan -->
               <div>
                 <label><span>PAN</span></label>
                 <input
@@ -383,6 +499,8 @@
                   [value]="travelers[currentIndex]?.guardianDetails?.PAN || ''"
                 />
               </div>
+
+              <!-- passport number  -->
               <div>
                 <label><span>Passport No</span></label>
                 <input
@@ -397,14 +515,177 @@
             </fieldset>
           </div>
         </div>
+
+        <!-- SSR Form Group -->
+        <div *ngIf="ssr" formGroupName="ssr">
+          
+          <!-- Non LCC -->
+          <div *ngIf="!isLCC" style="display: flex;width: 100%;align-items: center;justify-content: space-evenly;">
+            <!-- Meal Selection -->
+            <div style="display: flex;width: 30%;">
+              <label
+                for="meal"
+                style="display: block; margin-bottom: 8px; font-weight: bold"
+                >Meal</label
+              >
+              <select
+                id="meal"
+                formControlName="meal"
+                style="
+                  width: 100%;
+                  padding: 8px;
+                  margin-bottom: 16px;
+                  border: 1px solid #ccc;
+                  border-radius: 4px;
+                "
+              >
+                <option [ngValue]="null">No Preference</option>
+                <option *ngFor="let item of ssr?.meals" [ngValue]="item">
+                  {{ item?.Description }} ({{ item?.Code }})
+                </option>
+              </select>
+            </div>
+
+            <!-- Seat Selection -->
+            <div style="display: flex;width: 30%;">
+              <label
+                for="seat"
+                style="display: block; margin-bottom: 8px; font-weight: bold"
+                >Seat</label
+              >
+              <select
+                id="seat"
+                formControlName="seat"
+                style="
+                  width: 100%;
+                  padding: 8px;
+                  margin-bottom: 16px;
+                  border: 1px solid #ccc;
+                  border-radius: 4px;
+                "
+              >
+                <option [ngValue]="null">No Preference</option>
+                <option *ngFor="let item of ssr?.seats" [ngValue]="item">
+                  {{ item?.Description }} ({{ item?.Code }})
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <!-- LCC FLIGHTS -->
+          <div
+            *ngIf="isLCC"
+            style="
+              max-width: 600px;
+              margin: auto;
+              padding: 20px;
+              border: 1px solid #ddd;
+              border-radius: 10px;
+            "
+          >
+            <!-- Baggage Selection -->
+            <div *ngIf="ssr?.Baggage?.length" style="margin-bottom: 20px">
+              <label
+                for="baggage"
+                style="display: block; font-weight: bold; margin-bottom: 5px"
+                >Baggage</label
+              >
+              <select
+                id="baggage"
+                formControlName="extraBaggage"
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  border: 1px solid #ccc;
+                  border-radius: 5px;
+                "
+              >
+                <option [ngValue]="null">No Preference</option>
+                <option
+                  *ngFor="let baggageOption of ssr.Baggage[0]"
+                  [ngValue]="baggageOption"
+                >
+                  {{ baggageOption.Weight }}kg -
+                  {{ baggageOption.Price | currency : baggageOption.Currency }}
+                </option>
+              </select>
+            </div>
+
+            <!-- Meal Selection -->
+            <div *ngIf="ssr?.MealDynamic?.length" style="margin-bottom: 20px">
+              <label
+                for="meal"
+                style="display: block; font-weight: bold; margin-bottom: 5px"
+              >
+                Meal
+              </label>
+              <select
+                id="meal"
+                formControlName="meal"
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  border: 1px solid #ccc;
+                  border-radius: 5px;
+                "
+              >
+                <option [ngValue]="null">No Preference</option>
+                <option
+                  *ngFor="let mealOption of ssr.MealDynamic[0]"
+                  [ngValue]="mealOption"
+                >
+                  {{ mealOption.AirlineDescription || "No Meal" }} ({{
+                    mealOption.Price | currency : mealOption.Currency
+                  }})
+                </option>
+              </select>
+            </div>
+
+            <!-- Seat Selection -->
+            <div *ngIf="ssr?.SeatDynamic?.length">
+              <label
+                for="seat"
+                style="display: block; font-weight: bold; margin-bottom: 5px"
+                >Seat</label
+              >
+              <select
+                id="seat"
+                formControlName="seat"
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  border: 1px solid #ccc;
+                  border-radius: 5px;
+                "
+              >
+                <option [ngValue]="null">No Preference</option>
+                <ng-container
+                  *ngFor="let row of ssr.SeatDynamic[0].SegmentSeat"
+                >
+                  <option
+                    *ngFor="let seat of row.RowSeats[0].Seats"
+                    [ngValue]="seat"
+                  >
+                    {{ seat.Code }} ({{
+                      seat.Price | currency : seat.Currency
+                    }})
+                  </option>
+                </ng-container>
+              </select>
+            </div>
+          </div>
+
+        </div>
       </form>
 
-      <div class="traveller-info">
+      <!-- SSR -->
+      <!-- <div class="traveller-info">
         <fieldset class="inputs" *ngIf="ssr">
           <legend>SSR</legend>
-          <!-- <div formGroupName="ssr" *ngIf="ssr" style="display: flex; width:100%; flex-direction: row;"> -->
+          <!-- <div formGroupName="ssr" *ngIf="ssr" style="display: flex; width:100%; flex-direction: row;"> 
 
           <ng-container *ngIf="ssr">
+            <!-- baggage 
             <div>
               <label><span>Extra Baggage (kgs)</span></label>
               <select
@@ -443,7 +724,8 @@
               </p>
             </div>
 
-            <div *ngIf="ssr?.ssr?.Meal">
+            <!-- meal 
+            <div *ngIf="ssr?.meals">
               <label><span>Meal</span></label>
               <select
                 [(ngModel)]="travelerForm.value.ssr.meal"
@@ -457,7 +739,7 @@
                 >
                   Select a meal
                 </option>
-                <ng-container *ngFor="let item of ssr?.ssr?.Meal">
+                <ng-container *ngFor="let item of ssr?.meals">
                   <option [ngValue]="item">
                     {{ item?.Description }} ({{ item?.Code }})
                   </option>
@@ -465,7 +747,7 @@
               </select>
             </div>
 
-            <!-- Dynamic Meal Select Option -->
+            <!-- Dynamic Meal Select Option 
             <div *ngIf="ssr?.ssr?.MealDynamic">
               <label><span>Meal</span></label>
               <select
@@ -496,6 +778,8 @@
                 </ng-container>
               </select>
             </div>
+
+            <!-- seats 
             <ng-container *ngIf="ssr?.ssr?.SeatDynamic">
               <ng-container
                 *ngFor="
@@ -533,6 +817,7 @@
                 </div>
               </ng-container>
             </ng-container>
+
             <ng-container *ngIf="ssr?.ssr?.SeatPreference">
               <div>
                 <label
@@ -566,21 +851,19 @@
             </ng-container>
           </ng-container>
 
-          <!-- </div> -->
+          <!-- </div> 
         </fieldset>
-      </div>
+      </div> -->
 
-      <ng-container
-        *ngIf="travelers[currentIndex]?.personalInfo?.FirstName === ''"
-      >
+      <ng-container>
         <div class="btn">
-          <button type="submit" (click)="addTraveler()">
+          <button type="submit" (click)="addOrUpdateTraveler(currentTravelerUid)">
             <span>Add Traveler</span>
           </button>
         </div>
       </ng-container>
 
-      <ng-container
+      <!-- <ng-container
         *ngIf="travelers[currentIndex]?.personalInfo?.FirstName !== ''"
       >
         <div class="btn">
@@ -588,8 +871,7 @@
             <span>Update</span>
           </button>
         </div>
-      </ng-container>
-
+      </ng-container> -->
     </div>
   </main>
 </body>

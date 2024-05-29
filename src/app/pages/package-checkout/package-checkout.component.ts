@@ -3,7 +3,10 @@ import {
   Component,
   Input,
   NgZone,
+  OnChanges,
   OnInit,
+  SimpleChange,
+  SimpleChanges,
 } from "@angular/core";
 import {
   FormBuilder,
@@ -23,22 +26,27 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { FlightsService } from "src/app/Services/flights_api/flights.service";
 import { environment } from "src/environments/environment";
 import * as CryptoJS from "crypto-js";
+import { Room, Traveler } from "src/app/classes/packageCheckoutInterface";
+import { v4 as uuidv4 } from 'uuid';
+import { fareQuote } from "src/app/components/combined-policy/flight_details";
+
+
 
 @Component({
   selector: "app-package-checkout",
   templateUrl: "./package-checkout.component.html",
   styleUrls: ["./package-checkout.component.scss"],
 })
-export class PackageCheckoutComponent implements OnInit {
-  NoOfRooms: number = 0;
-  NoOfAdults: number = 0;
-  NoOfChild: number = 0;
-  travelData: any;
+export class PackageCheckoutComponent implements OnInit,OnChanges {
+  
   dialog: boolean = false;
   contactForm: FormGroup;
-  Travellers: boolean = true;
+  seeAllTravellers: boolean = false;
   merchantShare: number = 0;
-  travelers = [] as any[];
+
+  travelers :Traveler[]= [];
+
+  
   editIndex: number = 0;
   @Input() TraceId: any;
   @Input() ResultIndex: any;
@@ -79,8 +87,7 @@ export class PackageCheckoutComponent implements OnInit {
   // cancel variables
 
   packageDialog: boolean;
-  NoOfTravellers: number;
-  RoomGuests: any;
+  
 
   recievedHotels;
   recievedFlights;
@@ -99,6 +106,7 @@ export class PackageCheckoutComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    
     // Retrieve and decrypt session storage data
     if (sessionStorage.getItem("hotels") && sessionStorage.getItem("flights")) {
       try {
@@ -113,10 +121,16 @@ export class PackageCheckoutComponent implements OnInit {
         console.log("Document:", this.recievedDocument);
         console.log("Hotels:", this.recievedHotels);
         console.log("Flights:", this.recievedFlights);
+
+        if(this.recievedDocument?.trip?.RoomGuests){
+        this.travelers = this.processRoomGuests(this.recievedDocument?.trip?.RoomGuests);
+          console.log(this.travelers);
+        }
+
       } catch (error) {
         console.error("Error decrypting data:", error);
       }
-    }
+  }
 
     // getting the data from the DB with respect to the UID store in  the session storage
     this.getData();
@@ -124,7 +138,7 @@ export class PackageCheckoutComponent implements OnInit {
     // calling the fare quote call for the flight set
     this.getFareQuote();
 
-    this.getSSR();
+   
 
     // getting the passengers data if already present
     // this.getPassengerData();
@@ -132,6 +146,29 @@ export class PackageCheckoutComponent implements OnInit {
     // initializing the primary contact details form
     // this.initializeForm();
   }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['travelers']) {
+      this.allDetailsOnceFilled();
+    }
+  }
+  // ========see more  & see less functionaity  for traveler cards===================================
+  showAllRows = false;
+
+  get firstRowTravelers() {
+    return this.travelers.slice(0, 4);
+  }
+
+  get remainingTravelers() {
+    return this.travelers.slice(4);
+  }
+
+  toggleRows() {
+    this.showAllRows = !this.showAllRows;
+  }
+
+// ====================================================================
+
 
   // Decrypt the data using AES
   decryptObject(encryptedData: string): any {
@@ -148,33 +185,266 @@ export class PackageCheckoutComponent implements OnInit {
     }
   }
 
+  
+  // using recieved document
+  NoOfRooms: number = 0;
+  NoOfAdults: number = 0;
+  NoOfChild: number = 0;
+  travelData: any;
+  NoOfTravellers: number;
+  RoomGuests: any;
+  
+  async  getData() {
+    console.log("Fetching data...");
+  
+    try {
+      if (this.recievedDocument) {
+        const { trip: { RoomGuests } } = this.recievedDocument;
+        this.travelData = this.recievedDocument;
+        this.RoomGuests = RoomGuests;
+        this.NoOfRooms = RoomGuests.length;
+  
+        const totals = RoomGuests.reduce((acc, room) => {
+          acc.NoOfAdults += room.NoOfAdults;
+          acc.NoOfChild += room.NoOfChild;
+          return acc;
+        }, { NoOfAdults: 0, NoOfChild: 0 });
+  
+        RoomGuests.forEach(room=>{
+         const childAge= room.ChildAge
+        })
+
+
+        this.NoOfAdults = totals.NoOfAdults;
+        this.NoOfChild = totals.NoOfChild;
+        this.NoOfTravellers = this.NoOfAdults + this.NoOfChild;
+  
+        // Uncomment and use if needed
+        // console.log("Hotels to call block room", this.recievedHotels);
+        // this.callHotelBlockRooom(this.recievedHotels);
+      } else {
+        console.log("Unable to retrieve the document containing room guests from session storage.");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  }
+  
+
+
+
+  // age needs to be calculated from DOB . we will only get the number of adults , child and infants
+
+   processRoomGuests(roomGuests: Room[]): Traveler[] {
+    
+    const defaultDate = new Date();
+  
+    const travelers: Traveler[] = [];
+  
+    roomGuests.forEach((room) => {
+      // Process adults
+      for (let i = 0; i < room.NoOfAdults; i++) {
+        travelers.push({
+          travelerType: 'adult',
+          travelerTypeCode: 1,
+          age: -1,
+          uid: uuidv4(),
+          personalInfoCompleted:false,
+          personalInfo: {
+            FirstName: '',
+            Title: '',
+            LastName: '',
+            DateOfBirth: defaultDate,
+            Gender: '',
+            Nationality: '',
+            AddressLine1: '',
+            AddressLine2: '',
+            Email: '',
+            ContactNo: '',
+            Phoneno: 0,
+            PAN: '',
+            PassportNo: '',
+            PassportIssueDate: defaultDate,
+            PassportExpDate: defaultDate,
+            PassportExpiry: defaultDate,
+            Age: -1,
+            PaxType: 0,
+            CountryCode: '',
+            City: '',
+            CountryName: '',
+            LeadPassenger: false,
+          },
+          guardian: {
+            Title: '',
+            FirstName: '',
+            LastName: '',
+            PAN: '',
+            PassportNo: '',
+          },
+          ssr: {
+            extraBaggage: '',
+            meal: '',
+            seat: '',
+          },
+        });
+      }
+  
+      // Process children
+      if(room.NoOfChild>0){
+
+      room.ChildAge.forEach((age) => {
+        // child age greater than 2 and lesser or eqaul to 11
+        if (age > 2 && age <= 11) {
+          travelers.push({
+            travelerType: 'child',
+            travelerTypeCode: 2,
+            age,
+            uid: uuidv4(),
+            personalInfoCompleted:false,
+            personalInfo: {
+              FirstName: '',
+              Title: '',
+              LastName: '',
+              DateOfBirth: defaultDate,
+              Gender: '',
+              Nationality: '',
+              AddressLine1: '',
+              AddressLine2: '',
+              Email: '',
+              ContactNo: '',
+              Phoneno: 0,
+              PAN: '',
+              PassportNo: '',
+              PassportIssueDate: defaultDate,
+              PassportExpDate: defaultDate,
+              PassportExpiry: defaultDate,
+              Age: age,
+              PaxType: 0,
+              CountryCode: '',
+              City: '',
+              CountryName: '',
+              LeadPassenger: false,
+            },
+            guardian: {
+              Title: '',
+              FirstName: '',
+              LastName: '',
+              PAN: '',
+              PassportNo: '',
+            },
+            ssr: {
+              extraBaggage: '',
+              meal: '',
+              seat: '',
+            },
+          });
+        } 
+        // infant be lesser than 2 and greaer than 0
+        else if (age <= 2 && age>0) {
+          travelers.push({
+            travelerType: 'infant',
+            travelerTypeCode: 3,
+            age,
+            uid: uuidv4(),
+            personalInfoCompleted:false,
+            personalInfo: {
+              FirstName: '',
+              Title: '',
+              LastName: '',
+              DateOfBirth: defaultDate,
+              Gender: '',
+              Nationality: '',
+              AddressLine1: '',
+              AddressLine2: '',
+              Email: '',
+              ContactNo: '',
+              Phoneno: 0,
+              PAN: '',
+              PassportNo: '',
+              PassportIssueDate: defaultDate,
+              PassportExpDate: defaultDate,
+              PassportExpiry: defaultDate,
+              Age: age,
+              PaxType: 0,
+              CountryCode: '',
+              City: '',
+              CountryName: '',
+              LeadPassenger: false,
+            },
+            guardian: {
+              Title: '',
+              FirstName: '',
+              LastName: '',
+              PAN: '',
+              PassportNo: '',
+            },
+            ssr: {
+              extraBaggage: '',
+              meal: '',
+              seat: '',
+            },
+          });
+        }
+      });
+    }
+
+    });
+  
+    return travelers;
+  }
+
+
+  // helper for getData
+   getPluralLabel(value, singular, plural) {
+    return value === 1 ? singular : plural;
+  }
+  // helper for getData
+   formatRoomGuests(NoOfRooms, NoOfAdults, NoOfChild) {
+    const roomLabel = this.getPluralLabel(NoOfRooms, "Room", "Rooms");
+    const adultLabel = this.getPluralLabel(NoOfAdults, "Adult", "Adults");
+    const childLabel = this.getPluralLabel(NoOfChild, "Child", "Children");
+    
+    return `${NoOfRooms} ${roomLabel} | ${NoOfAdults} ${adultLabel} ${NoOfChild} ${childLabel}`;
+  }
+  
+
+
+
   // ===================================FLIGHTS CALLS============================================
 
   // 1.Fare RULE
 
   // 2.FARE QUOTE
+  flightDetailsFromFareQuote;
+
   async getFareQuote() {
     const payload = {
       traceId: this.recievedFlights.traceId,
       resultIndex: this.recievedFlights.flightDetails[0].resultIndex,
     };
-    try {
-      const { fareRule } = await this.flight.fareQuote(payload);
-      console.log("FARE QUOTE RESPONSE", fareRule);
 
-      if (fareRule && fareRule?.Response?.Error.ErrorCode === 0) {
-        if (fareRule?.Response?.IsPriceChanged) {
+    try {
+      const { fareQuote } = await this.flight.fareQuote(payload);
+      console.log("FARE QUOTE RESPONSE", fareQuote);
+
+      if (fareQuote && fareQuote?.Response?.Error.ErrorCode === 0) {
+        if (fareQuote?.Response?.IsPriceChanged) {
           // price has changed, need to notify and refresh
-          const changedPublishedFare =
-            fareRule?.Response?.Results?.Fare.PublishedFare;
+          const changedPublishedFare =fareQuote?.Response?.Results?.Fare.PublishedFare;
+
         } else {
           // need to set the all the FLIGHT FARES from here
+
         }
-      } else {
+
+       this.flightDetailsFromFareQuote=fareQuote?.Response;
+       this.getSSR();
+      } 
+      else {
         // error while getting fareQuote Response
 
-        const errorCode = fareRule?.Response?.Error.ErrorCode;
-        const errorMessage = fareRule?.Response?.Error.ErrorMessage;
+        const errorCode = fareQuote?.Response?.Error.ErrorCode;
+        const errorMessage = fareQuote?.Response?.Error.ErrorMessage;
       }
     } catch (error) {
       console.log(error.message);
@@ -194,11 +464,13 @@ export class PackageCheckoutComponent implements OnInit {
 
       console.log("SSR RESPONSE :", ssr);
 
-      if (ssr.ResponseStatus == 1 && ssr.Response.Error.ErrorCode === 0) {
+      if (ssr.Response.ResponseStatus == 1 && ssr.Response.Error.ErrorCode === 0) {
         this.recievedSrrOptions = {
           meals: ssr.Response.Meal,
           seats: ssr.Response.SeatPreference,
         };
+
+        console.log(this.recievedSrrOptions)
       } else {
         console.log("error in fetching ssr");
 
@@ -219,29 +491,45 @@ export class PackageCheckoutComponent implements OnInit {
 
   }
 
+  leadPassengerUid: string = '';
+
+  setLeadPassenger(uid: string) {
+    this.travelers.forEach(traveler => {
+      traveler.personalInfo.LeadPassenger = traveler.uid === uid;
+    });
+  
+  }
+
+  allDetailsFilled:boolean=false;
+  allDetailsOnceFilled() {
+    this.allDetailsFilled=this.travelers.every(traveler => traveler.personalInfoCompleted);
+  }
+
+
+  finalBookPackage(){
+
+    // flights 
 
 
 
 
 
-  async getData() {
-    console.log("fetching");
+    // hotels
 
-    try {
-      if (this.recievedDocument) {
-        this.travelData = this.recievedDocument;
-        this.RoomGuests = this.travelData.trip.RoomGuests;
-        this.NoOfRooms = this.RoomGuests.length;
-        this.NoOfAdults = this.RoomGuests.reduce((total, room) => total + room.NoOfAdults,0);
-        this.NoOfChild = this.RoomGuests.reduce((total, room) => total + room.NoOfChild,0);
-        this.NoOfTravellers = this.NoOfAdults + this.NoOfChild;
-        console.log("hotels to call block room", this.recievedHotels);
-        // this.callHotelBlockRooom(this.recievedHotels);
-      } else {
-        console.log("No search info received from getSearchInfo");
+
+
+  }
+
+  async hotelBlockRoom(){
+    try{
+      const payload={
+        recievedHotels: this.recievedHotels,
+        travelers:this.travelers,
       }
-    } catch (error) {
-      console.log(error);
+    const res = await this.hotels.hotelBlockRoom(payload);
+      console.log(res)
+    }catch(err){
+      console.log(err.message)
     }
   }
 
@@ -367,98 +655,98 @@ export class PackageCheckoutComponent implements OnInit {
     return this.checkBox1 && this.checkBox2;
   }
 
-  handleTravelerArrayChange(travelerArray: any[]): void {
-    // Process the traveler array data received from the child component
+  handleupdationInTravelerArr(travelerArray: Traveler[]): void {
+    // // Process the traveler array data received from the child component
     console.log(travelerArray);
-    this.travelers = travelerArray;
-    console.log(this.travelers);
-    this.zone.run(() => {
-      this.cdr.detectChanges();
-    });
+    // this.travelers = travelerArray;
+    // console.log(this.travelers);
+    // this.zone.run(() => {
+    //   this.cdr.detectChanges();
+    // });
   }
 
   async getPassengerData() {
-    console.log("passengers fetching");
-    try {
-      const res = await this.pack.getPassengerDetails();
-      console.log(res.passengers);
+    // console.log("passengers fetching");
+    // try {
+    //   const res = await this.pack.getPassengerDetails();
+    //   console.log(res.passengers);
 
-      if (
-        this.NoOfTravellers > 0 &&
-        Array.isArray(res.passengers) &&
-        res.passengers.length > 0
-      ) {
-        this.travelers = res.passengers
-          .slice(0, this.NoOfTravellers)
-          .map((passengerData) => {
-            const { personalInfo, ssr, dates, guardianDetails } = passengerData;
-            return {
-              personalInfo: {
-                ...personalInfo,
-                LeadPassenger: personalInfo.LeadPassenger || true,
-              },
-              ssr: { ...ssr },
-              dates: { ...dates },
-              guardianDetails: { ...guardianDetails },
-            };
-          });
-      } else {
-        this.initializeTravelersArray();
-      }
-      console.log("traveler", this.travelers);
-    } catch (error) {
-      console.log(error);
-    }
+    //   if (
+    //     this.NoOfTravellers > 0 &&
+    //     Array.isArray(res.passengers) &&
+    //     res.passengers.length > 0
+    //   ) {
+    //     this.travelers = res.passengers
+    //       .slice(0, this.NoOfTravellers)
+    //       .map((passengerData) => {
+    //         const { personalInfo, ssr, dates, guardianDetails } = passengerData;
+    //         return {
+    //           personalInfo: {
+    //             ...personalInfo,
+    //             LeadPassenger: personalInfo.LeadPassenger || true,
+    //           },
+    //           ssr: { ...ssr },
+    //           dates: { ...dates },
+    //           guardianDetails: { ...guardianDetails },
+    //         };
+    //       });
+    //   } else {
+    //     this.initializeTravelersArray();
+    //   }
+    //   console.log("traveler", this.travelers);
+    // } catch (error) {
+    //   console.log(error);
+    // }
   }
 
   initializeTravelersArray() {
-    this.travelers = [];
-    for (let i = 0; i < this.NoOfTravellers; i++) {
-      const isLeadPassenger = i === 0;
-      const paxType = isLeadPassenger ? 1 : 2;
-      this.travelers.push({
-        personalInfo: {
-          FirstName: "",
-          Title: "",
-          LastName: "",
-          DateOfBirth: "",
-          Gender: "",
-          Nationality: "",
-          AddressLine1: "",
-          AddressLine2: "",
-          Email: "",
-          ContactNo: "",
-          PAN: "",
-          PassportNo: "",
-          PassportIssueDate: "",
-          PassportExpDate: "",
-          PassportExpiry: "",
-          Age: "",
-          PaxType: paxType,
-          CountryCode: "",
-          City: "",
-          CountryName: "",
-          LeadPassenger: isLeadPassenger,
-        },
-        dates: {
-          dob: { day: "", month: "", year: "" },
-          passportIssue: { day: "", month: "", year: "" },
-          passportExpiry: { day: "", month: "", year: "" },
-        },
-        guardianDetails: {
-          Title: "",
-          FirstName: "",
-          LastName: "",
-          PAN: "",
-          PassportNo: "",
-        },
-        ssr: {
-          extraBaggage: "",
-          meal: "",
-          seat: "",
-        },
-      });
-    }
+    // this.travelers = [];
+    // for (let i = 0; i < this.NoOfTravellers; i++) {
+    //   const isLeadPassenger = i === 0;
+    //   const paxType = isLeadPassenger ? 1 : 2;
+    //   this.travelers.push({
+    //     personalInfo: {
+    //       FirstName: "",
+    //       Title: "",
+    //       LastName: "",
+    //       DateOfBirth: "",
+    //       Gender: "",
+    //       Nationality: "",
+    //       AddressLine1: "",
+    //       AddressLine2: "",
+    //       Email: "",
+    //       ContactNo: "",
+    //       PAN: "",
+    //       PassportNo: "",
+    //       PassportIssueDate: "",
+    //       PassportExpDate: "",
+    //       PassportExpiry: "",
+    //       Age: "",
+    //       PaxType: paxType,
+    //       CountryCode: "",
+    //       City: "",
+    //       CountryName: "",
+    //       LeadPassenger: isLeadPassenger,
+    //     },
+    //     dates: {
+    //       dob: { day: "", month: "", year: "" },
+    //       passportIssue: { day: "", month: "", year: "" },
+    //       passportExpiry: { day: "", month: "", year: "" },
+    //     },
+    //     guardianDetails: {
+    //       Title: "",
+    //       FirstName: "",
+    //       LastName: "",
+    //       PAN: "",
+    //       PassportNo: "",
+    //     },
+    //     ssr: {
+    //       extraBaggage: "",
+    //       meal: "",
+    //       seat: "",
+    //     },
+    //   });
+    // }
   }
   private initializeForm(): void {
     this.contactForm = this.fb.group({
@@ -469,12 +757,17 @@ export class PackageCheckoutComponent implements OnInit {
     });
   }
 
-  //  dialogBox functions
-  dialogbox(index: number) {
-    console.log(index);
+
+  currentTravelerUid:string;
+ 
+
+  dialogbox(uid: string) {
+    console.log(uid);
     this.dialog = !this.dialog;
-    this.editIndex = index;
+      this.currentTravelerUid=uid;
   }
+
+
   privacyDialogBox() {
     console.log("privacy");
     this.privacyDialog = !this.privacyDialog;
@@ -493,21 +786,21 @@ export class PackageCheckoutComponent implements OnInit {
   }
 
   async submit() {
-    this.pay = true;
-    console.log(this.contactForm.value);
-    console.log(this.travelers);
-    await this.pack.updatePrimaryContact(
-      this.contactForm.value,
-      localStorage.getItem("uid")
-    );
-    await this.pack.savePassengerDetails(
-      this.travelers,
-      localStorage.getItem("uid")
-    );
+    // this.pay = true;
+    // console.log(this.contactForm.value);
+    // console.log(this.travelers);
+    // await this.pack.updatePrimaryContact(
+    //   this.contactForm.value,
+    //   localStorage.getItem("uid")
+    // );
+    // await this.pack.savePassengerDetails(
+    //   this.travelers,
+    //   localStorage.getItem("uid")
+    // );
   }
 
   addBox() {
-    this.Travellers = !this.Travellers;
+    this.seeAllTravellers = !this.seeAllTravellers;
   }
   // to convert number into array
   getArray(length: number): any[] {
@@ -617,4 +910,42 @@ export class PackageCheckoutComponent implements OnInit {
   }
 
   // generate payment link flow
+
+
+  // booking calls
+
+  async bookNonLCCflights() {
+    const payload = {
+      travelers: this.travelers,
+      fareQuote: this.flightDetailsFromFareQuote
+    };
+  
+    // Create a Blob from the payload
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    const payloadBlobUrl = URL.createObjectURL(blob);
+  
+    // Create a temporary anchor element to trigger the download
+    const tempLink = document.createElement('a');
+    tempLink.href = payloadBlobUrl;
+    tempLink.download = 'payload.txt'; // Name of the file to be downloaded
+    tempLink.style.display = 'none';
+    document.body.appendChild(tempLink);
+    tempLink.click(); // Trigger the download
+    document.body.removeChild(tempLink); // Clean up the DOM
+  
+    try {
+      const { data } = await axios.post(`${environment.BACKEND_BASE_URL}/flight/nonLCCFlightBook`, payload);
+      console.log(data);
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
+  
+
+  ticketFlights(){
+
+  }
+
+
+
 }

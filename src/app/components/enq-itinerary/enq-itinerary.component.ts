@@ -133,6 +133,7 @@ export class EnqItineraryComponent implements OnInit {
       .subscribe(() => {
         this.onDepartureSearch();
       });
+      
     this.destinationSearchSubject
       .pipe(
         debounceTime(500) // Adjust debounce time as needed (300 milliseconds in this example)

@@ -1,21 +1,16 @@
 <app-traveller-card
   *ngIf="dialog"
-  (closeDialog)="dialogbox()"
-  [ssr]="ssr"
-  [ssr1]="ssr1"
-  [ssr2]="ssr2"
-  [ssrPrice]="ssrPrice"
-  [dialog]="dialog"
-  [editIndex]="editIndex"
-  [traceId]="TraceId"
-  [resultIndex]="ResultIndex"
-  (travelerArrayChange)="handleTravelerArrayChange($event)"
-  [baggagePrice]="baggagePrice"
-  [seatPrice]="seatPrice"
-  [mealPrice]="mealPrice"
+  (closeDialog)="dialogbox($event)"
+  [isLCC]="recievedFlights.flightDetails[0].isLCC"
+  [ssr]="recievedSrrOptions"
   [travelers]="travelers"
+  [currentTravelerUid]="currentTravelerUid"
+  (updatedTravelerArr)="handleupdationInTravelerArr($event)"
   [RoomGuests]="RoomGuests"
   [NoOfTravellers]="NoOfTravellers"
+  [dialog]="dialog"
+  [traceId]="TraceId"
+  [resultIndex]="ResultIndex"
   style="width: 100%"
 ></app-traveller-card>
 
@@ -41,8 +36,7 @@
 ></app-combined-policy>
 
 <body style="background-color: white">
-
-    <!-- heading -->
+  <!-- heading -->
   <div class="headers" style="background: #03254a">
     <div style="display: flex; gap: 20px">
       <h1>4Days/5Nights</h1>
@@ -60,8 +54,7 @@
 
   <div class="main-containers">
     <div style="width: 100%">
-
-      <div class="sub-headers">
+      <!-- <div class="sub-headers">
         <p>Day Wise Iternary</p>
         <p style="text-decoration: none">-</p>
         <p>Flights</p>
@@ -69,17 +62,18 @@
         <p>Accomodations</p>
         <p style="text-decoration: none">-</p>
         <p>Get-payment</p>
-      </div>
+      </div> -->
 
+      <!-- main div containg AllTravellers -->
       <div class="containers" id="dynamicContainer">
         <div class="titles" style="background-color: #03254a; height: 40px">
           Traveller Details
         </div>
 
         <div class="boxes">
-          
-            <div
-                style="
+          <!-- numerical Stats -->
+          <div
+            style="
               width: 100%;
               display: flex;
               justify-content: flex-start;
@@ -92,197 +86,191 @@
               {{ NoOfAdults + NoOfChild }} Traveller -
             </h2>
             <span style="color: black; padding-left: 10px">
-              {{ NoOfRooms }} Rooms | {{ NoOfAdults }} Adult
-              {{ NoOfChild }} Child</span
-            >
+              {{ formatRoomGuests(NoOfRooms, NoOfAdults, NoOfChild) }}
+            </span>
           </div>
 
-          <ng-container *ngIf="!Travellers && !travelers">
+          <!-- passenger cards -->
+          <div
+            *ngIf="travelers && travelers.length > 0"
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+              gap: 16px;
+              width: 100%;
+              padding: 16px;
+            "
+          >
             <ng-container
-              *ngFor="
-                let star of getArray(NoOfAdults + NoOfChild);
-                let i = index
-              "
+              *ngFor="let traveler of firstRowTravelers; let i = index"
             >
-              <div class="box1">
-                <div
-                  style="
-                    width: 200px;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                  "
-                >
-                  <small>Traveller {{ i + 1 }}</small>
-
-                  <div
-                    style="
-                      display: flex;
-                      justify-content: center;
-                      align-items: center;
-                      gap: 5px;
-                    "
-                  >
-                    <i style="font-size: 18px" class="fa-regular fa-user"></i>
-                    <a class="p" (click)="dialogbox(i)"
-                      ><span>Add Traveller</span></a
-                    >
-                  </div>
-                </div>
-                <!-- <small style="font-size: 0.7rem;">* Adult age should be more than 18 </small> -->
-              </div>
-            </ng-container>
-          </ng-container>
-
-          <ng-container *ngIf="Travellers && !travelers">
-            <ng-container *ngFor="let star of getArray(2); let i = index">
-              <div class="box1">
-                <div
-                  style="
-                    width: 200px;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                  "
-                >
-                  <small>Traveller {{ i + 1 }}</small>
-                  <div
-                    style="
-                      display: flex;
-                      justify-content: center;
-                      align-items: center;
-                      gap: 5px;
-                    "
-                  >
-                    <i style="font-size: 18px" class="fa-regular fa-user"></i>
-
-                    <a class="p" (click)="dialogbox(i)"
-                      ><span>Add Traveller</span></a
-                    >
-                  </div>
-                </div>
-                <!-- <small style="font-size: 0.7rem;">* Adult age should be more than 18 </small> -->
-              </div>
-            </ng-container>
-          </ng-container>
-
-          <ng-container *ngIf="!Travellers && travelers">
-            <ng-container
-              *ngFor="let star of getArray(NoOfAdults + NoOfChild);
-                let i = index "
-            >
-              <div class="box1">
-                <div
-                  style="
-                    width: 200px;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                  "
-                >
-                  <small>Traveller {{ i + 1 }}</small>
-                  <div style="
-                      display: flex;
-                      justify-content: center;
-                      align-items: center;
-                      gap: 5px;
-                    "
-                  >
-                    <i style="font-size: 18px" class="fa-regular fa-user"></i>
-
-                    <a class="p" (click)="dialogbox(i)">
-                      {{
-                        travelers[i]?.personalInfo?.FirstName || "Add Traveller"
-                      }}
-                    </a>
-                  </div>
-                </div>
-                <!-- <small style="font-size: 0.7rem;">* Adult age should be more than 18 </small> -->
-              </div>
-            </ng-container>
-          </ng-container>
-
-          <ng-container *ngIf="Travellers && travelers">
-            <ng-container *ngFor="let star of getArray(2); let i = index">
-              <div class="box1">
-                <div
-                  style="
-                    width: 200px;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                  "
-                >
-                  <small>Traveller {{ i + 1 }}</small>
-
-                  <div
-                    style="
-                      display: flex;
-                      justify-content: center;
-                      align-items: center;
-                      gap: 5px;
-                    "
-                  >
-                    <i style="font-size: 18px" class="fa-regular fa-user"></i>
-                    <a class="p" (click)="dialogbox(i)">
-                      {{
-                        travelers[i]?.personalInfo?.FirstName || "Add Traveller"
-                      }}</a
-                    >
-                  </div>
-                </div>
-                <!-- <small style="font-size: 0.7rem;">* Adult age should be more than 18 </small> -->
-              </div>
-            </ng-container>
-          </ng-container>
-        </div>
-
-        <!-- see more -->
-        <ng-container *ngIf="Travellers">
-          <div class="btn-containers">
-            <button
-              class="btns"
-              style="
-                width: 113px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 32px;
-                margin-left: 10px;
-              "
-              (click)="addBox()"
-            >
-              <span style="color: white; font-weight: 600; width: 100%"
-                >See more</span
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  height: 100%;
+                  width: 100%;
+                  border: 1px solid #ccc;
+                  border-radius: 8px;
+                  padding: 16px;
+                  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                "
               >
+                <div class="lead-passenger" style="height: 15%">
+                  <label
+                    style="
+                      display: flex;
+                      align-items: center;
+                      font-size: 14px;
+                      gap: 5px;
+                    "
+                  >
+                    <input
+                      type="radio"
+                      name="leadPassenger"
+                      [value]="traveler.uid"
+                      [(ngModel)]="leadPassengerUid"
+                      (change)="setLeadPassenger(traveler.uid)"
+                      style="
+                        border: 1px solid #ccc;
+                        padding: 8px;
+                        border-radius: 5px;
+                        font-size: 0.9rem;
+                        width: 12px;
+                        display: flex;
+                        gap: 5px;
+                      "
+                    />
+                    Lead Passenger
+                  </label>
+                </div>
+                <div
+                  class="traveler-container"
+                  (click)="dialogbox(traveler.uid)"
+                  [ngClass]="{ success: traveler.personalInfoCompleted }"
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100%;
+                  "
+                >
+                  <h2>Traveller {{ i + 1 }}</h2>
+                  <i
+                    *ngIf="traveler.travelerTypeCode === 1"
+                    class="fa-solid fa-user"
+                    style="font-size: 24px"
+                  ></i>
+                  <i
+                    *ngIf="
+                      traveler.travelerTypeCode === 2 ||
+                      traveler.travelerTypeCode === 3
+                    "
+                    class="fa-solid fa-baby"
+                    style="font-size: 24px"
+                  ></i>
+                </div>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="showAllRows">
+              <ng-container
+                *ngFor="let traveler of remainingTravelers; let i = index"
+              >
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    height: 100%;
+                    width: 100%;
+                    border: 1px solid #ccc;
+                    border-radius: 8px;
+                    padding: 16px;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                  "
+                >
+                  <div class="lead-passenger" style="height: 15%">
+                    <label
+                      style="
+                        display: flex;
+                        align-items: center;
+                        font-size: 14px;
+                        gap: 5px;
+                      "
+                    >
+                      <input
+                        type="radio"
+                        name="leadPassenger"
+                        [value]="traveler.uid"
+                        [(ngModel)]="leadPassengerUid"
+                        (change)="setLeadPassenger(traveler.uid)"
+                        style="
+                          border: 1px solid #ccc;
+                          padding: 8px;
+                          border-radius: 5px;
+                          font-size: 0.9rem;
+                          width: 12px;
+                          display: flex;
+                          gap: 5px;
+                        "
+                      />
+                      Lead Passenger
+                    </label>
+                  </div>
+                  <div
+                    class="traveler-container"
+                    (click)="dialogbox(traveler.uid)"
+                    [ngClass]="{ success: traveler.personalInfoCompleted }"
+                    style="
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      justify-content: center;
+                      height: 100%;
+                    "
+                  >
+                    <h2>Traveller {{ i + 1 + firstRowTravelers.length }}</h2>
+                    <i
+                      *ngIf="traveler.travelerTypeCode === 1"
+                      class="fa-solid fa-user"
+                      style="font-size: 24px"
+                    ></i>
+                    <i
+                      *ngIf="
+                        traveler.travelerTypeCode === 2 ||
+                        traveler.travelerTypeCode === 3
+                      "
+                      class="fa-solid fa-baby"
+                      style="font-size: 24px"
+                    ></i>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+          </div>
+
+          <div
+            *ngIf="travelers.length > 4"
+            style="text-align: center; margin-top: 16px"
+          >
+            <button (click)="toggleRows()">
+              {{ showAllRows ? "See Less" : "See More" }}
             </button>
           </div>
-        </ng-container>
 
-        <!-- see less -->
-        <ng-container *ngIf="!Travellers">
-          <div class="btn-containers">
-            <button
-              class="btns"
+          <div style="width: 100%; height: 40px" *ngIf="allDetailsFilled">
+            <div
               style="
-                width: 113px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                height: 32px;
-                margin-left: 10px;
               "
-              (click)="addBox()"
             >
-              <span style="color: white; font-weight: 600">See less</span>
-            </button>
+              <button>Lock Details</button>
+            </div>
           </div>
-        </ng-container>
-
+        </div>
       </div>
 
       <!-- Primary Contact Details -->
@@ -483,18 +471,42 @@
         </button>
       </div>
 
+      <div>
+        <button (click)="hotelBlockRoom()">Block Hotels</button>
+      </div>
       <!-- preview -->
       <div class="btnss" style="margin: 0; margin-top: 20px" *ngIf="pay">
         <button><span>Send Preview Link</span></button>
         <button (click)="getPaymentLink()"><span>Pay Now</span></button>
       </div>
-
     </div>
 
+    <!-- payment and route overview -->
     <div class="sidebars">
-      <!-- <app-payment-breakdown [travelData]="travelData" (privacyDialogbox)="privacyDialogBox()" (termsDialogBox)="termsDialogBox()" (refundDialogBox)="refundibleDialogBox()" (packageDailogBox)="packageDialogBox()"></app-payment-breakdown> -->
+      <app-payment-breakdown
+        [travelData]="travelData"
+        [travelers]="travelers"
+        [recievedFlights]="recievedFlights"
+        [recievedHotels]="recievedHotels"
+        (privacyDialogbox)="privacyDialogBox()"
+        (termsDialogBox)="termsDialogBox()"
+        (refundDialogBox)="refundibleDialogBox()"
+        (packageDailogBox)="packageDialogBox()"
+      ></app-payment-breakdown>
 
-      <app-route-overview [travelData]="travelData"></app-route-overview>
+      <div>
+        <button (click)="bookNonLCCflights()">Book Non Lcc Flights</button>
+        <button (click)="ticketFlights()">Ticket Flights</button>
+        <button>Block Room</button>
+        <button>Book Room</button>
+
+      </div>
+      <app-trace-id-timer> </app-trace-id-timer>
+
+      <app-route-overview
+        [travelData]="travelData"
+        [recievedFlights]="flightDetailsFromFareQuote"
+      ></app-route-overview>
     </div>
   </div>
 </body>

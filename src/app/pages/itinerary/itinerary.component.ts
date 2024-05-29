@@ -22,6 +22,9 @@ import { AxiosRequestConfig } from "axios"; // Import AxiosRequestConfig type
 import { environment } from "src/environments/environment";
 import { Route, Router } from "@angular/router";
 import * as CryptoJS from "crypto-js";
+import { initializeApp } from '@angular/fire/app';
+import { PackageService } from "src/app/Services/package/package.service";
+
 
 declare const google: any;
 
@@ -110,7 +113,7 @@ interface Document {
 export class ItineraryComponent implements OnInit, OnChanges {
   // global variable for the flights
   allFlights = [];
-  traceId: string;
+  flightTraceId: string;
   currentFlightSetIndex: string = null;
 
   // global variables for the hotels
@@ -137,6 +140,7 @@ export class ItineraryComponent implements OnInit, OnChanges {
     private route: ActivatedRoute,
     private spinner: NgxSpinnerService,
     private documentService: ScheduleService,
+    private packageSerivce:PackageService,
     private router: Router
   ) {}
 
@@ -161,25 +165,47 @@ export class ItineraryComponent implements OnInit, OnChanges {
     }
   }
 
-  goToCheckout(event) {
+  async goToCheckout(event) {
     if (event) {
+
+      // 1. to intitalize traveler array in backend in trip.travelers
+      // 2. Flights -> result idx , trace Id 
+      // 3. Hotels -> Hotel anme , hotel Code , rooms array , result idx , trace id
+
       console.log("CHECKING OUT TO PACKAGE BROOOOOOOOOOOOOOOOOOOOOOOOO");
       console.log(event);
       console.log(this.allSelectedHotels);
       console.log(this.currentFlightSet);
 
-      const encryptedDocument = this.encryptObject(this.document);
+      const initializeTravelerArr=await this.packageSerivce.initializeTravelerArr(this.docUid);
+
+      if(initializeTravelerArr){
+        console.log(initializeTravelerArr.message)
+
+        const flightDetails = [...this.currentFlightSet ];
+
+
+
+
+
+
+
+      
+
+      // const encryptedDocument = this.encryptObject(this.document);
       const encryptedHotels = this.encryptObject(this.allSelectedHotels);
       // Encrypt the object
-      const flightDetails = [...this.currentFlightSet ];
-      const traceId = this.traceId;
-      const encryptedFlights = this.encryptObject({ flightDetails, traceId });
+     
+      const flightTraceId = this.flightTraceId;
+      const encryptedFlights = this.encryptObject({ flightDetails, flightTraceId });
 
-      sessionStorage.setItem("document", encryptedDocument);
+      // sessionStorage.setItem("document", encryptedDocument);
       sessionStorage.setItem("hotels", encryptedHotels);
       sessionStorage.setItem("flights", encryptedFlights);
 
       this.router.navigate(["/package-checkout"]);
+    }
+
     }
   }
   // to encrypt the data
@@ -260,14 +286,18 @@ export class ItineraryComponent implements OnInit, OnChanges {
       const startTime = performance.now(); // Start measuring time
 
       const data = await this.flightApiService.multiStopSearchFlights(docUid);
-
+      console.log(data)
+      if(data.errorCode!==-1){
+         console.error(data.errorMessage);
+        return 
+      }
       const endTime = performance.now(); // End measuring time
       const responseTime = endTime - startTime; // Calculate response time
 
       console.log("Response Time:", responseTime, "milliseconds");
 
-      if (data) {
-        this.traceId = data.TraceId;
+      if (data.errorCode==-1) {
+        this.flightTraceId = data.TraceId;
         this.allFlights = data.flightsData;
         console.log(this.allFlights, "ALL FLIGHTS");
         this.currentFlightSetIndex = this.allFlights[0].resultIndex;

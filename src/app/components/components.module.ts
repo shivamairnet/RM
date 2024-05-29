@@ -61,6 +61,7 @@ import { EnqRoundComponent } from './enq-round/enq-round.component';
 import { EnqOnewayComponent } from './enq-oneway/enq-oneway.component';
 import { EnqMultiwayComponent } from './enq-multiway/enq-multiway.component';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+import { TraceIdTimerComponent } from './trace-id-timer/trace-id-timer.component';
 
 
 
@@ -133,7 +134,8 @@ import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
           EnqFlightComponent,
           EnqRoundComponent,
           EnqOnewayComponent,
-          EnqMultiwayComponent
+          EnqMultiwayComponent,
+          TraceIdTimerComponent
 
   ],
   exports: [
@@ -197,7 +199,8 @@ import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
     EnqFlightComponent,
     EnqRoundComponent,
     EnqOnewayComponent,
-    EnqMultiwayComponent
+    EnqMultiwayComponent,
+    TraceIdTimerComponent
 
   ]
 })

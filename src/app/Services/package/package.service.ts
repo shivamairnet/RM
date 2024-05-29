@@ -598,4 +598,25 @@ export class PackageService {
       console.error("Error updating document:", error);
     }
   }
+
+
+   async initializeTravelerArr(docUid:string){
+
+    try{
+      const {data}= await axios.post(`${environment.BACKEND_BASE_URL}/package/initializeTravelerArr`,{docUid});
+        
+      return data;
+
+    }
+    catch(err){
+      return err.response.data;
+    }
+
+  }
+
+
+
+
+
+
 }

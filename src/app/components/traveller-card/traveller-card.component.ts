@@ -27,7 +27,13 @@ import {
 } from "@ng-bootstrap/ng-bootstrap";
 import { FlightsService } from "src/app/Services/flights_api/flights.service";
 import { Papa } from "ngx-papaparse";
-
+import { debounceTime, Subject } from "rxjs";
+import { DebounceCallsService } from "src/app/Services/DebounceCalls/debounce-calls.service";
+import axios from "axios";
+import { Traveler } from "src/app/classes/packageCheckoutInterface";
+import { findSourceMap } from "module";
+import * as CryptoJS from "crypto-js";
+import { environment } from "src/environments/environment";
 @Component({
   selector: "app-traveller-card",
   templateUrl: "./traveller-card.component.html",
@@ -35,22 +41,29 @@ import { Papa } from "ngx-papaparse";
 })
 export class TravellerCardComponent implements OnInit {
   @ViewChild("dpInput") dpInput: any;
-  @Input() dialog: boolean;
-  @Input() editIndex: number;
-  @Input() ssr: any;
-  @Input() seatPrice: any;
-  @Input() baggagePrice: any;
-  @Input() travelers: any[] = [];
-  @Input() mealPrice: any;
 
-  @Output() closeDialog: EventEmitter<void> = new EventEmitter<void>();
-  @Output() travelerArrayChange: EventEmitter<any[]> = new EventEmitter<any[]>();
+  @Input() dialog: boolean;
+
+  @Input() travelers: any[];
+  @Input() currentTravelerUid: string;
+
+  @Input() isLCC: boolean;
+  @Input() ssr: any;
+
+  // @Input() seatPrice: any;
+  // @Input() baggagePrice: any;
+  // @Input() mealPrice: any;
+
+  @Input() RoomGuests: any[];
+  @Input() NoOfTravellers: number;
+
+  @Output() closeDialog: EventEmitter<string> = new EventEmitter<string>();
+  @Output() updatedTravelerArr: EventEmitter<any[]> = new EventEmitter<any[]>();
   @Output() priceChange: EventEmitter<any[]> = new EventEmitter<any[]>();
 
   travelData: any;
   passengerData: any;
-  @Input() RoomGuests: any[];
-  @Input() NoOfTravellers: number;
+
   travelerForm: FormGroup;
 
   selectedCard: number = 0;
@@ -82,6 +95,10 @@ export class TravellerCardComponent implements OnInit {
   RowSeats: any;
   selectedSeatMapIndex: number;
 
+  private departureSearchSubject = new Subject<string>();
+  private nationalitySearchSubject = new Subject<string>();
+  private countrySearchSubject = new Subject<string>();
+
   constructor(
     private hotels: HotelsService,
     private flights: FlightsService,
@@ -90,38 +107,61 @@ export class TravellerCardComponent implements OnInit {
     private datePipe: DatePipe,
     private zone: NgZone,
     private cdr: ChangeDetectorRef,
-    private pack: PackageService
+    private pack: PackageService,
+    private debounce: DebounceCallsService
   ) {}
 
-
   ngOnInit(): void {
+    console.log("travelers:", this.travelers);
+    console.log("currentTravelerUid:", this.currentTravelerUid);
 
-    console.log("ROOOM GUESTS",this.RoomGuests )
+    console.log("SSR:", this.ssr);
+    console.log("IS LCC:", this.isLCC);
 
-
-
+    this.departureSearchSubject
+      .pipe(
+        debounceTime(500) // Adjust debounce time as needed (300 milliseconds in this example)
+      )
+      .subscribe(() => {
+        this.onDepartureSearch();
+      });
+    this.nationalitySearchSubject
+      .pipe(
+        debounceTime(500) // Adjust debounce time as needed (300 milliseconds in this example)
+      )
+      .subscribe(() => {
+        this.onNationalitySearch();
+      });
+    this.countrySearchSubject
+      .pipe(
+        debounceTime(500) // Adjust debounce time as needed (300 milliseconds in this example)
+      )
+      .subscribe(() => {
+        this.onCountrySearch();
+      });
     // this.getData();s
     this.initializeForm();
-
-    if(this.ssr){
-      this.handleSSR('ssr',)
-    }
-    if (this.editIndex !== undefined) {
-      this.handleCardClick(this.editIndex);
-      console.log(this.editIndex);
-      console.log(this.travelers);
-      this.currentIndex = this.editIndex;
-      if (this.travelers[this.currentIndex]) {
-        this.travelerForm.setValue(this.travelers[this.currentIndex]);
-        console.log(this.travelerForm.value);
-      }
-    }
+    
+    // this.loadTravelerDetails();
 
 
+
+    // if(this.ssr){
+    //   this.handleSSR('ssr',)
+    // }
+    // if (this.editIndex !== undefined) {
+    //   this.handleCardClick(this.editIndex);
+
+    //   this.currentIndex = this.editIndex;
+    //   if (this.travelers[this.currentIndex]) {
+    //     this.travelerForm.setValue(this.travelers[this.currentIndex]);
+    //     console.log(this.travelerForm.value);
+    //   }
+    // }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.convertCSVToJson();
+    // this.convertCSVToJson();
     console.log("HotelCardsComponent ngOnChanges", changes);
 
     this.ssrData = this.ssr.Response;
@@ -148,7 +188,6 @@ export class TravellerCardComponent implements OnInit {
     console.log(this.seatsArray);
     const personalInfoGroup = this.travelerForm.get("ssr") as FormGroup;
 
-    // Assuming 'Nationality' and 'CountryCode' are form controls in 'personalInfo' FormGroup
     const seatControl = personalInfoGroup.get("seat");
     seatControl.setValue(this.seatsArray);
     this.updatePrice();
@@ -173,51 +212,103 @@ export class TravellerCardComponent implements OnInit {
   }
 
   private initializeForm(): void {
+    const traveler: Traveler = this.findTraveler(this.currentTravelerUid);
+
+    // Get current date
+    const currentDate = new Date();
+
+    // Initialize the form
     this.travelerForm = this.fb.group({
       personalInfo: this.fb.group({
-        FirstName: ["", Validators.required],
-        Title: ["", Validators.required],
-        LastName: ["", Validators.required],
-        DateOfBirth: ["", Validators.required],
-        Gender: ["", Validators.required],
-        Nationality: ["", Validators.required],
-        AddressLine1: ["", Validators.required],
-        AddressLine2: [""],
-        Email: ["", Validators.required],
-        ContactNo: ["", Validators.required],
-        Phoneno: [""],
-        PAN: [""],
-        PassportNo: [""],
-        PassportIssueDate: [""],
-        PassportExpDate: [""],
-        PassportExpiry: [""],
-        Age: [""],
-        PaxType: [""],
+        FirstName: ["", [Validators.required]],
+        Title: ["", [Validators.required]],
+        LastName: ["", [Validators.required]],
+        DateOfBirth: [currentDate, [Validators.required]],
+        Gender: ["", [Validators.required]],
+        Nationality: ["", [Validators.required]],
         CountryCode: [""],
         City: [""],
         CountryName: [""],
-        LeadPassenger: [true],
-      }),
-
-      guardianDetails: this.fb.group({
-        Title: [""],
-        FirstName: [""],
-        LastName: [""],
+        AddressLine1: ["", [Validators.required]],
+        AddressLine2: [""],
+        Email: ["", [Validators.required]],
+        ContactNo: ["", [Validators.required]],
+        Phoneno: [""],
         PAN: [""],
         PassportNo: [""],
+        PassportIssueDate: [currentDate, [Validators.required]],
+        PassportExpDate: [currentDate, [Validators.required]],
+        PassportExpiry: [""],
+        Age: [""],
+        LeadPassenger: [false],
+      }),
+      guardianDetails: this.fb.group({
+        Title: [null],
+        FirstName: [null],
+        LastName: [null],
+        PAN: [null],
+        PassportNo: [null],
       }),
       ssr: this.fb.group({
-        extraBaggage: new FormControl(),
-        meal: new FormControl(),
-        seat: new FormControl(),
+        extraBaggage: [null],
+        meal: [null, [Validators.required]], // Initializing with null for "No Preference"
+        seat: [null, [Validators.required]], // Initializing with null for "No Preference"
       }),
     });
 
-    this.travelerForm.get("personalInfo.ContactNo").valueChanges.subscribe((contactNo) => {
+    // Fill the form with pre-filled data if it exists
+    if (traveler.personalInfoCompleted) {
+      this.travelerForm.patchValue({
+        personalInfo: {
+          FirstName: traveler.personalInfo?.FirstName || "",
+          Title: traveler.personalInfo?.Title || "",
+          LastName: traveler.personalInfo?.LastName || "",
+          DateOfBirth: traveler.personalInfo?.DateOfBirth || currentDate,
+          Gender: traveler.personalInfo?.Gender || "",
+          Nationality: traveler.personalInfo?.Nationality || "",
+          CountryCode: traveler.personalInfo?.CountryCode || "",
+          City: traveler.personalInfo?.City || "",
+          CountryName: traveler.personalInfo?.CountryName || "",
+          AddressLine1: traveler.personalInfo?.AddressLine1 || "",
+          AddressLine2: traveler.personalInfo?.AddressLine2 || "",
+          Email: traveler.personalInfo?.Email || "",
+          ContactNo: traveler.personalInfo?.ContactNo || "",
+          Phoneno: traveler.personalInfo?.Phoneno || "",
+          PAN: traveler.personalInfo?.PAN || "",
+          PassportNo: traveler.personalInfo?.PassportNo || "",
+          PassportIssueDate:
+            traveler.personalInfo?.PassportIssueDate || currentDate,
+          PassportExpDate:
+            traveler.personalInfo?.PassportExpDate || currentDate,
+          PassportExpiry: traveler.personalInfo?.PassportExpiry || "",
+          Age: traveler.personalInfo?.Age || "",
+          LeadPassenger: traveler.personalInfo?.LeadPassenger || false,
+        },
+        guardianDetails: {
+          Title: traveler.guardian?.Title || null,
+          FirstName: traveler.guardian?.FirstName || null,
+          LastName: traveler.guardian?.LastName || null,
+          PAN: traveler.guardian?.PAN || null,
+          PassportNo: traveler.guardian?.PassportNo || null,
+        },
+        ssr: {
+          extraBaggage: traveler.ssr?.extraBaggage || null,
+          meal: traveler.ssr?.meal || null,
+          seat: traveler.ssr?.seat || null,
+        },
+      });
+    }
+
+    // these 3 below cloning calls are being made to cater the needs of both hotels and flights coz example they both demand phone number but one with "ContactNo"d and other "Phoneno"
+    this.travelerForm
+      .get("personalInfo.ContactNo")
+      .valueChanges.subscribe((contactNo) => {
         this.travelerForm.get("personalInfo.Phoneno").setValue(contactNo);
       });
 
-    this.travelerForm.get("personalInfo.PassportExpiry").valueChanges.subscribe((contactNo) => {
+    this.travelerForm
+      .get("personalInfo.PassportExpiry")
+      .valueChanges.subscribe((contactNo) => {
         // Check if the flag is set to true before updating the form
         // Set the value of Phoneno field to the same value as ContactNo
         this.travelerForm
@@ -225,7 +316,9 @@ export class TravellerCardComponent implements OnInit {
           .setValue(contactNo);
       });
 
-    this.travelerForm.get("personalInfo.DateOfBirth").valueChanges.subscribe((dob) => {
+    this.travelerForm
+      .get("personalInfo.DateOfBirth")
+      .valueChanges.subscribe((dob) => {
         // Update the Age field when Date of Birth changes
         const age = this.calculateAge(dob);
         this.travelerForm.get("personalInfo.Age").setValue(age);
@@ -233,18 +326,253 @@ export class TravellerCardComponent implements OnInit {
       });
   }
 
-  handleSSR(formGroupName: string, controlName: string, item: any): void {
-    console.log(item);
-    this.travelerForm.get(formGroupName).get(controlName).setValue(item);
-    const srrGroup = this.travelerForm.get(formGroupName) as FormGroup;
-
-    const ssr = srrGroup.get(controlName);
-    ssr.setValue(item);
-
-    this.updatePrice();
-
-    console.log(this.travelerForm.value);
+  onCitySelected(city) {
+    this.travelerForm.patchValue({
+      personalInfo: {
+        City: city.city_name,
+      },
+    });
   }
+  onNationalitySelected(country) {
+    this.travelerForm.patchValue({
+      personalInfo: {
+        Nationality: country.country_code,
+      },
+    });
+  }
+  onCountrySelected(country) {
+    this.travelerForm.patchValue({
+      personalInfo: {
+        CountryName: country.country_name,
+        CountryCode: country.country_code,
+      },
+    });
+  }
+
+  getFormValues(): any {
+    const formValues = this.travelerForm.value;
+    console.log("Form Values:", formValues);
+    return formValues;
+  }
+
+  seeSavedUser() {
+    const formValues = this.travelerForm.value;
+    console.log("Form Values:", formValues);
+    return formValues;
+  }
+
+  findTraveler(uid: string) {
+    return this.travelers.find((t) => t.uid === uid);
+  }
+
+  async addOrUpdateTraveler(currentTravelerUid) {
+    console.log(currentTravelerUid)
+    // Find the traveler from the travelers array based on the UID
+    const traveler = this.findTraveler(currentTravelerUid);
+
+    console.log(traveler);
+    // If traveler is found, update its data from the form
+    if (traveler) {
+      const personalInfo = this.travelerForm.get("personalInfo").value;
+      const guardianDetails = this.travelerForm.get("guardianDetails").value;
+      const ssr = this.travelerForm.get("ssr").value;
+
+      // Update traveler's personalInfo, guardian, and ssr properties
+      traveler.personalInfo = personalInfo;
+      traveler.guardian = guardianDetails;
+      traveler.ssr = ssr;
+      traveler.personalInfoCompleted = true;
+
+      // Encrypt the travelers array
+      const encryptedTravelers = this.encryptObject(this.travelers);
+
+      // Store the encrypted travelers array in session storage
+      sessionStorage.setItem("travelers", encryptedTravelers);
+
+      // Emit the updated travelers array
+      this.updatedTravelerArr.emit(this.travelers);
+
+      // Close the dialog box
+      this.dialogbox();
+      console.log(this.travelers);
+    } else {
+      console.error("Traveler not found with UID:", this.currentTravelerUid);
+    }
+  }
+
+  dialogbox() {
+    this.closeDialog.emit(this.currentTravelerUid);
+  }
+
+  resetTravelerDetails(currentTravelerUid: string) {
+    // Find the traveler from the travelers array based on the UID
+    const travelerIndex = this.travelers.findIndex(
+      (traveler) => traveler.uid === currentTravelerUid
+    );
+
+    if (travelerIndex !== -1) {
+      // Get current date
+      const currentDate = new Date();
+
+      // Reset the traveler's details to default values
+      this.travelers[travelerIndex] = {
+        ...this.travelers[travelerIndex],
+        personalInfo: {
+          Title: "",
+          FirstName: "",
+          LastName: "",
+          PaxType: "",
+          DateOfBirth: currentDate,
+          Gender: "",
+          GSTCompanyAddress: "",
+          GSTCompanyContactNumber: "",
+          GSTCompanyName: "",
+          GSTNumber: "",
+          GSTCompanyEmail: "",
+          PassportNo: "",
+          PassportIssueDate: currentDate,
+          PassportExpiry: currentDate,
+          AddressLine1: "",
+          AddressLine2: "",
+          City: "",
+          CountryCode: "",
+          CountryName: "",
+          ContactNo: "",
+          Nationality: "",
+          Email: "",
+          Phoneno: "",
+          PAN: "",
+          Age: "",
+          LeadPassenger: false,
+        },
+        guardian: {
+          Title: null,
+          FirstName: null,
+          LastName: null,
+          PAN: null,
+          PassportNo: null,
+        },
+        ssr: {
+          extraBaggage: null,
+          meal: null,
+          seat: null,
+        },
+        personalInfoCompleted: false,
+      };
+
+      // Encrypt the travelers array
+      const encryptedTravelers = this.encryptObject(this.travelers);
+
+      // Update the session storage
+      sessionStorage.setItem("travelers", encryptedTravelers);
+
+      // Emit the updated travelers array
+      this.updatedTravelerArr.emit(this.travelers);
+
+      console.log("Traveler details reset:", this.travelers[travelerIndex]);
+    } else {
+      console.error("Traveler not found with UID:", currentTravelerUid);
+    }
+  }
+
+
+  loadTravelerDetails() {
+    const encryptedTravelers = sessionStorage.getItem('travelers');
+    if (encryptedTravelers) {
+      this.travelers = this.decryptObject(encryptedTravelers);
+      if (this.travelers.length > 0) {
+        
+       const traveler=this.findTraveler(this.currentTravelerUid);
+      console.log(traveler );
+      console.log(this.travelers)
+        this.fillTravelerForm(traveler);
+      }
+    }
+  }
+
+  fillTravelerForm(traveler:Traveler) {
+    this.travelerForm.patchValue({
+      ...traveler,
+      personalInfo: {
+        Title: traveler.personalInfo.Title,
+        FirstName: traveler.personalInfo.FirstName,
+        LastName: traveler.personalInfo.LastName,
+        DateOfBirth: new Date(traveler.personalInfo.DateOfBirth),
+        Gender: traveler.personalInfo.Gender,
+        Nationality: traveler.personalInfo.Nationality,
+        CountryCode: traveler.personalInfo.CountryCode,
+        City: traveler.personalInfo.City,
+        CountryName: traveler.personalInfo.CountryName,
+        AddressLine1: traveler.personalInfo.AddressLine1,
+        AddressLine2: traveler.personalInfo.AddressLine2,
+        Email: traveler.personalInfo.Email,
+        ContactNo: traveler.personalInfo.ContactNo,
+        Phoneno: traveler.personalInfo.Phoneno,
+        PAN: traveler.personalInfo.PAN,
+        PassportNo: traveler.personalInfo.PassportNo,
+        PassportIssueDate: new Date(traveler.personalInfo.PassportIssueDate),
+        PassportExpDate: new Date(traveler.personalInfo.PassportExpDate),
+        PassportExpiry: traveler.personalInfo.PassportExpiry,
+        Age: traveler.personalInfo.Age,
+        LeadPassenger: traveler.personalInfo.LeadPassenger,
+      },
+      guardianDetails: {
+        Title: traveler.guardian.Title,
+        FirstName: traveler.guardian.FirstName,
+        LastName: traveler.guardian.LastName,
+        PAN: traveler.guardian.PAN,
+        PassportNo: traveler.guardian.PassportNo,
+      },
+      ssr: {
+        extraBaggage: traveler.ssr.extraBaggage,
+        meal: traveler.ssr.meal,
+        seat: traveler.ssr.seat,
+      }
+    });
+    console.log(traveler,"In fill travel forms")
+  }
+
+  encryptObject(obj: any): string {
+    const encrypted = CryptoJS.AES.encrypt(
+      JSON.stringify(obj),
+      environment.ENCRYPT_KEY
+    ).toString();
+    return encrypted;
+  }
+
+  decryptObject(encryptedData: string): any {
+    const decrypted = CryptoJS.AES.decrypt(
+      encryptedData,
+      environment.ENCRYPT_KEY
+    ).toString(CryptoJS.enc.Utf8);
+    return JSON.parse(decrypted);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // handleSSR(formGroupName: string, controlName: string, item: any): void {
+  //   console.log(item);
+  //   this.travelerForm.get(formGroupName).get(controlName).setValue(item);
+  //   const srrGroup = this.travelerForm.get(formGroupName) as FormGroup;
+
+  //   const ssr = srrGroup.get(controlName);
+  //   ssr.setValue(item);
+
+  //   this.updatePrice();
+
+  //   console.log(this.travelerForm.value);
+  // }
 
   updatePrice(): void {
     if (!this.price[this.currentIndex]) {
@@ -266,118 +594,23 @@ export class TravellerCardComponent implements OnInit {
     }
   }
 
-  // convert country codes csv file into json
-  async convertCSVToJson() {
-    console.log();
-    // const res = await fetch('http://localhost:4000/hotel/getCsvData');
-    const res = await this.flights.getCountryData();
-    const csvData = await res.text();
-
-    // Now you can parse the CSV data and work with it
-    this.papa.parse(csvData, {
-      header: true,
-      dynamicTyping: true,
-      complete: (result) => {
-        // The parsed CSV data is available in the 'result.data' array
-        const jsonData = result.data;
-        console.log("JSON data:", jsonData);
-        this.countryCodes = jsonData;
-        console.log(this.countryCodes);
-        // this.filterData();
-      },
-      error: (error) => {
-        console.error("CSV parsing error:", error);
-      },
-    });
-  }
-
-  // when selecting the nationality
-  onNationalitySelect(selectedCountry: any) {
-    this.selectedNationality = selectedCountry;
-    console.log(selectedCountry);
-    if (selectedCountry) {
-      const personalInfoGroup = this.travelerForm.get(
-        "personalInfo"
-      ) as FormGroup;
-      // Assuming 'Nationality' and 'CountryCode' are form controls in 'personalInfo' FormGroup
-      const nationalityControl = personalInfoGroup.get("Nationality");
-      if (nationalityControl) {
-        // Update form controls with the selected country's alpha2 code
-        nationalityControl.setValue(selectedCountry);
-        console.log(this.travelerForm.value);
-      } else {
-        console.error(
-          "Form controls 'Nationality' or 'CountryCode' not found in travelerForm"
-        );
-      }
-    } else {
-      console.error("Failed to extract alpha2 code from the selected country");
-    }
-  }
-  // when selecting the country
-  onCountrySelect(selectedCountry: any) {
-    this.selectedCountry = selectedCountry;
-    console.log(selectedCountry);
-    if (selectedCountry) {
-      const personalInfoGroup = this.travelerForm.get(
-        "personalInfo"
-      ) as FormGroup;
-
-      // Assuming 'Nationality' and 'CountryCode' are form controls in 'personalInfo' FormGroup
-      const countryControl = personalInfoGroup.get("CountryName");
-      const countryCodeControl = personalInfoGroup.get("CountryCode");
-
-      if (countryControl && countryCodeControl) {
-        // Split the selected value using comma as delimiter
-        const selectedValues = selectedCountry.split(",");
-
-        if (selectedValues.length === 2) {
-          const countryName = selectedValues[0].trim();
-          const countryCode = selectedValues[1].trim();
-
-          // Update form controls with the selected country's name and code
-          countryControl.setValue(countryName);
-          countryCodeControl.setValue(countryCode);
-
-          console.log(this.travelerForm.value);
-        } else {
-          console.error("Invalid selected country format");
-        }
-      } else {
-        console.error(
-          "Form controls 'Nationality' or 'CountryCode' not found in travelerForm"
-        );
-      }
-    } else {
-      console.error("Failed to extract alpha2 code from the selected country");
-    }
-  }
-
-  calculateTotalAdultsCount(i: number): number {
-    let total = 0;
-
-    for (let k = i; k > 0; k--) {
-      total +=
-        this.RoomGuests[k - 1]?.NoOfAdults + this.RoomGuests[k - 1]?.NoOfChild ||
-        0;
-    }
-
-    return total;
-  }
-
   async addTraveler() {
-    // Set nationality and country
-    this.onNationalitySelect(this.selectedNationality);
-    this.onCountrySelect(this.selectedCountry);
+    const traveler = this.travelers.find(
+      (traveler) => traveler.uid === this.currentTravelerUid
+    );
+
     // Extract traveler data from the form
     const newTraveler = { ...this.travelerForm.value };
+
     // Save passenger data
-    await this.savePassengerData(newTraveler);
+    // await this.savePassengerData(newTraveler);
+
     // Update traveler at current index
     this.travelers[this.currentIndex] = newTraveler;
+
     // Reset form and emit changes
     this.travelerForm.reset();
-    this.travelerArrayChange.emit(this.travelers);
+    this.updatedTravelerArr.emit(this.travelers);
 
     // Increment index and check if reached the end
     this.currentIndex++;
@@ -393,72 +626,38 @@ export class TravellerCardComponent implements OnInit {
     this.selectedCard++;
   }
 
-  async savePassengerData(form: any) {
-    try {
-      const res = await this.pack.savePerPassengerData(
-        form,
-        this.currentIndex,
-        localStorage.getItem("uid")
-      );
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  updateTraveller() {
-    this.shouldUpdateFormValues = true;
-    const updatedTraveler = { ...this.travelerForm.value };
-
-    this.travelers[this.currentIndex] = {
-      ...this.travelers[this.currentIndex],
-      ...this.travelerForm.value,
-    };
-
-    this.savePassengerData(this.travelers);
-    console.log(this.travelers);
-    console.log("in update end");
-    this.shouldUpdateFormValues = false;
-  }
-
-  dialogbox() {
-    this.closeDialog.emit();
-  }
-  // to convert number into array
-  getArray(length: number): any[] {
-    return new Array(length);
-  }
-
-  // async getData() {
-  //   console.log("fetching");
-  //   this.NoOfTravellers = 0;
-
+  // async savePassengerData(form: any) {
   //   try {
-  //     const res = await this.hotels.getSearchInfo(
-  //       "response-itinearay",
-  //       sessionStorage.getItem("uid")
+  //     const res = await this.pack.savePerPassengerData(
+  //       form,
+  //       this.currentIndex,
+  //       localStorage.getItem("uid")
   //     );
   //     console.log(res);
-
-  //     if (res) {
-
-  //       this.travelData = res;
-  //       this.RoomGuests = this.travelData?.trip?.RoomGuests;
-
-  //       for (let i = 0; i < this.travelData?.trip?.RoomGuests?.length; i++) {
-  //         this.NoOfTravellers +=this.travelData?.trip?.RoomGuests[i]?.NoOfAdults;
-  //         this.NoOfTravellers +=this.travelData?.trip?.RoomGuests[i]?.NoOfChild;
-  //       }
-
-  //       console.log(this.RoomGuests);
-  //       console.log("no", this.NoOfTravellers);
-  //     } else {
-  //       console.log("No data received from getSearchInfo");
-  //     }
   //   } catch (error) {
   //     console.log(error);
   //   }
   // }
+
+  // updateTraveller() {
+  //   this.shouldUpdateFormValues = true;
+  //   const updatedTraveler = { ...this.travelerForm.value };
+
+  //   this.travelers[this.currentIndex] = {
+  //     ...this.travelers[this.currentIndex],
+  //     ...this.travelerForm.value,
+  //   };
+
+  //   this.savePassengerData(this.travelers);
+  //   console.log(this.travelers);
+  //   console.log("in update end");
+  //   this.shouldUpdateFormValues = false;
+  // }
+
+  // to convert number into array
+  getArray(length: number): any[] {
+    return new Array(length);
+  }
 
   handleCardClick(index: number) {
     console.log("Before update:", this.currentIndex);
@@ -529,5 +728,110 @@ export class TravellerCardComponent implements OnInit {
         console.log(this.travelerForm.value);
       }
     });
+  }
+
+  // DEPARTURE------- Airports & Cities----------------------------
+  citySearchText: string;
+  citySearchResponse = [];
+
+  async onDepartureSearch() {
+    try {
+      // Check if search text is null, empty, or whitespace
+      if (!this.citySearchText || this.citySearchText.trim() === "") {
+        // Clear search results
+
+        this.citySearchResponse = [];
+        return; // Stop execution
+      }
+
+      console.log("Departure Search:", this.citySearchText);
+
+      const responseCities = await this.debounce.getCities(this.citySearchText);
+
+      console.log(responseCities);
+
+      // Update state if responses are available
+
+      if (responseCities) {
+        this.citySearchResponse = responseCities.data.cities;
+      }
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+
+  onCityInputChange(): void {
+    this.departureSearchSubject.next(this.citySearchText);
+  }
+
+  // =================NATIONALITY =================================
+
+  nationalitySearchText: string;
+  nationalitySearchArr = [];
+
+  async onNationalitySearch() {
+    console.log("in onNationalitySearch");
+    try {
+      // Check if search text is null, empty, or whitespace
+
+      if (
+        !this.nationalitySearchText ||
+        this.nationalitySearchText.trim() === ""
+      ) {
+        // Clear search results
+        this.nationalitySearchArr = [];
+
+        return; // Stop execution
+      }
+      console.log("Departure Search:", this.nationalitySearchText);
+
+      const responseCountries = await this.debounce.getCountries(
+        this.nationalitySearchText
+      );
+
+      console.log(responseCountries);
+      if (responseCountries) {
+        this.nationalitySearchArr = responseCountries.data.countries;
+      }
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+  onNationalityInputChange(): void {
+    console.log("in onNationalityInputChange");
+    this.nationalitySearchSubject.next(this.nationalitySearchText);
+  }
+
+  // ================================COUNTRY=========================================
+  countrySearchText: string;
+  countrySearchArr = [];
+
+  async onCountrySearch() {
+    try {
+      // Check if search text is null, empty, or whitespace
+
+      if (!this.countrySearchText || this.countrySearchText.trim() === "") {
+        // Clear search results
+
+        this.countrySearchArr = [];
+        return; // Stop execution
+      }
+      console.log("Departure Search:", this.countrySearchText);
+
+      const responseCountries = await this.debounce.getCountries(
+        this.countrySearchText
+      );
+
+      console.log(responseCountries);
+      if (responseCountries) {
+        this.countrySearchArr = responseCountries.data.countries;
+      }
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+  onCountryInputChange(): void {
+    console.log("in onCountryInputChange");
+    this.countrySearchSubject.next(this.countrySearchText);
   }
 }

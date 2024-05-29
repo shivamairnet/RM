@@ -1,0 +1,741 @@
+{
+
+    "travelers": [
+      {
+        "travelerType": "adult",
+        "travelerTypeCode": 1,
+        "age": -1,
+        "uid": "b9766bbf-e8df-4fb7-a5bc-eba5412047cc",
+        "personalInfoCompleted": true,
+        "personalInfo": {
+          "FirstName": "vzzxvv",
+          "Title": "",
+          "LastName": "zxvxzvzxv",
+          "DateOfBirth": "2000-09-01",
+          "Gender": "Female",
+          "Nationality": "IN",
+          "CountryCode": "IN",
+          "City": "Ludhiana",
+          "CountryName": "India",
+          "AddressLine1": "asfasf",
+          "AddressLine2": "asfsaf",
+          "Email": "safasf",
+          "ContactNo": "safasf",
+          "Phoneno": "safasf",
+          "PAN": "asfasfsaf",
+          "PassportNo": "asfasf",
+          "PassportIssueDate": "2023-12-22",
+          "PassportExpDate": "2024-06-09",
+          "PassportExpiry": "2024-06-09",
+          "Age": 23,
+          "LeadPassenger": false
+        },
+        "guardian": {
+          "Title": null,
+          "FirstName": null,
+          "LastName": null,
+          "PAN": null,
+          "PassportNo": null
+        },
+        "ssr": {
+          "extraBaggage": null,
+          "meal": null,
+          "seat": null
+        }
+      },
+      {
+        "travelerType": "adult",
+        "travelerTypeCode": 1,
+        "age": -1,
+        "uid": "3cfa8a8d-65b3-4126-956c-cdc76b38883e",
+        "personalInfoCompleted": true,
+        "personalInfo": {
+          "FirstName": "asfasf",
+          "Title": "Mr",
+          "LastName": "fsaffafasf",
+          "DateOfBirth": "2000-06-23",
+          "Gender": "Male",
+          "Nationality": "IN",
+          "CountryCode": "IN",
+          "City": "Moga",
+          "CountryName": "India",
+          "AddressLine1": "safasf",
+          "AddressLine2": "asffsa",
+          "Email": "safasff",
+          "ContactNo": "fsafasf",
+          "Phoneno": "fsafasf",
+          "PAN": "safaff",
+          "PassportNo": "asfsaffsa",
+          "PassportIssueDate": "2022-03-25",
+          "PassportExpDate": "2024-06-09",
+          "PassportExpiry": "2024-06-09",
+          "Age": 23,
+          "LeadPassenger": false
+        },
+        "guardian": {
+          "Title": null,
+          "FirstName": null,
+          "LastName": null,
+          "PAN": null,
+          "PassportNo": null
+        },
+        "ssr": {
+          "extraBaggage": null,
+          "meal": null,
+          "seat": null
+        }
+      },
+      {
+        "travelerType": "adult",
+        "travelerTypeCode": 1,
+        "age": -1,
+        "uid": "af74c59c-2ad5-4f6c-962a-6e7f6fd1f4c3",
+        "personalInfoCompleted": false,
+        "personalInfo": {
+          "FirstName": "",
+          "Title": "",
+          "LastName": "",
+          "DateOfBirth": "1900-01-01T00:00:00.000Z",
+          "Gender": "",
+          "Nationality": "",
+          "AddressLine1": "",
+          "AddressLine2": "",
+          "Email": "",
+          "ContactNo": "",
+          "Phoneno": 0,
+          "PAN": "",
+          "PassportNo": "",
+          "PassportIssueDate": "1900-01-01T00:00:00.000Z",
+          "PassportExpDate": "1900-01-01T00:00:00.000Z",
+          "PassportExpiry": "1900-01-01T00:00:00.000Z",
+          "Age": -1,
+          "PaxType": 0,
+          "CountryCode": "",
+          "City": "",
+          "CountryName": "",
+          "LeadPassenger": false
+        },
+        "guardian": {
+          "Title": "",
+          "FirstName": "",
+          "LastName": "",
+          "PAN": "",
+          "PassportNo": ""
+        },
+        "ssr": {
+          "extraBaggage": "",
+          "meal": "",
+          "seat": ""
+        }
+      },
+      {
+        "travelerType": "child",
+        "travelerTypeCode": 2,
+        "age": 7,
+        "uid": "1625fd63-9401-487f-aae5-7575bf62d860",
+        "personalInfoCompleted": false,
+        "personalInfo": {
+          "FirstName": "",
+          "Title": "",
+          "LastName": "",
+          "DateOfBirth": "1900-01-01T00:00:00.000Z",
+          "Gender": "",
+          "Nationality": "",
+          "AddressLine1": "",
+          "AddressLine2": "",
+          "Email": "",
+          "ContactNo": "",
+          "Phoneno": 0,
+          "PAN": "",
+          "PassportNo": "",
+          "PassportIssueDate": "1900-01-01T00:00:00.000Z",
+          "PassportExpDate": "1900-01-01T00:00:00.000Z",
+          "PassportExpiry": "1900-01-01T00:00:00.000Z",
+          "Age": 7,
+          "PaxType": 0,
+          "CountryCode": "",
+          "City": "",
+          "CountryName": "",
+          "LeadPassenger": false
+        },
+        "guardian": {
+          "Title": "",
+          "FirstName": "",
+          "LastName": "",
+          "PAN": "",
+          "PassportNo": ""
+        },
+        "ssr": {
+          "extraBaggage": "",
+          "meal": "",
+          "seat": ""
+        }
+      }
+    ],
+
+    "fareQuote": {
+      "Error": {
+        "ErrorCode": 0,
+        "ErrorMessage": ""
+      },
+      "FlightDetailChangeInfo": null,
+      "IsPriceChanged": false,
+      "ResponseStatus": 1,
+      "Results": {
+        "FirstNameFormat": "If FirstName is missing, Update FirstName as LastName.",
+        "IsBookableIfSeatNotAvailable": false,
+        "IsHoldAllowedWithSSR": true,
+        "LastNameFormat": "If LastName is missing, Update LastName and FirstName as FirstName.",
+        "ResultIndex": "OB16[TBO]9zZiYQDhyreQ9IyPq+7BQPMIdaO6e9g3PSumgsrQBBKgJ05d3WQDTj8vRwfTexRMPIfKaTeC1k0THJfTGdo/3WN/Q5zGVrP8dpizSuhrtNY/ehApN+rydHsJF/3Ku4UAC3bsC4hrhDqiGyalTYEVsbuyTSOjO4vdwuB2sO8lq6dKoLwxwvNMd1o89LHGFAG+h1ynmPOKUki7Imu6AaywagFgvB54H1lW/eOkJBC0YoG2IyCa0m/I3DwEfGbvHVes860b5HA2ZtR1X0IlZ3z8ddWJvvZtG2/udKbWB+lQGPSz2IXNinHWfuBhpDUsA6RSsT7hFpwt0XfFlDE7RdHbKsDQ4omdjMZidF1NXs6hBzYtUapA5ybV2iykClK77J6Xfp0DWAp9Ta1yhRpffWk5fevDU89D2DIQkAIr/eGSdej0u6IFcS9BrHC2WXLj1SrIYOCixIAvQxcQhtrVczYZbjwhrefJPM3YkWCqR0eHNBsndSwbhKz0L4ILJNRgsQIaNnpb24luajISgiBjdn5lXLsGvA8fSnPXD4XD/9w7SgK4RPVqhq3XdQ9MLik5gC1zYmhCS7xAsYwsmquqHZavIwAeDLEgyOaJvOTxegjCLQDAXgd6KAEPFJnSuF+w51j0y8TdL0DCadYHL5IQDawhqb1mghpA4nEoefLGvmvMmmW4HBUUHa2iJ6Wzhellp2fnVxENnyY2sJ2RQLzJco/w2O1NzBrq1mI7h3xdnc/Ly8eM+HHn4bwY0ymONpSzH31E4aGeXg1PLAtt1kLspD5+SqYzfhtppm/YeMWJqlOQe2aSqrj4Qz3bOR7xxkVwCL8hRfl6dVhXfy/Wk8jAsKnB2YHyrDfqp694C69isbkcsIyTgtIlWKydQOpMMuPD1Xqe0Cc4g69guMwCyFYiNDUfKQ==",
+        "Source": 4,
+        "IsLCC": false,
+        "IsRefundable": false,
+        "IsPanRequiredAtBook": false,
+        "IsPanRequiredAtTicket": false,
+        "IsPassportRequiredAtBook": false,
+        "IsPassportRequiredAtTicket": false,
+        "GSTAllowed": true,
+        "IsCouponAppilcable": true,
+        "IsGSTMandatory": false,
+        "IsHoldAllowed": true,
+        "AirlineRemark": "test uk remarks.",
+        "IsPassportFullDetailRequiredAtBook": false,
+        "ResultFareType": "RegularFare",
+        
+        "Fare": {
+          "Currency": "INR",
+          "BaseFare": 185204,
+          "Tax": 34040,
+          "TaxBreakup": [
+            {
+              "key": "K3",
+              "value": 9558
+            },
+            {
+              "key": "YQTax",
+              "value": 0
+            },
+            {
+              "key": "YR",
+              "value": 5850
+            },
+            {
+              "key": "PSF",
+              "value": 0
+            },
+            {
+              "key": "UDF",
+              "value": 0
+            },
+            {
+              "key": "INTax",
+              "value": 9408
+            },
+            {
+              "key": "TransactionFee",
+              "value": 0
+            },
+            {
+              "key": "OtherTaxes",
+              "value": 9224
+            }
+          ],
+          "YQTax": 0,
+          "AdditionalTxnFeeOfrd": 0,
+          "AdditionalTxnFeePub": 0,
+          "PGCharge": 0,
+          "OtherCharges": 0,
+          "ChargeBU": [
+            {
+              "key": "TBOMARKUP",
+              "value": 0
+            },
+            {
+              "key": "GLOBALPROCUREMENTCHARGE",
+              "value": 0
+            },
+            {
+              "key": "CONVENIENCECHARGE",
+              "value": 0
+            },
+            {
+              "key": "OTHERCHARGE",
+              "value": 0
+            }
+          ],
+          "Discount": 0,
+          "PublishedFare": 219244,
+          "CommissionEarned": 1465.37,
+          "PLBEarned": 0,
+          "IncentiveEarned": 0,
+          "OfferedFare": 217778.63,
+          "TdsOnCommission": 586.15,
+          "TdsOnPLB": 0,
+          "TdsOnIncentive": 0,
+          "ServiceFee": 0,
+          "TotalBaggageCharges": 0,
+          "TotalMealCharges": 0,
+          "TotalSeatCharges": 0,
+          "TotalSpecialServiceCharges": 0
+        },
+
+        "FareBreakdown": [
+          {
+            "Currency": "INR",
+            "PassengerType": 1,
+            "PassengerCount": 5,
+            "BaseFare": 111690,
+            "Tax": 20645,
+            "TaxBreakUp": [
+              {
+                "key": "YR",
+                "value": 3250
+              },
+              {
+                "key": "K3",
+                "value": 5750
+              },
+              {
+                "key": "INTax",
+                "value": 5880
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 5765
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "SupplierReissueCharges": 0
+          },
+          {
+            "Currency": "INR",
+            "PassengerType": 2,
+            "PassengerCount": 3,
+            "BaseFare": 67014,
+            "Tax": 12387,
+            "TaxBreakUp": [
+              {
+                "key": "YR",
+                "value": 1950
+              },
+              {
+                "key": "K3",
+                "value": 3450
+              },
+              {
+                "key": "INTax",
+                "value": 3528
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 3459
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "SupplierReissueCharges": 0
+          },
+          {
+            "Currency": "INR",
+            "PassengerType": 3,
+            "PassengerCount": 1,
+            "BaseFare": 6500,
+            "Tax": 1008,
+            "TaxBreakUp": [
+              {
+                "key": "YR",
+                "value": 650
+              },
+              {
+                "key": "K3",
+                "value": 358
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "SupplierReissueCharges": 0
+          }
+        ],
+        "Segments": [
+          [
+            {
+              "Baggage": "1 PC(s)",
+              "CabinBaggage": "Included",
+              "CabinClass": 2,
+              "SupplierFareClass": null,
+              "TripIndicator": 1,
+              "SegmentIndicator": 1,
+              "Airline": {
+                "AirlineCode": "UK",
+                "AirlineName": "Air Vistara",
+                "FlightNumber": "933",
+                "FareClass": "O",
+                "OperatingCarrier": "UK"
+              },
+              "Origin": {
+                "Airport": {
+                  "AirportCode": "DEL",
+                  "AirportName": "Indira Gandhi Airport",
+                  "Terminal": "3",
+                  "CityCode": "DEL",
+                  "CityName": "Delhi",
+                  "CountryCode": "IN",
+                  "CountryName": "India"
+                },
+                "DepTime": "2024-08-07T15:30:00"
+              },
+              "Destination": {
+                "Airport": {
+                  "AirportCode": "BOM",
+                  "AirportName": "Chhatrapati Shivaji International Airport",
+                  "Terminal": "2",
+                  "CityCode": "BOM",
+                  "CityName": "Mumbai",
+                  "CountryCode": "IN",
+                  "CountryName": "India"
+                },
+                "ArrTime": "2024-08-07T17:40:00"
+              },
+              "Duration": 0,
+              "GroundTime": 0,
+              "Mile": 0,
+              "StopOver": false,
+              "FlightInfoIndex": "",
+              "StopPoint": "",
+              "StopPointArrivalTime": "0001-01-01T00:00:00",
+              "StopPointDepartureTime": "0001-01-01T00:00:00",
+              "Craft": "320",
+              "Remark": null,
+              "IsETicketEligible": true,
+              "FlightStatus": "Confirmed",
+              "Status": "",
+              "FareClassification": {
+                "Type": ""
+              }
+            },
+            {
+              "Baggage": "1 PC(s)",
+              "CabinBaggage": "Included",
+              "CabinClass": 2,
+              "SupplierFareClass": null,
+              "TripIndicator": 1,
+              "SegmentIndicator": 2,
+              "Airline": {
+                "AirlineCode": "UK",
+                "AirlineName": "Air Vistara",
+                "FlightNumber": "565",
+                "FareClass": "O",
+                "OperatingCarrier": "UK"
+              },
+              "Origin": {
+                "Airport": {
+                  "AirportCode": "BOM",
+                  "AirportName": "Chhatrapati Shivaji International Airport",
+                  "Terminal": "2",
+                  "CityCode": "BOM",
+                  "CityName": "Mumbai",
+                  "CountryCode": "IN",
+                  "CountryName": "India"
+                },
+                "DepTime": "2024-08-07T21:05:00"
+              },
+              "Destination": {
+                "Airport": {
+                  "AirportCode": "JAI",
+                  "AirportName": "Sanganeer",
+                  "Terminal": "2",
+                  "CityCode": "JAI",
+                  "CityName": "Jaipur",
+                  "CountryCode": "IN",
+                  "CountryName": "India"
+                },
+                "ArrTime": "2024-08-07T23:05:00"
+              },
+              "AccumulatedDuration": 455,
+              "Duration": 455,
+              "GroundTime": 0,
+              "Mile": 0,
+              "StopOver": false,
+              "FlightInfoIndex": "",
+              "StopPoint": "",
+              "StopPointArrivalTime": "0001-01-01T00:00:00",
+              "StopPointDepartureTime": "0001-01-01T00:00:00",
+              "Craft": "320",
+              "Remark": null,
+              "IsETicketEligible": true,
+              "FlightStatus": "Confirmed",
+              "Status": "",
+              "FareClassification": {
+                "Type": ""
+              }
+            }
+          ],
+
+          [
+            {
+              "Baggage": "1 PC(s)",
+              "CabinBaggage": "Included",
+              "CabinClass": 2,
+              "SupplierFareClass": null,
+              "TripIndicator": 2,
+              "SegmentIndicator": 1,
+              "Airline": {
+                "AirlineCode": "UK",
+                "AirlineName": "Air Vistara",
+                "FlightNumber": "566",
+                "FareClass": "O",
+                "OperatingCarrier": "UK"
+              },
+              "Origin": {
+                "Airport": {
+                  "AirportCode": "JAI",
+                  "AirportName": "Sanganeer",
+                  "Terminal": "2",
+                  "CityCode": "JAI",
+                  "CityName": "Jaipur",
+                  "CountryCode": "IN",
+                  "CountryName": "India"
+                },
+                "DepTime": "2024-08-09T06:30:00"
+              },
+              "Destination": {
+                "Airport": {
+                  "AirportCode": "BOM",
+                  "AirportName": "Chhatrapati Shivaji International Airport",
+                  "Terminal": "2",
+                  "CityCode": "BOM",
+                  "CityName": "Mumbai",
+                  "CountryCode": "IN",
+                  "CountryName": "India"
+                },
+                "ArrTime": "2024-08-09T08:35:00"
+              },
+              "AccumulatedDuration": 125,
+              "Duration": 125,
+              "GroundTime": 0,
+              "Mile": 0,
+              "StopOver": false,
+              "FlightInfoIndex": "",
+              "StopPoint": "",
+              "StopPointArrivalTime": "0001-01-01T00:00:00",
+              "StopPointDepartureTime": "0001-01-01T00:00:00",
+              "Craft": "320",
+              "Remark": null,
+              "IsETicketEligible": true,
+              "FlightStatus": "Confirmed",
+              "Status": "",
+              "FareClassification": {
+                "Type": ""
+              }
+            }
+          ],
+
+          [
+            {
+              "Baggage": "1 PC(s)",
+              "CabinBaggage": "Included",
+              "CabinClass": 2,
+              "SupplierFareClass": null,
+              "TripIndicator": 3,
+              "SegmentIndicator": 1,
+              "Airline": {
+                "AirlineCode": "UK",
+                "AirlineName": "Air Vistara",
+                "FlightNumber": "853",
+                "FareClass": "O",
+                "OperatingCarrier": "UK"
+              },
+              "Origin": {
+                "Airport": {
+                  "AirportCode": "BOM",
+                  "AirportName": "Chhatrapati Shivaji International Airport",
+                  "Terminal": "2",
+                  "CityCode": "BOM",
+                  "CityName": "Mumbai",
+                  "CountryCode": "IN",
+                  "CountryName": "India"
+                },
+                "DepTime": "2024-08-14T16:00:00"
+              },
+              "Destination": {
+                "Airport": {
+                  "AirportCode": "BLR",
+                  "AirportName": "Kempegowda International Airport",
+                  "Terminal": "2",
+                  "CityCode": "BLR",
+                  "CityName": "Bangalore",
+                  "CountryCode": "IN",
+                  "CountryName": "India"
+                },
+                "ArrTime": "2024-08-14T17:45:00"
+              },
+              "AccumulatedDuration": 105,
+              "Duration": 105,
+              "GroundTime": 0,
+              "Mile": 0,
+              "StopOver": false,
+              "FlightInfoIndex": "",
+              "StopPoint": "",
+              "StopPointArrivalTime": "0001-01-01T00:00:00",
+              "StopPointDepartureTime": "0001-01-01T00:00:00",
+              "Craft": "320",
+              "Remark": null,
+              "IsETicketEligible": true,
+              "FlightStatus": "Confirmed",
+              "Status": "",
+              "FareClassification": {
+                "Type": ""
+              }
+            }
+          ],
+          
+          [
+            {
+              "Baggage": "1 PC(s)",
+              "CabinBaggage": "Included",
+              "CabinClass": 2,
+              "SupplierFareClass": null,
+              "TripIndicator": 4,
+              "SegmentIndicator": 1,
+              "Airline": {
+                "AirlineCode": "UK",
+                "AirlineName": "Air Vistara",
+                "FlightNumber": "802",
+                "FareClass": "O",
+                "OperatingCarrier": "UK"
+              },
+              "Origin": {
+                "Airport": {
+                  "AirportCode": "BLR",
+                  "AirportName": "Kempegowda International Airport",
+                  "Terminal": "2",
+                  "CityCode": "BLR",
+                  "CityName": "Bangalore",
+                  "CountryCode": "IN",
+                  "CountryName": "India"
+                },
+                "DepTime": "2024-08-16T18:45:00"
+              },
+              "Destination": {
+                "Airport": {
+                  "AirportCode": "DEL",
+                  "AirportName": "Indira Gandhi Airport",
+                  "Terminal": "3",
+                  "CityCode": "DEL",
+                  "CityName": "Delhi",
+                  "CountryCode": "IN",
+                  "CountryName": "India"
+                },
+                "ArrTime": "2024-08-16T21:25:00"
+              },
+              "AccumulatedDuration": 160,
+              "Duration": 160,
+              "GroundTime": 0,
+              "Mile": 0,
+              "StopOver": false,
+              "FlightInfoIndex": "",
+              "StopPoint": "",
+              "StopPointArrivalTime": "0001-01-01T00:00:00",
+              "StopPointDepartureTime": "0001-01-01T00:00:00",
+              "Craft": "320",
+              "Remark": null,
+              "IsETicketEligible": true,
+              "FlightStatus": "Confirmed",
+              "Status": "",
+              "FareClassification": {
+                "Type": ""
+              }
+            }
+          ]
+        ],
+        "LastTicketDate": "2024-05-27T00:00:00",
+        "TicketAdvisory": null,
+        "FareRules": [
+          {
+            "Origin": "DEL",
+            "Destination": "BOM",
+            "Airline": "UK",
+            "FareBasisCode": "OL1PYL",
+            "FareRuleDetail": "",
+            "FareRestriction": "Y",
+            "FareFamilyCode": "",
+            "FareRuleIndex": ""
+          },
+          {
+            "Origin": "BOM",
+            "Destination": "JAI",
+            "Airline": "UK",
+            "FareBasisCode": "O0RPRYL",
+            "FareRuleDetail": "",
+            "FareRestriction": "Y",
+            "FareFamilyCode": "",
+            "FareRuleIndex": ""
+          },
+          {
+            "Origin": "JAI",
+            "Destination": "BOM",
+            "Airline": "UK",
+            "FareBasisCode": "O0GRPRYL",
+            "FareRuleDetail": "",
+            "FareRestriction": "Y",
+            "FareFamilyCode": "",
+            "FareRuleIndex": ""
+          },
+          {
+            "Origin": "BOM",
+            "Destination": "BLR",
+            "Airline": "UK",
+            "FareBasisCode": "OL1PYL",
+            "FareRuleDetail": "",
+            "FareRestriction": "Y",
+            "FareFamilyCode": "",
+            "FareRuleIndex": ""
+          },
+          {
+            "Origin": "BLR",
+            "Destination": "DEL",
+            "Airline": "UK",
+            "FareBasisCode": "OL1PYL",
+            "FareRuleDetail": "",
+            "FareRestriction": "Y",
+            "FareFamilyCode": "",
+            "FareRuleIndex": ""
+          }
+        ],
+        "AirlineCode": "UK",
+        "MiniFareRules": [
+          [
+            {
+              "JourneyPoints": "DEL-BOM-JAI-BOM-BLR-DEL",
+              "Type": "Reissue",
+              "From": "",
+              "To": "",
+              "Unit": "",
+              "Details": "INR 3000"
+            },
+            {
+              "JourneyPoints": "DEL-BOM-JAI-BOM-BLR-DEL",
+              "Type": "Cancellation",
+              "From": "",
+              "To": "",
+              "Unit": "",
+              "Details": "INR 17388"
+            }
+          ]
+        ],
+        "ValidatingAirline": "UK",
+        "FareClassification": {
+          "Color": "lightBlue",
+          "Type": "Publish"
+        }
+      },
+      "TraceId": "974fd33b-3725-456a-867a-a11f81b3aff0"
+    }
+  }

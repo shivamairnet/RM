@@ -57,24 +57,12 @@ export class FlightsService {
       const {data}=await axios.post(url,payload);
 
       console.log(data);
-      return data;
-      // return new Promise((resolve, reject) => {
-      //   this.http.post("http://localhost:4000/flight/searchMultiStopFlights", payload).subscribe(
-      //     (data) => {
-            
-      //       console.log(data);
-      //       resolve(data);
-      //     },
-      //     (err) => {
-      //       console.log("not able to fetch the details", err);
-      //       reject("No data available");
-      //     }
-      //   );
-      // });
+      return {...data,errorCode:-1};
+     
     
   } catch (err) {
-    console.log("error aa rha hai", err);
-    return "Error in searching flights";
+    console.log("error aa rha hai", err.response.data);
+    return err.response.data;
   }
   }
 

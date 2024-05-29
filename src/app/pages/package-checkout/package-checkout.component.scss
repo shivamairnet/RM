@@ -638,4 +638,33 @@ p {
       p:last-child {
         margin-bottom: 0;
       }
+      
 }
+
+
+.traveler-container {
+    cursor: pointer;
+    width: 120px;
+    background-color: #ffc0b4ba;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 92%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    transition: transform 0.3s ease-in-out; /* Add transition for smooth effect */
+    color: #fff;
+  }
+  
+  .traveler-container:hover {
+    transform: scale(1.1); /* Zoom in effect on hover */
+  }
+  .success {
+    background-color: green; /* Change background color to green */
+  }
+
+  .lead-passenger {
+    margin-top: 5px;
+  }
