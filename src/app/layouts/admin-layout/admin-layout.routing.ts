@@ -25,12 +25,14 @@ import { NotRegiteredComponent } from 'src/app/pages/not-regitered/not-regitered
 import { RegisteredUserComponent } from 'src/app/pages/registered-user/registered-user.component';
 import { EnquiryComponent } from 'src/app/pages/enquiry/enquiry.component';
 import { EnqDetailsComponent } from 'src/app/pages/enq-details/enq-details.component';
+import { CitySelectionForRoutingComponent } from 'src/app/pages/city-selection-for-routing/city-selection-for-routing.component';
 
 
 
 
 export const AdminLayoutRoutes: Routes = [
 
+     {path:"route-planner/citySelection", component:CitySelectionForRoutingComponent },
   {path:"dashboard",component:AdminDashboardComponent},
   {path:"register-user",component:NotRegiteredComponent},
   {path:"customer-details",component:EnqDetailsComponent},
