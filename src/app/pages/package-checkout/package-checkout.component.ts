@@ -421,7 +421,7 @@ export class PackageCheckoutComponent implements OnInit, OnChanges {
   // 2.FARE QUOTE
   fareQuote;
 
-  isFareQuoteSuccess:boolean=false
+    isFareQuoteSuccess:boolean=false
   async getFareQuote() {
     const payload = {
       traceId: this.recievedFlights.flightTraceId,
@@ -516,61 +516,64 @@ export class PackageCheckoutComponent implements OnInit, OnChanges {
     try {
       const payload = {
         recievedHotels: this.recievedHotels,
-        travelers: this.travelers,
       };
       const res = await this.hotels.hotelBlockRoom(payload);
       console.log(res);
     } catch (err) {
       console.log(err.message);
     }
-  }
+  }   
 
-  async callHotelBlockRooom(hotels) {
-    try {
-      // // Convert the array of objects to a JSON string
-      // const jsonString = JSON.stringify(hotels, null, 2); // Pretty-print with indentation
 
-      // // Create a Blob from the JSON string
-      // const blob = new Blob([jsonString], { type: "application/json" });
-      // const blobUrl = URL.createObjectURL(blob);
-      // console.log("Blob URL:", blobUrl);
 
-      console.log(hotels, "in call block room");
-      for (const item of hotels) {
-        for (const hotel of item.hotels) {
-          const payload = {
-            ResultIndex: hotel?.hotel.search?.ResultIndex,
-            HotelName: hotel?.hotel.search?.HotelName,
-            HotelCode: hotel?.hotel.search?.HotelCode,
-            NoOfRooms: hotel?.roomDetails?.length,
-            // IsVoucherBooking: environment.HOTEL_Is_Voucher_Booking,
-            // GuestNationality: environment.HOTEL_GUEST_NATIONALITY,
-            HotelRoomsDetails: hotel?.roomDetails?.map((room) => room.room),
-            TraceId: hotel?.hotel?.info.HotelInfoResult.TraceId,
-          };
+  // ==============================================================================================================
+  // async callHotelBlockRooom(hotels) {
+  //   try {
+  //     // // Convert the array of objects to a JSON string
+  //     // const jsonString = JSON.stringify(hotels, null, 2); // Pretty-print with indentation
 
-          console.log(payload);
+  //     // // Create a Blob from the JSON string
+  //     // const blob = new Blob([jsonString], { type: "application/json" });
+  //     // const blobUrl = URL.createObjectURL(blob);
+  //     // console.log("Blob URL:", blobUrl);
 
-          const res = await this.hotels.hotelBlockRoom(payload);
-          console.log(res);
-          // to update the rooms array in the DB in the according to the response
-          // this.updateRoomDetails(
-          //   res?.BlockRoomResult?.HotelRoomsDetails,
-          //   item.checkInDate,
-          //   item.cityName
-          // );
-        }
-      }
-    } catch (error) {
-      console.log(error.message);
-      // Handle the error appropriately, e.g., display an error message to the user
-    } finally {
-      // Ensure that the spinner is hidden after all iterations
-      this.spinner.hide();
-    }
-  }
+  //     console.log(hotels, "in call block room");
+  //     for (const item of hotels) {
+  //       for (const hotel of item.hotels) {
+  //         const payload = {
+  //           ResultIndex: hotel?.hotel.search?.ResultIndex,
+  //           HotelName: hotel?.hotel.search?.HotelName,
+  //           HotelCode: hotel?.hotel.search?.HotelCode,
+  //           NoOfRooms: hotel?.roomDetails?.length,
+  //           // IsVoucherBooking: environment.HOTEL_Is_Voucher_Booking,
+  //           // GuestNationality: environment.HOTEL_GUEST_NATIONALITY,
+  //           HotelRoomsDetails: hotel?.roomDetails?.map((room) => room.room),
+  //           TraceId: hotel?.hotel?.info.HotelInfoResult.TraceId,
+  //         };
+
+  //         console.log(payload);
+
+  //         const res = await this.hotels.hotelBlockRoom(payload);
+  //         console.log(res);
+  //         // to update the rooms array in the DB in the according to the response
+  //         // this.updateRoomDetails(
+  //         //   res?.BlockRoomResult?.HotelRoomsDetails,
+  //         //   item.checkInDate,
+  //         //   item.cityName
+  //         // );
+  //       }
+  //     }
+  //   } catch (error) {
+  //     console.log(error.message);
+  //     // Handle the error appropriately, e.g., display an error message to the user
+  //   } finally {
+  //     // Ensure that the spinner is hidden after all iterations
+  //     this.spinner.hide();
+  //   }
+  // }
 
   // to update the rooms details of the hotel according to the cityName and checkInDate in the DB ---> pending
+  
   async updateRoomDetails(rooms: any, checkInDate: string, cityName) {
     const hotelRooms = rooms.map((item: any) => {
       if (item) {
