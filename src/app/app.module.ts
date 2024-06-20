@@ -67,6 +67,7 @@ import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import { environment } from 'src/environments/environment';
 import { CitySelectionForRoutingComponent } from './pages/city-selection-for-routing/city-selection-for-routing.component';
 import { RouteSelectionComponent } from './pages/route-selection/route-selection.component';
+import { RouteMapsComponent } from './pages/route-maps/route-maps.component';
 
 
 
@@ -141,6 +142,7 @@ import { RouteSelectionComponent } from './pages/route-selection/route-selection
     EnqDetailsComponent,
     CitySelectionForRoutingComponent,
     RouteSelectionComponent,
+    RouteMapsComponent,
 
     
 
