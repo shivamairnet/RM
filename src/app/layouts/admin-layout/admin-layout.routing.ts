@@ -32,7 +32,7 @@ import { CitySelectionForRoutingComponent } from 'src/app/pages/city-selection-f
 
 export const AdminLayoutRoutes: Routes = [
 
-     {path:"route-planner/citySelection", component:CitySelectionForRoutingComponent },
+  {path:"route-planner/citySelection", component:CitySelectionForRoutingComponent },
   {path:"dashboard",component:AdminDashboardComponent},
   {path:"register-user",component:NotRegiteredComponent},
   {path:"customer-details",component:EnqDetailsComponent},

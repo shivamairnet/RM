@@ -12,43 +12,73 @@
     </div>
   
     <div class="flex flex-nowrap space-x-4 bg-gray-200 p-4">
-      <div class="flex-1 max-w-1/4 flex items-stretch">
-        <div class="flex items-center justify-between bg-customPurple p-1 rounded-2xl w-full">
-          <label for="input5" class="text-white mr-2 text-sm underline">Departure Date></label>
+      <div class=" flex-1 max-w-1/5 flex items-stretch">
+        <div class="flex items-center justify-between bg-customPurple p-1 rounded-2xl w-full" style="height: 56px;">
+          <label for="input5" class="text-white mr-2 text-sm">Departure Date</label>
           <input type="date" id="input5" name="input5" class="bg-white text-sm text-black rounded-2xl px-2 py-1 w-24"/>
         </div>
       </div>
   
-      <div class="flex-1 max-w-1/4 flex items-stretch">
-        <div class="flex items-center justify-between bg-customPurple p-1 rounded-2xl w-full">
-          <label for="input1" class="text-white mr-2 text-sm underline">Departure City></label>
+      <div class="flex-1 max-w-1/5 flex items-stretch">
+        <div class="flex items-center justify-between bg-customPurple p-1 rounded-2xl w-full" style="height: 56px;">
+          <label for="input1" class="text-white mr-2 text-sm">Departure City</label>
           <!-- dynamic list of cities to be fetched making api call || list to be added -->
-          <select id="input1" name="input1" class="bg-white text-sm text-black rounded-2xl px-2 py-1 w-40">
+          <select id="input1" name="input1" class="bg-white text-sm text-black rounded-2xl px-2 py-1 w-24" >
             <option value="0">Select City</option>
           </select>
         </div>
       </div>
   
-      <div class="flex-1 max-w-1/4 flex items-stretch">
-        <div class="flex items-center justify-between bg-customPurple p-2 rounded-2xl w-full">
-          <label for="input2" class="text-white mr-2 text-sm underline">Travellers></label>
-          <select id="input2" name="input2" class="bg-white text-sm text-black rounded-2xl px-2 py-1 w-40">
-            <option value="0">Select Traveller</option>
+      <div class="flex-1 max-w-1/5 flex items-stretch">
+        <div class="flex items-center justify-between bg-customPurple p-2 rounded-2xl w-90" style="height: 56px;">
+          <label for="input2" class="text-white mr-2 text-sm">Travellers</label>
+          <select id="input2" name="input2" class="bg-white text-sm text-black rounded-2xl px-2 py-1 w-24">
+            <option value="0">Select</option>
             <option value="1">Adult</option>
             <option value="2">Children</option>
             <option value="3">Infant</option>
           </select>
         </div>
       </div>
+
+      <div class="flex-1 max-w-1/5 flex items-stretch">
+        <div class="flex items-center justify-between bg-customPurple p-2 rounded-2xl w-full" style="height: 56px;">
+            <label for="input2" class="text-white mr-2 text-sm">Purpose Of Travel</label>
+            <select id="input2" name="input2" class="bg-white text-sm text-black rounded-2xl px-2 py-1 w-24">
+                <option value="0">Select</option>
+                <option value="1">Leisure</option>
+                <option value="2">Business</option>
+                <option value="3">Honeymoon</option>
+                <option value="4">Birthday</option>
+                <option value="5">Anniversary</option>
+                <option value="6">Bachelors</option>
+                
+            </select>
+        </div>
+    </div>
+
+    <div class="flex-1 max-w-1/5 flex items-stretch">
+        <div class="flex items-center justify-between bg-customPurple p-2 rounded-2xl w-full" style="height: 56px;">
+            <label for="input2" class="text-white mr-2 text-sm">Traveler Type</label>
+            <select id="input2" name="input2" class="bg-white text-sm text-black rounded-2xl px-2 py-1 w-24">
+                <option value="0">Select</option>
+                <option value="1">Family</option>
+                <option value="2">Couple</option>
+                <option value="3">Solo</option>
+                <option value="4">Friends</option>
+                <option value="5">Colleagues</option>
+            </select>
+        </div>
+    </div>
   
       <!-- opening modal for the advance traveller options -->
-      <div class="flex-1 max-w-1/4 flex items-stretch">
+      <!-- <div class="flex-1 max-w-1/4 flex items-stretch">
         <div class="flex items-center justify-between w-full">
           <button (click)="openModal()" class="px-4 py-2 bg-customOrange text-white font-bold underline rounded-2xl border-customPurple border-2">
             Advanced Traveller Options
           </button>
         </div>
-      </div>
+      </div> -->
     </div>
   
     <div class="flex items-center justify-center p-2 m-2">
@@ -67,50 +97,43 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
         </button>
-        <h2 class="text-2xl shadow-custom underline text-center mb-4 font-bold text-customOrange">
+        <h2 class="text-2xl shadow-custom text-center mb-4 font-bold text-customOrange">
           Advance Traveller Options
         </h2>
   
-        <h3 class="text-2xl shadow-custom font-bold text-customOrange">
-          Traveller Age
-        </h3>
+        <h3 class="text-2xl font-bold shadow-custom text-customOrange">Preferences</h3>
         <div class="flex space-x-4">
-          <div class="flex items-center justify-between mt-2 bg-customPurple p-2 rounded-2xl h-8 mb-2">
-            <label for="input4" class="text-white mr-2 text-sm underline">Adult1</label>
-            <input type="text" id="input4" name="input4" class="bg-white text-black rounded-2xl h-5 px-2 py-1 w-16"/>
+            <button class="option-button bg-customPurple p-2 rounded-xl h-8 text-white text-sm flex items-center justify-center " style="width: 130px;" onclick="selectOption('Spa Wellness')">Spa Wellness</button>
+            <button class="option-button bg-customPurple p-2 rounded-xl h-8 text-white text-sm flex items-center justify-center " style="width: 120px;" onclick="selectOption('Nightlife Beach')">Nightlife Beach</button>
+            <button class="option-button bg-customPurple p-2 rounded-xl h-8 text-white text-sm flex items-center justify-center " style="width: 120px;" onclick="selectOption('Mountains')">Mountains</button>
+            <button class="option-button bg-customPurple p-2 rounded-xl h-8 text-white text-sm flex items-center justify-center " style="width: 140px;" onclick="selectOption('Hiking & Trekking')">Hiking & Trekking</button>
+            <button class="option-button bg-customPurple p-2 rounded-xl h-8 text-white text-sm flex items-center justify-center " style="width: 120px;" onclick="selectOption('Adventures')">Adventures</button>
+            <button class="option-button bg-customPurple p-2 rounded-xl h-8 text-white text-sm flex items-center justify-center " style="width: 120px;" onclick="selectOption('Wildlife Safaris')">Wildlife Safaris</button>
+           
           </div>
-          <div class="flex items-center justify-between mt-2 bg-customPurple p-2 rounded-2xl h-8 mb-2">
-            <label for="input4" class="text-white mr-2 text-sm underline">Adult2</label>
-            <input type="text" id="input4" name="input4" class="bg-white text-black rounded-2xl h-5 px-2 py-1 w-16"/>
+        
+
+        
+        <h3 class="text-2xl font-bold shadow-custom text-customOrange">Cuisines</h3>
+       
+        <div class="flex space-x-4">
+            <button class="option-button bg-customPurple p-2 rounded-xl h-8 text-white text-sm flex items-center justify-center " style="width: 110px;" onclick="selectOption('Italian')">Italian</button>
+            <button class="option-button bg-customPurple p-2 rounded-xl h-8 text-white text-sm flex items-center justify-center " style="width: 110px;" onclick="selectOption('Mexican')">Mexican</button>
+            <button class="option-button bg-customPurple p-2 rounded-xl h-8 text-white text-sm flex items-center justify-center " style="width: 110px;" onclick="selectOption('Japanese')">Japanese</button>
+            <button class="option-button bg-customPurple p-2 rounded-xl h-8 text-white text-sm flex items-center justify-center " style="width: 110px;" onclick="selectOption('Italian')">Indian</button>
+            <button class="option-button bg-customPurple p-2 rounded-xl h-8 text-white text-sm flex items-center justify-center " style="width: 125px;" onclick="selectOption('Mexican')">Mediterranean</button>
+            <button class="option-button bg-customPurple p-2 rounded-xl h-8 text-white text-sm flex items-center justify-center " style="width: 110px;" onclick="selectOption('Japanese')">Thai</button>
           </div>
-          <div class="flex items-center justify-between mt-2 bg-customPurple p-2 rounded-2xl h-8 mb-2">
-            <label for="input4" class="text-white mr-2 text-sm underline">Child1</label>
-            <input type="text" id="input4" name="input4" class="bg-white text-black rounded-2xl h-5 px-2 py-1 w-16"/>
+
+        <h3 class="text-2xl font-bold shadow-custom text-customOrange">Pace Of Travel</h3>
+        
+        <div class="flex space-x-4">
+            <button class="option-button bg-customPurple p-2 rounded-xl h-8 text-white text-sm flex items-center justify-center " style="width: 100px;" onclick="selectOption('Fast')">Fast</button>
+            <button class="option-button bg-customPurple p-2 rounded-xl h-8 text-white text-sm flex items-center justify-center " style="width: 100px;" onclick="selectOption('Medium')">Medium</button>
+            <button class="option-button bg-customPurple p-2 rounded-xl h-8 text-white text-sm flex items-center justify-center" style="width: 100px;" onclick="selectOption('Slow')">Slow</button>
           </div>
-        </div>
   
-        <h3 class="text-2xl font-bold shadow-custom text-customOrange">
-          Traveller Type
-        </h3>
-        <div class="flex flex-wrap space-x-4">
-          <button class="option-button bg-customPurple p-2 rounded-xl mb-2 h-8 text-white text-sm flex items-center justify-center underline" (click)="selectOption('Family')" style="width: 100px">
-            Family
-          </button>
-          <button class="option-button bg-customPurple p-2 rounded-xl mb-2 h-8 text-white text-sm flex items-center justify-center underline" (click)="selectOption('Couple')" style="width: 100px">
-            Couple
-          </button>
-          <button class="option-button bg-customPurple p-2 rounded-xl mb-2 h-8 text-white text-sm flex items-center justify-center underline" (click)="selectOption('Solo')" style="width: 100px">
-            Solo
-          </button>
-          <button class="option-button bg-customPurple p-2 rounded-xl mb-2 h-8 text-white text-sm flex items-center justify-center underline" (click)="selectOption('Friends')" style="width: 100px">
-            Friends
-          </button>
-          <button class="option-button bg-customPurple p-2 rounded-xl mb-2 h-8 text-white text-sm flex items-center justify-center underline" (click)="selectOption('Colleagues')" style="width: 100px">
-            Colleagues
-          </button>
-        </div>
-  
-        <h3 class="text-2xl font-bold shadow-custom text-customOrange">
+        <!-- <h3 class="text-2xl font-bold shadow-custom text-customOrange">
           Nature Of Trip
         </h3>
   
@@ -130,7 +153,7 @@
           <button class="option-button bg-customPurple p-2 rounded-xl mb-2 h-8 text-white text-sm flex items-center justify-center underline" style="width: 100px" (click)="selectOption('Cultural')">
             Cultural
           </button>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
