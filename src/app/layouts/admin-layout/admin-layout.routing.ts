@@ -26,12 +26,16 @@ import { RegisteredUserComponent } from 'src/app/pages/registered-user/registere
 import { EnquiryComponent } from 'src/app/pages/enquiry/enquiry.component';
 import { EnqDetailsComponent } from 'src/app/pages/enq-details/enq-details.component';
 import { CitySelectionForRoutingComponent } from 'src/app/pages/city-selection-for-routing/city-selection-for-routing.component';
-
+//testee
+import { TesterComponent } from 'src/app/pages/tester/tester.component';
 
 
 
 export const AdminLayoutRoutes: Routes = [
 
+  //testee
+  {path:"app-tester",component:TesterComponent},
+//testee till here
   {path:"route-planner/citySelection", component:CitySelectionForRoutingComponent },
   {path:"dashboard",component:AdminDashboardComponent},
   {path:"register-user",component:NotRegiteredComponent},

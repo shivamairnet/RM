@@ -1,4 +1,5 @@
-<div class="h-full mt-16">
+
+<div class="mt-16">
     <div>
       <div class="mb-4">
         <nav>
@@ -79,7 +80,12 @@
     </div>
   
     <div class="flex items-center justify-center p-2 m-2">
-      <input type="text" placeholder="Enter Destination Cities" name="input4" class="bg-white text-customPurple underline font-bold rounded-md px-2 py-1 w-auto placeholder-customPurple placeholder-opacity-75 shadow-lg"/>
+
+        <input type="text"  id="city-search"  list="city-list" placeholder="Enter Destination Cities" name="input4" class="bg-white text-customPurple underline font-bold rounded-md px-2 py-1 w-auto placeholder-customPurple placeholder-opacity-75 shadow-lg">
+            <datalist id="city-list">
+                <!-- Options will be dynamically populated by JavaScript -->
+            </datalist>
+      <!-- <input type="text" placeholder="Enter Destination Cities" name="input4" class="bg-white text-customPurple underline font-bold rounded-md px-2 py-1 w-auto placeholder-customPurple placeholder-opacity-75 shadow-lg"/> -->
     </div>
 
 
@@ -166,3 +172,36 @@
     </div>
   </div>
   
+  <!-- drag and drop -->
+  <div id="cardsContainer" class="hidden cards-container text-center gap-2 w-full overflow-x-auto">
+    <!-- headings for the route selection  -->
+<h1 class="font-bold shadow-custom text-customOrange text-2xl mb-2">Finalize your Route of Travel</h1>
+<h3 class="font-bold shadow-custom text-customOrange text-lg mb-6">Drag and Drop Your City To Change Sequence</h3>
+
+<div class="city-info-wrapper">
+   <div class="city-info" id="arrival-city-info">
+       <h2>Arrival City</h2>
+
+       <div id="arrival-city-image"></div>
+       
+       <p id="arrival-city-description"></p>
+       <ul id="arrival-city-airports"></ul>
+   </div>
+
+   <div id="dynamic-cities-container" class="city-info-wrapper">
+       <!-- Dynamic cities will be added here -->
+   </div>
+
+   <div class="city-info" id="destination-city-info">
+       <h2>Destination City</h2>
+       <div id="destination-city-image"></div>
+       <p id="destination-city-description"></p>
+       <ul id="destination-city-airports"></ul>
+   </div>
+</div>
+
+<div class="flex justify-center mt-4">
+   <button onclick="window.location.href='template3.html';" class="px-4 py-2 mt-2 bg-customOrange text-white rounded-2xl underline border-2 border-customPurple">Generate Best Routes</button>
+   <!-- <button onclick="" class="px-4 py-2 mt-2 bg-customOrange text-white rounded-2xl underline border-2 border-customPurple">Generate Routes</button> -->
+</div>
+</div>

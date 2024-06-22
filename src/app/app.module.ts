@@ -68,6 +68,8 @@ import { environment } from 'src/environments/environment';
 import { CitySelectionForRoutingComponent } from './pages/city-selection-for-routing/city-selection-for-routing.component';
 import { RouteSelectionComponent } from './pages/route-selection/route-selection.component';
 import { RouteMapsComponent } from './pages/route-maps/route-maps.component';
+import { TestComponent } from './test/test.component';
+import { TesterComponent } from './pages/tester/tester.component';
 
 
 
@@ -143,6 +145,8 @@ import { RouteMapsComponent } from './pages/route-maps/route-maps.component';
     CitySelectionForRoutingComponent,
     RouteSelectionComponent,
     RouteMapsComponent,
+    TestComponent,
+    TesterComponent,
 
     
 

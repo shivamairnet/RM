@@ -19,6 +19,7 @@ import { CollectionsComponent } from '../../pages/collections/collections.compon
 import { CheckoutComponent } from '../../pages/checkout/checkout.component';
 import { AboutUsComponent } from '../../pages/about-us/about-us.component';
 import { FlightSearchComponent } from 'src/app/pages/flight-search/flight-search.component';
+// import { TesterComponent } from 'src/app/pages/tester/tester.component';
 
 @NgModule({
   imports: [
@@ -42,6 +43,7 @@ import { FlightSearchComponent } from 'src/app/pages/flight-search/flight-search
     CollectionsComponent,
     CheckoutComponent,
     AboutUsComponent,
+    // TesterComponent
   
     
    
